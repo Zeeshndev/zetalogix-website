@@ -1,0 +1,393 @@
+---
+// src/components/sections/ContactForm.astro
+
+const countries = [
+  { n: "Afghanistan", c: "+93", f: "🇦🇫" }, { n: "Albania", c: "+355", f: "🇦🇱" }, { n: "Algeria", c: "+213", f: "🇩🇿" }, { n: "Andorra", c: "+376", f: "🇦🇩" }, { n: "Angola", c: "+244", f: "🇦🇴" },
+  { n: "Argentina", c: "+54", f: "🇦🇷" }, { n: "Armenia", c: "+374", f: "🇦🇲" }, { n: "Australia", c: "+61", f: "🇦🇺" }, { n: "Austria", c: "+43", f: "🇦🇹" }, { n: "Azerbaijan", c: "+994", f: "🇦🇿" },
+  { n: "Bahamas", c: "+1", f: "🇧🇸" }, { n: "Bahrain", c: "+973", f: "🇧🇭" }, { n: "Bangladesh", c: "+880", f: "🇧🇩" }, { n: "Barbados", c: "+1", f: "🇧🇧" }, { n: "Belarus", c: "+375", f: "🇧🇾" },
+  { n: "Belgium", c: "+32", f: "🇧🇪" }, { n: "Belize", c: "+501", f: "🇧🇿" }, { n: "Benin", c: "+229", f: "🇧🇯" }, { n: "Bhutan", c: "+975", f: "🇧🇹" }, { n: "Bolivia", c: "+591", f: "🇧🇴" },
+  { n: "Bosnia", c: "+387", f: "🇧🇦" }, { n: "Botswana", c: "+267", f: "🇧🇼" }, { n: "Brazil", c: "+55", f: "🇧🇷" }, { n: "Brunei", c: "+673", f: "🇧🇳" }, { n: "Bulgaria", c: "+359", f: "🇧🇬" },
+  { n: "Cambodia", c: "+855", f: "🇰🇭" }, { n: "Cameroon", c: "+237", f: "🇨🇲" }, { n: "Canada", c: "+1", f: "🇨🇦" }, { n: "Chad", c: "+235", f: "🇹🇩" }, { n: "Chile", c: "+56", f: "🇨🇱" },
+  { n: "China", c: "+86", f: "🇨🇳" }, { n: "Colombia", c: "+57", f: "🇨🇴" }, { n: "Costa Rica", c: "+506", f: "🇨🇷" }, { n: "Croatia", c: "+385", f: "🇭🇷" }, { n: "Cuba", c: "+53", f: "🇨🇺" },
+  { n: "Cyprus", c: "+357", f: "🇨🇾" }, { n: "Czechia", c: "+420", f: "🇨🇿" }, { n: "Denmark", c: "+45", f: "🇩🇰" }, { n: "Dominican Rep", c: "+1", f: "🇩🇴" }, { n: "Ecuador", c: "+593", f: "🇪🇨" },
+  { n: "Egypt", c: "+20", f: "🇪🇬" }, { n: "El Salvador", c: "+503", f: "🇸🇻" }, { n: "Estonia", c: "+372", f: "🇪🇪" }, { n: "Ethiopia", c: "+251", f: "🇪🇹" }, { n: "Fiji", c: "+679", f: "🇫🇯" },
+  { n: "Finland", c: "+358", f: "🇫🇮" }, { n: "France", c: "+33", f: "🇫🇷" }, { n: "Georgia", c: "+995", f: "🇬🇪" }, { n: "Germany", c: "+49", f: "🇩🇪" }, { n: "Ghana", c: "+233", f: "🇬🇭" },
+  { n: "Greece", c: "+30", f: "🇬🇷" }, { n: "Guatemala", c: "+502", f: "🇬🇹" }, { n: "Haiti", c: "+509", f: "🇭🇹" }, { n: "Honduras", c: "+504", f: "🇭🇳" }, { n: "Hungary", c: "+36", f: "🇭🇺" },
+  { n: "Iceland", c: "+354", f: "🇮🇸" }, { n: "India", c: "+91", f: "🇮🇳" }, { n: "Indonesia", c: "+62", f: "🇮🇩" }, { n: "Iran", c: "+98", f: "🇮🇷" }, { n: "Iraq", c: "+964", f: "🇮🇶" },
+  { n: "Ireland", c: "+353", f: "🇮🇪" }, { n: "Israel", c: "+972", f: "🇮🇱" }, { n: "Italy", c: "+39", f: "🇮🇹" }, { n: "Jamaica", c: "+1", f: "🇯🇲" }, { n: "Japan", c: "+81", f: "🇯🇵" },
+  { n: "Jordan", c: "+962", f: "🇯🇴" }, { n: "Kazakhstan", c: "+7", f: "🇰🇿" }, { n: "Kenya", c: "+254", f: "🇰🇪" }, { n: "Kuwait", c: "+965", f: "🇰🇼" }, { n: "Lebanon", c: "+961", f: "🇱🇧" },
+  { n: "Libya", c: "+218", f: "🇱🇾" }, { n: "Lithuania", c: "+370", f: "🇱🇹" }, { n: "Luxembourg", c: "+352", f: "🇱🇺" }, { n: "Madagascar", c: "+261", f: "🇲🇬" }, { n: "Malaysia", c: "+60", f: "🇲🇾" },
+  { n: "Maldives", c: "+960", f: "🇲🇻" }, { n: "Mali", c: "+223", f: "🇲🇱" }, { n: "Malta", c: "+356", f: "🇲🇹" }, { n: "Mexico", c: "+52", f: "🇲🇽" }, { n: "Monaco", c: "+377", f: "🇲🇨" },
+  { n: "Mongolia", c: "+976", f: "🇲🇳" }, { n: "Morocco", c: "+212", f: "🇲🇦" }, { n: "Myanmar", c: "+95", f: "🇲🇲" }, { n: "Nepal", c: "+977", f: "🇳🇵" }, { n: "Netherlands", c: "+31", f: "🇳🇱" },
+  { n: "New Zealand", c: "+64", f: "🇳🇿" }, { n: "Nicaragua", c: "+505", f: "🇳🇮" }, { n: "Nigeria", c: "+234", f: "🇳🇬" }, { n: "North Korea", c: "+850", f: "🇰🇵" }, { n: "Norway", c: "+47", f: "🇳🇴" },
+  { n: "Oman", c: "+968", f: "🇴🇲" }, { n: "Pakistan", c: "+92", f: "🇵🇰" }, { n: "Palestine", c: "+970", f: "🇵🇸" }, { n: "Panama", c: "+507", f: "🇵🇦" }, { n: "Paraguay", c: "+595", f: "🇵🇾" },
+  { n: "Peru", c: "+51", f: "🇵🇪" }, { n: "Philippines", c: "+63", f: "🇵🇭" }, { n: "Poland", c: "+48", f: "🇵🇱" }, { n: "Portugal", c: "+351", f: "🇵🇹" }, { n: "Qatar", c: "+974", f: "🇶🇦" },
+  { n: "Romania", c: "+40", f: "🇷🇴" }, { n: "Russia", c: "+7", f: "🇷🇺" }, { n: "Rwanda", c: "+250", f: "🇷🇼" }, { n: "Saudi Arabia", c: "+966", f: "🇸🇦" }, { n: "Senegal", c: "+221", f: "🇸🇳" },
+  { n: "Serbia", c: "+381", f: "🇷🇸" }, { n: "Singapore", c: "+65", f: "🇸🇬" }, { n: "Slovakia", c: "+421", f: "🇸🇰" }, { n: "Slovenia", c: "+386", f: "🇸🇮" }, { n: "Somalia", c: "+252", f: "🇸🇴" },
+  { n: "South Africa", c: "+27", f: "🇿🇦" }, { n: "South Korea", c: "+82", f: "🇰🇷" }, { n: "Spain", c: "+34", f: "🇪🇸" }, { n: "Sri Lanka", c: "+94", f: "🇱🇰" }, { n: "Sudan", c: "+249", f: "🇸🇩" },
+  { n: "Sweden", c: "+46", f: "🇸🇪" }, { n: "Switzerland", c: "+41", f: "🇨🇭" }, { n: "Syria", c: "+963", f: "🇸🇾" }, { n: "Taiwan", c: "+886", f: "🇹🇼" }, { n: "Tanzania", c: "+255", f: "🇹🇿" },
+  { n: "Thailand", c: "+66", f: "🇹🇭" }, { n: "Tunisia", c: "+216", f: "🇹🇳" }, { n: "Turkey", c: "+90", f: "🇹🇷" }, { n: "Uganda", c: "+256", f: "🇺🇬" }, { n: "Ukraine", c: "+380", f: "🇺🇦" },
+  { n: "UAE", c: "+971", f: "🇦🇪" }, { n: "United Kingdom", c: "+44", f: "🇬🇧" }, { n: "United States", c: "+1", f: "🇺🇸" }, { n: "Uruguay", c: "+598", f: "🇺🇾" }, { n: "Uzbekistan", c: "+998", f: "🇺🇿" },
+  { n: "Venezuela", c: "+58", f: "🇻🇪" }, { n: "Vietnam", c: "+84", f: "🇻🇳" }, { n: "Yemen", c: "+967", f: "🇾🇪" }, { n: "Zambia", c: "+260", f: "🇿🇲" }, { n: "Zimbabwe", c: "+263", f: "🇿🇼" }
+];
+const sortedCountries = countries.sort((a, b) => a.n.localeCompare(b.n));
+---
+
+<section id="contact" class="py-24 lg:py-32 bg-brand-dark relative border-t border-white/5 scroll-mt-20">
+    <div class="max-w-7xl mx-auto px-6">
+        
+        <div class="text-center mb-16">
+            <div class="text-4xl mb-4">💼</div>
+            <h2 class="font-heading text-4xl md:text-5xl font-bold text-white tracking-tight">Let's Work Together</h2>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            
+            <div class="lg:col-span-7 bg-[#0a0f1d] border border-white/10 rounded-2xl p-8 md:p-10 shadow-2xl relative z-10">
+                <form id="contact-form" class="flex flex-col gap-6">
+                    
+                    <input type="text" name="name" placeholder="Full Name*" required class="w-full bg-brand-dark border border-white/10 rounded-lg px-4 py-3.5 text-slate-300 placeholder-slate-500 focus:outline-none focus:border-brand-accent transition-colors" />
+                    <input type="email" name="email" placeholder="Email*" required class="w-full bg-brand-dark border border-white/10 rounded-lg px-4 py-3.5 text-slate-300 placeholder-slate-500 focus:outline-none focus:border-brand-accent transition-colors" />
+                    
+                    <div class="flex items-center w-full bg-brand-dark border border-white/10 rounded-lg focus-within:border-brand-accent transition-colors relative z-50 group-country">
+                        
+                        <button type="button" class="custom-select-btn flex items-center justify-between gap-1.5 px-4 py-3.5 border-r border-white/10 bg-white/[0.02] hover:bg-white/[0.05] transition-colors text-slate-300 min-w-[105px] h-full rounded-l-lg cursor-pointer focus:outline-none">
+                            <div class="flex items-center gap-1.5 pointer-events-none">
+                                <span class="selected-flag text-base">🇺🇸</span>
+                                <span class="selected-code text-sm font-medium">+1</span>
+                            </div>
+                            <svg class="w-3 h-3 text-slate-500 transition-transform duration-200 pointer-events-none icon-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+
+                        <div class="custom-select-list absolute left-0 top-[110%] w-72 max-h-80 overflow-hidden bg-[#0f172a] border border-white/10 rounded-lg shadow-2xl opacity-0 invisible transition-all duration-200 z-50 flex flex-col">
+                            
+                            <div class="p-3 border-b border-white/10 bg-[#0f172a] sticky top-0 z-20">
+                                <div class="relative">
+                                    <svg class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                                    <input type="text" id="country-search" placeholder="Search country..." class="w-full bg-brand-dark border border-white/10 rounded-md pl-9 pr-3 py-2 text-sm text-slate-300 placeholder-slate-500 focus:outline-none focus:border-brand-accent transition-colors" />
+                                </div>
+                            </div>
+
+                            <div class="overflow-y-auto flex-1 custom-scrollbar">
+                                {sortedCountries.map((country) => (
+                                    <div 
+                                        class="country-option px-4 py-2.5 text-slate-300 hover:bg-brand-accent/10 hover:text-white cursor-pointer transition-colors flex items-center gap-3 text-sm border-b border-white/5 last:border-0"
+                                        data-code={country.c}
+                                        data-flag={country.f}
+                                        data-name={country.n.toLowerCase()}
+                                    >
+                                        <span class="text-base">{country.f}</span>
+                                        <span class="country-name font-medium">{country.n}</span>
+                                        <span class="text-slate-500 ml-auto">{country.c}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        <input type="hidden" name="country_code" class="hidden-input" value="+1" />
+                        <input type="tel" name="phone" placeholder="Phone Number" class="w-full bg-transparent px-4 py-3.5 text-slate-300 placeholder-slate-500 focus:outline-none h-full" />
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-40">
+                        <div class="relative custom-dropdown">
+                            <button type="button" class="custom-select-btn w-full bg-brand-dark border border-white/10 rounded-lg px-4 py-3.5 flex items-center justify-between text-slate-500 focus:outline-none focus:border-brand-accent transition-colors hover:border-white/20">
+                                <span class="selected-text truncate">How did you hear about us?</span>
+                                <svg class="w-4 h-4 shrink-0 transition-transform duration-200 icon-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                            </button>
+                            <div class="custom-select-list absolute left-0 top-[105%] w-full bg-[#0f172a] border border-white/10 rounded-lg shadow-2xl opacity-0 invisible transition-all duration-200 z-40 overflow-hidden">
+                                <div class="custom-option px-4 py-3 text-slate-300 hover:bg-brand-accent hover:text-[#0a0f1d] cursor-pointer transition-colors text-sm border-b border-white/5" data-value="search">Search Engine</div>
+                                <div class="custom-option px-4 py-3 text-slate-300 hover:bg-brand-accent hover:text-[#0a0f1d] cursor-pointer transition-colors text-sm border-b border-white/5" data-value="social">Social Media</div>
+                                <div class="custom-option px-4 py-3 text-slate-300 hover:bg-brand-accent hover:text-[#0a0f1d] cursor-pointer transition-colors text-sm border-b border-white/5" data-value="referral">Referral</div>
+                                <div class="custom-option px-4 py-3 text-slate-300 hover:bg-brand-accent hover:text-[#0a0f1d] cursor-pointer transition-colors text-sm" data-value="other">Other</div>
+                            </div>
+                            <input type="hidden" name="source" class="hidden-input" />
+                        </div>
+
+                        <div class="relative custom-dropdown">
+                            <button type="button" class="custom-select-btn w-full bg-brand-dark border border-white/10 rounded-lg px-4 py-3.5 flex items-center justify-between text-slate-500 focus:outline-none focus:border-brand-accent transition-colors hover:border-white/20">
+                                <span class="selected-text truncate">What is your budget?</span>
+                                <svg class="w-4 h-4 shrink-0 transition-transform duration-200 icon-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                            </button>
+                            <div class="custom-select-list absolute left-0 top-[105%] w-full bg-[#0f172a] border border-white/10 rounded-lg shadow-2xl opacity-0 invisible transition-all duration-200 z-40 overflow-hidden">
+                                <div class="custom-option px-4 py-3 text-slate-300 hover:bg-brand-accent hover:text-[#0a0f1d] cursor-pointer transition-colors text-sm border-b border-white/5" data-value="5k-10k">$5k - $10k</div>
+                                <div class="custom-option px-4 py-3 text-slate-300 hover:bg-brand-accent hover:text-[#0a0f1d] cursor-pointer transition-colors text-sm border-b border-white/5" data-value="10k-25k">$10k - $25k</div>
+                                <div class="custom-option px-4 py-3 text-slate-300 hover:bg-brand-accent hover:text-[#0a0f1d] cursor-pointer transition-colors text-sm border-b border-white/5" data-value="25k-50k">$25k - $50k</div>
+                                <div class="custom-option px-4 py-3 text-slate-300 hover:bg-brand-accent hover:text-[#0a0f1d] cursor-pointer transition-colors text-sm border-b border-white/5" data-value="50k+">$50k+</div>
+                                <div class="custom-option px-4 py-3 text-brand-accent hover:bg-brand-accent hover:text-[#0a0f1d] cursor-pointer transition-colors text-sm font-semibold" data-value="custom">Custom / Unsure</div>
+                            </div>
+                            <input type="hidden" name="budget" class="hidden-input" />
+                        </div>
+                    </div>
+
+                    <div class="relative z-30 custom-dropdown">
+                        <button type="button" class="custom-select-btn w-full bg-brand-dark border border-white/10 rounded-lg px-4 py-3.5 flex items-center justify-between text-slate-500 focus:outline-none focus:border-brand-accent transition-colors hover:border-white/20">
+                            <span class="selected-text truncate">Select your preferred engagement model</span>
+                            <svg class="w-4 h-4 shrink-0 transition-transform duration-200 icon-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="custom-select-list absolute left-0 top-[105%] w-full bg-[#0f172a] border border-white/10 rounded-lg shadow-2xl opacity-0 invisible transition-all duration-200 z-30 overflow-hidden">
+                            <div class="custom-option px-4 py-3 text-slate-300 hover:bg-brand-accent hover:text-[#0a0f1d] cursor-pointer transition-colors text-sm border-b border-white/5" data-value="fixed">Fixed Price Project</div>
+                            <div class="custom-option px-4 py-3 text-slate-300 hover:bg-brand-accent hover:text-[#0a0f1d] cursor-pointer transition-colors text-sm border-b border-white/5" data-value="dedicated">Dedicated Team</div>
+                            <div class="custom-option px-4 py-3 text-slate-300 hover:bg-brand-accent hover:text-[#0a0f1d] cursor-pointer transition-colors text-sm" data-value="time">Time & Material</div>
+                        </div>
+                        <input type="hidden" name="engagement" class="hidden-input" />
+                    </div>
+
+                    <textarea name="message" rows="4" placeholder="Message" class="w-full bg-brand-dark border border-white/10 rounded-lg px-4 py-3.5 text-slate-300 placeholder-slate-500 focus:outline-none focus:border-brand-accent transition-colors resize-none"></textarea>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-between gap-6 pt-4">
+                        <label class="flex items-center gap-2 text-sm text-slate-400 cursor-pointer hover:text-brand-accent transition-colors">
+                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" /></svg>
+                            Attach files (2 Files max - 5MB each)
+                            <input type="file" name="files" class="hidden" multiple accept="image/*,.pdf,.doc,.docx" />
+                        </label>
+                        
+                        <button id="submit-btn" type="submit" class="w-full sm:w-auto px-10 py-3.5 bg-brand-accent text-brand-dark font-bold rounded-lg hover:bg-white transition-colors duration-300 shadow-lg">
+                            Submit
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="lg:col-span-5 flex flex-col">
+                <div class="w-full h-64 rounded-2xl overflow-hidden mb-8 border border-white/5">
+                    <img 
+                        src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop" 
+                        alt="ZetaLogix Office Discussion" 
+                        class="w-full h-full object-cover"
+                    />
+                </div>
+
+                <h3 class="font-heading text-2xl font-bold text-white mb-6">What next?</h3>
+                
+                <ol class="flex flex-col gap-5 text-slate-400 text-sm md:text-base leading-relaxed">
+                    <li class="flex gap-3">
+                        <span class="font-bold text-brand-accent">1.</span>
+                        <span>We will reach out to you within one business day to discuss the next steps.</span>
+                    </li>
+                    <li class="flex gap-3">
+                        <span class="font-bold text-brand-accent">2.</span>
+                        <span>In the meantime, please review our portfolio and Blog.</span>
+                    </li>
+                    <li class="flex gap-3">
+                        <span class="font-bold text-brand-accent">3.</span>
+                        <span>If necessary, we will sign the NDA and begin the project discussion.</span>
+                    </li>
+                    <li class="flex gap-3">
+                        <span class="font-bold text-brand-accent">4.</span>
+                        <span>Our software development experts will analyze your requirements and make recommendations on the best ways to bring your concept to life.</span>
+                    </li>
+                </ol>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<style>
+    .custom-scrollbar::-webkit-scrollbar {
+        width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+        background: #0f172a;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: rgba(34, 211, 238, 0.5); /* Brand accent color */
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        // --- 1. Country Dropdown & Search Logic ---
+        const countryBtn = document.querySelector('.group-country .custom-select-btn');
+        const countryList = document.querySelector('.group-country .custom-select-list');
+        const countryArrow = document.querySelector('.group-country .icon-arrow');
+        const flagSpan = document.querySelector('.group-country .selected-flag');
+        const codeSpan = document.querySelector('.group-country .selected-code');
+        const hiddenCountryInput = document.querySelector('.group-country .hidden-input') as HTMLInputElement;
+        const countryOptions = document.querySelectorAll('.country-option');
+        const searchInput = document.getElementById('country-search') as HTMLInputElement;
+
+        if(countryBtn && countryList) {
+            
+            // Toggle dropdown
+            countryBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                closeAllDropdowns(countryList);
+                countryList.classList.toggle('opacity-0');
+                countryList.classList.toggle('invisible');
+                countryArrow?.classList.toggle('rotate-180');
+                
+                // Focus the search bar automatically when opened
+                if (!countryList.classList.contains('invisible') && searchInput) {
+                    setTimeout(() => searchInput.focus(), 100);
+                }
+            });
+
+            // Stop click inside search bar from closing the dropdown
+            searchInput?.addEventListener('click', (e) => {
+                e.stopPropagation();
+            });
+
+            // Live Search Filtering
+            searchInput?.addEventListener('input', (e) => {
+                const term = (e.target as HTMLInputElement).value.toLowerCase();
+                
+                countryOptions.forEach(opt => {
+                    const countryName = opt.getAttribute('data-name') || '';
+                    const countryCode = opt.getAttribute('data-code') || '';
+                    
+                    if(countryName.includes(term) || countryCode.includes(term)) {
+                        (opt as HTMLElement).style.display = 'flex';
+                    } else {
+                        (opt as HTMLElement).style.display = 'none';
+                    }
+                });
+            });
+
+            // Handle selecting a country
+            countryOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    const code = option.getAttribute('data-code');
+                    const flag = option.getAttribute('data-flag');
+                    
+                    if(codeSpan && flagSpan && hiddenCountryInput) {
+                        codeSpan.textContent = code;
+                        flagSpan.textContent = flag;
+                        hiddenCountryInput.value = code || '';
+                    }
+
+                    // Reset search field and unhide all options
+                    if(searchInput) searchInput.value = '';
+                    countryOptions.forEach(opt => (opt as HTMLElement).style.display = 'flex');
+
+                    // Close list
+                    countryList.classList.add('opacity-0', 'invisible');
+                    countryArrow?.classList.remove('rotate-180');
+                });
+            });
+        }
+
+        // --- 2. Standard Dropdowns (Budget, Source, Engagement) ---
+        const standardDropdowns = document.querySelectorAll('.custom-dropdown');
+        
+        standardDropdowns.forEach(dropdown => {
+            const btn = dropdown.querySelector('.custom-select-btn');
+            const list = dropdown.querySelector('.custom-select-list');
+            const arrow = dropdown.querySelector('.icon-arrow');
+            const textSpan = dropdown.querySelector('.selected-text');
+            const hiddenInput = dropdown.querySelector('.hidden-input') as HTMLInputElement;
+            const options = dropdown.querySelectorAll('.custom-option');
+
+            if(btn && list) {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    closeAllDropdowns(list);
+                    list.classList.toggle('opacity-0');
+                    list.classList.toggle('invisible');
+                    arrow?.classList.toggle('rotate-180');
+                    btn.classList.toggle('border-brand-accent');
+                });
+
+                options.forEach(option => {
+                    option.addEventListener('click', () => {
+                        const val = option.getAttribute('data-value');
+                        const txt = option.textContent;
+                        
+                        if(textSpan && hiddenInput) {
+                            textSpan.textContent = txt;
+                            textSpan.classList.remove('text-slate-500');
+                            textSpan.classList.add('text-slate-300'); 
+                            hiddenInput.value = val || '';
+                        }
+
+                        // Close list
+                        list.classList.add('opacity-0', 'invisible');
+                        arrow?.classList.remove('rotate-180');
+                        btn.classList.remove('border-brand-accent');
+                    });
+                });
+            }
+        });
+
+        // --- 3. Global Close Logic ---
+        function closeAllDropdowns(exceptList = null) {
+            document.querySelectorAll('.custom-select-list').forEach(list => {
+                if(list !== exceptList) {
+                    list.classList.add('opacity-0', 'invisible');
+                }
+            });
+            document.querySelectorAll('.icon-arrow').forEach(arrow => {
+                arrow.classList.remove('rotate-180');
+            });
+            document.querySelectorAll('.custom-select-btn').forEach(btn => {
+                btn.classList.remove('border-brand-accent');
+            });
+        }
+
+        document.addEventListener('click', () => {
+            closeAllDropdowns();
+        });
+
+        // --- 4. Form Submission API Integration ---
+        const form = document.getElementById('contact-form') as HTMLFormElement;
+        const submitBtn = document.getElementById('submit-btn');
+
+        if (form && submitBtn) {
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault(); // Stop default browser reload
+                
+                // Save original button state and show loading status
+                const originalText = submitBtn.innerText;
+                submitBtn.innerText = 'Sending...';
+                submitBtn.classList.add('opacity-70', 'cursor-not-allowed');
+                
+                // Automatically grabs all inputs that have a 'name' attribute
+                const formData = new FormData(form);
+
+                try {
+                    // Send to your Astro API route
+                    const response = await fetch('/api/contact', {
+                        method: 'POST',
+                        body: formData, 
+                    });
+
+                    const result = await response.json();
+
+                    if (response.ok) {
+                        // Success state styling
+                        submitBtn.innerText = 'Message Sent!';
+                        submitBtn.classList.replace('bg-brand-accent', 'bg-green-500');
+                        submitBtn.classList.replace('text-brand-dark', 'text-white');
+                        form.reset(); 
+                        
+                        // Reset dropdown visual text safely
+                        document.querySelectorAll('.selected-text').forEach(span => {
+                           if(span.textContent !== 'How did you hear about us?' && 
+                              span.textContent !== 'What is your budget?' && 
+                              span.textContent !== 'Select your preferred engagement model') {
+                               span.classList.add('text-slate-500');
+                               span.classList.remove('text-slate-300');
+                               span.textContent = span.getAttribute('data-default') || 'Select an option';
+                           }
+                        });
+
+                    } else {
+                        alert(`Error: ${result.error}`);
+                        submitBtn.innerText = originalText;
+                    }
+                } catch (error) {
+                    console.error('Submission Error:', error);
+                    alert('There was a problem sending your message. Please try again.');
+                    submitBtn.innerText = originalText;
+                } finally {
+                    submitBtn.classList.remove('opacity-70', 'cursor-not-allowed');
+                }
+            });
+        }
+    });
+</script>

@@ -1,0 +1,59 @@
+---
+// src/components/sections/TrustBar.astro
+
+// Strictly Infrastructure and Cloud Partners with full wordmarks (Names included)
+const partners = [
+  { name: "AWS", iconClass: "devicon-amazonwebservices-plain-wordmark colored" },
+  { name: "Google Cloud", iconClass: "devicon-googlecloud-plain-wordmark colored" },
+  { name: "DigitalOcean", iconClass: "devicon-digitalocean-original-wordmark colored" },
+  { name: "Microsoft Azure", iconClass: "devicon-azure-plain-wordmark colored" },
+  { name: "Firebase", iconClass: "devicon-firebase-plain-wordmark colored" }
+];
+---
+
+<section class="py-12 border-b border-white/5 bg-[#050814] overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 mb-10">
+        <p class="text-center text-xs font-bold tracking-widest text-slate-400 uppercase">Our Infrastructure Partners</p>
+    </div>
+    
+    <div class="relative flex overflow-hidden w-full group">
+        
+        <div class="absolute left-0 top-0 w-32 h-full bg-gradient-to-r from-[#050814] to-transparent z-10 pointer-events-none"></div>
+
+        <div class="flex whitespace-nowrap animate-scroll items-center gap-32 pr-32 w-max group-hover:[animation-play-state:paused]">
+            
+            {partners.map((partner) => (
+                <div class="flex items-center text-6xl hover:scale-110 transition-transform duration-300 flex-shrink-0 cursor-pointer" title={partner.name}>
+                    <i class={partner.iconClass}></i>
+                </div>
+            ))}
+
+            {partners.map((partner) => (
+                <div class="flex items-center text-6xl hover:scale-110 transition-transform duration-300 flex-shrink-0 cursor-pointer" title={partner.name}>
+                    <i class={partner.iconClass}></i>
+                </div>
+            ))}
+
+            {partners.map((partner) => (
+                <div class="flex items-center text-6xl hover:scale-110 transition-transform duration-300 flex-shrink-0 cursor-pointer" title={partner.name}>
+                    <i class={partner.iconClass}></i>
+                </div>
+            ))}
+            
+        </div>
+
+        <div class="absolute right-0 top-0 w-32 h-full bg-gradient-to-l from-[#050814] to-transparent z-10 pointer-events-none"></div>
+    </div>
+</section>
+
+<style>
+    @keyframes scroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-33.333333%); } 
+    }
+    
+    .animate-scroll {
+        /* Slightly slower 35s speed to allow users to read the company names */
+        animation: scroll 35s linear infinite;
+    }
+</style>

@@ -1,0 +1,141 @@
+---
+// src/components/sections/Projects.astro
+
+const projects = [
+  {
+    title: "Accommodation Booking and Listing Platform for Rentischeap",
+    description: "Rentischeap.com is an Rethinking short-and long-term homestays experiences globally.",
+    category: "Rental Marketplace",
+    type: "Web Application",
+    image: "/assets/Rentischeap.png", // Strictly lowercase per your file naming convention
+    link: "#",
+    techStack: [
+      { name: "Node.js", svg: `<svg viewBox="0 0 24 24" fill="#339939"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm2-8h-4v-2h4v2z"/></svg>` },
+      { name: "React", svg: `<svg viewBox="0 0 24 24" fill="#61DAFB"><path d="M11.955 8.127a3.877 3.877 0 100 7.754 3.877 3.877 0 000-7.754zm-8.214 7.234a17.48 17.48 0 01-1.341-3.357A17.48 17.48 0 013.74 8.646c2.407-3.955 7.1-6.19 12.046-5.83 2.183.159 4.26 1.01 5.955 2.45a17.48 17.48 0 011.34 3.357 17.48 17.48 0 01-1.34 3.357c-2.406 3.955-7.1 6.19-12.045 5.83a12.6 12.6 0 01-5.955-2.449z"/></svg>` },
+      { name: "Next JS", svg: `<svg viewBox="0 0 24 24" fill="#000000"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 14.5l-5.3-7v7H10V8.5h1.7l5.3 7v-7H18v8h-1z"/></svg>` },
+      { name: "PostgreSQL", svg: `<svg viewBox="0 0 24 24" fill="#336791"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>` }
+    ]
+  },
+  {
+    title: "Digital Assets trading Mobile and web application for Litetrade",
+    description: "The Litetrade Mobile and web application allows for seamless transactions. Enabling users to easily buy & sell crypto, pay bills, convert airtime to cash, and trade gift cards at top market rates.",
+    category: "Fintech & Crypto",
+    type: "Mobile & Web App",
+    image: "/assets/Litetrade.png", 
+    link: "#",
+    techStack: [
+      { name: "React Native", svg: `<svg viewBox="0 0 24 24" fill="#61DAFB"><path d="M11.955 8.127a3.877 3.877 0 100 7.754 3.877 3.877 0 000-7.754zm-8.214 7.234a17.48 17.48 0 01-1.341-3.357A17.48 17.48 0 013.74 8.646c2.407-3.955 7.1-6.19 12.046-5.83 2.183.159 4.26 1.01 5.955 2.45a17.48 17.48 0 011.34 3.357 17.48 17.48 0 01-1.34 3.357c-2.406 3.955-7.1 6.19-12.045 5.83a12.6 12.6 0 01-5.955-2.449z"/></svg>` },
+      { name: "TypeScript", svg: `<svg viewBox="0 0 24 24" fill="#3178C6"><path d="M2.2 0h19.6C23 0 24 1 24 2.2v19.6c0 1.2-1 2.2-2.2 2.2H2.2C1 24 0 23 0 21.8V2.2C0 1 1 0 2.2 0zm14.3 17.6c.4 0 .9-.1 1.3-.3.4-.2.7-.5.9-.9.2-.4.3-1 .3-1.7V9.5h-2.2v5.2c0 .4-.1.7-.3.8-.2.1-.4.2-.7.2-.3 0-.5-.1-.7-.2-.2-.1-.3-.4-.3-.8V9.5H12.7v5.5c0 1.2.3 2.1 1 2.7.7.5 1.6.7 2.8.7zm-6.1-.2v-6.1H7.8V9.5h7.2v1.8h-2.5v6.1H10.4z"/></svg>` },
+      { name: "Node.js", svg: `<svg viewBox="0 0 24 24" fill="#339939"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm2-8h-4v-2h4v2z"/></svg>` },
+      { name: "AWS", svg: `<svg viewBox="0 0 24 24" fill="#FF9900"><path d="M13.2 16.5c-1.8.8-4.2 1.5-6.6 1.5-3.3 0-5.4-1.2-5.4-3.6 0-2.4 2.1-4.2 6.3-4.2 1.2 0 2.4.3 3.3.6v-1.2c0-1.5-1.2-2.1-2.7-2.1-1.2 0-2.4.3-3.6.9L3.6 7.2C5.4 6 7.8 5.4 10.2 5.4c3.9 0 6 2.1 6 5.4v5.1c0 1.2.3 2.1 1.2 2.1.3 0 .6-.3.9-.6l1.2 1.8c-.9 1.5-2.4 2.1-4.2 2.1-1.2 0-2.1-.6-2.1-1.8v-3zM9.9 12.6c-2.1-.3-3.3.3-3.3 1.5 0 .9.9 1.5 2.1 1.5 1.2 0 2.4-.3 3.3-.9v-2.1c-.6 0-1.5 0-2.1 0z"/></svg>` }
+    ]
+  }
+//   {
+//     title: "Fintech Cross-Boarder and Local payments for Monnee Inc.",
+//     description: "Monnee allows you to send & receive payments within and outside nigeria faster with the lowest transaction fees in the market. You can also paybills & Trade your giftcards.",
+//     category: "Financial Ecosystem",
+//     type: "Payment Platform",
+//     image: "/assets/Monnee.png", 
+//     link: "#",
+//     techStack: [
+//       { name: "Python", svg: `<svg viewBox="0 0 24 24" fill="#3776AB"><path d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.36.1-.37.04h-3.36l.6 1.15.38 1.12.16 1.05.02 1v2.85l-.05.64-.14.56-.21.47-.27.38-.3.32-.34.24-.35.19-.36.14-.36.1-.37.04H5.46l-.54-.04-.5-.14-.44-.24-.36-.33-.27-.42-.16-.5-.04-.54v-3.76l.04-.54.16-.5.27-.42.36-.33.44-.24.5-.14.54-.04h1.76v-2.3h-3.6l-.64-.05-.56-.14-.47-.21-.38-.27-.32-.3-.24-.34-.19-.35-.14-.36-.1-.36-.04-.37v-3.36l1.15.6 1.12.38 1.05.16 1 .02h2.85l.64-.05.56-.14.47-.21.38-.27.32-.3.24-.34.19-.35.14-.36.1-.36.04-.37V.18z"/></svg>` },
+//       { name: "React", svg: `<svg viewBox="0 0 24 24" fill="#61DAFB"><path d="M11.955 8.127a3.877 3.877 0 100 7.754 3.877 3.877 0 000-7.754zm-8.214 7.234a17.48 17.48 0 01-1.341-3.357A17.48 17.48 0 013.74 8.646c2.407-3.955 7.1-6.19 12.046-5.83 2.183.159 4.26 1.01 5.955 2.45a17.48 17.48 0 011.34 3.357 17.48 17.48 0 01-1.34 3.357c-2.406 3.955-7.1 6.19-12.045 5.83a12.6 12.6 0 01-5.955-2.449z"/></svg>` },
+//       { name: "PostgreSQL", svg: `<svg viewBox="0 0 24 24" fill="#336791"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>` }
+//     ]
+//   },
+//   {
+//     title: "Gift Card Trading Mobile App for Traydah",
+//     description: "Traydah is a gift card trading company in Lagos, Nigeria. Traydah brand has been in existence for over 3 years, doing business with both individuals and businesses alike.",
+//     category: "Mobile Commerce",
+//     type: "Native Application",
+//     image: "/assets/Traydah.png", 
+//     link: "#",
+//     techStack: [
+//       { name: "React Native", svg: `<svg viewBox="0 0 24 24" fill="#61DAFB"><path d="M11.955 8.127a3.877 3.877 0 100 7.754 3.877 3.877 0 000-7.754zm-8.214 7.234a17.48 17.48 0 01-1.341-3.357A17.48 17.48 0 013.74 8.646c2.407-3.955 7.1-6.19 12.046-5.83 2.183.159 4.26 1.01 5.955 2.45a17.48 17.48 0 011.34 3.357 17.48 17.48 0 01-1.34 3.357c-2.406 3.955-7.1 6.19-12.045 5.83a12.6 12.6 0 01-5.955-2.449z"/></svg>` },
+//       { name: "Node.js", svg: `<svg viewBox="0 0 24 24" fill="#339939"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm2-8h-4v-2h4v2z"/></svg>` },
+//       { name: "MongoDB", svg: `<svg viewBox="0 0 24 24" fill="#47A248"><path d="M12 .5c-.3 0-.6.2-.7.5C10 3.7 7.2 7.7 7.2 11.4c0 3.8 2.5 7.1 4.8 9.4.3.3.7.3 1 0 2.3-2.3 4.8-5.6 4.8-9.4C17.8 7.7 15 3.7 12.7 1c-.1-.3-.4-.5-.7-.5zm.7 19.3v-5c1-.3 1.8-1 2.2-2 .5-1 .5-2.2.3-3.3-.2-1.3-.8-2.6-1.5-3.8l-1-1.6V2.4c1.3 2 3.4 5.2 3.4 9 0 3-1.8 5.7-3.4 8.4z"/></svg>` }
+//     ]
+//   }
+];
+---
+
+<section class="py-24 lg:py-32 bg-brand-dark relative border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-6">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+            <div class="max-w-2xl">
+                <h2 class="font-heading text-sm font-bold tracking-widest text-brand-glow uppercase mb-4 flex items-center gap-2">
+                    <span class="w-8 h-px bg-brand-glow"></span> Case Studies
+                </h2>
+                <h3 class="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+                    Our Selected <span class="text-brand-accent">Projects.</span>
+                </h3>
+            </div>
+            <a href="/portfolio" class="inline-flex items-center pb-1 border-b border-brand-accent text-brand-accent hover:text-white hover:border-white transition-all text-lg font-semibold">
+                Explore All 
+                <svg class="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+            {projects.map((project) => (
+                <div class="group bg-[#0a0f1d] border border-white/5 rounded-[2.5rem] p-8 md:p-10 hover:border-brand-accent/20 transition-all duration-500 shadow-2xl flex flex-col h-full overflow-hidden">
+                    
+                    <div class="relative w-full aspect-video flex items-center justify-center mb-10 mt-4">
+                        
+                        <div class="absolute top-0 left-0 w-[82%] h-[85%] rounded-xl overflow-hidden border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.6)] bg-[#1e293b] group-hover:-translate-y-2 transition-transform duration-700">
+                            <div class="h-6 w-full bg-[#0f172a] border-b border-white/5 flex items-center px-3 gap-1.5">
+                                <div class="w-1.5 h-1.5 rounded-full bg-red-500/80"></div>
+                                <div class="w-1.5 h-1.5 rounded-full bg-yellow-500/80"></div>
+                                <div class="w-1.5 h-1.5 rounded-full bg-green-500/80"></div>
+                            </div>
+                            <img src={project.image} alt={`${project.title} Interface View`} class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-102" loading="lazy" />
+                        </div>
+
+                        <div class="absolute -bottom-4 right-2 w-[28%] aspect-[9/19] rounded-[1.75rem] overflow-hidden border-[5px] border-[#020617] shadow-[0_30px_60px_rgba(0,0,0,0.9)] bg-[#020617] group-hover:translate-y-1 group-hover:-translate-x-1 transition-transform duration-700 z-20">
+                            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-3.5 bg-[#020617] rounded-b-xl z-30"></div>
+                            <img src={project.image} alt={`${project.title} Mobile Screen`} class="w-full h-full object-cover object-top" loading="lazy" />
+                        </div>
+                        
+                    </div>
+
+                    <div class="flex flex-col flex-grow">
+                        <div class="flex items-center gap-3 text-xs font-bold uppercase tracking-wider mb-4">
+                            <span class="text-brand-accent">{project.category}</span>
+                            <span class="text-slate-600">•</span>
+                            <span class="text-slate-400">{project.type}</span>
+                        </div>
+
+                        <h3 class="font-heading text-2xl md:text-3xl font-bold text-white mb-4 leading-tight group-hover:text-brand-glow transition-colors">
+                            {project.title}
+                        </h3>
+                        
+                        <p class="text-slate-400 leading-relaxed text-base mb-8 flex-grow">
+                            {project.description}
+                        </p>
+
+                        <div class="flex items-center justify-between mt-auto pt-6 border-t border-white/5">
+                            <div class="flex -space-x-2.5">
+                                {project.techStack.map((tech) => (
+                                    <div 
+                                        class="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-md border-2 border-[#0a0f1d] relative z-10 hover:z-20 transform hover:-translate-y-1 transition-all duration-300"
+                                        title={tech.name}
+                                    >
+                                        <div class="w-5 h-5 flex items-center justify-center" set:html={tech.svg} />
+                                    </div>
+                                ))}
+                            </div>
+
+                            <a href={project.link} class="inline-flex items-center text-sm font-bold text-brand-accent hover:text-white transition-colors group/btn">
+                                View Case Study
+                                <svg class="w-4 h-4 ml-1.5 transform group-hover/btn:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                            </a>
+                        </div>
+                    </div>
+                    
+                </div>
+            ))}
+        </div>
+        
+    </div>
+</section>

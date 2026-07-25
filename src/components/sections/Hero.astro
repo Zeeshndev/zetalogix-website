@@ -1,0 +1,31 @@
+---
+// src/components/sections/Hero.astro
+---
+<section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden flex items-center justify-center min-h-[90vh]">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-accent/20 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
+    
+    <div class="max-w-7xl mx-auto px-6 text-center z-10">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-8 backdrop-blur-sm">
+            <span class="w-2 h-2 rounded-full bg-brand-glow animate-pulse"></span>
+            <span class="text-xs font-medium text-slate-300 uppercase tracking-wider">Accepting New Clients Globally</span>
+        </div>
+        
+        <h1 class="font-heading text-5xl lg:text-7xl font-bold text-white tracking-tight mb-8 leading-tight">
+            Engineering <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-brand-glow">Intelligence.</span><br />
+            Building the Future.
+        </h1>
+        
+        <p class="max-w-2xl mx-auto text-lg text-slate-400 mb-10 leading-relaxed">
+            We craft high-performance web solutions, scalable applications, and custom AI-driven systems tailored for enterprise corporations and startup founders.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="/services" class="w-full sm:w-auto px-8 py-4 bg-brand-accent text-brand-dark font-semibold rounded-full hover:bg-white transition-all duration-300 shadow-[0_0_20px_rgba(34,211,238,0.3)] hover:shadow-[0_0_30px_rgba(34,211,238,0.5)]">
+                Explore Our Services
+            </a>
+            <a href="/portfolio" class="w-full sm:w-auto px-8 py-4 bg-white/5 text-white font-semibold rounded-full border border-white/10 hover:bg-white/10 transition-all duration-300">
+                View Portfolio
+            </a>
+        </div>
+    </div>
+</section>

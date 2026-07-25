@@ -1,17 +1,40 @@
 ---
-
+// src/pages/index.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/global/Navbar.astro';
+import Hero from '../components/sections/Hero.astro';
+import TrustBar from '../components/sections/TrustBar.astro';
+import Services from '../components/sections/Services.astro';
+import TechStack from '../components/sections/TechStack.astro';
+import Stats from '../components/sections/Stats.astro';
+import Projects from '../components/sections/Projects.astro';
+import Process from '../components/sections/Process.astro';
+import Engagement from '../components/sections/Engagement.astro';
+import IpSafeguards from '../components/sections/IpSafeguards.astro';
+import Insights from '../components/sections/Insights.astro';
+import ContactForm from '../components/sections/ContactForm.astro'; // Re-imported
+import BottomBanner from '../components/sections/BottomBanner.astro'; // NEW
+import Footer from '../components/global/Footer.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title="ZetaLogix | Premium IT & AI Services">
+    <Navbar />
+    
+    <main>
+        <Hero />
+        <TrustBar />
+        <Services />
+        <TechStack />
+        <Stats />
+        <Projects />
+        <Process />
+        <Engagement />
+        <IpSafeguards />
+        <Insights />
+        
+        <ContactForm />
+        <BottomBanner />
+    </main>
+    
+    <Footer />
+</BaseLayout>

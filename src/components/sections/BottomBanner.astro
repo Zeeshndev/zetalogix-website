@@ -1,0 +1,26 @@
+---
+// src/components/sections/BottomBanner.astro
+---
+
+<section class="py-12 bg-brand-accent relative overflow-hidden">
+    <div class="absolute inset-0 bg-[#0a0f1d] opacity-10"></div>
+    <div class="absolute -right-20 -top-20 w-64 h-64 bg-white opacity-20 blur-[80px] rounded-full"></div>
+    
+    <div class="max-w-7xl mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+        
+        <div>
+            <h2 class="font-heading text-3xl md:text-4xl font-bold text-[#0a0f1d] tracking-tight mb-2">
+                Got a Project? Tell us about it!
+            </h2>
+            <p class="text-[#0a0f1d]/80 font-medium text-lg">
+                Our engineering team is ready to transform your ideas into scalable reality.
+            </p>
+        </div>
+
+        <a href="mailto:hello@zetalogix.com" class="inline-flex items-center justify-center px-8 py-4 bg-[#0a0f1d] text-white font-bold rounded-full hover:bg-white hover:text-[#0a0f1d] transition-all duration-300 shadow-xl group whitespace-nowrap">
+            Email Us Directly
+            <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+        </a>
+
+    </div>
+</section>

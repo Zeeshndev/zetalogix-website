@@ -1,0 +1,16 @@
+---
+// src/pages/contact.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/global/Navbar.astro';
+import ContactForm from '../components/sections/ContactForm.astro';
+import Footer from '../components/global/Footer.astro';
+---
+
+<BaseLayout title="Contact Us | ZetaLogix">
+    <Navbar />
+    
+    <main class="pt-20 min-h-screen flex flex-col justify-between">
+        <ContactForm />
+        <Footer />
+    </main>
+</BaseLayout>

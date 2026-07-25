@@ -1,0 +1,30 @@
+---
+// Import the local variable fonts freshly installed via npm
+import '@fontsource-variable/inter';
+import '@fontsource-variable/space-grotesk';
+
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description = "ZetaLogix - Global IT & AI Services" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+	</head>
+	<body class="bg-brand-dark text-slate-300 font-sans antialiased selection:bg-brand-accent selection:text-brand-dark">
+		<main class="min-h-screen flex flex-col">
+			<slot /> 
+			</main>
+	</body>
+</html>

@@ -1,0 +1,51 @@
+---
+// src/components/global/Footer.astro
+const currentYear = new Date().getFullYear();
+---
+<footer class="bg-[#02040a] border-t border-white/10 pt-20 pb-10">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+        <div class="md:col-span-1">
+            <a href="/" class="font-heading font-bold text-2xl tracking-tighter text-white mb-6 block">
+                ZETA<span class="text-brand-accent">LOGIX</span>
+            </a>
+            <p class="text-slate-400 text-sm leading-relaxed mb-6">Premium IT Services, Software Engineering, and AI Integration for modern enterprises.</p>
+        </div>
+        
+        <div>
+            <h4 class="text-white font-bold mb-6">Services</h4>
+            <ul class="flex flex-col gap-3 text-slate-400 text-sm">
+                <li><a href="#" class="hover:text-brand-accent transition-colors">Web Development</a></li>
+                <li><a href="#" class="hover:text-brand-accent transition-colors">App Development</a></li>
+                <li><a href="#" class="hover:text-brand-accent transition-colors">AI Solutions</a></li>
+                <li><a href="#" class="hover:text-brand-accent transition-colors">UI/UX Design</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h4 class="text-white font-bold mb-6">Company</h4>
+            <ul class="flex flex-col gap-3 text-slate-400 text-sm">
+                <li><a href="#" class="hover:text-brand-accent transition-colors">About Us</a></li>
+                <li><a href="#" class="hover:text-brand-accent transition-colors">Portfolio</a></li>
+                <li><a href="#" class="hover:text-brand-accent transition-colors">Careers</a></li>
+                <li><a href="#" class="hover:text-brand-accent transition-colors">Contact</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h4 class="text-white font-bold mb-6">Headquarters</h4>
+            <address class="not-italic text-slate-400 text-sm leading-relaxed flex flex-col gap-2">
+                <span>Rawalpindi, Punjab</span>
+                <span>Pakistan</span>
+                <a href="mailto:contact@zetalogix.com" class="text-brand-accent hover:text-white mt-2">contact@zetalogix.com</a>
+            </address>
+        </div>
+    </div>
+    
+    <div class="max-w-7xl mx-auto px-6 border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-slate-500">
+        <p>&copy; {currentYear} ZetaLogix. All rights reserved.</p>
+        <div class="flex gap-4 mt-4 md:mt-0">
+            <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+            <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+        </div>
+    </div>
+</footer>

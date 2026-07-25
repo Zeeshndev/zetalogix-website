@@ -1,0 +1,28 @@
+---
+// src/components/global/Navbar.astro
+---
+
+<nav class="fixed w-full z-50 top-0 transition-all duration-300 bg-brand-dark/80 backdrop-blur-md border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        
+        <a href="/" class="font-heading font-bold text-2xl tracking-tighter text-white">
+            ZETA<span class="text-brand-accent">LOGIX</span>
+        </a>
+
+        <div class="hidden md:flex items-center gap-8">
+            <a href="/#services" class="text-sm font-semibold text-slate-300 hover:text-white transition-colors">Services</a>
+            <a href="/#portfolio" class="text-sm font-semibold text-slate-300 hover:text-white transition-colors">Portfolio</a>
+            <a href="/#process" class="text-sm font-semibold text-slate-300 hover:text-white transition-colors">Our Process</a>
+        </div>
+
+        <div class="hidden md:block">
+            <a href="/contact" class="px-6 py-2.5 bg-brand-accent text-brand-dark font-bold text-sm rounded-full hover:bg-white transition-all shadow-[0_0_15px_rgba(34,211,238,0.15)] hover:shadow-[0_0_25px_rgba(34,211,238,0.3)]">
+                Contact Us
+            </a>
+        </div>
+
+        <button class="md:hidden text-white focus:outline-none">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+        </button>
+    </div>
+</nav>
