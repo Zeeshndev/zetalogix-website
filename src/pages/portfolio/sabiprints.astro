@@ -1,0 +1,299 @@
+---
+// src/pages/portfolio/sabiprints.astro
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/global/Navbar.astro';
+import ContactForm from '../../components/sections/ContactForm.astro';
+import Footer from '../../components/global/Footer.astro';
+
+// Tech Stack Categories 
+const technologies = [
+  { name: "Node.js", icon: "devicon-nodejs-plain colored" },
+  { name: "Express", icon: "devicon-express-original text-white" },
+  { name: "PostgreSQL", icon: "devicon-postgresql-plain colored" },
+  { name: "React", icon: "devicon-react-original colored" },
+  { name: "Next.js", icon: "devicon-nextjs-original text-white" },
+  { name: "Tailwind CSS", icon: "devicon-tailwindcss-plain colored" },
+  { name: "Jenkins", icon: "devicon-jenkins-line colored" }
+];
+
+const integrations = [
+  { name: "Paystack", icon: "devicon-nodejs-plain colored" },
+  { name: "Stripe", icon: "devicon-stripe-plain colored" }
+];
+
+const storage = [
+  { name: "DigitalOcean", icon: "devicon-digitalocean-original colored" },
+  { name: "Cloudinary", icon: "devicon-googlecloud-plain colored" }
+];
+---
+
+<BaseLayout title="Sabiprints Case Study | ZetaLogix">
+    <Navbar />
+    
+    <main class="pt-20 bg-brand-dark text-slate-300">
+        
+        <section class="max-w-7xl mx-auto px-6 py-24 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <div class="lg:col-span-5 space-y-6">
+                <span class="text-xs font-mono font-bold text-brand-accent tracking-widest uppercase block mb-2">Case Study Analysis</span>
+                <h1 class="text-3xl md:text-4xl font-bold text-white leading-tight font-heading">
+                    Print Marketplace for Sabiprints
+                </h1>
+                <p class="text-slate-400 text-base md:text-lg leading-relaxed">
+                    Sabiprints.com connects individuals and organizations in need of reliable printing services to vetted printing agencies. It simplifies the printing process in four easy steps: creating an account, selecting a preferred template, choosing a nearby printing agency, and sending designs for prints to be delivered.
+                </p>
+
+                <div class="space-y-3 text-sm border-l-4 border-brand-accent pl-6 py-4 bg-[#0a0f1d]/50 rounded-r-xl border-t border-r border-b border-white/5 shadow-lg">
+                    <div class="grid grid-cols-1 sm:grid-cols-12 gap-2">
+                        <div class="sm:col-span-4 font-bold text-white">Domain:</div>
+                        <div class="sm:col-span-8 text-slate-400">Marketplace</div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-12 gap-2">
+                        <div class="sm:col-span-4 font-bold text-white">Timeline:</div>
+                        <div class="sm:col-span-8 text-slate-400">June 2023 - January 2024</div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-12 gap-2">
+                        <div class="sm:col-span-4 font-bold text-white">Services:</div>
+                        <div class="sm:col-span-8 text-slate-400">Project discovery, UX/UI design, Front-End, Back-End, Admin Development</div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-12 gap-2">
+                        <div class="sm:col-span-4 font-bold text-white">Team:</div>
+                        <div class="sm:col-span-8 text-slate-400">4 Software Engineers, 1 UX/UI Designer, 1 QA, 1 DevOps, 1 Project Manager</div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-12 gap-2">
+                        <div class="sm:col-span-4 font-bold text-white">Core Tech:</div>
+                        <div class="sm:col-span-8 text-slate-400">Node.js, Express, PostgreSQL, React, Next.js, Tailwind, Paystack API, Stripe, Cloudinary, DigitalOcean</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-7 relative">
+                <div class="rounded-2xl border border-white/10 overflow-hidden bg-[#0a0f1d] shadow-2xl relative z-10 p-2 sm:p-4">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-brand-accent/5 to-transparent pointer-events-none"></div>
+                    <img 
+                        src="/assets/portfolio/Sabiprints/everyevent-full.c6013a8c.png" 
+                        alt="Sabiprints Platform Mockup" 
+                        class="w-full h-auto object-cover rounded-xl relative z-10 transform hover:scale-[1.01] transition-transform duration-700 ease-out"
+                    />
+                </div>
+            </div>
+        </section>
+
+        <section class="max-w-4xl mx-auto px-6 pb-20">
+            <p class="text-xl md:text-2xl font-medium text-white leading-relaxed mb-8 italic text-center">
+                "ZetaLogix looks beyond building an app for the sake of building and works in any capacity to see our project's success."
+            </p>
+            <div class="flex items-center justify-center gap-4">
+                <div class="w-14 h-14 rounded-full bg-[#0a0f1d] border-2 border-brand-accent overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200&auto=format&fit=crop" alt="CEO Avatar" class="w-full h-full object-cover filter grayscale opacity-80" />
+                </div>
+                <span class="text-slate-400 font-medium">CEO Sabiprints.com</span>
+            </div>
+        </section>
+
+        <section class="relative py-24 w-full bg-[#050814] overflow-hidden border-y border-white/5">
+            <div class="absolute inset-0 z-0 opacity-20">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2000&auto=format&fit=crop" alt="Team collaborating" class="w-full h-full object-cover" />
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-r from-[#050814] via-[#050814]/90 to-transparent z-0"></div>
+            
+            <div class="max-w-6xl mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center justify-between gap-12">
+                <div class="max-w-2xl">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight font-heading">
+                        Do you need an experienced team to build a mobile application and web application?
+                    </h2>
+                    <p class="text-lg text-slate-400">
+                        We make use of the best technologies and best practices to help you launch faster and save cost
+                    </p>
+                </div>
+                <div class="shrink-0">
+                    <a href="/contact" class="px-8 py-4 bg-brand-accent text-brand-dark font-bold rounded-lg hover:bg-white transition-colors shadow-[0_0_20px_rgba(34,211,238,0.2)]">
+                        Talk to an expert
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="max-w-6xl mx-auto px-6 py-24 space-y-32">
+            <div class="mb-12">
+                <span class="text-xs font-mono font-bold text-brand-accent tracking-widest uppercase block mb-2">Architectural Blueprint</span>
+                <h2 class="text-3xl font-bold text-white mb-16 font-heading">Solution Delivered</h2>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1 relative">
+                    <div class="absolute inset-0 bg-brand-accent/5 blur-[50px] rounded-full"></div>
+                    <img src="/assets/portfolio/Sabiprints/everyevent-sec1.caf62b42.png" alt="Customer App Mockup" class="w-full h-auto drop-shadow-2xl relative z-10 rounded-xl" />
+                </div>
+                <div class="order-1 lg:order-2 space-y-4">
+                    <h3 class="text-2xl font-bold text-white font-heading">Responsive Web App for Customers</h3>
+                    <p class="text-slate-400 leading-relaxed text-lg">
+                        Our team delivered a responsive web application for customers looking for fast, reliable printing solutions providers within their vicinity or anywhere globally. The application comes as a bundle which includes a precision engineered design tool similar to Canva.
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="space-y-4">
+                    <h3 class="text-2xl font-bold text-white font-heading">Responsive Web App for Printing Businesses</h3>
+                    <p class="text-slate-400 leading-relaxed text-lg">
+                        Our team delivered a responsive web application for printing businesses. Printing businesses can receive printing jobs on the go, complete the job and send out the finished prints right from a single dashboard. This application also allows the printing businesses to manage their catalogues, generate an online store and drive traffic to their store. Simultaneously businesses can manage their finances and get key analytics that shows their profitability on the platform in real time.
+                    </p>
+                </div>
+                <div class="relative">
+                    <div class="absolute inset-0 bg-brand-accent/5 blur-[50px] rounded-full"></div>
+                    <img src="/assets/portfolio/Sabiprints/everyevent-sec2.5d3086b2.png" alt="Business App Mockup" class="w-full h-auto drop-shadow-2xl relative z-10 rounded-xl" />
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1 relative">
+                    <div class="absolute inset-0 bg-brand-accent/5 blur-[50px] rounded-full"></div>
+                    <img src="/assets/portfolio/Sabiprints/everyevent-sec3.af696ce1.png" alt="Designer Dashboard Mockup" class="w-full h-auto drop-shadow-2xl relative z-10 rounded-xl" />
+                </div>
+                <div class="order-1 lg:order-2 space-y-4">
+                    <h3 class="text-2xl font-bold text-white font-heading">Responsive Web App for In-House Designer</h3>
+                    <p class="text-slate-400 leading-relaxed text-lg">
+                        Our team delivered a responsive web application tool that enables the in-house designer to design ready-to-use templates that are made available to the customers via APIs.
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="space-y-4">
+                    <h3 class="text-2xl font-bold text-white font-heading">Cloud based graphics design and document editing software Similar to Canva</h3>
+                    <p class="text-slate-400 leading-relaxed text-lg">
+                        Our team delivered a responsive design application native to Sabiprints, which enables users to design, edit and customize their documents before sending it to the printer for the final print work.
+                    </p>
+                </div>
+                <div class="relative">
+                    <div class="absolute inset-0 bg-brand-accent/5 blur-[50px] rounded-full"></div>
+                    <img src="/assets/portfolio/Sabiprints/everyevent-sec4.e339ec1c.png" alt="Design Editor Mockup" class="w-full h-auto drop-shadow-2xl relative z-10 rounded-xl" />
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1 relative">
+                    <div class="absolute inset-0 bg-brand-accent/5 blur-[50px] rounded-full"></div>
+                    <img src="/assets/portfolio/Sabiprints/everyevent-sec5.0dffcb21.png" alt="Admin Dashboard Mockup" class="w-full h-auto drop-shadow-2xl relative z-10 rounded-xl" />
+                </div>
+                <div class="order-1 lg:order-2 space-y-4">
+                    <h3 class="text-2xl font-bold text-white font-heading">Responsive Web App for Admin</h3>
+                    <p class="text-slate-400 leading-relaxed text-lg">
+                        Our team delivered a responsive web application for platform administration, which provides the best management experience for Sabiprints operators. Web applications are a comparative option to full-scale mobile applications since it's faster to launch which saves a whole lot of time if you are looking to launch quickly into the market.
+                    </p>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="py-24 bg-[#0a0f1d] border-y border-white/5 relative">
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-brand-accent/5 blur-[120px] rounded-full pointer-events-none"></div>
+            
+            <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16 relative z-10">
+                
+                <div class="lg:col-span-7 space-y-8">
+                    <h4 class="text-xl font-bold text-white font-heading flex items-center gap-2">
+                        <span class="w-1.5 h-4 bg-brand-accent rounded-full"></span>
+                        Core Technologies
+                    </h4>
+                    <div class="grid grid-cols-3 sm:grid-cols-4 gap-6">
+                        {technologies.map(tech => (
+                            <div class="flex flex-col items-center justify-center p-4 rounded-xl bg-brand-dark border border-white/5 hover:border-brand-accent/30 transition-colors text-center group">
+                                <div class="text-4xl mb-2 transform group-hover:scale-110 transition-transform duration-300">
+                                    <i class={tech.icon}></i>
+                                </div>
+                                <span class="text-xs font-medium text-slate-400 group-hover:text-white transition-colors">{tech.name}</span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 space-y-12">
+                    <div class="space-y-6">
+                        <h4 class="text-xl font-bold text-white font-heading flex items-center gap-2">
+                            <span class="w-1.5 h-4 bg-brand-accent rounded-full"></span>
+                            API Integrations
+                        </h4>
+                        <div class="grid grid-cols-2 gap-6">
+                            {integrations.map(tech => (
+                                <div class="flex flex-col items-center justify-center p-4 rounded-xl bg-brand-dark border border-white/5 hover:border-brand-accent/30 transition-colors text-center group">
+                                    <div class="text-4xl mb-2 transform group-hover:scale-110 transition-transform duration-300">
+                                        <i class={tech.icon}></i>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400 group-hover:text-white transition-colors">{tech.name}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    <div class="space-y-6">
+                        <h4 class="text-xl font-bold text-white font-heading flex items-center gap-2">
+                            <span class="w-1.5 h-4 bg-brand-accent rounded-full"></span>
+                            Storage Infrastructure
+                        </h4>
+                        <div class="grid grid-cols-2 gap-6">
+                            {storage.map(tech => (
+                                <div class="flex flex-col items-center justify-center p-4 rounded-xl bg-brand-dark border border-white/5 hover:border-brand-accent/30 transition-colors text-center group">
+                                    <div class="text-4xl mb-2 transform group-hover:scale-110 transition-transform duration-300">
+                                        <i class={tech.icon}></i>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400 group-hover:text-white transition-colors">{tech.name}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="max-w-4xl mx-auto px-6 py-24 border-b border-white/5">
+            <h3 class="text-2xl md:text-3xl font-bold text-white mb-10 font-heading">What Next? Following Deployment</h3>
+            <div class="space-y-6">
+                <div class="flex gap-4 items-start bg-[#0a0f1d] p-6 rounded-xl border border-white/5">
+                    <span class="text-sm font-mono font-bold text-brand-accent bg-brand-accent/10 w-8 h-8 rounded-full flex items-center justify-center shrink-0">1</span>
+                    <p class="text-slate-300 text-base leading-relaxed">We will reach out to you within one business day to discuss the next structural steps.</p>
+                </div>
+                <div class="flex gap-4 items-start bg-[#0a0f1d] p-6 rounded-xl border border-white/5">
+                    <span class="text-sm font-mono font-bold text-brand-accent bg-brand-accent/10 w-8 h-8 rounded-full flex items-center justify-center shrink-0">2</span>
+                    <p class="text-slate-300 text-base leading-relaxed">In the meantime, please review our portfolio, framework paradigms, and engineering blog profiles.</p>
+                </div>
+                <div class="flex gap-4 items-start bg-[#0a0f1d] p-6 rounded-xl border border-white/5">
+                    <span class="text-sm font-mono font-bold text-brand-accent bg-brand-accent/10 w-8 h-8 rounded-full flex items-center justify-center shrink-0">3</span>
+                    <p class="text-slate-300 text-base leading-relaxed">If necessary, we will execute standard corporate NDAs and begin the architectural project discovery phases.</p>
+                </div>
+                <div class="flex gap-4 items-start bg-[#0a0f1d] p-6 rounded-xl border border-white/5">
+                    <span class="text-sm font-mono font-bold text-brand-accent bg-brand-accent/10 w-8 h-8 rounded-full flex items-center justify-center shrink-0">4</span>
+                    <p class="text-slate-300 text-base leading-relaxed">Our software development experts will analyze your custom requirements and make optimization recommendations on the best ways to bring your concept to live production.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 bg-[#050814] border-t border-white/5">
+            <div class="max-w-7xl mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center text-white mb-16 font-heading">Other projects</h2>
+                
+                <div class="grid grid-cols-1 gap-16">
+                    <div class="bg-[#FF5A1F] rounded-3xl p-8 md:p-16 text-white grid grid-cols-1 lg:grid-cols-12 gap-12 items-center shadow-2xl relative overflow-hidden group">
+                        <div class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                        <div class="lg:col-span-6 space-y-6 relative z-10">
+                            <h2 class="font-heading text-3xl md:text-4xl font-bold leading-tight">Accommodation Booking and Listing Platform for Rentischeap</h2>
+                            <a href="/portfolio/rentischeap" class="inline-flex items-center justify-center px-6 py-3 bg-white/20 border border-white text-white font-bold rounded-xl hover:bg-white hover:text-[#FF5A1F] transition-all duration-300">
+                                View case study
+                            </a>
+                        </div>
+                        <div class="lg:col-span-6 flex justify-center relative z-10">
+                            <img src="/assets/portfolio/Rentischeap.png" alt="Rentischeap" class="w-full max-h-[350px] object-contain drop-shadow-2xl transform transition-transform duration-700 ease-out group-hover:scale-105" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <ContactForm />
+
+    </main>
+
+    <Footer />
+</BaseLayout>

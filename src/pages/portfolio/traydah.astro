@@ -1,0 +1,288 @@
+---
+// src/pages/portfolio/traydah.astro
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/global/Navbar.astro';
+import ContactForm from '../../components/sections/ContactForm.astro';
+import Footer from '../../components/global/Footer.astro';
+
+// Tech Stack Categories mapping to standard clean Devicons based on the Traydah stack
+const technologies = [
+  { name: "Vue.js", icon: "devicon-vuejs-plain colored" },
+  { name: "Laravel", icon: "devicon-laravel-original colored" },
+  { name: "Flutter", icon: "devicon-flutter-plain colored" },
+  { name: "MySQL", icon: "devicon-mysql-plain colored" },
+  { name: "PostgreSQL", icon: "devicon-postgresql-plain colored" }
+];
+
+const infrastructure = [
+  { name: "DigitalOcean", icon: "devicon-digitalocean-original colored" }
+];
+---
+
+<BaseLayout title="Traydah Case Study | ZetaLogix">
+    <Navbar />
+    
+    <main class="pt-20 bg-brand-dark text-slate-300">
+        
+        <section class="max-w-7xl mx-auto px-6 py-24 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <div class="lg:col-span-5 space-y-6">
+                <span class="text-xs font-mono font-bold text-brand-accent tracking-widest uppercase block mb-2">Case Study Analysis</span>
+                <h1 class="text-3xl md:text-4xl font-bold text-white leading-tight font-heading">
+                    Gift Card Trading Mobile App for Traydah
+                </h1>
+                <p class="text-slate-400 text-base md:text-lg leading-relaxed">
+                    Learn how ZetaLogix delivered a top-notch mobile app trading platform for Gift Cards, designed a modern and striking interface for the app, and developed the design into a fully working product.
+                </p>
+
+                <div class="space-y-3 text-sm border-l-4 border-brand-accent pl-6 py-4 bg-[#0a0f1d]/50 rounded-r-xl border-t border-r border-b border-white/5 shadow-lg">
+                    <div class="grid grid-cols-1 sm:grid-cols-12 gap-2">
+                        <div class="sm:col-span-4 font-bold text-white">Domain:</div>
+                        <div class="sm:col-span-8 text-slate-400">Fintech</div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-12 gap-2">
+                        <div class="sm:col-span-4 font-bold text-white">Timeline:</div>
+                        <div class="sm:col-span-8 text-slate-400">2 Months</div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-12 gap-2">
+                        <div class="sm:col-span-4 font-bold text-white">Services:</div>
+                        <div class="sm:col-span-8 text-slate-400">Hybrid Mobile app (Android and iOS), Admin portal, UX/UI Design</div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-12 gap-2">
+                        <div class="sm:col-span-4 font-bold text-white">Team:</div>
+                        <div class="sm:col-span-8 text-slate-400">4 Software Engineers, 1 UX/UI Designer, 1 QA, 1 DevOps, 1 Project Manager</div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-12 gap-2">
+                        <div class="sm:col-span-4 font-bold text-white">Core Tech:</div>
+                        <div class="sm:col-span-8 text-slate-400">Laravel, Vue JS, Blade, Flutter, MySQL, Postgres, DigitalOcean</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-7 relative">
+                <div class="rounded-2xl border border-white/10 overflow-hidden bg-[#0a0f1d] shadow-2xl relative z-10 p-2 sm:p-4">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-brand-accent/5 to-transparent pointer-events-none"></div>
+                    <img 
+                        src="/assets/portfolio/Traydah/giftcard_mockup.png" 
+                        alt="Traydah Platform Mockup" 
+                        class="w-full h-auto object-cover rounded-xl relative z-10 transform hover:scale-[1.01] transition-transform duration-700 ease-out"
+                    />
+                </div>
+            </div>
+        </section>
+
+        <section class="max-w-4xl mx-auto px-6 pb-20">
+            <p class="text-xl md:text-2xl font-medium text-white leading-relaxed mb-8 italic text-center">
+                "The company delivered my work better than I expected. The front end and back end are top-notch. If you need professionals that know their craft, ZetaLogix fits that profile."
+            </p>
+            <div class="flex items-center justify-center gap-4">
+                <div class="w-14 h-14 rounded-full bg-[#0a0f1d] border-2 border-brand-accent overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200&auto=format&fit=crop" alt="CEO Avatar" class="w-full h-full object-cover filter grayscale opacity-80" />
+                </div>
+                <span class="text-slate-400 font-medium">Dayo Akinwumi, CEO Traydah</span>
+            </div>
+        </section>
+
+        <section class="py-32 bg-[#050814] relative overflow-hidden">
+            <div class="absolute top-0 left-1/4 w-[600px] h-[600px] bg-brand-accent/5 blur-[150px] rounded-full pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <div class="mb-16 text-center md:text-left">
+                    <span class="text-xs font-mono font-bold text-brand-accent tracking-widest uppercase block mb-2">Project Context</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white font-heading">The Challenge & The Solution</h2>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+                    <div class="lg:col-span-7 flex flex-col gap-6">
+                        
+                        <div class="bg-[#0a0f1d] border border-white/5 rounded-3xl p-8 md:p-10 hover:border-white/10 transition-all shadow-xl group">
+                            <div class="w-12 h-12 rounded-xl bg-[#050814] border border-white/10 flex items-center justify-center mb-6 shadow-md group-hover:scale-110 transition-transform">
+                                <svg class="w-6 h-6 text-brand-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white font-heading mb-4">Background Overview</h3>
+                            <p class="text-slate-400 leading-relaxed mb-4">
+                                Traydah is a gift card trading company in Lagos, Nigeria. The brand has been in existence for over 3 years, doing business with both individuals and businesses alike. They typically engage in the buying and selling of virtually all gift cards, with a business transaction volume of over 100 Million Naira yearly. Traydah is arguably one of the biggest players in its industry in West Africa.
+                            </p>
+                            <p class="text-slate-400 leading-relaxed">
+                                The customer reached out to us after searching for curated and qualified top software developers. They wanted us to design and develop a top-notch mobile app and admin portal to digitize operations, reach more customers, perform transactions faster, and inevitably generate more revenue.
+                            </p>
+                        </div>
+
+                        <div class="bg-gradient-to-br from-brand-accent/10 to-[#0a0f1d] border border-brand-accent/20 rounded-3xl p-8 md:p-10 hover:border-brand-accent/40 transition-all shadow-[0_0_30px_rgba(34,211,238,0.05)] group">
+                            <div class="w-12 h-12 rounded-xl bg-brand-accent/20 border border-brand-accent/30 flex items-center justify-center mb-6 shadow-md group-hover:scale-110 transition-transform">
+                                <svg class="w-6 h-6 text-brand-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white font-heading mb-4">Value Delivered</h3>
+                            <p class="text-slate-300 leading-relaxed mb-4">
+                                We designed & built a modern, robust, and fast-loading web admin portal solution. This positively influenced the platform's admin governance, management, business metrics, and revenue generation since the admin was able to attend to more customers, approve more transactions, and get important business metrics right from their dashboard.
+                            </p>
+                            <p class="text-slate-300 leading-relaxed">
+                                We also designed & developed a Hybrid mobile App using Flutter which dramatically improved the user experience on mobile devices and enabled Traydah to perform more transactions and trades without hassle.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-5 h-full">
+                        <div class="bg-[#0a0f1d] border border-white/5 rounded-3xl p-8 md:p-10 hover:border-white/10 transition-all shadow-xl h-full flex flex-col group">
+                            <div class="w-12 h-12 rounded-xl bg-[#050814] border border-white/10 flex items-center justify-center mb-6 shadow-md group-hover:scale-110 transition-transform">
+                                <svg class="w-6 h-6 text-brand-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white font-heading mb-8">Business Challenges</h3>
+                            
+                            <div class="space-y-8 flex-1">
+                                <div class="flex items-start gap-5">
+                                    <div class="w-8 h-8 rounded-full bg-[#050814] border border-white/10 flex items-center justify-center shrink-0 mt-0.5 text-slate-500 font-mono text-sm shadow-inner">01</div>
+                                    <p class="text-slate-400 leading-relaxed">Ideate and design the mobile app and admin portal for the marketplace, ensuring it is visually appealing and highly mobile-friendly.</p>
+                                </div>
+                                <div class="flex items-start gap-5">
+                                    <div class="w-8 h-8 rounded-full bg-[#050814] border border-white/10 flex items-center justify-center shrink-0 mt-0.5 text-slate-500 font-mono text-sm shadow-inner">02</div>
+                                    <p class="text-slate-400 leading-relaxed">Develop the newly designed platform to be fully functional and meet complex requirements for rapid delivery.</p>
+                                </div>
+                                <div class="flex items-start gap-5">
+                                    <div class="w-8 h-8 rounded-full bg-brand-accent/20 border border-brand-accent/50 flex items-center justify-center shrink-0 mt-0.5 text-brand-accent font-mono text-sm font-bold shadow-[0_0_10px_rgba(34,211,238,0.2)]">03</div>
+                                    <p class="text-slate-300 leading-relaxed"><strong class="text-white">Cyber-Security:</strong> Implement strict traffic, database, and cloud security measures to ensure smooth operation and prevent any possibility of an external hack.</p>
+                                </div>
+                                <div class="flex items-start gap-5">
+                                    <div class="w-8 h-8 rounded-full bg-[#050814] border border-white/10 flex items-center justify-center shrink-0 mt-0.5 text-slate-500 font-mono text-sm shadow-inner">04</div>
+                                    <p class="text-slate-400 leading-relaxed">Implement modern customer support systems and intelligent chatbots for rapid issue resolutions.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="max-w-7xl mx-auto px-6 py-24 space-y-32">
+            <div class="mb-12">
+                <span class="text-xs font-mono font-bold text-brand-accent tracking-widest uppercase block mb-2">Architectural Blueprint</span>
+                <h2 class="text-3xl font-bold text-white mb-16 font-heading">Solution Delivered</h2>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                <div class="lg:col-span-7 order-2 lg:order-1 relative">
+                    <div class="absolute inset-0 bg-brand-accent/5 blur-[50px] rounded-full"></div>
+                    <img src="/assets/portfolio/Traydah/giftcard_mockup (1).png" alt="UX UI Design Mockup" class="w-full h-auto drop-shadow-2xl relative z-10 rounded-xl" />
+                </div>
+                <div class="lg:col-span-5 order-1 lg:order-2 space-y-4">
+                    <h3 class="text-2xl font-bold text-white font-heading">UX/UI Design</h3>
+                    <p class="text-slate-400 leading-relaxed text-lg">
+                        We delivered a unique, simple, and effective design and visual interpretation of the client's idea. We began with a discovery call, and user/market research so as to have a proper understanding of the business goals and target users. With this, we were able to provide a relevant yet modern and usable visual representation based on our research and findings.
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                <div class="lg:col-span-5 space-y-4">
+                    <h3 class="text-2xl font-bold text-white font-heading">Hybrid Mobile Application</h3>
+                    <p class="text-slate-400 leading-relaxed text-lg">
+                        Our team delivered a hybrid mobile application, tailored to give the users the best modern ecommerce experience. Built to work on multiple operating systems (Android and iOS). Hybrid applications are becoming very popular because of their flexibility, and low cost of building and maintenance.
+                    </p>
+                </div>
+                <div class="lg:col-span-7 relative">
+                    <div class="absolute inset-0 bg-brand-accent/5 blur-[50px] rounded-full"></div>
+                    <img src="/assets/portfolio/Traydah/Traydah_mockup.png" alt="Hybrid Mobile Application Mockup" class="w-full h-auto drop-shadow-2xl relative z-10 rounded-xl" />
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                <div class="lg:col-span-7 order-2 lg:order-1 relative">
+                    <div class="absolute inset-0 bg-brand-accent/5 blur-[50px] rounded-full"></div>
+                    <img src="/assets/portfolio/Traydah/Traydah_web_mockup_3.png" alt="Admin Dashboard Mockup" class="w-full h-auto drop-shadow-2xl relative z-10 rounded-xl" />
+                </div>
+                <div class="lg:col-span-5 order-1 lg:order-2 space-y-4">
+                    <h3 class="text-2xl font-bold text-white font-heading">Admin Development</h3>
+                    <p class="text-slate-400 leading-relaxed text-lg mb-4">
+                        We built an admin portal for the governance and management of the app. The importance of an admin portal cannot be over-emphasized. The admin portal has built-in features such as:
+                    </p>
+                    <ul class="space-y-3 text-slate-400 leading-relaxed list-disc list-inside marker:text-brand-accent">
+                        <li>Dashboard for easy stats monitoring</li>
+                        <li>Withdrawals menu for managing users' withdrawals</li>
+                        <li>Transactions for managing gift card transactions that take place on the platform</li>
+                        <li>Users menu for managing the users on the platform</li>
+                    </ul>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="py-24 bg-[#0a0f1d] border-y border-white/5 relative overflow-hidden">
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-brand-accent/5 blur-[120px] rounded-full pointer-events-none"></div>
+            
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <div class="text-center mb-16">
+                    <span class="text-xs font-mono font-bold text-brand-accent tracking-widest uppercase block mb-2">System Stack</span>
+                    <h2 class="text-3xl font-bold text-white font-heading">Technologies & Infrastructure</h2>
+                </div>
+                
+                <div class="flex flex-col lg:flex-row gap-16">
+                    
+                    <div class="flex-1 space-y-8">
+                        <h4 class="text-xl font-bold text-white font-heading flex items-center justify-center lg:justify-start gap-3">
+                            <span class="w-2 h-2 bg-brand-accent rounded-full"></span>
+                            Core Technologies
+                        </h4>
+                        
+                        <div class="flex flex-wrap justify-center lg:justify-start gap-4">
+                            {technologies.map(tech => (
+                                <div class="flex flex-col items-center justify-center w-[100px] h-[100px] shrink-0 rounded-2xl bg-[#050814] border border-white/5 hover:border-brand-accent/40 hover:-translate-y-1 transition-all shadow-lg cursor-pointer group">
+                                    <div class="text-4xl mb-2">
+                                        <i class={tech.icon}></i>
+                                    </div>
+                                    <span class="text-[11px] font-medium text-slate-400 group-hover:text-white transition-colors text-center">{tech.name}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    <div class="lg:w-[400px] space-y-8">
+                        <h4 class="text-xl font-bold text-white font-heading flex items-center justify-center lg:justify-start gap-3">
+                            <span class="w-2 h-2 bg-brand-accent rounded-full"></span>
+                            Infrastructure
+                        </h4>
+                        
+                        <div class="flex flex-wrap justify-center lg:justify-start gap-4">
+                            {infrastructure.map(tech => (
+                                <div class="flex flex-col items-center justify-center w-[100px] h-[100px] shrink-0 rounded-2xl bg-[#050814] border border-white/5 hover:border-brand-accent/40 hover:-translate-y-1 transition-all shadow-lg cursor-pointer group">
+                                    <div class="text-4xl mb-2">
+                                        <i class={tech.icon}></i>
+                                    </div>
+                                    <span class="text-[11px] font-medium text-slate-400 group-hover:text-white transition-colors">{tech.name}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 bg-[#050814] border-t border-white/5">
+            <div class="max-w-7xl mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center text-white mb-16 font-heading">Other projects</h2>
+                
+                <div class="grid grid-cols-1 gap-16">
+                    <div class="bg-[#6366F1] rounded-3xl p-8 md:p-16 text-white grid grid-cols-1 lg:grid-cols-12 gap-12 items-center shadow-2xl relative overflow-hidden group">
+                        <div class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                        <div class="lg:col-span-6 space-y-6 relative z-10">
+                            <h2 class="font-heading text-3xl md:text-4xl font-bold leading-tight">Fintech Cross-Border and Local payments for Monnee Inc.</h2>
+                            <a href="/portfolio/monnee" class="inline-flex items-center justify-center px-6 py-3 bg-white/20 border border-white text-white font-bold rounded-xl hover:bg-white hover:text-[#6366F1] transition-all duration-300">
+                                View case study
+                            </a>
+                        </div>
+                        <div class="lg:col-span-6 flex justify-center relative z-10">
+                            <img src="/assets/portfolio/Monnee.png" alt="Monnee" class="w-full max-h-[350px] object-contain drop-shadow-2xl transform transition-transform duration-700 ease-out group-hover:scale-105" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <ContactForm />
+
+    </main>
+
+    <Footer />
+</BaseLayout>

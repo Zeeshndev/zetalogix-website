@@ -1,0 +1,348 @@
+---
+// src/pages/engagement/fixed-price.astro
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/global/Navbar.astro';
+import ContactForm from '../../components/sections/ContactForm.astro';
+import Footer from '../../components/global/Footer.astro';
+---
+
+<BaseLayout title="Fixed Price Projects | ZetaLogix Engagement Models">
+    <Navbar />
+    
+    <main class="pt-20 bg-brand-dark text-slate-300">
+        
+        <section class="max-w-7xl mx-auto px-6 py-24 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="space-y-8 relative z-10">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight font-heading">
+                    Precision Budgeting & Quality Commitment with ZetaLogix's <span class="text-brand-accent">Fixed Price Projects</span>
+                </h1>
+                <p class="text-slate-400 text-lg leading-relaxed max-w-lg">
+                    ZetaLogix offers Fixed Price Projects to deliver your initiatives within a predefined budget and timeline, ensuring cost control and quality deliverables.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="/contact" class="px-8 py-4 bg-brand-accent text-brand-dark font-bold rounded-lg hover:bg-white transition-colors shadow-[0_0_20px_rgba(34,211,238,0.2)]">
+                        Get a Free Quote
+                    </a>
+                    <a href="tel:+123456789" class="px-8 py-4 bg-[#FF5A1F] text-white font-bold rounded-lg hover:bg-[#e04e18] transition-colors flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                        Call us!
+                    </a>
+                </div>
+            </div>
+            <div class="relative">
+                <div class="absolute inset-0 bg-brand-accent/10 blur-[80px] rounded-full pointer-events-none"></div>
+                <img 
+                    src="https://images.unsplash.com/photo-1554415707-6e8cfc93fe23?q=80&w=1200&auto=format&fit=crop" 
+                    alt="Professionals analyzing financial documents" 
+                    class="w-full h-auto rounded-3xl shadow-2xl border border-white/5 relative z-10"
+                />
+            </div>
+        </section>
+
+        <section class="py-24 bg-[#0a0f1d] border-t border-white/5">
+            <div class="max-w-7xl mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-16 font-heading">Why Choose Fixed Price Projects?</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+                    <div class="flex gap-4">
+                        <svg class="w-6 h-6 text-[#FFC107] shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-2">Cost Savings</h3>
+                            <p class="text-slate-400 leading-relaxed text-sm">Benefit from reduced operational and labor costs while maintaining high-quality output.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <svg class="w-6 h-6 text-[#FFC107] shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-2">Access to Expertise</h3>
+                            <p class="text-slate-400 leading-relaxed text-sm">Leverage a team of professionals with specialized skills tailored to your project's needs.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <svg class="w-6 h-6 text-[#FFC107] shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-2">Focus on Core Business</h3>
+                            <p class="text-slate-400 leading-relaxed text-sm">Allow your in-house team to concentrate on strategic business activities, enhancing overall productivity.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <svg class="w-6 h-6 text-[#FFC107] shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-2">Flexibility and Scalability</h3>
+                            <p class="text-slate-400 leading-relaxed text-sm">Adjust the size and composition of your team easily to match evolving project requirements.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <svg class="w-6 h-6 text-[#FFC107] shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-2">Faster Time-to-Market</h3>
+                            <p class="text-slate-400 leading-relaxed text-sm">Speed up project delivery with a team dedicated exclusively to your development needs.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <svg class="w-6 h-6 text-[#FFC107] shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-2">Enhanced Collaboration</h3>
+                            <p class="text-slate-400 leading-relaxed text-sm">Enjoy seamless communication and collaboration with a team that integrates closely with your internal processes.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 bg-[#03050d]">
+            <div class="max-w-7xl mx-auto px-6">
+                <h2 class="text-3xl md:text-5xl font-bold text-white mb-16 font-heading text-center md:text-left">
+                    Key Advantages Of Our Fixed Price Model
+                </h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-10">
+                    <div>
+                        <span class="text-6xl font-light bg-gradient-to-r from-purple-500 to-indigo-500 bg-clip-text text-transparent block mb-1">01</span>
+                        <h3 class="text-xl font-bold text-white mb-2">Budget Certainty</h3>
+                        <p class="text-slate-400 text-sm">Lock in your costs upfront to avoid any surprises.</p>
+                    </div>
+                    <div>
+                        <span class="text-6xl font-light bg-gradient-to-r from-purple-500 to-indigo-500 bg-clip-text text-transparent block mb-1">02</span>
+                        <h3 class="text-xl font-bold text-white mb-2">Risk Reduction</h3>
+                        <p class="text-slate-400 text-sm">Shift the financial risks of overruns to ZetaLogix, not your business.</p>
+                    </div>
+                    <div>
+                        <span class="text-6xl font-light bg-gradient-to-r from-purple-500 to-indigo-500 bg-clip-text text-transparent block mb-1">03</span>
+                        <h3 class="text-xl font-bold text-white mb-2">Motivation for Efficiency</h3>
+                        <p class="text-slate-400 text-sm">Incentives for ZetaLogix to work within agreed parameters to avoid extra costs.</p>
+                    </div>
+                    <div>
+                        <span class="text-6xl font-light bg-gradient-to-r from-purple-500 to-indigo-500 bg-clip-text text-transparent block mb-1">04</span>
+                        <h3 class="text-xl font-bold text-white mb-2">Simplified Project Management</h3>
+                        <p class="text-slate-400 text-sm">Focus on your core business while we handle the project complexities.</p>
+                    </div>
+                    <div>
+                        <span class="text-6xl font-light bg-gradient-to-r from-purple-500 to-indigo-500 bg-clip-text text-transparent block mb-1">05</span>
+                        <h3 class="text-xl font-bold text-white mb-2">Clear Objectives and Scope</h3>
+                        <p class="text-slate-400 text-sm">Well-defined scope and objectives streamline project processes.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 bg-[#0a0f1d] relative">
+            <div class="max-w-4xl mx-auto px-6 relative z-10">
+                
+                <div class="text-center mb-10">
+                    <span class="text-[10px] font-bold text-pink-500 tracking-[0.2em] uppercase block mb-3">HOW IT WORKS</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white font-heading">Step by Step to Fixed Price Success</h2>
+                </div>
+
+                <div class="max-w-2xl mx-auto bg-white rounded-3xl p-8 md:p-12 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+                    
+                    <div class="space-y-8">
+                        
+                        <div class="flex items-center gap-6">
+                            <div class="w-16 h-16 rounded-full border-2 border-purple-200 flex items-center justify-center shrink-0">
+                                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-purple-600 to-pink-500 flex flex-col items-center justify-center text-white shadow-md">
+                                    <span class="text-[8px] font-bold tracking-wider uppercase mb-0.5">Step</span>
+                                    <span class="text-lg font-bold leading-none">01</span>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-slate-900 mb-1">Project Scoping and Analysis</h3>
+                                <p class="text-slate-500 text-sm leading-snug">Define the scope and goals clearly from the start.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-6">
+                            <div class="w-16 h-16 rounded-full border-2 border-purple-200 flex items-center justify-center shrink-0">
+                                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-purple-600 to-pink-500 flex flex-col items-center justify-center text-white shadow-md">
+                                    <span class="text-[8px] font-bold tracking-wider uppercase mb-0.5">Step</span>
+                                    <span class="text-lg font-bold leading-none">02</span>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-slate-900 mb-1">Proposal and Agreement</h3>
+                                <p class="text-slate-500 text-sm leading-snug">Formalize the scope, budget, and timelines in a comprehensive proposal.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-6">
+                            <div class="w-16 h-16 rounded-full border-2 border-purple-200 flex items-center justify-center shrink-0">
+                                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-purple-600 to-pink-500 flex flex-col items-center justify-center text-white shadow-md">
+                                    <span class="text-[8px] font-bold tracking-wider uppercase mb-0.5">Step</span>
+                                    <span class="text-lg font-bold leading-none">03</span>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-slate-900 mb-1">Project Planning and Resource Allocation</h3>
+                                <p class="text-slate-500 text-sm leading-snug">Allocate the right resources to ensure project success.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-6">
+                            <div class="w-16 h-16 rounded-full border-2 border-purple-200 flex items-center justify-center shrink-0">
+                                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-purple-600 to-pink-500 flex flex-col items-center justify-center text-white shadow-md">
+                                    <span class="text-[8px] font-bold tracking-wider uppercase mb-0.5">Step</span>
+                                    <span class="text-lg font-bold leading-none">04</span>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-slate-900 mb-1">Development and Implementation</h3>
+                                <p class="text-slate-500 text-sm leading-snug">Execute the project as per the specifications.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-6">
+                            <div class="w-16 h-16 rounded-full border-2 border-purple-200 flex items-center justify-center shrink-0">
+                                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-purple-600 to-pink-500 flex flex-col items-center justify-center text-white shadow-md">
+                                    <span class="text-[8px] font-bold tracking-wider uppercase mb-0.5">Step</span>
+                                    <span class="text-lg font-bold leading-none">05</span>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-slate-900 mb-1">Quality Assurance and Testing</h3>
+                                <p class="text-slate-500 text-sm leading-snug">Rigorous testing to ensure the project meets all requirements.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-6">
+                            <div class="w-16 h-16 rounded-full border-2 border-purple-200 flex items-center justify-center shrink-0">
+                                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-purple-600 to-pink-500 flex flex-col items-center justify-center text-white shadow-md">
+                                    <span class="text-[8px] font-bold tracking-wider uppercase mb-0.5">Step</span>
+                                    <span class="text-lg font-bold leading-none">06</span>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-slate-900 mb-1">Delivery and Review</h3>
+                                <p class="text-slate-500 text-sm leading-snug">Review the deliverables with the client and refine as needed.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-6">
+                            <div class="w-16 h-16 rounded-full border-2 border-purple-200 flex items-center justify-center shrink-0">
+                                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-purple-600 to-pink-500 flex flex-col items-center justify-center text-white shadow-md">
+                                    <span class="text-[8px] font-bold tracking-wider uppercase mb-0.5">Step</span>
+                                    <span class="text-lg font-bold leading-none">07</span>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-slate-900 mb-1">Project Closure</h3>
+                                <p class="text-slate-500 text-sm leading-snug">Formal closure and handover of the project.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="py-24 bg-brand-dark px-6 border-t border-white/5">
+            <div class="max-w-4xl mx-auto bg-[#0a0f1d] rounded-3xl p-12 md:p-16 border border-white/5 text-center shadow-2xl relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 pointer-events-none"></div>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-6 font-heading relative z-10">Build Your Team with ZetaLogix Today!</h2>
+                <p class="text-slate-300 leading-relaxed mb-8 relative z-10 max-w-2xl mx-auto">
+                    We support B2B, B2C, C2C & SMEs in their efforts to develop sustainable and efficient IT infrastructure to match the ever-changing e-Business environment.
+                </p>
+                <a href="/contact" class="inline-block px-8 py-4 bg-[#6200EA] text-white font-bold rounded-lg hover:bg-[#7E57C2] transition-colors shadow-lg relative z-10">
+                    Get a Free Quote
+                </a>
+            </div>
+        </section>
+
+        <section class="py-24 bg-brand-dark border-t border-white/5">
+            <div class="max-w-4xl mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center text-white mb-12 font-heading">Frequently Asked Questions About Our Fixed Price Projects</h2>
+                
+                <div class="space-y-4">
+                    <details class="group bg-[#0a0f1d] rounded-xl border border-white/5 [&_summary::-webkit-details-marker]:hidden">
+                        <summary class="flex cursor-pointer items-center justify-between p-6 font-bold text-white">
+                            What are Fixed Price Projects?
+                            <span class="transition group-open:rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="px-6 pb-6 text-slate-400 text-sm leading-relaxed border-t border-white/5 pt-4 mt-2">
+                            Aenean posuere, tortor sed cursus feugiat, nunc augue blandit nunc, eu sollicitudin urna dolor sagittis lacus. Donec elit libero, sodales nec, volutpat a, suscipit non, turpis. Nullam accumsan lorem in dui. Donec id justo.
+                        </div>
+                    </details>
+
+                    <details class="group bg-[#0a0f1d] rounded-xl border border-white/5 [&_summary::-webkit-details-marker]:hidden">
+                        <summary class="flex cursor-pointer items-center justify-between p-6 font-bold text-white">
+                            When should I choose a Fixed Price model?
+                            <span class="transition group-open:rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="px-6 pb-6 text-slate-400 text-sm leading-relaxed border-t border-white/5 pt-4 mt-2">
+                            This model is ideal when your project scope, requirements, and deadlines are clearly defined and unlikely to change significantly during the development process.
+                        </div>
+                    </details>
+
+                    <details class="group bg-[#0a0f1d] rounded-xl border border-white/5 [&_summary::-webkit-details-marker]:hidden">
+                        <summary class="flex cursor-pointer items-center justify-between p-6 font-bold text-white">
+                            What steps are involved in selecting a team for my project?
+                            <span class="transition group-open:rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6-6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="px-6 pb-6 text-slate-400 text-sm leading-relaxed border-t border-white/5 pt-4 mt-2">
+                            We analyze your requirements and assemble a team of specialized engineers, designers, and project managers whose skills perfectly align with your technical stack and industry.
+                        </div>
+                    </details>
+
+                    <details class="group bg-[#0a0f1d] rounded-xl border border-white/5 [&_summary::-webkit-details-marker]:hidden">
+                        <summary class="flex cursor-pointer items-center justify-between p-6 font-bold text-white">
+                            What happens if project requirements change mid-way?
+                            <span class="transition group-open:rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6-6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="px-6 pb-6 text-slate-400 text-sm leading-relaxed border-t border-white/5 pt-4 mt-2">
+                            Any changes outside the initial scope are handled through a formal Change Request process, where we evaluate the impact on timeline and cost before proceeding.
+                        </div>
+                    </details>
+                    
+                    <details class="group bg-[#0a0f1d] rounded-xl border border-white/5 [&_summary::-webkit-details-marker]:hidden">
+                        <summary class="flex cursor-pointer items-center justify-between p-6 font-bold text-white">
+                            How does ZetaLogix ensure project deliverables meet quality standards?
+                            <span class="transition group-open:rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6-6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="px-6 pb-6 text-slate-400 text-sm leading-relaxed border-t border-white/5 pt-4 mt-2">
+                            We implement rigorous QA testing at every sprint, utilizing both automated and manual testing methodologies to guarantee a bug-free, high-performance product.
+                        </div>
+                    </details>
+
+                    <details class="group bg-[#0a0f1d] rounded-xl border border-white/5 [&_summary::-webkit-details-marker]:hidden">
+                        <summary class="flex cursor-pointer items-center justify-between p-6 font-bold text-white">
+                            What are the advantages of a Fixed Price contract over other models?
+                            <span class="transition group-open:rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6-6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="px-6 pb-6 text-slate-400 text-sm leading-relaxed border-t border-white/5 pt-4 mt-2">
+                            The primary advantage is budget certainty. You know exactly what you will pay and when the product will be delivered, transferring the financial risk to the agency.
+                        </div>
+                    </details>
+
+                    <details class="group bg-[#0a0f1d] rounded-xl border border-white/5 [&_summary::-webkit-details-marker]:hidden">
+                        <summary class="flex cursor-pointer items-center justify-between p-6 font-bold text-white">
+                            Are there any risks involved with Fixed Price Projects?
+                            <span class="transition group-open:rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6-6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="px-6 pb-6 text-slate-400 text-sm leading-relaxed border-t border-white/5 pt-4 mt-2">
+                            The main risk is inflexibility. If you need to pivot the product direction suddenly, a Time & Materials or Dedicated Team model might be more suitable.
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <ContactForm />
+
+    </main>
+
+    <Footer />
+</BaseLayout>

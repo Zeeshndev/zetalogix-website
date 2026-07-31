@@ -1,0 +1,310 @@
+---
+// src/pages/portfolio/fragvest.astro
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/global/Navbar.astro';
+import ContactForm from '../../components/sections/ContactForm.astro';
+import Footer from '../../components/global/Footer.astro';
+
+// Tech Stack Categories mapping to standard clean Devicons based on the Fragvest stack
+const technologies = [
+  { name: "Vue.js", icon: "devicon-vuejs-plain colored" },
+  { name: "Laravel", icon: "devicon-laravel-original colored" },
+  { name: "JavaScript", icon: "devicon-javascript-plain colored" },
+  { name: "CSS3", icon: "devicon-css3-plain colored" },
+  { name: "Flutter", icon: "devicon-flutter-plain colored" },
+  { name: "MySQL", icon: "devicon-mysql-plain colored" }
+];
+
+const infrastructure = [
+  { name: "DigitalOcean", icon: "devicon-digitalocean-original colored" }
+];
+---
+
+<BaseLayout title="Prop-Tech Marketplace for Fragvest | ZetaLogix">
+    <Navbar />
+    
+    <main class="pt-20 bg-brand-dark text-slate-300">
+        
+        <section class="max-w-7xl mx-auto px-6 py-24 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <div class="lg:col-span-5 space-y-6">
+                <span class="text-xs font-mono font-bold text-brand-accent tracking-widest uppercase block mb-2">Case Study Analysis</span>
+                <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight font-heading">
+                    Prop-Tech Marketplace for Fragvest
+                </h1>
+                <p class="text-slate-400 text-lg leading-relaxed">
+                    Learn how ZetaLogix delivered a tokenized prop-tech marketplace for micro, small and large real estate investments. From ideations to brainstorming, sketches, UX/UI design, architecture design, development, and deployment, our team was able to deliver a state-of-the-art technology that opens a whole new world of micro-investment in the real estate sector.
+                </p>
+
+                <div class="space-y-4 text-sm md:text-base border-l-4 border-brand-accent pl-6 py-4 bg-[#0a0f1d]/50 rounded-r-xl border-t border-r border-b border-white/5 shadow-lg">
+                    <div class="flex flex-col sm:flex-row sm:gap-4">
+                        <span class="sm:w-28 shrink-0 font-bold text-white">Domain:</span>
+                        <span class="text-slate-400">Real Estate</span>
+                    </div>
+                    <div class="flex flex-col sm:flex-row sm:gap-4">
+                        <span class="sm:w-28 shrink-0 font-bold text-white">Timeline:</span>
+                        <span class="text-slate-400">August 2021 - May 2022</span>
+                    </div>
+                    <div class="flex flex-col sm:flex-row sm:gap-4">
+                        <span class="sm:w-28 shrink-0 font-bold text-white">Services:</span>
+                        <span class="text-slate-400">Project discovery, UX/UI design, Front-End, Back-End, Admin Development</span>
+                    </div>
+                    <div class="flex flex-col sm:flex-row sm:gap-4">
+                        <span class="sm:w-28 shrink-0 font-bold text-white">Team:</span>
+                        <span class="text-slate-400">3 Software Developers, 3 UX/UI Designers, 1 QA, 1 Project Manager, 1 DevOps</span>
+                    </div>
+                    <div class="flex flex-col sm:flex-row sm:gap-4">
+                        <span class="sm:w-28 shrink-0 font-bold text-white">Core Tech:</span>
+                        <span class="text-slate-400">Laravel, Vue JS, Flutter, MySQL, Digital Ocean, JS, CSS</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-7 relative">
+                <div class="absolute inset-0 bg-brand-accent/5 blur-[100px] rounded-full pointer-events-none"></div>
+                <img 
+                    src="/assets/portfolio/Fragvest/Fragvest_mockup.png" 
+                    alt="Fragvest Platform Mockup" 
+                    class="w-full h-auto drop-shadow-2xl rounded-xl object-contain relative z-10"
+                />
+            </div>
+        </section>
+
+        <section class="max-w-4xl mx-auto px-6 pb-20">
+            <p class="text-xl md:text-2xl font-medium text-white leading-relaxed mb-8 italic text-center">
+                "Working with ZetaLogix was absolutely the best experience, combining their expertise in UI/UX, web design, and mobile app development. The quality of the product that they produced was amazing! They are definitely one of the best companies in Lagos, Nigeria."
+            </p>
+            <div class="flex items-center justify-center gap-4">
+                <div class="w-14 h-14 rounded-full bg-[#0a0f1d] border-2 border-brand-accent overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200&auto=format&fit=crop" alt="CEO Avatar" class="w-full h-full object-cover filter grayscale opacity-80" />
+                </div>
+                <span class="text-slate-400 font-medium">Tomiwa Olaifa, CEO Fragvest</span>
+            </div>
+        </section>
+
+        <section class="py-24 bg-[#050814] border-y border-white/5 relative">
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <div class="bg-[#0a0f1d] border border-white/5 rounded-2xl p-8 hover:border-white/10 transition-colors shadow-lg">
+                        <div class="w-12 h-12 rounded-full bg-[#050814] border border-white/10 flex items-center justify-center mb-6">
+                            <svg class="w-6 h-6 text-brand-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white font-heading mb-4">Background</h3>
+                        <p class="text-slate-400 leading-relaxed text-sm mb-4">
+                            Fragvest is Nigeria's fast-rising prop-tech startup to Buy, sell, rent, and invest in the real estate market. In addition, independent real estate agents/realtors can sign up on the platform and earn money by facilitating the sales of properties.
+                        </p>
+                        <p class="text-slate-400 leading-relaxed text-sm">
+                            The roadmap was clear after our intensive discovery call. The customer wanted us to build a solution that could compete in the global market and defy all odds to become the most user-friendly platform.
+                        </p>
+                    </div>
+
+                    <div class="bg-[#0a0f1d] border border-white/5 rounded-2xl p-8 hover:border-white/10 transition-colors shadow-lg">
+                        <div class="w-12 h-12 rounded-full bg-[#050814] border border-white/10 flex items-center justify-center mb-6">
+                            <svg class="w-6 h-6 text-brand-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white font-heading mb-4">Business Challenges</h3>
+                        <ul class="space-y-3 text-slate-400 leading-relaxed text-sm list-disc list-outside pl-4 marker:text-brand-accent">
+                            <li>Design and develop a mobile app and web platform that allows mid-income earners to invest in real estate.</li>
+                            <li>Develop an admin web application portal to monitor and govern the platform.</li>
+                            <li>Develop an agent web portal that allows realtors to upload, manage, and facilitate sales.</li>
+                            <li>Integrate all three arms of the platforms using APIs to work synchronously.</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-[#0a0f1d] border border-white/5 rounded-2xl p-8 hover:border-brand-accent/30 transition-colors shadow-lg relative overflow-hidden">
+                        <div class="absolute inset-0 bg-brand-accent/5 pointer-events-none"></div>
+                        <div class="w-12 h-12 rounded-full bg-brand-accent/10 border border-brand-accent/30 flex items-center justify-center mb-6 relative z-10">
+                            <svg class="w-6 h-6 text-brand-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white font-heading mb-4 relative z-10">Value Delivered</h3>
+                        <p class="text-slate-300 leading-relaxed text-sm mb-4 relative z-10">
+                            From ideas to concepts and a clear product map, we helped the client define the product, market, and users. We created a new UI/UX design for all software, ranging from the hybrid-mobile app to the super-admin portal and blog.
+                        </p>
+                        <p class="text-slate-300 leading-relaxed text-sm relative z-10">
+                            We built a modern, robust application that allowed Fragvest to fulfill its business purpose. We designed, built, and optimized a killer ecosystem crafted to convince investors into investing with Fragvest in its marketing efforts.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="max-w-6xl mx-auto px-6 py-24 space-y-32">
+            <div class="mb-12">
+                <span class="text-xs font-mono font-bold text-brand-accent tracking-widest uppercase block mb-2">Architectural Blueprint</span>
+                <h2 class="text-3xl font-bold text-white mb-16 font-heading">Solution Delivered</h2>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1 relative">
+                    <div class="absolute inset-0 bg-brand-accent/5 blur-[50px] rounded-full"></div>
+                    <img src="/assets/portfolio/Fragvest/fragvest_roadmap.png" alt="Roadmap wireframes" class="w-full h-auto drop-shadow-2xl relative z-10 rounded-xl" />
+                </div>
+                <div class="order-1 lg:order-2 space-y-4">
+                    <h3 class="text-2xl font-bold text-white font-heading">Project Ideation and Roadmap</h3>
+                    <p class="text-slate-400 leading-relaxed text-lg">
+                        From ideas, to concepts and a clear product road map, we were able to help the client define the product, its market, and its users together with the value it offers. Together with the stakeholders, we were able to solidify the fragvest idea and the main business and tech working principles.
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="space-y-4">
+                    <h3 class="text-2xl font-bold text-white font-heading">UX - UI Design</h3>
+                    <p class="text-slate-400 leading-relaxed text-lg">
+                        We Created a new UI and UX design for all of fragvest software, ranging from hybrid-mobile app to web application, super-admin and admin portal, agent portal, multi-page website, and blog.
+                    </p>
+                </div>
+                <div class="relative">
+                    <div class="absolute inset-0 bg-brand-accent/5 blur-[50px] rounded-full"></div>
+                    <img src="/assets/portfolio/Fragvest/fragvest_dashboard.png" alt="UX UI Dashboard" class="w-full h-auto drop-shadow-2xl relative z-10 rounded-xl" />
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1 relative">
+                    <div class="absolute inset-0 bg-brand-accent/5 blur-[50px] rounded-full"></div>
+                    <img src="/assets/portfolio/Fragvest/fragvest_mobile.png" alt="Mobile App Mockup" class="w-full h-auto drop-shadow-2xl relative z-10 rounded-xl" />
+                </div>
+                <div class="order-1 lg:order-2 space-y-4">
+                    <h3 class="text-2xl font-bold text-white font-heading">Mobile App Development</h3>
+                    <p class="text-slate-400 leading-relaxed text-lg">
+                        Our team delivered a hybrid mobile application, tailored to give the users the best modern ecommerce experience. Built to work on multiple operating systems (Android and iOS). Hybrid applications are becoming very popular because of their flexibility, and low cost of building and maintenance.
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="space-y-4">
+                    <h3 class="text-2xl font-bold text-white font-heading">Responsive Web Application</h3>
+                    <p class="text-slate-400 leading-relaxed text-lg">
+                        We built a responsive web application that gives the user a unique pro-tech experience for property acquisition and investment on the web. The web application synchronized to the central backend and relays data to the admin portal as this will enable the admin to possess substantial amount of control & governance over its usage.
+                    </p>
+                </div>
+                <div class="relative">
+                    <div class="absolute inset-0 bg-brand-accent/5 blur-[50px] rounded-full"></div>
+                    <img src="/assets/portfolio/Fragvest/Fragvest_web_app.png" alt="Responsive Web App Mockup" class="w-full h-auto drop-shadow-2xl relative z-10 rounded-xl" />
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1 relative">
+                    <div class="absolute inset-0 bg-brand-accent/5 blur-[50px] rounded-full"></div>
+                    <img src="/assets/portfolio/Fragvest/fragvest_portal.png" alt="Realtor Portal Mockup" class="w-full h-auto drop-shadow-2xl relative z-10 rounded-xl" />
+                </div>
+                <div class="order-1 lg:order-2 space-y-4">
+                    <h3 class="text-2xl font-bold text-white font-heading">Web Portal Solution Realtors</h3>
+                    <p class="text-slate-400 leading-relaxed text-lg">
+                        We Created an agent web application that allows fragvest to onboard realtors and real estate agents. Fragvest admin can assign properties to certain realtors to manage. It also allows the realtors to refer property buyers and investors which in turn allows fragvest to increase their conversions and user base. With the agent portal, realtors can also receive property tour bookings from investors.
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="space-y-4">
+                    <h3 class="text-2xl font-bold text-white font-heading">Web Admin Portal</h3>
+                    <p class="text-slate-400 leading-relaxed text-lg">
+                        We built a web application super admin and admin portal that is fast, secured, and responsive on all web, mobile, and tablet screens. This will aid the admin personnel monitor and governing the platform across a range of devices.
+                    </p>
+                </div>
+                <div class="relative">
+                    <div class="absolute inset-0 bg-brand-accent/5 blur-[50px] rounded-full"></div>
+                    <img src="/assets/portfolio/Fragvest/fragvest_admin.png" alt="Admin Portal Mockup" class="w-full h-auto drop-shadow-2xl relative z-10 rounded-xl" />
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1 relative">
+                    <div class="absolute inset-0 bg-brand-accent/5 blur-[50px] rounded-full"></div>
+                    <img src="/assets/portfolio/Fragvest/fragvest_blog.png" alt="Website Blog Mockup" class="w-full h-auto drop-shadow-2xl relative z-10 rounded-xl" />
+                </div>
+                <div class="order-1 lg:order-2 space-y-4">
+                    <h3 class="text-2xl font-bold text-white font-heading">Website and Blog Development</h3>
+                    <p class="text-slate-400 leading-relaxed text-lg">
+                        We designed, built, and optimized a multi-page website and blog for fragvest with a killer copy crafted to convince investors into investing with fragvest. We designed, built, and optimized a multi-page website and blog for fragvest with a killer copy crafted to convince investors into investing with fragvest.
+                    </p>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="py-24 bg-[#0a0f1d] border-y border-white/5 relative overflow-hidden">
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-brand-accent/5 blur-[120px] rounded-full pointer-events-none"></div>
+            
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <div class="text-center mb-16">
+                    <span class="text-xs font-mono font-bold text-brand-accent tracking-widest uppercase block mb-2">System Stack</span>
+                    <h2 class="text-3xl font-bold text-white font-heading">Technologies & Infrastructure</h2>
+                </div>
+                
+                <div class="flex flex-col lg:flex-row gap-16">
+                    
+                    <div class="flex-1 space-y-8">
+                        <h4 class="text-xl font-bold text-white font-heading flex items-center justify-center lg:justify-start gap-3">
+                            <span class="w-2 h-2 bg-brand-accent rounded-full"></span>
+                            Core Technologies
+                        </h4>
+                        
+                        <div class="flex flex-wrap justify-center lg:justify-start gap-4">
+                            {technologies.map(tech => (
+                                <div class="flex flex-col items-center justify-center w-[100px] h-[100px] shrink-0 rounded-2xl bg-[#050814] border border-white/5 hover:border-brand-accent/40 hover:-translate-y-1 transition-all shadow-lg cursor-pointer group">
+                                    <div class="text-4xl mb-2">
+                                        <i class={tech.icon}></i>
+                                    </div>
+                                    <span class="text-[11px] font-medium text-slate-400 group-hover:text-white transition-colors text-center">{tech.name}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    <div class="lg:w-[400px] space-y-8">
+                        <h4 class="text-xl font-bold text-white font-heading flex items-center justify-center lg:justify-start gap-3">
+                            <span class="w-2 h-2 bg-brand-accent rounded-full"></span>
+                            Infrastructure
+                        </h4>
+                        
+                        <div class="flex flex-wrap justify-center lg:justify-start gap-4">
+                            {infrastructure.map(tech => (
+                                <div class="flex flex-col items-center justify-center w-[100px] h-[100px] shrink-0 rounded-2xl bg-[#050814] border border-white/5 hover:border-brand-accent/40 hover:-translate-y-1 transition-all shadow-lg cursor-pointer group">
+                                    <div class="text-4xl mb-2">
+                                        <i class={tech.icon}></i>
+                                    </div>
+                                    <span class="text-[11px] font-medium text-slate-400 group-hover:text-white transition-colors">{tech.name}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 bg-[#050814] border-t border-white/5">
+            <div class="max-w-7xl mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center text-white mb-16 font-heading">Other projects</h2>
+                
+                <div class="grid grid-cols-1 gap-16">
+                    <div class="bg-[#FF5A1F] rounded-3xl p-8 md:p-16 text-white grid grid-cols-1 lg:grid-cols-12 gap-12 items-center shadow-2xl relative overflow-hidden group">
+                        <div class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                        <div class="lg:col-span-6 space-y-6 relative z-10">
+                            <h2 class="font-heading text-3xl md:text-4xl font-bold leading-tight">Accommodation Booking and Listing Platform for Rentischeap</h2>
+                            <a href="/portfolio/rentischeap" class="inline-flex items-center justify-center px-6 py-3 bg-white/20 border border-white text-white font-bold rounded-xl hover:bg-white hover:text-[#FF5A1F] transition-all duration-300">
+                                View case study
+                            </a>
+                        </div>
+                        <div class="lg:col-span-6 flex justify-center relative z-10">
+                            <img src="/assets/portfolio/Rentischeap.png" alt="Rentischeap" class="w-full max-h-[350px] object-contain drop-shadow-2xl transform transition-transform duration-700 ease-out group-hover:scale-105" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <ContactForm />
+
+    </main>
+
+    <Footer />
+</BaseLayout>

@@ -1,0 +1,394 @@
+---
+// src/pages/services/web-development.astro
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/global/Navbar.astro';
+import TrustBar from '../../components/sections/TrustBar.astro';
+import ContactForm from '../../components/sections/ContactForm.astro';
+import BottomBanner from '../../components/sections/BottomBanner.astro';
+import Footer from '../../components/global/Footer.astro';
+
+// Exact Domain / Tech Stack Configuration for Web
+const domainsLeft = [
+  { name: "Fintech", link: "#" }, { name: "Blockchain", link: "#" }, { name: "Real Estate", link: "#" },
+  { name: "Media", link: "#" }, { name: "Business Services", link: "#" }, { name: "Technology", link: "#" }
+];
+const domainsRight = [
+  { name: "Marketplace", link: "#" }, { name: "Healthcare", link: "#" }, { name: "Recruiting", link: "#" },
+  { name: "Education", link: "#" }, { name: "Retail and Ecommerce", link: "#" }
+];
+const stackIcons = [
+  "devicon-javascript-plain colored", "devicon-postgresql-plain colored", "devicon-laravel-original colored",
+  "devicon-react-original colored", "devicon-amazonwebservices-plain-wordmark colored", "devicon-redux-original colored",
+  "devicon-angularjs-plain colored", "devicon-nodejs-plain colored", "devicon-ruby-plain colored",
+  "devicon-digitalocean-original colored", "devicon-vuejs-plain colored", "devicon-backbonejs-plain colored",
+  "devicon-rails-plain colored", "devicon-mysql-plain colored", "devicon-django-plain colored"
+];
+
+// Web Development FAQs
+const faqs = [
+  {
+    q: "How long does it take to design and develop a custom website?",
+    a: "The timeline depends on the complexity of the project. A standard corporate website typically takes 4 to 8 weeks from initial discovery to final deployment, while complex web applications or custom SaaS platforms can take 3 to 6 months. We map this timeline strictly during our Agile Sprint planning."
+  },
+  {
+    q: "Will my website be mobile-friendly and optimized for SEO?",
+    a: "Absolutely. Every web platform we engineer follows a strict 'mobile-first' architecture ensuring flawless performance across all device sizes. We also implement technical SEO best practices, including semantic HTML, schema markups, and fast server-side rendering."
+  },
+  {
+    q: "Do you provide ongoing support and maintenance after launch?",
+    a: "Yes. When your product goes live, our custom software services do not end. We offer dedicated post-launch SLAs that cover automated backups, server monitoring, security patching, and continuous feature integration."
+  },
+  {
+    q: "Who owns the website and source code once it's completed?",
+    a: "You retain 100% ownership. Upon final payment and project completion, all intellectual property, design assets, and source code repositories are transferred directly to your organization."
+  }
+];
+
+// Agency Metrics
+const metrics = [
+    { value: "5+", label: "Years of Operation" },
+    { value: "35+", label: "Projects Delivered" },
+    { value: "20+", label: "Specialists" },
+    { value: "30+", label: "Clients Satisfied" }
+];
+---
+
+<BaseLayout title="Website Design and Development Company | ZetaLogix">
+    <Navbar />
+    
+    <main class="bg-brand-dark pt-20">
+        
+        <section class="relative pt-32 pb-24 lg:pt-40 lg:pb-32 overflow-hidden">
+            <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-accent/5 blur-[120px] rounded-full pointer-events-none"></div>
+            
+            <div class="max-w-7xl mx-auto px-6 relative z-10 text-center max-w-4xl">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-accent/10 border border-brand-accent/20 text-brand-accent text-sm font-bold tracking-wide uppercase mb-8">
+                    Web Systems & Engineering
+                </div>
+                <h1 class="font-heading text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-8">
+                    Website Design And <br/><span class="text-brand-accent">Development Company</span>
+                </h1>
+                <p class="text-slate-400 text-lg md:text-xl leading-relaxed mb-12">
+                    With our years of combined professional experience, we can provide you with the best website design and development solutions. As a website design and development company, ZetaLogix provides web design and development services that have been proven to be successful marketing tools with a high return on investment.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#contact" class="px-8 py-4 bg-brand-accent text-brand-dark font-bold rounded-lg hover:bg-white transition-colors duration-300 shadow-lg">
+                        Get a Free Quote
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 border-t border-white/5">
+            <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="relative">
+                    <div class="absolute inset-0 bg-brand-accent/10 rounded-2xl transform translate-x-4 translate-y-4"></div>
+                    <img 
+                        src="/assets/web development/Website Design And Development.png" 
+                        alt="Website Design And Development Overview" 
+                        class="rounded-2xl relative z-10 w-full object-cover shadow-2xl border border-white/10"
+                    />
+                </div>
+                <div class="flex flex-col justify-center">
+                    <h2 class="font-heading text-3xl md:text-4xl font-bold text-white mb-6">
+                        Website Design And Development Services For Your Business
+                    </h2>
+                    <p class="text-slate-400 text-base leading-relaxed mb-6">
+                        Our web development services integrate innovative web design technology with cutting-edge business strategies to create a visually appealing and simple-to-use website. Our website design services are tailored to the customer's business goals and objectives for reaching out to current and new consumers.
+                    </p>
+                    <p class="text-slate-400 text-base leading-relaxed border-l-2 border-brand-accent pl-4 font-medium text-white/90">
+                        Our goal is to offer a practical website design that captures your users' interest and converts visitors into customers.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 bg-[#050814] border-t border-white/5">
+            <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                <div class="lg:col-span-7">
+                    <h2 class="font-heading text-3xl md:text-4xl font-bold text-white mb-6">
+                        What Is Web Development All About?
+                    </h2>
+                    <div class="space-y-6 text-slate-400 text-base leading-relaxed">
+                        <p>
+                            SaaS is a software distribution model through which a cloud provider hosts applications on the internet and makes them available to end-users. An independent software vendor (ISV) may contract with a third-party cloud provider to host the application in this model. In the case of larger corporations, such as Microsoft, the cloud provider may also be the software vendor.
+                        </p>
+                        <p>
+                            SaaS is one of three major cloud computing categories which also include platform as a service (PaaS) and infrastructure as a service (IaaS). SaaS applications are used by a wide range of IT professionals, business users, and personal users. SaaS products range from personal entertainment apps to advanced IT tools like Netflix.
+                        </p>
+                        <p>
+                            SaaS products, unlike IaaS and PaaS, are frequently marketed to both B2B and B2C users. According to a recent McKinsey & Company report, tech analysts anticipate the market for SaaS products to reach $200 billion by 2024.
+                        </p>
+                    </div>
+                </div>
+                <div class="lg:col-span-5 flex justify-center lg:justify-end">
+                    <div class="relative max-w-sm">
+                        <div class="absolute inset-0 bg-brand-accent/5 rounded-2xl transform -translate-x-4 -translate-y-4"></div>
+                        <img 
+                            src="/assets/web development/Web Development All About.png" 
+                            alt="Web Development All About Concept" 
+                            class="rounded-2xl relative z-10 w-full object-cover shadow-2xl border border-white/10"
+                        />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 border-t border-white/5 bg-brand-dark">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="mb-16">
+                    <h2 class="font-heading text-3xl md:text-4xl font-bold text-white">Our Web Design & Architectural Capabilities</h2>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
+                    <div class="flex flex-col">
+                        <h3 class="text-xl font-bold text-brand-accent mb-2 flex items-center gap-3">Custom Web Design</h3>
+                        <p class="text-slate-400 text-sm md:text-base leading-relaxed">
+                            We offer professional bespoke web design services. We don't just build your website, we begin a movement for your brand. Our award-winning team understands the important aspects of website design which include usability, functionality, and visualization.
+                        </p>
+                    </div>
+                    <div class="flex flex-col">
+                        <h3 class="text-xl font-bold text-brand-accent mb-2 flex items-center gap-3">Content Management System (CMS) Integration</h3>
+                        <p class="text-slate-400 text-sm md:text-base leading-relaxed">
+                            Keeping your website content up to date is critical to the success of any digital marketing campaign. We integrate powerful, standards-compliant, easy-to-manage CMS frameworks configured around your workflows.
+                        </p>
+                    </div>
+                    <div class="flex flex-col">
+                        <h3 class="text-xl font-bold text-brand-accent mb-2 flex items-center gap-3">UX/UI Design</h3>
+                        <p class="text-slate-400 text-sm md:text-base leading-relaxed">
+                            The design of User Experience (UX) and User Interface (UI) is critical to the success of any application. Our interface designs increase landing page conversion, the success of social media campaigns, and the user experience of applications and intranets.
+                        </p>
+                    </div>
+                    <div class="flex flex-col">
+                        <h3 class="text-xl font-bold text-brand-accent mb-2 flex items-center gap-3">Database Design and Development</h3>
+                        <p class="text-slate-400 text-sm md:text-base leading-relaxed">
+                            We use industry standard backend development tools and an updated skillset to build structured relational schemas, secure connection layers, and scalable database integrations.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 bg-[#050814] border-t border-white/5">
+            <div class="max-w-7xl mx-auto px-6 space-y-24">
+                
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                    <div class="lg:col-span-6 relative">
+                        <img 
+                            src="/assets/web development/Front End Web Developer.png" 
+                            alt="Front End Web Developer Coding" 
+                            class="rounded-2xl w-full object-cover shadow-2xl border border-white/10"
+                        />
+                    </div>
+                    <div class="lg:col-span-6">
+                        <span class="text-xs font-mono font-bold text-brand-accent tracking-widest uppercase block mb-2">The Interface Layer</span>
+                        <h2 class="font-heading text-3xl font-bold text-white mb-6">Frontend Website Development</h2>
+                        <p class="text-slate-400 text-base leading-relaxed mb-6">
+                            The job of a frontend developer is to code the component of a website or app that the user sees and interacts with. They take backend data and transform it into something visually appealing, easily understood, and fully functional for the average user. They use HTML, JavaScript, and CSS to bring designs to life.
+                        </p>
+                        <p class="text-slate-400 text-base leading-relaxed">
+                            The frontend developer is responsible for implementing interactive navigational features such as buttons, scrollbars, text, graphics, and internal links. They ensure proper adaptable display across different screen sizes, browser types, and mobile/desktop platforms.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                    <div class="lg:col-span-6 order-2 lg:order-1">
+                        <span class="text-xs font-mono font-bold text-brand-accent tracking-widest uppercase block mb-2">The Engine Room</span>
+                        <h2 class="font-heading text-3xl font-bold text-white mb-6">Backend Website Development</h2>
+                        <p class="text-slate-400 text-base leading-relaxed mb-6">
+                            The brains behind the face are referred to as the backend. A backend developer is in charge of creating and maintaining the technology required to power the frontend, consisting of three core elements: a server, an application, and a database.
+                        </p>
+                        <p class="text-slate-400 text-base leading-relaxed">
+                            They build applications using server-side environments such as Ruby, PHP, Python, and Java, pairing them with tools like MySQL, Oracle, and SQL Server to find, save, or edit data securely before returning it to the interface layer via robust API integrations.
+                        </p>
+                    </div>
+                    <div class="lg:col-span-6 order-1 lg:order-2">
+                        <img 
+                            src="/assets/web development/Backend Developer.png" 
+                            alt="Backend Developer Server Management" 
+                            class="rounded-2xl w-full object-cover shadow-2xl border border-white/10"
+                        />
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <TrustBar />
+        
+        <section class="py-24 lg:py-32 bg-brand-dark relative border-b border-white/5">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="mb-20 max-w-4xl">
+                    <h2 class="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+                        Deep technical and <span class="text-brand-accent">domain expertise</span> to help your business grow
+                    </h2>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
+                    <div class="lg:col-span-5 flex flex-col">
+                        <h3 class="font-heading text-2xl md:text-3xl font-bold text-white mb-6 tracking-tight">Domains</h3>
+                        <p class="text-slate-400 text-base leading-relaxed mb-10 max-w-lg">
+                            Our expertise in developing industry-specific solutions has facilitated our growth in in-house knowledge, which we readily share with our clients. We offer guidance throughout the project development process and create products that adhere to the highest industry standards.
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-5">
+                            <div class="flex flex-col gap-5">
+                                {domainsLeft.map((domain) => (
+                                    <a href={domain.link} class="group inline-flex items-center text-slate-300 font-semibold hover:text-brand-accent transition-colors text-base">
+                                        {domain.name}
+                                        <svg class="w-4 h-4 ml-1.5 transform group-hover:translate-x-1 transition-transform text-brand-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+                                    </a>
+                                ))}
+                            </div>
+                            <div class="flex flex-col gap-5">
+                                {domainsRight.map((domain) => (
+                                    <a href={domain.link} class="group inline-flex items-center text-slate-300 font-semibold hover:text-brand-accent transition-colors text-base">
+                                        {domain.name}
+                                        <svg class="w-4 h-4 ml-1.5 transform group-hover:translate-x-1 transition-transform text-brand-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+                                    </a>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-7 flex flex-col">
+                        <h3 class="font-heading text-2xl md:text-3xl font-bold text-white mb-6 tracking-tight">Tech Stack</h3>
+                        <p class="text-slate-400 text-base leading-relaxed mb-12">
+                            Throughout the years, we have carefully selected a set of tools that aid us in constructing top-notch custom products that tackle all business obstacles. Coupled with our streamlined development procedure, these tools allow us to maintain the cost of custom software development within our clients' budget expectations.
+                        </p>
+                        <div class="grid grid-cols-4 sm:grid-cols-5 lg:grid-cols-6 gap-x-8 gap-y-12 items-center justify-items-start">
+                            {stackIcons.map((iconClass) => (
+                                <div class="text-5xl hover:scale-110 transition-transform duration-300 cursor-pointer flex items-center justify-center min-w-[3.5rem] min-h-[3.5rem]">
+                                    <i class={iconClass}></i>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 bg-[#050814] border-b border-white/5 relative">
+            <div class="absolute inset-0 bg-gradient-to-br from-brand-accent/5 to-transparent pointer-events-none"></div>
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <div class="text-center mb-16">
+                    <h2 class="font-heading text-sm font-bold tracking-widest text-brand-glow uppercase mb-3">Our Track Record</h2>
+                    <h3 class="font-heading text-3xl md:text-4xl font-bold text-white">We're Your Team of Developers</h3>
+                </div>
+
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+                    {metrics.map(metric => (
+                        <div class="bg-brand-dark border border-white/10 rounded-2xl p-8 flex flex-col items-center justify-center text-center shadow-2xl hover:-translate-y-2 transition-transform duration-300">
+                            <span class="font-heading text-5xl md:text-6xl font-bold text-brand-accent mb-3 drop-shadow-[0_0_15px_rgba(34,211,238,0.4)]">{metric.value}</span>
+                            <span class="text-slate-300 font-semibold text-sm uppercase tracking-wider">{metric.label}</span>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 bg-brand-dark border-b border-white/5">
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <h2 class="font-heading text-3xl md:text-4xl font-bold text-white mb-8">Why Choose ZetaLogix?</h2>
+                <div class="space-y-6 text-slate-400 text-lg leading-relaxed">
+                    <p>
+                        Our team genuinely cares about every project we work on. Our top priority is to ensure that the custom products and apps we develop provide the best results for our clients. To accomplish this, we begin by carefully analyzing business requirements before writing a single line of code.
+                    </p>
+                    <p>
+                        Our development process is efficient and transparent, allowing us to deliver your software on time and within budget. We are proud of our results-driven team, which values communication and flexibility while focusing on long-term, high-value relationships.
+                    </p>
+                    <p>
+                        We stay up to date on industry trends and tailor our development and quality assurance processes to meet the highest standards. When your product goes live, our services do not end. Our dependable support team will see to it that your platform runs flawlessly.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 bg-[#050814] border-b border-white/5">
+            <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                <div class="lg:col-span-6">
+                    <span class="text-xs font-mono font-bold text-brand-accent tracking-widest uppercase block mb-2">Budgeting & Economics</span>
+                    <h2 class="font-heading text-3xl md:text-4xl font-bold text-white mb-6">
+                        How Much Does Web Development Cost?
+                    </h2>
+                    <p class="text-slate-400 text-base leading-relaxed mb-6">
+                        In today's digital world, whether your business operates offline or online, it is critical to build and maintain a website. But here's how much web development costs on average: including the website's launch and design, is between $12,000 and $50,000, while routine website maintenance costs between $35 and $5,000 per month — or $400 to $60,000 per year.
+                    </p>
+                    <p class="text-slate-400 text-base leading-relaxed">
+                        At ZetaLogix, we thoroughly analyze your custom requirements before developing professional web design and web development solutions that maximize your benefits. We create simple, fast-loading, user-friendly websites to help you gain maximum traction on search engines and increase traffic and conversions.
+                    </p>
+                </div>
+                <div class="lg:col-span-6 flex justify-center">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-brand-accent/10 rounded-2xl transform translate-x-4 -translate-y-4"></div>
+                        <img 
+                            src="/assets/web development/Web Development Cost.png" 
+                            alt="Web Development Costing Audit" 
+                            class="rounded-2xl relative z-10 w-full object-cover shadow-2xl border border-white/10"
+                        />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 bg-brand-dark relative border-t border-white/5">
+            <div class="max-w-4xl mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="font-heading text-sm font-bold tracking-widest text-brand-glow uppercase mb-3">FAQ</h2>
+                    <h3 class="font-heading text-3xl md:text-4xl font-bold text-white">Common Inquiries</h3>
+                </div>
+
+                <div class="flex flex-col gap-4">
+                    {faqs.map((faq) => (
+                        <div class="bg-[#0a0f1d] border border-white/5 rounded-xl overflow-hidden transition-colors duration-300 faq-item">
+                            <button type="button" class="w-full px-6 py-5 text-left flex items-center justify-between font-heading text-lg font-bold text-white focus:outline-none faq-btn">
+                                <span>{faq.q}</span>
+                                <svg class="w-4 h-4 text-slate-400 transition-transform duration-300 faq-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                            </button>
+                            <div class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out faq-content">
+                                <p class="px-6 pb-6 text-slate-400 text-sm md:text-base leading-relaxed border-t border-white/5 pt-4 bg-white/[0.01]">
+                                    {faq.a}
+                                </p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <ContactForm />
+
+    </main>
+
+    <BottomBanner />
+    <Footer />
+</BaseLayout>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(item => {
+            const btn = item.querySelector('.faq-btn');
+            const content = item.querySelector('.faq-content');
+            const icon = item.querySelector('.faq-icon');
+
+            if (btn && content && icon) {
+                btn.addEventListener('click', () => {
+                    const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
+
+                    // Close all other open accordion rows
+                    document.querySelectorAll('.faq-content').forEach(c => (c as HTMLElement).style.maxHeight = '0px');
+                    document.querySelectorAll('.faq-icon').forEach(i => i.classList.remove('rotate-180'));
+                    document.querySelectorAll('.faq-item').forEach(wrapper => wrapper.classList.remove('border-brand-accent/30'));
+
+                    if (!isOpen) {
+                        (content as HTMLElement).style.maxHeight = content.scrollHeight + 'px';
+                        icon.classList.add('rotate-180');
+                        item.classList.add('border-brand-accent/30');
+                    }
+                });
+            }
+        });
+    });
+</script>

@@ -1,0 +1,403 @@
+---
+// src/pages/services/saas-development.astro
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/global/Navbar.astro';
+import TrustBar from '../../components/sections/TrustBar.astro';
+import ContactForm from '../../components/sections/ContactForm.astro';
+import BottomBanner from '../../components/sections/BottomBanner.astro';
+import Footer from '../../components/global/Footer.astro';
+
+// 1. SaaS Sub-Services Data
+const saasServices = [
+    {
+        title: "SaaS Consulting & Strategy",
+        description: "We help validate your SaaS idea, define the technical architecture, and map out a scalable MVP roadmap to ensure rapid market entry.",
+        icon: "M13 10V3L4 14h7v7l9-11h-7z"
+    },
+    {
+        title: "SaaS UI/UX Design",
+        description: "Enterprise-grade interfaces built for user retention. We design intuitive, multi-tenant dashboards that reduce churn and increase engagement.",
+        icon: "M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"
+    },
+    {
+        title: "Multi-Tenant Architecture",
+        description: "Core architectural engineering to ensure your SaaS product securely isolates customer data while sharing maximum underlying resources.",
+        icon: "M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+    },
+    {
+        title: "Third-Party Integrations",
+        description: "Seamlessly connect your SaaS platform with Stripe, AWS, Salesforce, HubSpot, and other vital enterprise APIs.",
+        icon: "M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
+    },
+    {
+        title: "SaaS Migration",
+        description: "Securely migrate your legacy on-premise software into a modern, cloud-native SaaS infrastructure with zero downtime.",
+        icon: "M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"
+    },
+    {
+        title: "Support & Maintenance",
+        description: "24/7 proactive monitoring, security patching, and continuous feature deployment to keep your SaaS platform scaling smoothly.",
+        icon: "M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"
+    }
+];
+
+// 2. Specific Tech Stack for SaaS
+const saasTech = [
+  { name: "React", icon: "devicon-react-original colored" },
+  { name: "Node.js", icon: "devicon-nodejs-plain colored" },
+  { name: "PostgreSQL", icon: "devicon-postgresql-plain colored" },
+  { name: "AWS", icon: "devicon-amazonwebservices-plain-wordmark colored" },
+  { name: "Docker", icon: "devicon-docker-plain colored" },
+  { name: "Redis", icon: "devicon-redis-plain colored" },
+  { name: "Stripe", icon: "devicon-stripe-plain colored" }
+];
+
+// 3. SaaS Specific FAQs
+const faqs = [
+  {
+    q: "Who owns the intellectual property and source code of the SaaS?",
+    a: "You do. We sign a comprehensive contract ensuring 100% intellectual property and code ownership is transferred directly to your company upon milestone completions. We maintain zero proprietary claims over your software."
+  },
+  {
+    q: "How do you ensure data security and isolation in a multi-tenant setup?",
+    a: "We implement advanced logical database isolation (using row-level security or separate schemas per tenant depending on scale requirements). This ensures tenant data is perfectly compartmentalized and completely invisible to other users."
+  },
+  {
+    q: "Can you help integrate complex recurring subscription billing?",
+    a: "Yes. We specialize in configuring multi-tier subscription billing, usage-based metering, and seat-based licensing utilizing enterprise-grade platforms like Stripe Billing and Chargebee, complete with automated webhook handlers."
+  },
+  {
+    q: "What post-launch support and maintenance plans do you offer?",
+    a: "We provide dedicated post-launch support SLAs covering server load monitoring, automated backups, critical security patches, and rapid feature iteration to ensure your application remains operational as your user base expands."
+  }
+];
+---
+
+<BaseLayout title="SaaS Application Development Company | ZetaLogix">
+    <Navbar />
+    
+    <main class="pt-20">
+        
+        <section class="relative pt-20 pb-32 overflow-hidden bg-brand-dark">
+            <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-accent/10 blur-[120px] rounded-full pointer-events-none"></div>
+            <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-600/10 blur-[100px] rounded-full pointer-events-none"></div>
+            
+            <div class="max-w-7xl mx-auto px-6 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-accent/10 border border-brand-accent/20 text-brand-accent text-sm font-bold tracking-wide uppercase mb-6">
+                        <span class="w-2 h-2 rounded-full bg-brand-accent animate-pulse"></span>
+                        Premium Software Services
+                    </div>
+                    <h1 class="font-heading text-5xl md:text-6xl font-bold text-white leading-[1.1] mb-6">
+                        SaaS Application <span class="text-brand-accent">Development Company</span>
+                    </h1>
+                    <p class="text-slate-400 text-lg md:text-xl leading-relaxed mb-8 max-w-xl">
+                        We partner with ambitious startups and enterprise brands to architect, design, and engineer highly scalable multi-tenant SaaS platforms that dominate markets.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#contact" class="px-8 py-4 bg-brand-accent text-brand-dark font-bold rounded-lg hover:bg-white transition-colors duration-300 text-center shadow-[0_0_20px_rgba(34,211,238,0.2)]">
+                            Get a Free Quote
+                        </a>
+                        <a href="#process" class="px-8 py-4 bg-transparent border border-white/20 text-white font-bold rounded-lg hover:bg-white/5 transition-colors duration-300 text-center">
+                            Our Process
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="relative">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-brand-dark via-transparent to-transparent z-10 rounded-2xl"></div>
+                    <img 
+                        src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop" 
+                        alt="SaaS Analytics Dashboard" 
+                        class="rounded-2xl border border-white/10 shadow-2xl transform lg:-rotate-2 hover:rotate-0 transition-transform duration-700"
+                    />
+                    
+                    <div class="absolute -bottom-6 -left-6 bg-[#0a0f1d] border border-white/10 rounded-xl p-4 shadow-xl flex items-center gap-4 z-20 animate-bounce-slow">
+                        <i class="devicon-react-original colored text-4xl"></i>
+                        <div>
+                            <p class="text-white font-bold text-sm">React Native</p>
+                            <p class="text-slate-500 text-xs">Cross-Platform Ready</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <TrustBar />
+
+        <section class="py-24 bg-brand-dark relative border-t border-white/5">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+                    <div>
+                        <h2 class="font-heading text-sm font-bold tracking-widest text-brand-glow uppercase mb-3">Industry Overview</h2>
+                        <h3 class="font-heading text-3xl md:text-4xl font-bold text-white mb-6">
+                            What is <span class="text-brand-accent">SaaS Development?</span>
+                        </h3>
+                        <p class="text-slate-400 leading-relaxed mb-6 text-lg">
+                            Software as a Service (SaaS) is a cloud-based software delivery model where applications are hosted by a vendor and made available to customers over the internet, typically on a subscription basis.
+                        </p>
+                        <p class="text-slate-400 leading-relaxed text-lg">
+                            Unlike traditional software, developing a SaaS product requires complex architectural planning. It demands strict data isolation between tenants, highly secure authentication protocols, automated recurring billing integrations (like Stripe), and elastic cloud environments capable of scaling dynamically as user traffic spikes.
+                        </p>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-[#0a0f1d] to-[#0f172a] border border-white/10 rounded-2xl p-8 md:p-10 shadow-2xl">
+                        <h3 class="font-heading text-2xl font-bold text-white mb-4">About Our SaaS Services</h3>
+                        <p class="text-slate-400 leading-relaxed mb-8">
+                            At ZetaLogix, we don't just write code—we engineer viable businesses. Our team acts as your dedicated technical partner, handling the full spectrum of SaaS creation from database schema design to enterprise cloud deployment.
+                        </p>
+                        
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-4">
+                                <div class="w-6 h-6 rounded-full bg-brand-accent/20 flex items-center justify-center shrink-0 mt-1">
+                                    <svg class="w-3.5 h-3.5 text-brand-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+                                </div>
+                                <span class="text-slate-300 font-medium">Custom Multi-Tenant Data Architecture</span>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="w-6 h-6 rounded-full bg-brand-accent/20 flex items-center justify-center shrink-0 mt-1">
+                                    <svg class="w-3.5 h-3.5 text-brand-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+                                </div>
+                                <span class="text-slate-300 font-medium">Metered & Subscription Billing Integrations</span>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="w-6 h-6 rounded-full bg-brand-accent/20 flex items-center justify-center shrink-0 mt-1">
+                                    <svg class="w-3.5 h-3.5 text-brand-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+                                </div>
+                                <span class="text-slate-300 font-medium">Enterprise-Grade Security & Compliance</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 bg-[#050814] relative border-t border-white/5">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-20">
+                    <h2 class="font-heading text-sm font-bold tracking-widest text-brand-glow uppercase mb-3">Our Expertise</h2>
+                    <h3 class="font-heading text-4xl md:text-5xl font-bold text-white mb-6">
+                        End-to-End <span class="text-brand-accent">SaaS Capabilities</span>
+                    </h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {saasServices.map(service => (
+                        <div class="bg-[#0a0f1d] border border-white/5 rounded-2xl p-8 hover:border-brand-accent/50 hover:-translate-y-2 transition-all duration-300 group shadow-lg">
+                            <div class="w-14 h-14 rounded-xl bg-brand-accent/10 flex items-center justify-center mb-6 group-hover:bg-brand-accent transition-colors duration-300">
+                                <svg class="w-7 h-7 text-brand-accent group-hover:text-[#0a0f1d] transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={service.icon} />
+                                </svg>
+                            </div>
+                            <h4 class="text-xl font-bold text-white mb-4 font-heading">{service.title}</h4>
+                            <p class="text-slate-400 leading-relaxed text-sm">{service.description}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 bg-brand-dark relative border-t border-white/5">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                    <div class="lg:col-span-6 order-2 lg:order-1">
+                        <div class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000&auto=format&fit=crop" alt="SaaS Project Screenshot" class="w-full object-cover" />
+                        </div>
+                    </div>
+                    <div class="lg:col-span-6 order-1 lg:order-2">
+                        <h2 class="font-heading text-sm font-bold tracking-widest text-brand-glow uppercase mb-3">Featured Case Study</h2>
+                        <h3 class="font-heading text-3xl md:text-4xl font-bold text-white mb-6">
+                            Apex Analytics: An Enterprise <span class="text-brand-accent">BI SaaS Platform</span>
+                        </h3>
+                        <p class="text-slate-400 mb-6 leading-relaxed">
+                            We engineered a high-performance business intelligence SaaS capable of processing millions of operational data rows in real time. Features safe PostgreSQL schema isolation for corporate accounts and full Stripe billing workflows.
+                        </p>
+                        <div class="grid grid-cols-3 gap-6 border-t border-white/5 pt-6">
+                            <div>
+                                <h4 class="text-brand-accent text-2xl font-bold font-heading">&lt; 200ms</h4>
+                                <p class="text-slate-500 text-xs uppercase tracking-wider font-semibold mt-1">Query Latency</p>
+                            </div>
+                            <div>
+                                <h4 class="text-brand-accent text-2xl font-bold font-heading">99.99%</h4>
+                                <p class="text-slate-500 text-xs uppercase tracking-wider font-semibold mt-1">System Uptime</p>
+                            </div>
+                            <div>
+                                <h4 class="text-brand-accent text-2xl font-bold font-heading">14 Days</h4>
+                                <p class="text-slate-500 text-xs uppercase tracking-wider font-semibold mt-1">MVP Deployment</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 bg-[#050814] relative border-t border-white/5">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <h2 class="font-heading text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">
+                            Why Partner with ZetaLogix for <span class="text-brand-accent">SaaS Development?</span>
+                        </h2>
+                        <ul class="space-y-6">
+                            <li class="flex gap-4">
+                                <div class="w-6 h-6 rounded-full bg-brand-accent/20 flex items-center justify-center shrink-0 mt-1">
+                                    <span class="w-2 h-2 rounded-full bg-brand-accent"></span>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-bold mb-1">Agile Delivery Focus</h4>
+                                    <p class="text-slate-500 text-sm">We build in rapid 2-week sprints, ensuring you get functional software delivered consistently without black-box delays.</p>
+                                </div>
+                            </li>
+                            <li class="flex gap-4">
+                                <div class="w-6 h-6 rounded-full bg-brand-accent/20 flex items-center justify-center shrink-0 mt-1">
+                                    <span class="w-2 h-2 rounded-full bg-brand-accent"></span>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-bold mb-1">Cloud-Native Architecture</h4>
+                                    <p class="text-slate-500 text-sm">We deploy strictly on AWS/Google Cloud utilizing microservices, guaranteeing your app can scale from 100 to 1,000,000 users effortlessly.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="relative">
+                        <div class="bg-[#0f172a] border border-white/10 rounded-2xl p-6 shadow-2xl overflow-hidden">
+                            <div class="flex items-center gap-2 mb-6 border-b border-white/5 pb-4">
+                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                                <span class="ml-4 text-xs font-mono text-slate-500">server.js</span>
+                            </div>
+                            <pre is:raw class="text-sm font-mono text-slate-300 overflow-x-auto"><code class="language-js">
+import { serve } from "zetalogix-engine";
+import { stripeMiddleware } from "./billing";
+
+const app = serve({
+    cluster: true,
+    database: "postgresql",
+    isolationLevel: "tenant-schema"
+});
+
+app.use(stripeMiddleware);
+
+app.listen(8080, () => {
+    console.log("🚀 Enterprise SaaS Online");
+});
+                            </code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 bg-brand-dark relative border-t border-white/5 text-center">
+            <div class="max-w-7xl mx-auto px-6">
+                <h3 class="font-heading text-2xl font-bold text-white mb-10">Technologies we use to build SaaS</h3>
+                <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16">
+                    {saasTech.map(tech => (
+                        <div class="flex flex-col items-center gap-3 opacity-70 hover:opacity-100 hover:scale-110 transition-all duration-300 cursor-pointer" title={tech.name}>
+                            <i class={`${tech.icon} text-5xl md:text-6xl`}></i>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <section id="process" class="py-24 bg-[#050814] relative border-t border-white/5">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="font-heading text-4xl font-bold text-white mb-4">Our SaaS Development Process</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                    <div class="bg-[#0a0f1d] border border-white/5 rounded-2xl p-8 relative">
+                        <span class="absolute -top-4 -left-4 w-10 h-10 bg-brand-dark border border-white/10 rounded-full flex items-center justify-center text-brand-accent font-bold font-heading shadow-lg z-10">1</span>
+                        <h4 class="text-white font-bold mb-2">Discovery & Architecture</h4>
+                        <p class="text-slate-500 text-sm">We map out the database schemas, user roles, and core feature sets required for the MVP.</p>
+                    </div>
+                    <div class="bg-[#0a0f1d] border border-white/5 rounded-2xl p-8 relative">
+                        <span class="absolute -top-4 -left-4 w-10 h-10 bg-brand-dark border border-white/10 rounded-full flex items-center justify-center text-brand-accent font-bold font-heading shadow-lg z-10">2</span>
+                        <h4 class="text-white font-bold mb-2">UI/UX Prototyping</h4>
+                        <p class="text-slate-500 text-sm">Our designers build interactive Figma prototypes so you can test the dashboard before coding.</p>
+                    </div>
+                    <div class="bg-gradient-to-b from-[#0f172a] to-[#0a0f1d] border border-brand-accent/30 rounded-2xl p-8 relative">
+                        <span class="absolute -top-4 -left-4 w-10 h-10 bg-brand-accent text-[#0a0f1d] rounded-full flex items-center justify-center font-bold font-heading shadow-lg z-10">3</span>
+                        <h4 class="text-white font-bold mb-2">Agile Engineering</h4>
+                        <p class="text-slate-400 text-sm">We code the front-end, back-end APIs, and integrate Stripe subscription billing workflows.</p>
+                    </div>
+                    <div class="bg-[#0a0f1d] border border-white/5 rounded-2xl p-8 relative">
+                        <span class="absolute -top-4 -left-4 w-10 h-10 bg-brand-dark border border-white/10 rounded-full flex items-center justify-center text-brand-accent font-bold font-heading shadow-lg z-10">4</span>
+                        <h4 class="text-white font-bold mb-2">Deployment & Scale</h4>
+                        <p class="text-slate-500 text-sm">We launch your app on AWS, monitor server loads, and provide ongoing optimization updates.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 bg-brand-dark relative border-t border-white/5">
+            <div class="max-w-4xl mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="font-heading text-sm font-bold tracking-widest text-brand-glow uppercase mb-3">FAQ</h2>
+                    <h3 class="font-heading text-3xl md:text-4xl font-bold text-white">Common Inquiries</h3>
+                </div>
+
+                <div class="flex flex-col gap-4">
+                    {faqs.map((faq, index) => (
+                        <div class="bg-[#0a0f1d] border border-white/5 rounded-xl overflow-hidden transition-colors duration-300 faq-item">
+                            <button type="button" class="w-full px-6 py-5 text-left flex items-center justify-between font-heading text-lg font-bold text-white focus:outline-none faq-btn">
+                                <span>{faq.q}</span>
+                                <svg class="w-4 h-4 text-slate-400 transition-transform duration-300 faq-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                            </button>
+                            <div class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out faq-content">
+                                <p class="px-6 pb-6 text-slate-400 text-sm md:text-base leading-relaxed border-t border-white/5 pt-4 bg-white/[0.01]">
+                                    {faq.a}
+                                </p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <ContactForm />
+
+    </main>
+
+    <BottomBanner />
+    <Footer />
+</BaseLayout>
+
+<style>
+    .animate-bounce-slow { animation: bounce 3s infinite; }
+    @keyframes bounce { 0%, 100% { transform: translateY(-5%); } 50% { transform: translateY(5%); } }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(item => {
+            const btn = item.querySelector('.faq-btn');
+            const content = item.querySelector('.faq-content');
+            const icon = item.querySelector('.faq-icon');
+
+            if (btn && content && icon) {
+                btn.addEventListener('click', () => {
+                    const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
+
+                    // Close all other open accordion rows
+                    document.querySelectorAll('.faq-content').forEach(c => (c as HTMLElement).style.maxHeight = '0px');
+                    document.querySelectorAll('.faq-icon').forEach(i => i.classList.remove('rotate-180'));
+                    document.querySelectorAll('.faq-item').forEach(wrapper => wrapper.classList.remove('border-brand-accent/30'));
+
+                    if (!isOpen) {
+                        // Dynamically allocate full height needed for text
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                        icon.classList.add('rotate-180');
+                        item.classList.add('border-brand-accent/30');
+                    }
+                });
+            }
+        });
+    });
+</script>

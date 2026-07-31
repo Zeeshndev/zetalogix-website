@@ -1,0 +1,179 @@
+---
+// src/pages/portfolio.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/global/Navbar.astro';
+import TrustBar from '../components/sections/TrustBar.astro';
+import BottomBanner from '../components/sections/BottomBanner.astro';
+import Footer from '../components/global/Footer.astro';
+
+// Complete Portfolio Projects Matrix Sourced from Assets
+const projects = [
+  {
+    title: "Accommodation Booking and Listing Platform for Rentischeap",
+    description: "Rentischeap.com is an Rethinking short-and long-term homestays experiences globally.",
+    image: "/assets/portfolio/Rentischeap.png",
+    bgClass: "bg-[#FF5A1F]",
+    tech: [
+      "devicon-javascript-plain colored bg-white p-1 rounded-md",
+      "devicon-react-original colored bg-white p-1 rounded-md",
+      "devicon-nodejs-plain colored bg-white p-1 rounded-md",
+      "devicon-postgresql-plain colored bg-white p-1 rounded-md",
+      "devicon-amazonwebservices-plain-wordmark colored bg-white p-1 rounded-md"
+    ],
+    link: "/portfolio/rentischeap"
+  },
+  {
+    title: "All-in-one print Marketplace platform for Sabiprints",
+    description: "Sabiprints transforms your vision into stunning prints, offering design, customization, full-spectrum printing, and delivery services and comprehensive print solutions—all in one place.",
+    image: "/assets/portfolio/Sabiprints.png",
+    bgClass: "bg-[#A37B1B]",
+    tech: [
+      "devicon-php-plain colored bg-white p-1 rounded-md",
+      "devicon-laravel-original colored bg-white p-1 rounded-md",
+      "devicon-vuejs-plain colored bg-white p-1 rounded-md",
+      "devicon-mysql-plain colored bg-white p-1 rounded-md"
+    ],
+    link: "/portfolio/sabiprints"
+  },
+  {
+    title: "Digital Assets trading Mobile and web application for Litetrade",
+    description: "The Litetrade Mobile and web application allows for seamless transactions. Enabling users to easily buy & sell crypto, pay bills, convert airtime to cash, and trade gift cards at top market rates.",
+    image: "/assets/portfolio/Litetrade.png",
+    bgClass: "bg-[#2A5CE6]",
+    tech: [
+      "devicon-flutter-plain colored bg-white p-1 rounded-md",
+      "devicon-react-original colored bg-white p-1 rounded-md",
+      "devicon-nodejs-plain colored bg-white p-1 rounded-md",
+      "devicon-mongodb-plain colored bg-white p-1 rounded-md"
+    ],
+    link: "/portfolio/litetrade"
+  },
+  {
+    title: "Fintech Cross-Boarder and Local payments for Monnee Inc.",
+    description: "Monnee allows you to send & receive payments within and outside nigeria faster with the lowest transaction fees in the market. You can also paybills & Trade your giftcards.",
+    image: "/assets/portfolio/Monnee.png",
+    bgClass: "bg-[#6366F1]",
+    tech: [
+      "devicon-typescript-plain colored bg-white p-1 rounded-md",
+      "devicon-nextjs-original-wordmark text-dark bg-white p-1 rounded-md",
+      "devicon-python-plain colored bg-white p-1 rounded-md",
+      "devicon-postgresql-plain colored bg-white p-1 rounded-md"
+    ],
+    link: "/portfolio/monnee"
+  },
+  {
+    title: "Gift Card Trading Mobile App for Traydah",
+    description: "Traydah is a gift card trading company in Lagos, Nigeria. Traydah brand has been in existence for over 3 years, doing business with both individuals and businesses alike.",
+    image: "/assets/portfolio/Traydah.png",
+    bgClass: "bg-[#1E40AF]",
+    tech: [
+      "devicon-react-original colored bg-white p-1 rounded-md",
+      "devicon-firebase-plain colored bg-white p-1 rounded-md",
+      "devicon-googlecloud-plain colored bg-white p-1 rounded-md"
+    ],
+    link: "/portfolio/traydah"
+  },
+  {
+    title: "Prop-Tech Marketplace for Fragvest",
+    description: "Fragvest is Nigeria's fast-rising prop-tech startup to Buy, sell, rent, and invest in the real estate market.",
+    image: "/assets/portfolio/Fragvest.png",
+    bgClass: "bg-[#10B981]",
+    tech: [
+      "devicon-flutter-plain colored bg-white p-1 rounded-md",
+      "devicon-nodejs-plain colored bg-white p-1 rounded-md",
+      "devicon-mongodb-plain colored bg-white p-1 rounded-md"
+    ],
+    link: "/portfolio/fragvest"
+  },
+  {
+    title: "Wireless Instant Messaging Application for Wiconn",
+    description: "Wiconn is a messaging app that lets users text, chat, and share media, including voice messages and video, with individuals or groups.",
+    image: "/assets/portfolio/Wiconn.png",
+    bgClass: "bg-[#5B21B6]",
+    tech: [
+      "devicon-swift-plain colored bg-white p-1 rounded-md",
+      "devicon-kotlin-plain colored bg-white p-1 rounded-md",
+      "devicon-java-plain colored bg-white p-1 rounded-md"
+    ],
+    link: "/portfolio/wiconn"
+  },
+  {
+    title: "Tokenized Financial Investment Web Application Platform in Slovenia for CrowdInvest",
+    description: "CrowdInvest is a Crypto/Affiliate marketing company founded in Slovenia by a team of British Stakeholders under the name, Windsbuck Mavida, with the aim of becoming the world's Largest trading network.",
+    image: "/assets/portfolio/CrowdInvest.png",
+    bgClass: "bg-[#059669]",
+    tech: [
+      "devicon-php-plain colored bg-white p-1 rounded-md",
+      "devicon-wordpress-plain colored bg-white p-1 rounded-md",
+      "devicon-mysql-plain colored bg-white p-1 rounded-md",
+      "devicon-javascript-plain colored bg-white p-1 rounded-md"
+    ],
+    link: "/portfolio/crowdinvest"
+  }
+];
+---
+
+<BaseLayout title="Projects We Have Delivered | ZetaLogix Portfolio">
+    <Navbar />
+    
+    <main class="pt-20 bg-brand-dark">
+        
+        <section class="relative pt-24 pb-16 text-center max-w-4xl mx-auto px-6">
+            <h1 class="font-heading text-4xl md:text-5xl font-bold text-white mb-4">
+                Projects We Have delivered
+            </h1>
+            <p class="text-slate-400 text-lg md:text-xl leading-relaxed">
+                We focus on facilitating businesses to reach their true potential using world-class digital products Engineering and Technology
+            </p>
+        </section>
+
+        <TrustBar />
+
+        <section class="py-20 space-y-16 max-w-7xl mx-auto px-6">
+            {projects.map((project) => (
+                <div class={`${project.bgClass} rounded-3xl p-8 md:p-12 lg:p-16 text-white grid grid-cols-1 lg:grid-cols-12 gap-12 items-center shadow-2xl relative overflow-hidden group`}>
+                    <div class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                    
+                    <div class="lg:col-span-6 space-y-6 relative z-10">
+                        <h2 class="font-heading text-2xl md:text-3xl lg:text-4xl font-bold leading-tight">
+                            {project.title}
+                        </h2>
+                        <p class="text-white/90 text-base md:text-lg leading-relaxed font-normal">
+                            {project.description}
+                        </p>
+                        
+                        <div class="space-y-2">
+                            <p class="text-xs font-mono font-bold uppercase tracking-widest text-white/70">Technologies Used</p>
+                            <div class="flex flex-wrap gap-3 items-center pt-1">
+                                {project.tech.map((iconClass) => (
+                                    <div class="text-2xl md:text-3xl transition-transform duration-300 hover:scale-110">
+                                        <i class={iconClass}></i>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div class="pt-4">
+                            <a href={project.link} class="inline-flex items-center justify-center px-6 py-3 bg-white text-brand-dark font-bold rounded-xl shadow-md transition-all duration-300 hover:bg-brand-dark hover:text-white group-hover:-translate-y-1">
+                                View case study
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-6 flex justify-center items-center relative z-10 overflow-hidden rounded-2xl">
+                        <img 
+                            src={project.image} 
+                            alt={project.title} 
+                            class="w-full h-auto max-h-[420px] object-contain transform transition-transform duration-700 ease-out group-hover:scale-105"
+                        />
+                    </div>
+                </div>
+            ))}
+        </section>
+
+        <BottomBanner />
+
+    </main>
+
+    <Footer />
+</BaseLayout>

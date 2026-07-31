@@ -1,0 +1,246 @@
+---
+// src/pages/portfolio/rentischeap.astro
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/global/Navbar.astro';
+import ContactForm from '../../components/sections/ContactForm.astro';
+import Footer from '../../components/global/Footer.astro';
+
+// Tech Stack Categories mapping to standard clean Devicons
+const technologies = [
+  { name: "NodeJs", icon: "devicon-nodejs-plain colored" },
+  { name: "ExpressJs", icon: "devicon-express-original text-white" },
+  { name: "PostgreSQL", icon: "devicon-postgresql-plain colored" },
+  { name: "React", icon: "devicon-react-original colored" },
+  { name: "NextJs", icon: "devicon-nextjs-original text-white" },
+  { name: "TailwindCSS", icon: "devicon-tailwindcss-plain colored" },
+  { name: "Jenkins", icon: "devicon-jenkins-line colored" }
+];
+
+const integrations = [
+  { name: "Google Map", icon: "devicon-google-plain colored" },
+  { name: "Paypal", icon: "devicon-paypal-plain colored" },
+  { name: "Stripe", icon: "devicon-stripe-plain colored" }
+];
+
+const storage = [
+  { name: "Digital Ocean", icon: "devicon-digitalocean-original colored" },
+  { name: "Cloudinary", icon: "devicon-googlecloud-plain colored" } 
+];
+---
+
+<BaseLayout title="Rentischeap Case Study | ZetaLogix">
+    <Navbar />
+    
+    <main class="pt-32 bg-brand-dark text-slate-300">
+        
+        <section class="max-w-7xl mx-auto px-6 pb-16 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <div class="lg:col-span-6 space-y-6">
+                <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight font-heading">
+                    Accommodation Booking and Listing Platform for Rentischeap
+                </h1>
+                <p class="text-slate-400 text-lg leading-relaxed">
+                    Learn how ZetaLogix delivered a seamless short-stay rental platform for RentisCheap, connecting property owners with users seeking temporary accommodations. From ideation, user flows, and wireframes to high-fidelity design, we transformed the client's initial brief into a functional prototype showcasing all intended features of the platform.
+                </p>
+
+                <div class="space-y-4 text-sm md:text-base border-l-4 border-brand-accent pl-6 py-2 bg-[#0a0f1d]/50 rounded-r-lg">
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-2">
+                        <div class="md:col-span-3 font-bold text-white">Domain:</div>
+                        <div class="md:col-span-9 text-slate-400">Rental Marketplace</div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-2">
+                        <div class="md:col-span-3 font-bold text-white">Timeline:</div>
+                        <div class="md:col-span-9 text-slate-400">November 2023 - July 2024</div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-2">
+                        <div class="md:col-span-3 font-bold text-white">Services:</div>
+                        <div class="md:col-span-9 text-slate-400">Project discovery, UX/UI design, Front-End Development, Back-End Development, Admin Development</div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-2">
+                        <div class="md:col-span-3 font-bold text-white">Team:</div>
+                        <div class="md:col-span-9 text-slate-400">4 Software Engineers, 1 UX/UI Designer, 1 QA Engineer, 1 DevOps Engineer, 1 Project Manager, 1 Project Supervisor</div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-2">
+                        <div class="md:col-span-3 font-bold text-white">Core Tech:</div>
+                        <div class="md:col-span-9 text-slate-400">Nodejs, ExpressJS, PostgreSQL, React.JS, Next.JS, Tailwind CSS, Digital ocean, Cloudinary, Google maps API, Paypal API, Payoneer API, Stripe API, Jenkins.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-6 relative">
+                <div class="absolute inset-0 bg-brand-accent/5 blur-[100px] rounded-full pointer-events-none"></div>
+                <img 
+                    src="/assets/portfolio/rentischeap-case-study/rentischeap-full.bc7d6e94.png" 
+                    alt="Rentischeap Platform Mockup" 
+                    class="w-full h-auto drop-shadow-2xl rounded-xl object-contain relative z-10"
+                />
+            </div>
+        </section>
+
+        <section class="max-w-4xl mx-auto px-6 pb-24">
+            <p class="text-xl md:text-2xl font-medium text-white leading-relaxed mb-8 italic text-center">
+                "ZetaLogix looks beyond building an app for the sake of building and works in any capacity to see our project's success."
+            </p>
+            <div class="flex items-center justify-center gap-4">
+                <div class="w-14 h-14 rounded-full bg-[#0a0f1d] border-2 border-brand-accent overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200&auto=format&fit=crop" alt="CEO Avatar" class="w-full h-full object-cover filter grayscale opacity-80" />
+                </div>
+                <span class="text-slate-400 font-medium">CEO Rentischeap.com</span>
+            </div>
+        </section>
+
+        <section class="relative py-24 w-full bg-[#050814] overflow-hidden border-y border-white/5">
+            <div class="absolute inset-0 z-0 opacity-20">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2000&auto=format&fit=crop" alt="Team collaborating" class="w-full h-full object-cover" />
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-r from-[#050814] via-[#050814]/90 to-transparent z-0"></div>
+            
+            <div class="max-w-6xl mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center justify-between gap-12">
+                <div class="max-w-2xl">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight font-heading">
+                        Do you need an experienced team to build a mobile application and web application?
+                    </h2>
+                    <p class="text-lg text-slate-400">
+                        We make use of the best technologies and best practices to help you launch faster and save cost
+                    </p>
+                </div>
+                <div class="shrink-0">
+                    <a href="/contact" class="px-8 py-4 bg-brand-accent text-brand-dark font-bold rounded-lg hover:bg-white transition-colors shadow-[0_0_20px_rgba(34,211,238,0.2)]">
+                        Talk to an expert
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="max-w-6xl mx-auto px-6 py-24 space-y-32">
+            <h2 class="text-3xl font-bold text-white mb-16 font-heading">Solution Delivered</h2>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1 relative">
+                    <div class="absolute inset-0 bg-brand-accent/5 blur-[50px] rounded-full"></div>
+                    <img src="/assets/portfolio/rentischeap-case-study/rentischeap-sec1a.d5b94021.png" alt="Guest App Mockup" class="w-full h-auto drop-shadow-2xl relative z-10" />
+                </div>
+                <div class="order-1 lg:order-2 space-y-4">
+                    <h3 class="text-2xl font-bold text-white font-heading">Responsive Web App for Guests</h3>
+                    <p class="text-slate-400 leading-relaxed text-lg">
+                        Our team developed a responsive web application for RentisCheap, allowing guests to easily search and book short-term rentals from any device. Key features include streamlined property search, detailed listings, a user-friendly booking process, secure payment options, and communication tools for connecting with property owners. The app ensures a consistent and seamless experience across all screen sizes, enhancing accessibility and convenience for guests.
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="space-y-4">
+                    <h3 class="text-2xl font-bold text-white font-heading">Responsive Web App for Host</h3>
+                    <p class="text-slate-400 leading-relaxed text-lg">
+                        We created a responsive web application for RentisCheap, designed to empower hosts to manage their property listings with ease. Key features include intuitive tools for listing properties, updating availability, handling bookings, and communicating with guests. The app offers a consistent and seamless experience across all devices, ensuring hosts can efficiently manage their rentals and provide excellent service to guests from anywhere.
+                    </p>
+                </div>
+                <div class="relative">
+                    <div class="absolute inset-0 bg-brand-accent/5 blur-[50px] rounded-full"></div>
+                    <img src="/assets/portfolio/rentischeap-case-study/rentischeap-sec1b.3cfde80f.png" alt="Host App Mockup" class="w-full h-auto drop-shadow-2xl relative z-10" />
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1 relative">
+                    <div class="absolute inset-0 bg-brand-accent/5 blur-[50px] rounded-full"></div>
+                    <img src="/assets/portfolio/rentischeap-case-study/rentischeap-sec1c.0e5def36.png" alt="Admin Dashboard Mockup" class="w-full h-auto drop-shadow-2xl relative z-10" />
+                </div>
+                <div class="order-1 lg:order-2 space-y-4">
+                    <h3 class="text-2xl font-bold text-white font-heading">Responsive Web App for Admin Governance</h3>
+                    <p class="text-slate-400 leading-relaxed text-lg">
+                        We developed a responsive web application for RentisCheap's admin governance, enabling administrators to efficiently manage platform operations. Key features include user management, property approval, transaction monitoring, and reporting tools. The app ensures a seamless experience across all devices, allowing administrators to oversee and maintain the platform's integrity and performance from anywhere.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 bg-[#0a0f1d] border-y border-white/5">
+            <div class="max-w-5xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16">
+                
+                <div>
+                    <h3 class="text-2xl font-bold mb-10 text-center text-white font-heading">Technologies</h3>
+                    <div class="grid grid-cols-3 gap-8">
+                        {technologies.map(tech => (
+                            <div class="flex flex-col items-center gap-3 group">
+                                <div class="w-16 h-16 rounded-full bg-brand-dark border border-white/10 shadow-lg flex items-center justify-center text-3xl group-hover:scale-110 group-hover:border-brand-accent/50 transition-all cursor-pointer">
+                                    <i class={tech.icon}></i>
+                                </div>
+                                <span class="text-sm font-medium text-slate-400 group-hover:text-white transition-colors">{tech.name}</span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                <div class="space-y-16">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-10 text-center text-white font-heading">Integrations</h3>
+                        <div class="grid grid-cols-3 gap-6">
+                            {integrations.map(tech => (
+                                <div class="flex flex-col items-center gap-3 group">
+                                    <div class="w-16 h-16 rounded-full bg-brand-dark border border-white/10 shadow-lg flex items-center justify-center text-3xl group-hover:scale-110 group-hover:border-brand-accent/50 transition-all cursor-pointer">
+                                        <i class={tech.icon}></i>
+                                    </div>
+                                    <span class="text-xs font-medium text-center text-slate-400 group-hover:text-white leading-tight">{tech.name}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-2xl font-bold mb-10 text-center text-white font-heading">Storage</h3>
+                        <div class="flex justify-center gap-12">
+                            {storage.map(tech => (
+                                <div class="flex flex-col items-center gap-3 group">
+                                    <div class="w-16 h-16 rounded-full bg-brand-dark border border-white/10 shadow-lg flex items-center justify-center text-3xl group-hover:scale-110 group-hover:border-brand-accent/50 transition-all cursor-pointer">
+                                        <i class={tech.icon}></i>
+                                    </div>
+                                    <span class="text-sm font-medium text-slate-400 group-hover:text-white">{tech.name}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="max-w-4xl mx-auto px-6 py-24">
+            <div class="rounded-2xl overflow-hidden mb-12 shadow-2xl border border-white/5">
+                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop" alt="Office meeting room" class="w-full h-80 object-cover opacity-80" />
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-6 font-heading">What next?</h3>
+            <ol class="space-y-4 text-slate-400 text-lg list-decimal list-inside pl-4 marker:text-brand-accent font-medium">
+                <li>We will reach out to you within one business day to discuss the next steps.</li>
+                <li>In the meantime, please review our portfolio and Blog.</li>
+                <li>If necessary, we will sign the NDA and begin the project discussion.</li>
+                <li>Our software development experts will analyze your requirements and make recommendations on the best ways to bring your concept to life.</li>
+            </ol>
+        </section>
+
+        <section class="py-24 bg-[#050814] border-t border-white/5">
+            <div class="max-w-7xl mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center text-white mb-16 font-heading">Other projects</h2>
+                
+                <div class="grid grid-cols-1 gap-16">
+                    <div class="bg-[#A37B1B] rounded-3xl p-8 md:p-16 text-white grid grid-cols-1 lg:grid-cols-12 gap-12 items-center shadow-2xl relative overflow-hidden group">
+                        <div class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                        <div class="lg:col-span-6 space-y-6 relative z-10">
+                            <h2 class="font-heading text-3xl md:text-4xl font-bold leading-tight">All-in-one print Marketplace platform for Sabiprints</h2>
+                            <a href="/portfolio/sabiprints" class="inline-flex items-center justify-center px-6 py-3 bg-white/20 border border-white text-white font-bold rounded-xl hover:bg-white hover:text-[#A37B1B] transition-all duration-300">
+                                View case study
+                            </a>
+                        </div>
+                        <div class="lg:col-span-6 flex justify-center relative z-10">
+                            <img src="/assets/portfolio/Sabiprints.png" alt="Sabiprints" class="w-full max-h-[350px] object-contain drop-shadow-2xl transform transition-transform duration-700 ease-out group-hover:scale-105" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <ContactForm />
+
+    </main>
+
+    <Footer />
+</BaseLayout>

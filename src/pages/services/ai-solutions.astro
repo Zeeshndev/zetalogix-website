@@ -1,0 +1,390 @@
+---
+// src/pages/services/ai-solutions.astro
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/global/Navbar.astro';
+import TrustBar from '../../components/sections/TrustBar.astro';
+import ContactForm from '../../components/sections/ContactForm.astro';
+import BottomBanner from '../../components/sections/BottomBanner.astro';
+import Footer from '../../components/global/Footer.astro';
+
+// 1. AI Specializations (Reliable Devicons & Fixed Heights)
+const specializations = [
+  {
+    title: "Custom LLMs & Generative AI",
+    description: "We design, fine-tune, and deploy proprietary Large Language Models (LLMs) and retrieval-augmented generation (RAG) pipelines. By training models safely on your enterprise data silos, we build intelligent knowledge engines that automate contract analysis, customer success, and deep textual synthesis with absolute data privacy.",
+    icon: "devicon-python-plain colored"
+  },
+  {
+    title: "Predictive Analytics & Data Modeling",
+    description: "Turn raw transactional logs into actionable intelligence. Our engineers construct deep learning models and regression systems that analyze historical telemetry to forecast customer churn, optimize pricing structures, detect fraudulent behavior matrices, and streamline complex supply chain distributions.",
+    icon: "devicon-googlecloud-plain colored"
+  },
+  {
+    title: "Computer Vision & Visual Intelligence",
+    description: "We build high-performance convolutional neural networks (CNNs) capable of real-time object detection, facial recognition, document digitizing pipelines, and automated quality control inspections. Our visual models are optimized for edge environments and low-latency camera arrays.",
+    icon: "devicon-tensorflow-line colored"
+  },
+  {
+    title: "Natural Language Processing (NLP)",
+    description: "Extract hidden semantic value from unformatted textual arrays. We build custom transformer models for multi-lingual sentiment analysis, entity extraction, semantic search layers, and structured intent mapping that seamlessly integrate into internal data architectures.",
+    icon: "devicon-amazonwebservices-plain-wordmark colored"
+  },
+  {
+    title: "MLOps & Autonomous Data Pipelines",
+    description: "AI is only as good as its deployment pipeline. We engineer automated data pipelines, model registry structures, and continuous monitoring systems utilizing Docker and Kubernetes. This ensures your machine learning solutions constantly adapt to data drift without processing degradation.",
+    icon: "devicon-kubernetes-plain colored"
+  },
+  {
+    title: "Intelligent Workflow Automation",
+    description: "Replace repetitive manual workflows with cognitive robotic automation. We combine machine learning heuristics with core software applications to build autonomous systems that handle invoice processing, data routing, and auditing frameworks.",
+    icon: "devicon-docker-plain colored"
+  }
+];
+
+// 2. The AI Engineering Lifecycle Steps
+const aiSteps = [
+  {
+    num: "01",
+    phase: "Data Engineering & Audit",
+    desc: "We analyze your enterprise data warehouses, execute data cleaning routines, and establish structured feature stores. Quality data is the foundation of high-accuracy machine learning."
+  },
+  {
+    num: "02",
+    phase: "Model Architecture & Training",
+    desc: "Our data scientists design custom deep neural architectures, choosing target loss functions, and training models using parallelized cloud compute nodes (AWS/GCP GPUs)."
+  },
+  {
+    num: "03",
+    phase: "Optimization & Quantization",
+    desc: "We compress and optimize weights through quantization and pruning frameworks, lowering execution latency and memory usage while preserving baseline accuracy matrices."
+  },
+  {
+    num: "04",
+    phase: "MLOps Edge Deployment",
+    desc: "Deploying model containers via high-speed serverless endpoints or edge hardware environments, wrapped with automated telemetry monitoring to track data drift."
+  }
+];
+
+// 3. Technical frameworks
+const techStack = [
+  "devicon-python-plain colored", "devicon-tensorflow-line colored", "devicon-googlecloud-plain colored",
+  "devicon-jupyter-plain colored", "devicon-pandas-plain colored", "devicon-docker-plain colored",
+  "devicon-kubernetes-plain colored", "devicon-amazonwebservices-plain-wordmark colored", "devicon-git-plain colored"
+];
+
+// 4. AI Case Study Metrics
+const aiMetrics = [
+  { metric: "99.7%", label: "Model Accuracy" },
+  { metric: "40x", label: "Processing Speed" },
+  { metric: "Zero", label: "Data Leakage" },
+  { metric: "12 Days", label: "To Deployment" }
+];
+---
+
+<BaseLayout title="Artificial Intelligence & Machine Learning Engineering | ZetaLogix">
+    <Navbar />
+    
+    <main class="bg-brand-dark pt-20">
+        
+        <section class="relative pt-32 pb-24 lg:pt-40 lg:pb-32 overflow-hidden">
+            <div class="absolute top-0 right-0 w-[700px] h-[700px] bg-brand-accent/5 blur-[150px] rounded-full pointer-events-none"></div>
+            <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-500/5 blur-[130px] rounded-full pointer-events-none"></div>
+            
+            <div class="max-w-7xl mx-auto px-6 relative z-10 text-center max-w-4xl">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-accent/10 border border-brand-accent/20 text-brand-accent text-sm font-bold tracking-wide uppercase mb-8">
+                    Deep Intelligence Engineering
+                </div>
+                <h1 class="font-heading text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] mb-8">
+                    Artificial Intelligence & <br/><span class="text-brand-accent">Machine Learning</span> Solutions
+                </h1>
+                <p class="text-slate-400 text-lg md:text-xl leading-relaxed mb-12 max-w-3xl mx-auto">
+                    We architect, build, and deploy predictive data modeling layers, deep neural networks, and domain-specific Large Language Models (LLMs) that transform raw data streams into distinct competitive leverage.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#contact" class="px-8 py-4 bg-brand-accent text-brand-dark font-bold rounded-lg hover:bg-white transition-colors duration-300 shadow-lg font-heading tracking-wide">
+                        Consult with an AI Architect
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <TrustBar />
+
+        <section class="py-24 border-t border-white/5 bg-brand-dark">
+            <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                <div class="lg:col-span-7 space-y-6">
+                    <span class="text-xs font-mono font-bold text-brand-accent tracking-widest uppercase block">The New Era of Software</span>
+                    <h2 class="font-heading text-3xl md:text-4xl font-bold text-white">
+                        Cognitive Software Ecosystems
+                    </h2>
+                    <p class="text-slate-400 text-base leading-relaxed">
+                        Traditional software operates strictly on rigid conditional rules—if X happens, execute Y. While this is highly effective for basic business automation, it collapses under the weight of unformatted data pools, fluctuating market trends, and contextual language interpretation.
+                    </p>
+                    <p class="text-slate-400 text-base leading-relaxed">
+                        ZetaLogix engineers cognitive systems that learn organic workflows. By integrating intelligent machine learning algorithms directly into your product infrastructure, we allow software to spot complex data trends, write code logic on the fly, and make autonomous micro-decisions at an enterprise scale.
+                    </p>
+                </div>
+                <div class="lg:col-span-5">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-brand-accent/10 rounded-2xl transform translate-x-4 translate-y-4"></div>
+                        <img 
+                            src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1000&auto=format&fit=crop" 
+                            alt="Cognitive AI and Neural Ecosystems" 
+                            class="rounded-2xl relative z-10 w-full h-[400px] object-cover shadow-2xl border border-white/10"
+                        />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 bg-[#050814] border-t border-white/5">
+            <div class="max-w-7xl mx-auto px-6 space-y-20">
+                <div class="text-center max-w-3xl mx-auto">
+                    <span class="text-xs font-mono font-bold text-brand-accent tracking-widest uppercase block mb-2">Our Capabilities</span>
+                    <h2 class="font-heading text-3xl md:text-4xl font-bold text-white">Algorithmic Engineering Fields</h2>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-x-16 gap-y-16">
+                    <div class="flex flex-col items-start group">
+                        <div class="h-16 flex items-center mb-4 text-5xl transform group-hover:scale-110 transition-transform duration-300">
+                            <i class="devicon-python-plain colored"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-4 font-heading group-hover:text-brand-accent transition-colors">Custom LLMs & Generative AI</h4>
+                        <p class="text-slate-400 text-base leading-relaxed">We design, fine-tune, and deploy proprietary Large Language Models (LLMs) and retrieval-augmented generation (RAG) pipelines. By training models safely on your enterprise data silos, we build intelligent knowledge engines that automate contract analysis and deep textual synthesis with absolute data privacy.</p>
+                    </div>
+
+                    <div class="flex flex-col items-start group">
+                        <div class="h-16 flex items-center mb-4 text-5xl transform group-hover:scale-110 transition-transform duration-300">
+                            <i class="devicon-googlecloud-plain colored"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-4 font-heading group-hover:text-brand-accent transition-colors">Predictive Analytics & Data Modeling</h4>
+                        <p class="text-slate-400 text-base leading-relaxed">Turn raw transactional logs into actionable intelligence. Our engineers construct deep learning models and regression systems that analyze historical telemetry to forecast customer churn, optimize pricing structures, and detect fraudulent behavior matrices.</p>
+                    </div>
+
+                    <div class="flex flex-col items-start group">
+                        <div class="h-16 flex items-center mb-4 text-5xl transform group-hover:scale-110 transition-transform duration-300">
+                            <i class="devicon-tensorflow-line colored"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-4 font-heading group-hover:text-brand-accent transition-colors">Computer Vision & Visual Intelligence</h4>
+                        <p class="text-slate-400 text-base leading-relaxed">We build high-performance convolutional neural networks (CNNs) capable of real-time object detection, facial recognition, document digitizing pipelines, and automated quality control inspections. Our visual models are optimized for edge environments.</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-x-16 gap-y-16 pt-8 border-t border-white/5">
+                    <div class="flex flex-col items-start group">
+                        <div class="h-16 flex items-center mb-4 text-5xl transform group-hover:scale-110 transition-transform duration-300">
+                            <i class="devicon-amazonwebservices-plain-wordmark colored"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-4 font-heading group-hover:text-brand-accent transition-colors">Natural Language Processing (NLP)</h4>
+                        <p class="text-slate-400 text-base leading-relaxed">Extract hidden semantic value from unformatted textual arrays. We build custom transformer models for multi-lingual sentiment analysis, entity extraction, semantic search layers, and structured intent mapping that seamlessly integrate into internal data architectures.</p>
+                    </div>
+
+                    <div class="flex flex-col items-start group">
+                        <div class="h-16 flex items-center mb-4 text-5xl transform group-hover:scale-110 transition-transform duration-300">
+                            <i class="devicon-kubernetes-plain colored"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-4 font-heading group-hover:text-brand-accent transition-colors">MLOps & Autonomous Data Pipelines</h4>
+                        <p class="text-slate-400 text-base leading-relaxed">AI is only as good as its deployment pipeline. We engineer automated data pipelines, model registry structures, and continuous monitoring systems utilizing Docker and Kubernetes. This ensures your machine learning solutions constantly adapt to data drift.</p>
+                    </div>
+
+                    <div class="flex flex-col items-start group">
+                        <div class="h-16 flex items-center mb-4 text-5xl transform group-hover:scale-110 transition-transform duration-300">
+                            <i class="devicon-docker-plain colored"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-4 font-heading group-hover:text-brand-accent transition-colors">Intelligent Workflow Automation</h4>
+                        <p class="text-slate-400 text-base leading-relaxed">Replace repetitive manual workflows with cognitive robotic automation. We combine machine learning heuristics with core software applications to build autonomous systems that handle invoice processing, data routing, and auditing frameworks.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 bg-brand-accent text-brand-dark relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-white/10 blur-[100px] rounded-full pointer-events-none"></div>
+            <div class="max-w-5xl mx-auto px-6 text-center relative z-10 space-y-6">
+                <h2 class="font-heading text-2xl md:text-4xl font-bold tracking-tight max-w-3xl mx-auto leading-tight">
+                    "We do not build speculative wrappers. We engineer tailored, production-ready neural architectures optimized for resource constraints."
+                </h2>
+                <p class="text-xs font-mono font-bold uppercase tracking-widest opacity-75">— The ZetaLogix AI Manifesto</p>
+            </div>
+        </section>
+
+        <section class="py-24 border-t border-white/5 bg-brand-dark relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-6">
+                
+                <div class="text-center max-w-3xl mx-auto mb-24">
+                    <span class="text-xs font-mono font-bold text-brand-accent tracking-widest uppercase block mb-2">From R&D to Production</span>
+                    <h2 class="font-heading text-3xl md:text-4xl font-bold text-white">The AI Development Lifecycle</h2>
+                </div>
+
+                <div class="relative">
+                    <div class="hidden lg:block absolute top-[2.5rem] left-0 w-full h-0.5 bg-gradient-to-r from-brand-accent/0 via-brand-accent/30 to-brand-accent/0 z-0"></div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 relative z-10">
+                        
+                        <div class="flex flex-col items-center text-center group">
+                            <div class="w-20 h-20 min-w-[5rem] min-h-[5rem] aspect-square rounded-full bg-[#0a0f1d] border-2 border-white/10 flex items-center justify-center mb-6 shadow-2xl group-hover:border-brand-accent transition-colors duration-500 shrink-0">
+                                <span class="text-2xl font-heading font-bold text-brand-accent">01</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-4 font-heading">Data Engineering & Audit</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed px-2">We analyze your enterprise data warehouses, execute data cleaning routines, and establish structured feature stores. Quality data is the foundation of high-accuracy machine learning.</p>
+                        </div>
+
+                        <div class="flex flex-col items-center text-center group">
+                            <div class="w-20 h-20 min-w-[5rem] min-h-[5rem] aspect-square rounded-full bg-[#0a0f1d] border-2 border-white/10 flex items-center justify-center mb-6 shadow-2xl group-hover:border-brand-accent transition-colors duration-500 shrink-0">
+                                <span class="text-2xl font-heading font-bold text-brand-accent">02</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-4 font-heading">Model Architecture & Training</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed px-2">Our data scientists design custom deep neural architectures, choosing target loss functions, and training models using parallelized cloud compute nodes.</p>
+                        </div>
+
+                        <div class="flex flex-col items-center text-center group">
+                            <div class="w-20 h-20 min-w-[5rem] min-h-[5rem] aspect-square rounded-full bg-[#0a0f1d] border-2 border-white/10 flex items-center justify-center mb-6 shadow-2xl group-hover:border-brand-accent transition-colors duration-500 shrink-0">
+                                <span class="text-2xl font-heading font-bold text-brand-accent">03</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-4 font-heading">Optimization & Quantization</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed px-2">We compress and optimize weights through quantization and pruning frameworks, lowering execution latency and memory usage while preserving baseline accuracy.</p>
+                        </div>
+
+                        <div class="flex flex-col items-center text-center group">
+                            <div class="w-20 h-20 min-w-[5rem] min-h-[5rem] aspect-square rounded-full bg-[#0a0f1d] border-2 border-white/10 flex items-center justify-center mb-6 shadow-2xl group-hover:border-brand-accent transition-colors duration-500 shrink-0">
+                                <span class="text-2xl font-heading font-bold text-brand-accent">04</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-4 font-heading">MLOps Edge Deployment</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed px-2">Deploying model containers via high-speed serverless endpoints or edge hardware environments, wrapped with automated telemetry monitoring to track data drift.</p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="py-20 bg-[#050814] relative border-t border-white/5 text-center">
+            <div class="max-w-7xl mx-auto px-6">
+                <span class="text-xs font-mono font-bold text-brand-accent tracking-widest uppercase block mb-2">Technical Competence</span>
+                <h3 class="font-heading text-2xl md:text-3xl font-bold text-white mb-12">Our Core Machine Learning Stack</h3>
+                
+                <div class="flex flex-wrap justify-center items-center gap-10 md:gap-16">
+                    {techStack.map(icon => (
+                        <div class="flex flex-col items-center opacity-60 hover:opacity-100 hover:-translate-y-2 transition-all duration-300 cursor-pointer">
+                            <i class={`${icon} text-5xl md:text-6xl filter grayscale hover:grayscale-0 transition-all duration-300`}></i>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 border-t border-white/5 bg-brand-dark">
+            <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="space-y-8">
+                    <div>
+                        <span class="text-xs font-mono font-bold text-brand-accent tracking-widest uppercase block mb-2">Zero-Trust Infrastructure</span>
+                        <h2 class="font-heading text-3xl md:text-4xl font-bold text-white mb-6">
+                            Enterprise AI Data Security
+                        </h2>
+                        <p class="text-slate-400 text-base leading-relaxed">
+                            Deploying machine learning models requires absolute data sovereignty. We engineer AI solutions with strict zero-retention policies. Your proprietary datasets, client logs, and internal communications are never used to train public foundational models.
+                        </p>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="bg-[#0a0f1d] border border-white/5 p-6 rounded-xl">
+                            <svg class="w-8 h-8 text-brand-accent mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+                            <h4 class="text-white font-bold mb-2">VPC Deployment</h4>
+                            <p class="text-slate-500 text-sm">Models deployed directly into your secure Virtual Private Cloud (AWS/Azure) behind your existing firewalls.</p>
+                        </div>
+                        <div class="bg-[#0a0f1d] border border-white/5 p-6 rounded-xl">
+                            <svg class="w-8 h-8 text-brand-accent mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+                            <h4 class="text-white font-bold mb-2">Regulatory Compliance</h4>
+                            <p class="text-slate-500 text-sm">Architectures engineered to strictly adhere to SOC2, GDPR, and HIPAA data processing standards.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="bg-[#0a0f1d] border border-white/10 rounded-2xl p-8 shadow-2xl overflow-hidden relative">
+                        <div class="absolute -right-10 -top-10 w-40 h-40 bg-brand-accent/10 rounded-full blur-[40px]"></div>
+                        <div class="flex items-center gap-3 mb-6 border-b border-white/5 pb-4">
+                            <div class="w-10 h-10 rounded-lg bg-brand-dark border border-white/10 flex items-center justify-center text-brand-accent">
+                                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z" /></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-sm">Security Gateway</h4>
+                                <p class="text-slate-500 text-xs font-mono">Status: Encrypted</p>
+                            </div>
+                        </div>
+                        <pre class="text-xs font-mono text-slate-400 overflow-x-auto"><code><span class="text-purple-400">async def</span> <span class="text-blue-400">query_internal_llm</span>(prompt, user_role):
+    <span class="text-slate-500"># 1. Verify Role-Based Access Control</span>
+    <span class="text-purple-400">if not</span> verify_rbac(user_role, clearance=<span class="text-orange-300">Level.Tier3</span>):
+        <span class="text-purple-400">raise</span> SecurityException(<span class="text-green-300">"Access Denied"</span>)
+        
+    <span class="text-slate-500"># 2. Anonymize PII Data via NLP</span>
+    clean_prompt = scrub_pii_entities(prompt)
+    
+    <span class="text-slate-500"># 3. Query Local On-Premise Weights</span>
+    response = LocalLLM.generate(clean_prompt)
+    <span class="text-purple-400">return</span> response</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 bg-[#050814] border-t border-white/5 relative">
+            <div class="absolute inset-0 bg-gradient-to-tr from-brand-accent/5 to-transparent pointer-events-none"></div>
+            <div class="max-w-7xl mx-auto px-6 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                <div class="lg:col-span-5 order-2 lg:order-1">
+                    <div class="grid grid-cols-2 gap-6">
+                        {aiMetrics.map(item => (
+                            <div class="bg-[#0a0f1d] border border-white/10 p-6 rounded-2xl text-center shadow-2xl hover:border-brand-accent/40 transition-colors">
+                                <span class="block text-4xl font-heading font-bold text-brand-accent mb-2 drop-shadow-[0_0_15px_rgba(34,211,238,0.2)]">{item.metric}</span>
+                                <span class="text-slate-400 text-xs uppercase tracking-wider font-semibold">{item.label}</span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+                <div class="lg:col-span-7 order-1 lg:order-2">
+                    <span class="text-xs font-mono font-bold text-brand-accent tracking-widest uppercase block mb-2">Featured Implementation</span>
+                    <h2 class="font-heading text-3xl md:text-4xl font-bold text-white mb-6">
+                        Automated Contract Analysis via Custom NLP
+                    </h2>
+                    <p class="text-slate-400 text-base leading-relaxed mb-6">
+                        A global legal firm was spending 14,000 human hours annually scanning corporate contracts for liability clauses. We engineered a custom Natural Language Processing (NLP) transformer model, fine-tuned specifically on their historical legal data.
+                    </p>
+                    <p class="text-slate-400 text-base leading-relaxed">
+                        The deployed solution reads, categorizes, and flags high-risk clauses in 200-page PDF documents in under 4 seconds, saving the firm an estimated $1.2M in operational costs in the first year alone while operating entirely within their secure offline servers.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 border-t border-white/5 bg-brand-dark">
+            <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="relative">
+                    <div class="absolute inset-0 bg-brand-accent/5 rounded-2xl transform -translate-x-4 translate-y-4"></div>
+                    <img 
+                        src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop" 
+                        alt="Machine Learning Model Dashboard Optimization" 
+                        class="rounded-2xl relative z-10 w-full object-cover shadow-2xl border border-white/10"
+                    />
+                </div>
+                <div class="flex flex-col justify-center">
+                    <span class="text-xs font-mono font-bold text-brand-accent tracking-widest uppercase block mb-2">Financial Architecture</span>
+                    <h2 class="font-heading text-3xl md:text-4xl font-bold text-white mb-6">
+                        The Real Economics of AI Scaling
+                    </h2>
+                    <p class="text-slate-400 text-base leading-relaxed mb-6">
+                        Integrating custom machine learning solutions into core system architectures isn't just an R&D milestone—it's an active cost-mitigation asset. By building predictive heuristics directly into server arrays, enterprise operations experience sharp drops in manual analytical overhead and computational strain.
+                    </p>
+                    <p class="text-slate-400 text-base leading-relaxed">
+                        At ZetaLogix, we construct highly optimized weight configurations, robust data models, and specialized transformer systems built strictly to map onto your processing margins, ensuring deployment models provide high throughput with minimal compute costs.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <ContactForm />
+
+    </main>
+
+    <BottomBanner />
+    <Footer />
+</BaseLayout>

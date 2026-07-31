@@ -1,0 +1,302 @@
+---
+// src/pages/services/ui-ux-design.astro
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/global/Navbar.astro';
+import TrustBar from '../../components/sections/TrustBar.astro';
+import ContactForm from '../../components/sections/ContactForm.astro';
+import BottomBanner from '../../components/sections/BottomBanner.astro';
+import Footer from '../../components/global/Footer.astro';
+
+// 1. Core Design Capabilities (Devicons Infused)
+const capabilities = [
+  {
+    title: "Research & Prototyping",
+    description: "We begin by conducting extensive user research to determine your customers' needs, and then we tailor a perfect visual representation of your idea, ranging from a simple sketch to a full-fledged prototype. We create a prototype to demonstrate the application's behavior and how it would work in practice. We create fully interactive prototypes to give you an idea of how your project will work.",
+    icon: "devicon-figma-plain colored"
+  },
+  {
+    title: "Wireframe Design",
+    description: "We create wireframes to provide you with an outline of a mobile or web app by demonstrating the content, structure, and functionality that will be present on the pages of your app and software.",
+    icon: "devicon-sketch-line colored"
+  },
+  {
+    title: "Mobile & Web User Interface Design",
+    description: "We combine user-centered design practices with extensive customer behavior research to provide captivating visual implementation and memorable experiences for your web or mobile application. We make every effort to creatively transform your ideas and thoughts into a clear and fully functional design. We create user interfaces that are tailored to the user's needs and understanding.",
+    icon: "devicon-xd-plain colored"
+  },
+  {
+    title: "Cross Platform Compatibility",
+    description: "We design and deliver responsive and cross-platform compatible designs that focus on the core user experience journeys across browsers, operating systems, tablet, and mobile devices natively.",
+    icon: "devicon-apple-original text-white"
+  },
+  {
+    title: "Software Redesign",
+    description: "If you already have an app or a website that does not look appealing or professional, we can assist you. Our redesign team analyzes friction points, tracks user churn, and introduces modern interface metrics to salvage your platform.",
+    icon: "devicon-photoshop-plain colored"
+  },
+  {
+    title: "Product Design",
+    description: "In-depth research is combined with best design practices and tools to provide your product with the necessary market competitive leverage. We build user flows that optimize corporate bottom lines cleanly.",
+    icon: "devicon-illustrator-plain colored"
+  }
+];
+
+// 2. Comprehensive Tech & Collaboration Stack for Design Engineering
+const designTools = [
+  "devicon-figma-plain colored", "devicon-sketch-line colored", "devicon-xd-plain colored",
+  "devicon-photoshop-plain colored", "devicon-illustrator-plain colored", "devicon-aftereffects-plain colored",
+  "devicon-html5-plain colored", "devicon-css3-plain colored", "devicon-framermotion-original colored"
+];
+---
+
+<BaseLayout title="UX/UI Design Agency | ZetaLogix">
+    <Navbar />
+    
+    <main class="bg-brand-dark pt-20">
+        
+        <section class="relative pt-32 pb-24 lg:pt-40 lg:pb-32 overflow-hidden">
+            <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-accent/5 blur-[120px] rounded-full pointer-events-none"></div>
+            
+            <div class="max-w-7xl mx-auto px-6 relative z-10 text-center max-w-4xl">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-accent/10 border border-brand-accent/20 text-brand-accent text-sm font-bold tracking-wide uppercase mb-8">
+                    User Centered Architecture
+                </div>
+                <h1 class="font-heading text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-8">
+                    UX/UI Design <span class="text-brand-accent">Agency</span>
+                </h1>
+                <p class="text-slate-400 text-lg md:text-xl leading-relaxed mb-12">
+                    ZetaLogix is a leading UX/UI Design Agency. A user experience design (UX) agency that follows clear design processes, sticks to deadlines, and creates amazing results.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#contact" class="px-8 py-4 bg-brand-accent text-brand-dark font-bold rounded-lg hover:bg-white transition-colors duration-300 shadow-lg">
+                        Get a Free Quote
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <TrustBar />
+
+        <section class="py-24 border-t border-white/5 bg-brand-dark">
+            <div class="max-w-7xl mx-auto px-6 space-y-32">
+                
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                    <div class="lg:col-span-7 space-y-6">
+                        <h2 class="font-heading text-3xl font-bold text-white">What is UX/UX Design?</h2>
+                        <div class="text-slate-400 text-base leading-relaxed space-y-4">
+                            <p>
+                                UX design stands for &ldquo;user experience design,&rdquo; whereas UI stands for &ldquo;user interface design.&rdquo; Both elements are essential to a product and work in tandem. Their roles are quite different and both refer to very different aspects of the product design and development process. It's critical to understand that UX and UI are inextricably linked; you can't have one without the other. There is an analogy that is often used to describe the UX and UI components of a product:
+                            </p>
+                            <p class="border-l-2 border-brand-accent pl-4 text-white/90 italic font-medium">
+                                &ldquo;Think of a product as a human body, and the bones represent the code that gives it structure. The organs represent user experience design, which continuously measures and optimizes all input to support basic life functions. And user interface design represents the body's senses and reactions.&rdquo;
+                            </p>
+                            <p>
+                                Our combined level of design experience has enabled us to develop an efficient design process that delivers solid results to our clients more quickly. We adhere to established design standards, workflows, and guidelines, ensuring that you receive the product you require from our expert designers within the specified timeframe.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-5">
+                        <div class="relative">
+                            <div class="absolute inset-0 bg-brand-accent/5 rounded-2xl transform translate-x-4 translate-y-4"></div>
+                            <img src="/assets/ui/UX UX Design.png" alt="What is UX/UX Design Representation" class="rounded-2xl relative z-10 w-full object-cover shadow-2xl border border-white/10" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                    <div class="lg:col-span-5 order-2 lg:order-1">
+                        <div class="relative">
+                            <div class="absolute inset-0 bg-brand-accent/5 rounded-2xl transform -translate-x-4 translate-y-4"></div>
+                            <img src="/assets/ui/UX UX Design 2.png" alt="Differences Layout Visual" class="rounded-2xl relative z-10 w-full object-cover shadow-2xl border border-white/10" />
+                        </div>
+                    </div>
+                    <div class="lg:col-span-7 order-1 lg:order-2 space-y-6">
+                        <h2 class="font-heading text-3xl font-bold text-white">What Is the Difference Between UX and UI Design?</h2>
+                        <p class="text-slate-400 text-base leading-relaxed">
+                            The main distinction to remember is that UX design is concerned with the overall feel of the experience, whereas UI design is concerned with how the product's interfaces look and function. That is not to say that UI design is solely concerned with aesthetics; the UI design of a product has a significant impact on whether or not a product is accessible and inclusive. In a nutshell:
+                        </p>
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3 text-slate-300 text-base">
+                                <span class="text-brand-accent font-bold mt-0.5">&bull;</span>
+                                <span>The goal of UI design is to create intuitive, and interactive interfaces that are aesthetically pleasing, while UX design seeks to identify and solve user problems.</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-slate-300 text-base">
+                                <span class="text-brand-accent font-bold mt-0.5">&bull;</span>
+                                <span>In most cases, UX design comes first in the product development process, followed by UI.</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-slate-300 text-base">
+                                <span class="text-brand-accent font-bold mt-0.5">&bull;</span>
+                                <span>UX refers to both physical and digital products, services, or experiences, whereas UI is only limited to digital products and experiences.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="py-24 bg-[#050814] border-t border-white/5">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-20">
+                    <span class="text-xs font-mono font-bold text-brand-accent tracking-widest uppercase block mb-2">Our Framework Capabilities</span>
+                    <h2 class="font-heading text-3xl md:text-4xl font-bold text-white">Design Services We Can Help You With</h2>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-16 gap-y-20">
+                    {capabilities.map(cap => (
+                        <div class="flex flex-col items-start group">
+                            <div class="text-5xl mb-6 transform group-hover:scale-110 transition-transform duration-300">
+                                <i class={cap.icon}></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-white mb-4 font-heading">{cap.title}</h4>
+                            <p class="text-slate-400 text-base leading-relaxed">{cap.description}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 border-t border-white/5 bg-brand-dark relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-6">
+                
+                <div class="text-center max-w-3xl mx-auto mb-24">
+                    <span class="text-xs font-mono font-bold text-brand-accent tracking-widest uppercase block mb-2">Our Process</span>
+                    <h2 class="font-heading text-3xl md:text-4xl font-bold text-white mb-6">Workflow Phases</h2>
+                    <p class="text-slate-400 text-base leading-relaxed">
+                        We specialize in creating smooth and beautiful user experience design (UX) designs that improve user experience through effective team collaboration and streamlined projects effort. Our design team has worked on apps and software for a variety of industries, including healthcare, retail, finance, entertainment, insurance, and many others. Our strategy for providing user experience design (UX) Design Services include:
+                    </p>
+                </div>
+
+                <div class="relative">
+                    <div class="hidden lg:block absolute top-[3rem] left-0 w-full h-0.5 bg-gradient-to-r from-brand-accent/0 via-brand-accent/40 to-brand-accent/0 z-0"></div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 relative z-10">
+                        
+                        <div class="flex flex-col items-center text-center group">
+                            <div class="w-20 h-24 rounded-full bg-[#0a0f1d] border-2 border-white/10 flex items-center justify-center mb-6 shadow-2xl group-hover:border-brand-accent transition-colors duration-300">
+                                <span class="text-3xl font-heading font-bold text-brand-accent">01</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-4 font-heading">Market Research & Analysis</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed">
+                                We begin the UX process by gathering, analyzing, and defining requirements to comprehend user desires and goals. This process is divided into three stages: research, problem-solving, and prototyping. Research is an essential component of the UX design service. We collect information about your customers so that our designers can understand their needs and desires for a final product.
+                            </p>
+                        </div>
+
+                        <div class="flex flex-col items-center text-center group">
+                            <div class="w-20 h-24 rounded-full bg-[#0a0f1d] border-2 border-white/10 flex items-center justify-center mb-6 shadow-2xl group-hover:border-brand-accent transition-colors duration-300">
+                                <span class="text-3xl font-heading font-bold text-brand-accent">02</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-4 font-heading">Concept Presentation</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed">
+                                We present the project concept by defining the core features of the project and developing information architecture. After we've completed our research, it's time to begin designing; however, we like to keep our clients involved throughout the design process. This means that we will create preliminary concepts of your design for you to review before proceeding with the entire project.
+                            </p>
+                        </div>
+
+                        <div class="flex flex-col items-center text-center group">
+                            <div class="w-20 h-24 rounded-full bg-[#0a0f1d] border-2 border-white/10 flex items-center justify-center mb-6 shadow-2xl group-hover:border-brand-accent transition-colors duration-300">
+                                <span class="text-3xl font-heading font-bold text-brand-accent">03</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-4 font-heading">UI/UX Wireframes</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed">
+                                We prototype the entire website or application structure to reveal what should reflect on the app pages. Prototyping is an important part of the UX & UI design service because it allows designers and clients to test their ideas in a real-world setting before investing time and resources in developing and implementing them. A prototype also enables the client to provide feedback on whether or not they understand the product, how they found it, and whether or not they would use it again in the future. This can significantly reduce development costs because bad ideas can be easily rejected at this stage rather than having to be scrapped after they have already been worked on.
+                            </p>
+                        </div>
+
+                        <div class="flex flex-col items-center text-center group">
+                            <div class="w-20 h-24 rounded-full bg-[#0a0f1d] border-2 border-white/10 flex items-center justify-center mb-6 shadow-2xl group-hover:border-brand-accent transition-colors duration-300">
+                                <span class="text-3xl font-heading font-bold text-brand-accent">04</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-4 font-heading">Prototype Testing</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed">
+                                Prototype Testing We offer clients early-stage opportunities to test the functionality of UI/UX before creating final designs. Creating informed design relies on understanding the user's needs and behavior. Understanding how users behave and think about a design is essential when it comes to User Experience.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="py-20 bg-[#050814] relative border-t border-white/5 text-center">
+            <div class="max-w-7xl mx-auto px-6">
+                <span class="text-xs font-mono font-bold text-brand-accent tracking-widest uppercase block mb-2">Systems Automation</span>
+                <h3 class="font-heading text-2xl md:text-3xl font-bold text-white mb-12">Our Design & Dynamic Prototyping Vector Environment</h3>
+                
+                <div class="flex flex-wrap justify-center items-center gap-10 md:gap-16">
+                    {designTools.map(icon => (
+                        <div class="flex flex-col items-center opacity-60 hover:opacity-100 hover:-translate-y-2 transition-all duration-300 cursor-pointer">
+                            <i class={`${icon} text-5xl md:text-6xl filter grayscale hover:grayscale-0 transition-all duration-300`}></i>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 bg-brand-dark border-t border-white/5">
+            <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                <div class="lg:col-span-7 space-y-6">
+                    <h2 class="font-heading text-3xl md:text-4xl font-bold text-white">UI/UX Best Practices</h2>
+                    <p class="text-slate-400 text-base leading-relaxed">
+                        Our studio establishes unified interactive systems. We implement structural grid layouts, standardized design patterns, and cross-platform responsive guidelines to maintain brand stability across web and mobile platforms.
+                    </p>
+                    <ul class="space-y-4 text-slate-300 font-medium">
+                        <li class="flex items-center gap-3">
+                            <span class="w-1.5 h-1.5 bg-brand-accent rounded-full"></span>
+                            Interactive wireframe verification passes before scripting code.
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="w-1.5 h-1.5 bg-brand-accent rounded-full"></span>
+                            Strict cognitive optimization loops to prevent design fatigue.
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="w-1.5 h-1.5 bg-brand-accent rounded-full"></span>
+                            Fully accessible color patterns built to AAA web accessibility specifications.
+                        </li>
+                    </ul>
+                </div>
+                <div class="lg:col-span-5">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-brand-accent/5 rounded-2xl transform translate-x-4 translate-y-4"></div>
+                        <img 
+                            src="/assets/ui/UX UI Design Agency In Nigeria.png" 
+                            alt="UX UI Best Practices Structural Graphics" 
+                            class="rounded-2xl relative z-10 w-full object-cover shadow-2xl border border-white/10"
+                        />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 bg-[#050814] border-t border-white/5">
+            <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="relative">
+                    <div class="absolute inset-0 bg-brand-accent/5 rounded-2xl transform -translate-x-4 translate-y-4"></div>
+                    <img 
+                        src="/assets/ui/Cost of UX UI Services.png" 
+                        alt="UX UI Services Cost Evaluation Diagram" 
+                        class="rounded-2xl relative z-10 w-full object-cover shadow-2xl border border-white/10"
+                    />
+                </div>
+                <div class="flex flex-col justify-center">
+                    <span class="text-xs font-mono font-bold text-brand-accent tracking-widest uppercase block mb-2">Budget Optimization</span>
+                    <h2 class="font-heading text-3xl md:text-4xl font-bold text-white mb-6">
+                        Cost of UX/UI Design Services
+                    </h2>
+                    <p class="text-slate-400 text-base leading-relaxed mb-6">
+                        Allocating early budgets to rigorous UX/UI design saves up to 50% of development resource waste. By optimizing interface flows before writing server APIs, engineering operations face minimal logic refactoring and code revisions post-launch.
+                    </p>
+                    <p class="text-slate-400 text-base leading-relaxed">
+                        At ZetaLogix, we construct production-ready wireframes and pixel-perfect interactive mockups tailored directly around your scaling requirements, ensuring structural code handoffs are completely clean and efficient.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <ContactForm />
+
+    </main>
+
+    <BottomBanner />
+    <Footer />
+</BaseLayout>
