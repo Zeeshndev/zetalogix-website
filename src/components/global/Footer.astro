@@ -1,6 +1,9 @@
 ---
 // src/components/global/Footer.astro
-const currentYear = new Date().getFullYear();
+const currentYear = 2021;
+// const currentYear = new Date().getFullYear();
+
+
 ---
 <footer class="bg-[#02040a] border-t border-white/10 pt-20 pb-10">
     <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
@@ -36,7 +39,7 @@ const currentYear = new Date().getFullYear();
             <address class="not-italic text-slate-400 text-sm leading-relaxed flex flex-col gap-2">
                 <span>Rawalpindi, Punjab</span>
                 <span>Pakistan</span>
-                <a href="mailto:contact@zetalogix.com" class="text-brand-accent hover:text-white mt-2">contact@zetalogix.com</a>
+                <a href="mailto:info@zetalogix.com" class="text-brand-accent hover:text-white mt-2">info@zetalogix.com</a>
             </address>
         </div>
     </div>
@@ -44,8 +47,9 @@ const currentYear = new Date().getFullYear();
     <div class="max-w-7xl mx-auto px-6 border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-slate-500">
         <p>&copy; {currentYear} ZetaLogix. All rights reserved.</p>
         <div class="flex gap-4 mt-4 md:mt-0">
-            <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
-        </div>
+    <a href="/privacy-policy" class="hover:text-white transition-colors">Privacy Policy</a>
+    <a href="/terms-of-service" class="hover:text-white transition-colors">Terms of Service</a>
+    <a href="/cookie-policy" class="hover:text-white transition-colors">Cookie Policy</a>
+</div>
     </div>
 </footer>

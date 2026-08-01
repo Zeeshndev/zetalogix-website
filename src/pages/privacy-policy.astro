@@ -1,0 +1,71 @@
+---
+// src/pages/privacy-policy.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/global/Navbar.astro';
+import Footer from '../components/global/Footer.astro';
+---
+
+<BaseLayout title="Privacy Policy | ZetaLogix">
+    <Navbar />
+    
+    <main class="pt-32 bg-brand-dark text-slate-300 min-h-screen relative overflow-hidden">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-brand-accent/5 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="max-w-4xl mx-auto px-6 py-12 relative z-10">
+            <div class="border-b border-white/10 pb-8 mb-12">
+                <h1 class="text-4xl md:text-5xl font-bold text-white font-heading mb-4">Privacy Policy</h1>
+                <p class="text-sm text-brand-accent font-mono uppercase tracking-wider">Last Updated: August 1, 2026</p>
+            </div>
+
+            <div class="space-y-10 text-base leading-relaxed text-slate-400">
+                <p>
+                    Thank you for choosing <span class="text-white font-semibold">ZetaLogix</span> for your bespoke software development and digital infrastructure needs. We are deeply committed to protecting your privacy and providing transparency regarding the collection, usage, and safety protocols governing your data. This Privacy Policy details how we manage information when you engage our high-performance web engineering, mobile development, custom applications, and artificial intelligence integration ecosystems.
+                </p>
+
+                <div class="bg-[#0a0f1d] border border-white/5 rounded-2xl p-6 md:p-8 space-y-4">
+                    <h2 class="text-xl font-bold text-white font-heading flex items-center gap-3">
+                        <span class="text-brand-accent font-mono text-sm">01.</span> Information We Collect
+                    </h2>
+                    <p>We process several channels of private and commercial identifiers to ensure reliable delivery of services:</p>
+                    <ul class="list-disc pl-6 space-y-2 text-slate-400">
+                        <li><strong class="text-slate-200">Personal Identifiers:</strong> Name, professional email address, phone network sequences, and corporate billing details.</li>
+                        <li><strong class="text-slate-200">Infrastructure Data:</strong> Telemetry regarding your host system, access duration, operational browsers, networking IP coordinates, and browsing behaviors.</li>
+                        <li><strong class="text-slate-200">Consultation Particulars:</strong> Technical scopes, mock blueprints, feature requirements, and communications shared with our engineering team during live technical assessment milestones.</li>
+                    </ul>
+                </div>
+
+                <div class="space-y-4">
+                    <h2 class="text-2xl font-bold text-white font-heading flex items-center gap-3">
+                        <span class="text-brand-accent font-mono text-base">02.</span> How We Use Your Information
+                    </h2>
+                    <p>ZetaLogix uses collected data strictly for architectural operations and validation exercises:</p>
+                    <ul class="list-none space-y-3 pl-2">
+                        <li class="flex gap-2"><span class="text-brand-accent">•</span> Operational deployment and engineering customization of your products.</li>
+                        <li class="flex gap-2"><span class="text-brand-accent">•</span> Systematic tracking and analysis of infrastructure loads to optimize performance tiers.</li>
+                        <li class="flex gap-2"><span class="text-brand-accent">•</span> Legal validation, enterprise compliance execution, and cybersecurity defensive monitoring.</li>
+                    </ul>
+                </div>
+
+                <div class="space-y-4">
+                    <h2 class="text-2xl font-bold text-white font-heading flex items-center gap-3">
+                        <span class="text-brand-accent font-mono text-base">03.</span> Data Storage and Security Measures
+                    </h2>
+                    <p>
+                        We utilize industry-standard cryptographic architectures, strict perimeter firewalls, and air-gapped secure development nodes to prevent unauthorized access, alteration, or distribution of sensitive database tables. Your source material and structural architectures are backed up globally on securely localized clusters. By interacting with our endpoints, you acknowledge and agree to these encrypted storage mechanics.
+                    </p>
+                </div>
+
+                <div class="space-y-4">
+                    <h2 class="text-2xl font-bold text-white font-heading flex items-center gap-3">
+                        <span class="text-brand-accent font-mono text-base">04.</span> Global Compliance & User Rights
+                    </h2>
+                    <p>
+                        ZetaLogix maintains active operational compliance parameters aligned with global data safety benchmarks, including the European Union's General Data Protection Regulation (<span class="text-white">GDPR</span>) and cross-border data protection architectures. Clients possess structural rights to request access records, data rectification updates, or permanent database erasure. For execution requests, reach out directly to our security officer at <a href="mailto:info@zetalogix.com" class="text-brand-accent hover:underline">info@zetalogix.com</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <Footer />
+</BaseLayout>

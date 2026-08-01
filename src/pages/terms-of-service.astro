@@ -1,0 +1,75 @@
+---
+// src/pages/terms-of-service.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/global/Navbar.astro';
+import Footer from '../components/global/Footer.astro';
+---
+
+<BaseLayout title="Terms of Service | ZetaLogix">
+    <Navbar />
+    
+    <main class="pt-32 bg-brand-dark text-slate-300 min-h-screen relative overflow-hidden">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-brand-accent/5 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="max-w-4xl mx-auto px-6 py-12 relative z-10">
+            <div class="border-b border-white/10 pb-8 mb-12">
+                <h1 class="text-4xl md:text-5xl font-bold text-white font-heading mb-4">Terms of Service</h1>
+                <p class="text-sm text-brand-accent font-mono uppercase tracking-wider">Last Updated: August 1, 2026</p>
+            </div>
+
+            <div class="space-y-10 text-base leading-relaxed text-slate-400">
+                <p>
+                    Welcome to <span class="text-white font-semibold">ZetaLogix</span>. These Terms of Service govern your relationship, access configurations, and agreement framework with ZetaLogix regarding custom system architecture, SaaS platforms, and enterprise software engineering. By engaging our endpoints or initiating a contract scope, you acknowledge and accept these operational conditions.
+                </p>
+
+                <div class="space-y-4">
+                    <h2 class="text-2xl font-bold text-white font-heading flex items-center gap-3">
+                        <span class="text-brand-accent font-mono text-base">01.</span> Project Timelines & Maximum Duration
+                    </h2>
+                    <p>
+                        All corporate software initiatives are bound to structured milestones specified within your explicit Statement of Work (SOW). Standard delivery timelines calculate operational engineering phases comprehensively. If external dependencies cause unexpected delays exceeding 90 consecutive calendar days without mutual scheduling updates, project timelines will undergo structural re-index review.
+                    </p>
+                </div>
+
+                <div class="space-y-4">
+                    <h2 class="text-2xl font-bold text-white font-heading flex items-center gap-3">
+                        <span class="text-brand-accent font-mono text-base">02.</span> Professional Engagements & Delays
+                    </h2>
+                    <p>
+                        To ensure high-performance product execution, clients must deliver timely assets, server testing authorizations, and feature specifications. Delays resulting from missing client feedback, unresolved third-party credentials, or delayed token approvals do not pause or drop fixed timeline schedules. Extended, unaccounted delays may require restructuring resource allocations to prevent infrastructure overhead.
+                    </p>
+                </div>
+
+                <div class="space-y-4">
+                    <h2 class="text-2xl font-bold text-white font-heading flex items-center gap-3">
+                        <span class="text-brand-accent font-mono text-base">03.</span> Intellectual Property & Escrow Protections
+                    </h2>
+                    <div class="bg-[#0a0f1d] border border-white/5 rounded-2xl p-6 space-y-3">
+                        <p class="text-white font-bold">Comprehensive Protection Guarantee:</p>
+                        <p class="text-sm">
+                            ZetaLogix guarantees strict corporate security, NDA protection, and code isolation across all project phases. All technical deliverables—including core repository architectures, custom component logic, backend cloud frameworks, design layers, and proprietary algorithms—remain under strict protective isolation. 
+                        </p>
+                        <p class="text-sm">
+                            Upon final contract completion and full invoice resolution, ownership rights, source code permissions, and runtime access deployment tokens transfer entirely and exclusively to the client.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <h2 class="text-2xl font-bold text-white font-heading flex items-center gap-3">
+                        <span class="text-brand-accent font-mono text-base">04.</span> Termination & Dispute Resolution
+                    </h2>
+                    <p>
+                        Either contractual party can initiate termination requests by submitting written notice 14 calendar days in advance if structural conditions are breached. In cases of cancellation prior to product delivery, all completed repository components and engineering blocks compiled up to that notice point will undergo billing calculation. Disputes arising from execution requirements will be resolved through professional mediation before pursuing regulatory legal channels.
+                    </p>
+                </div>
+
+                <div class="border-t border-white/10 pt-6 text-sm text-slate-500">
+                    For clear breakdowns regarding specialized master service provisions or runtime service parameters, reach out directly to our operations office at <a href="mailto:info@zetalogix.com" class="text-brand-accent hover:underline">info@zetalogix.com</a>.
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <Footer />
+</BaseLayout>
