@@ -1,9 +1,6 @@
 ---
 // src/components/global/Footer.astro
-const currentYear = 2021;
-// const currentYear = new Date().getFullYear();
-
-
+const currentYear = new Date().getFullYear();
 ---
 <footer class="bg-[#02040a] border-t border-white/10 pt-20 pb-10">
     <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
@@ -15,41 +12,58 @@ const currentYear = 2021;
         </div>
         
         <div>
-            <h4 class="text-white font-bold mb-6">Services</h4>
+            <h4 class="text-white font-bold mb-6 text-sm uppercase tracking-wider">Services</h4>
             <ul class="flex flex-col gap-3 text-slate-400 text-sm">
-                <li><a href="#" class="hover:text-brand-accent transition-colors">Web Development</a></li>
-                <li><a href="#" class="hover:text-brand-accent transition-colors">App Development</a></li>
-                <li><a href="#" class="hover:text-brand-accent transition-colors">AI Solutions</a></li>
-                <li><a href="#" class="hover:text-brand-accent transition-colors">UI/UX Design</a></li>
+                <li><a href="/services/web-development" class="hover:text-brand-accent transition-colors">Web Development</a></li>
+                <li><a href="/services/mobile-development" class="hover:text-brand-accent transition-colors">App Development</a></li>
+                <li><a href="/services/ai-solutions" class="hover:text-brand-accent transition-colors">AI Solutions</a></li>
+                <li><a href="/services/ui-ux-design" class="hover:text-brand-accent transition-colors">UI/UX Design</a></li>
+                <li><a href="/services/saas-development" class="hover:text-brand-accent transition-colors">SaaS Application Development</a></li>
+                <li><a href="/services/custom-software" class="hover:text-brand-accent transition-colors">Custom Software Development</a></li>
             </ul>
         </div>
 
         <div>
-            <h4 class="text-white font-bold mb-6">Company</h4>
+            <h4 class="text-white font-bold mb-6 text-sm uppercase tracking-wider">Engagement Models</h4>
             <ul class="flex flex-col gap-3 text-slate-400 text-sm">
-                <li><a href="#" class="hover:text-brand-accent transition-colors">About Us</a></li>
-                <li><a href="#" class="hover:text-brand-accent transition-colors">Portfolio</a></li>
-                <li><a href="#" class="hover:text-brand-accent transition-colors">Careers</a></li>
-                <li><a href="#" class="hover:text-brand-accent transition-colors">Contact</a></li>
+                <li><a href="/engagement/fixed-price" class="hover:text-brand-accent transition-colors">Fixed Price Projects</a></li>
+                <li><a href="/engagement/dedicated-team" class="hover:text-brand-accent transition-colors">Dedicated Team Model</a></li>
+                <li><a href="/engagement/offshore" class="hover:text-brand-accent transition-colors">Offshore Development Center</a></li>
             </ul>
         </div>
 
         <div>
-            <h4 class="text-white font-bold mb-6">Headquarters</h4>
-            <address class="not-italic text-slate-400 text-sm leading-relaxed flex flex-col gap-2">
-                <span>Islamabad, Pakistan</span>
-                <!-- <span>Pakistan</span> -->
-                <a href="mailto:info@zetalogix.com" class="text-brand-accent hover:text-white mt-2">info@zetalogix.com</a>
-            </address>
+            <h4 class="text-white font-bold mb-6 text-sm uppercase tracking-wider">Company</h4>
+            <ul class="flex flex-col gap-3 text-slate-400 text-sm">
+                <li><a href="/about" class="hover:text-brand-accent transition-colors">About Us</a></li>
+                <li><a href="/portfolio" class="hover:text-brand-accent transition-colors">Portfolio</a></li>
+                <li class="flex items-center gap-2">
+                    <a href="/careers" class="hover:text-brand-accent transition-colors">Careers</a>
+                    <span class="flex h-2 w-2 relative">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                    </span>
+                    <span class="text-[10px] font-mono uppercase tracking-wide px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-bold">Hiring</span>
+                </li>
+                <li><a href="/contact" class="hover:text-brand-accent transition-colors">Contact</a></li>
+            </ul>
+            
+            <div class="mt-8">
+                <h4 class="text-white font-bold mb-3 text-xs uppercase tracking-wider">Headquarters</h4>
+                <address class="not-italic text-slate-400 text-sm leading-relaxed flex flex-col gap-1">
+                    <span>Islamabad, Pakistan</span>
+                    <a href="mailto:info@zetalogix.com" class="text-brand-accent hover:text-white mt-1 text-xs font-mono">info@zetalogix.com</a>
+                </address>
+            </div>
         </div>
     </div>
     
     <div class="max-w-7xl mx-auto px-6 border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-slate-500">
         <p>&copy; {currentYear} ZetaLogix. All rights reserved.</p>
         <div class="flex gap-4 mt-4 md:mt-0">
-    <a href="/privacy-policy" class="hover:text-white transition-colors">Privacy Policy</a>
-    <a href="/terms-of-service" class="hover:text-white transition-colors">Terms of Service</a>
-    <a href="/cookie-policy" class="hover:text-white transition-colors">Cookie Policy</a>
-</div>
+            <a href="/privacy-policy" class="hover:text-white transition-colors">Privacy Policy</a>
+            <a href="/terms-of-service" class="hover:text-white transition-colors">Terms of Service</a>
+            <a href="/cookie-policy" class="hover:text-white transition-colors">Cookie Policy</a>
+        </div>
     </div>
 </footer>

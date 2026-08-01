@@ -1,0 +1,299 @@
+---
+// src/pages/careers.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/global/Navbar.astro';
+import Footer from '../components/global/Footer.astro';
+
+const openJobs = [
+  {
+    id: "full-stack",
+    title: "Full Stack Engineer (React & Node.js)",
+    department: "Engineering",
+    location: "Islamabad / Hybrid",
+    type: "Full-time",
+    experience: "3+ Years",
+    description: "We are looking for a versatile Full Stack Engineer to architect and build scalable web applications from the database to the user interface.",
+    requirements: [
+      "Deep expertise in React.js, Node.js, and Express.",
+      "Strong experience with relational (PostgreSQL) and NoSQL (MongoDB) databases.",
+      "Experience designing and implementing RESTful APIs and GraphQL.",
+      "Familiarity with cloud platforms (AWS/GCP) and CI/CD pipelines."
+    ]
+  },
+  {
+    id: "frontend-react",
+    title: "Frontend Engineer (React)",
+    department: "Engineering",
+    location: "Islamabad / Remote",
+    type: "Full-time",
+    experience: "2+ Years",
+    description: "Join our frontend team to craft highly interactive, performant, and pixel-perfect user interfaces using React.",
+    requirements: [
+      "Strong proficiency in JavaScript (ES6+), HTML5, and CSS3.",
+      "Extensive commercial experience building complex UIs with React.",
+      "Familiarity with state management libraries (Redux, Zustand, Context API).",
+      "Experience with responsive design and modern CSS frameworks (Tailwind CSS)."
+    ]
+  },
+  {
+    id: "nextjs-dev",
+    title: "Next.js Developer (Advanced Expertise)",
+    department: "Engineering",
+    location: "Remote",
+    type: "Full-time",
+    experience: "4+ Years",
+    description: "Lead the development of high-performance, SEO-optimized web platforms using Next.js and modern server-side rendering techniques.",
+    requirements: [
+      "Advanced knowledge of Next.js (App Router, SSR, SSG, API routes).",
+      "Expertise in JavaScript and modern React patterns.",
+      "Strong understanding of core web vitals, performance tuning, and SEO best practices.",
+      "Experience integrating headless CMS platforms and third-party APIs."
+    ]
+  }
+];
+---
+
+<BaseLayout title="Careers | ZetaLogix">
+    <Navbar />
+    
+    <main class="pt-32 bg-brand-dark text-slate-300 min-h-screen relative overflow-hidden">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-brand-accent/5 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="max-w-6xl mx-auto px-6 py-12 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <h1 class="text-4xl md:text-5xl font-bold text-white font-heading mb-6">Build the Future of <span class="text-brand-accent">Digital Intelligence</span></h1>
+                <p class="text-slate-400 text-lg leading-relaxed">
+                    At ZetaLogix, we partner with modern enterprises to engineer high-performance platforms. Explore our open configurations and deploy your career to the next tier.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+                
+                <div class="lg:col-span-7 space-y-6">
+                    <h2 class="text-2xl font-bold text-white font-heading mb-6 flex items-center gap-3">
+                        Open Positions <span class="text-xs px-2.5 py-1 rounded-full bg-brand-accent/10 text-brand-accent border border-brand-accent/20 font-mono">{openJobs.length} Available</span>
+                    </h2>
+
+                    {openJobs.map((job) => (
+                        <div class="bg-[#0a0f1d] border border-white/5 rounded-2xl p-6 md:p-8 hover:border-brand-accent/20 transition-all duration-300">
+                            <div class="flex flex-wrap items-start justify-between gap-4 mb-4">
+                                <div>
+                                    <h3 class="text-xl font-bold text-white font-heading mb-1">{job.title}</h3>
+                                    <div class="flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-500 font-medium">
+                                        <span class="text-brand-accent">{job.department}</span>
+                                        <span>📍 {job.location}</span>
+                                        <span>💼 {job.type}</span>
+                                        <span>⏱️ {job.experience}</span>
+                                    </div>
+                                </div>
+                                <button type="button" data-job-title={job.title} class="apply-trigger-btn px-5 py-2 bg-white/5 border border-white/10 hover:bg-brand-accent hover:text-brand-dark hover:border-brand-accent text-white text-xs font-bold rounded-lg transition-all">
+                                    Apply Now
+                                </button>
+                            </div>
+                            
+                            <p class="text-sm text-slate-400 leading-relaxed mb-6">{job.description}</p>
+                            
+                            <div class="border-t border-white/5 pt-4">
+                                <h4 class="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-3">Key Requirements:</h4>
+                                <ul class="space-y-2 text-sm text-slate-400">
+                                    {job.requirements.map((req) => (
+                                        <li class="flex items-start gap-2.5">
+                                            <span class="text-brand-accent mt-1 text-xs">✔</span>
+                                            <span>{req}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                <div id="apply-form-container" class="lg:col-span-5 bg-[#0a0f1d] border border-white/10 rounded-2xl p-6 md:p-8 shadow-2xl sticky top-28 scroll-mt-28">
+                    
+                    <div id="careers-success-block" class="hidden flex-col items-center text-center py-12 animate-fadeIn">
+                        <div class="w-16 h-16 bg-green-500/10 border border-green-500/20 rounded-full flex items-center justify-center mb-6 shadow-[0_0_20px_rgba(34,197,94,0.15)]">
+                            <svg class="w-8 h-8 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" /></svg>
+                        </div>
+                        <h2 class="text-2xl font-bold text-white font-heading mb-3">Application Submitted!</h2>
+                        <p class="text-slate-400 text-sm leading-relaxed max-w-xs mb-6">
+                            Thank you for applying. Our talent acquisition team will review your parameters and respond if there is a matching stack profile fit.
+                        </p>
+                        <button id="reset-careers-form-btn" class="px-6 py-2 bg-white/5 hover:bg-white/10 text-white rounded-lg border border-white/10 text-xs font-semibold transition-colors">
+                            Submit Another Application
+                        </button>
+                    </div>
+
+                    <div id="careers-form-wrapper">
+    <h2 class="text-2xl font-bold text-white font-heading mb-2">Submit Your Application</h2>
+    <p class="text-sm text-slate-400 mb-6">Select your target configuration and upload your CV parameters.</p>
+
+    <form id="careers-form" class="space-y-4" novalidate>
+        <div>
+            <select name="applied_position" id="job-select-field" class="validation-target w-full px-4 py-3 rounded-lg bg-[#121829] text-slate-300 border border-white/5 focus:border-brand-accent outline-none transition-colors text-sm cursor-pointer" required>
+                <option value="" disabled selected class="bg-[#0a0f1d] text-slate-500">Select Position*</option>
+                {openJobs.map(job => (
+                    <option value={job.title} class="bg-[#0a0f1d] text-white py-2">{job.title}</option>
+                ))}
+                <option value="General Application" class="bg-[#0a0f1d] text-white py-2">General Application / Future Openings</option>
+            </select>
+        </div>
+
+        <input type="text" name="name" placeholder="Full Name*" class="validation-target w-full bg-[#121829] border border-white/5 rounded-lg px-4 py-3 text-slate-300 placeholder-slate-500 focus:border-brand-accent focus:outline-none text-sm transition-colors" required />
+        <input type="email" name="email" placeholder="Email Address*" class="validation-target w-full bg-[#121829] border border-white/5 rounded-lg px-4 py-3 text-slate-300 placeholder-slate-500 focus:border-brand-accent focus:outline-none text-sm transition-colors" required />
+        <input type="tel" name="phone" placeholder="Phone Number" class="w-full bg-[#121829] border border-white/5 rounded-lg px-4 py-3 text-slate-300 placeholder-slate-500 focus:border-brand-accent focus:outline-none text-sm transition-colors" />
+        <input type="url" name="portfolio" placeholder="Portfolio / GitHub / LinkedIn Link" class="w-full bg-[#121829] border border-white/5 rounded-lg px-4 py-3 text-slate-300 placeholder-slate-500 focus:border-brand-accent focus:outline-none text-sm transition-colors" />
+        
+        <textarea name="cover_letter" rows="3" placeholder="Briefly introduce yourself or list core skills..." class="w-full bg-[#121829] border border-white/5 rounded-lg px-4 py-3 text-slate-300 placeholder-slate-500 focus:border-brand-accent focus:outline-none text-sm transition-colors resize-none"></textarea>
+
+        <div class="w-full">
+            <label id="file-upload-box" class="flex flex-col items-center justify-center w-full h-32 border-2 border-white/5 border-dashed rounded-lg cursor-pointer bg-brand-dark/50 hover:bg-brand-dark hover:border-brand-accent/40 transition-all p-4 text-center">
+                <svg class="w-8 h-8 text-slate-500 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" /></svg>
+                <span class="text-xs text-slate-400 font-medium file-label-txt">Upload CV / Resume* (PDF format max 5MB)</span>
+                <input type="file" name="attachment" class="hidden resume-file-input validation-target" accept=".pdf" required />
+            </label>
+        </div>
+
+        <button type="submit" id="submit-btn" class="w-full py-4 bg-brand-accent text-brand-dark font-bold text-sm rounded-lg hover:bg-white shadow-lg transition-colors flex items-center justify-center gap-2">
+            <span class="btn-text">Submit Application</span>
+        </button>
+        <p id="form-error-msg" class="hidden text-red-400 text-xs font-medium text-center mt-2">Please fill out all asterisk fields and attach your PDF resume.</p>
+    </form>
+</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <Footer />
+</BaseLayout>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const form = document.getElementById('careers-form') as HTMLFormElement;
+        if (!form) return;
+        
+        const formWrapper = document.getElementById('careers-form-wrapper');
+        const successBlock = document.getElementById('careers-success-block');
+        const resetBtn = document.getElementById('reset-careers-form-btn');
+        
+        const fileInput = form.querySelector('.resume-file-input') as HTMLInputElement;
+        const fileBox = document.getElementById('file-upload-box');
+        const fileLabel = form.querySelector('.file-label-txt');
+        const jobSelect = document.getElementById('job-select-field') as HTMLSelectElement;
+        const errorMsg = document.getElementById('form-error-msg');
+        const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+        const validationTargets = form.querySelectorAll('.validation-target');
+
+        fileInput?.addEventListener('change', () => {
+            if (fileInput.files && fileInput.files.length > 0) {
+                if (fileLabel) {
+                    fileLabel.textContent = `Attached: ${fileInput.files[0].name}`;
+                    fileLabel.classList.add('text-brand-accent');
+                }
+                fileBox?.classList.remove('border-red-500', 'bg-red-500/10');
+            }
+        });
+
+        document.querySelectorAll('.apply-trigger-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetJob = btn.getAttribute('data-job-title');
+                if (jobSelect && targetJob) {
+                    jobSelect.value = targetJob;
+                    jobSelect.classList.remove('border-red-500', 'bg-red-500/10');
+                }
+                document.getElementById('apply-form-container')?.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        validationTargets.forEach(input => {
+            const el = input as HTMLInputElement;
+            const clearError = () => {
+                if (el.value.trim() !== '') {
+                    el.classList.remove('border-red-500', 'bg-red-500/10');
+                    errorMsg?.classList.add('hidden');
+                }
+            };
+            el.addEventListener('input', clearError);
+            el.addEventListener('change', clearError);
+        });
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            let isValid = true;
+
+            validationTargets.forEach(input => {
+                const el = input as HTMLInputElement;
+                if (el.type !== 'file' && !el.value.trim()) {
+                    isValid = false;
+                    el.classList.add('border-red-500', 'bg-red-500/10');
+                }
+                if (el.type === 'file' && (!el.files || el.files.length === 0)) {
+                    isValid = false;
+                    fileBox?.classList.add('border-red-500', 'bg-red-500/10');
+                }
+            });
+
+            if (!isValid) {
+                errorMsg?.classList.remove('hidden');
+                return;
+            }
+
+            errorMsg?.classList.add('hidden');
+            const btnText = submitBtn.querySelector('.btn-text');
+            if (btnText) btnText.textContent = "Uploading Application...";
+            submitBtn.disabled = true;
+            submitBtn.classList.add('opacity-70', 'cursor-not-allowed');
+
+            const formData = new FormData(form);
+
+            try {
+                // Submit payload directly to our internal Resend API route
+                const response = await fetch('/api/apply', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (response.ok) {
+                    if (formWrapper && successBlock) {
+                        formWrapper.classList.add('hidden');
+                        successBlock.classList.remove('hidden');
+                        successBlock.classList.add('flex');
+                    }
+                    form.reset();
+                    if (fileLabel) {
+                        fileLabel.textContent = "Upload CV / Resume* (PDF format max 5MB)";
+                        fileLabel.classList.remove('text-brand-accent');
+                    }
+                } else {
+                    const result = await response.json();
+                    alert(`Submission Error: ${result.error || 'Server rejected request.'}`);
+                }
+            } catch (error) {
+                console.error('Submission processing failure:', error);
+                alert("Network framework error occurred during upload processing.");
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('opacity-70', 'cursor-not-allowed');
+                if (btnText) btnText.textContent = "Submit Application";
+            }
+        });
+
+        resetBtn?.addEventListener('click', () => {
+            if (formWrapper && successBlock) {
+                successBlock.classList.add('hidden');
+                successBlock.classList.remove('flex');
+                formWrapper.classList.remove('hidden');
+            }
+        });
+    });
+</script>
+
+<style>
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fadeIn {
+        animation: fadeIn 0.4s ease forwards;
+    }
+</style>

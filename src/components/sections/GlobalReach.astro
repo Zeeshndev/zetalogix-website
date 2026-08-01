@@ -1,0 +1,123 @@
+---
+// src/components/sections/GlobalReach.astro
+
+const regions = [
+  {
+    continent: "North America",
+    tagline: "Software Development in North America",
+    description: "Engineering scalable SaaS platforms and enterprise software solutions for startups and Fortune 500s across North American tech hubs.",
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`,
+    markets: [
+      { name: "United States", url: "/contact" },
+      { name: "Canada", url: "/contact" },
+      { name: "New York", url: "/contact" },
+      { name: "San Francisco", url: "/contact" },
+      { name: "Toronto", url: "/contact" }
+    ]
+  },
+  {
+    continent: "Europe",
+    tagline: "IT Consulting & Web Engineering in Europe",
+    description: "Partnering with European enterprises to deliver GDPR-compliant software architecture, digital transformation, and AI integrations.",
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>`,
+    markets: [
+      { name: "United Kingdom", url: "/contact" },
+      { name: "Germany", url: "/contact" },
+      { name: "France", url: "/contact" },
+      { name: "Switzerland", url: "/contact" },
+      { name: "Netherlands", url: "/contact" }
+    ]
+  },
+  {
+    continent: "Middle East & APAC",
+    tagline: "Custom App Development in APAC & MENA",
+    description: "Empowering fast-growing markets with cutting-edge mobile applications, fintech ecosystems, and robust cloud infrastructures.",
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>`,
+    markets: [
+      { name: "UAE (Dubai)", url: "/contact" },
+      { name: "Saudi Arabia", url: "/contact" },
+      { name: "Singapore", url: "/contact" },
+      { name: "Australia", url: "/contact" },
+      { name: "Japan", url: "/contact" }
+    ]
+  },
+  {
+    continent: "Africa",
+    tagline: "Tech Innovation & Outsourcing in Africa",
+    description: "Building the next generation of digital marketplaces and providing dedicated offshore development teams to scale your operations.",
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>`,
+    markets: [
+      { name: "South Africa", url: "/contact" },
+      { name: "Nigeria", url: "/contact" },
+      { name: "Kenya", url: "/contact" },
+      { name: "Egypt", url: "/contact" },
+      { name: "Ghana", url: "/contact" }
+    ]
+  }
+];
+---
+
+<section id="global-reach" class="py-24 lg:py-32 bg-[#02040a] relative border-t border-white/5 overflow-hidden">
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-brand-accent/5 rounded-full blur-[120px] pointer-events-none z-0"></div>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+            <div class="max-w-3xl">
+                <h2 class="font-heading text-sm font-bold tracking-widest text-brand-glow uppercase mb-4 flex items-center gap-2">
+                    <span class="w-8 h-px bg-brand-glow"></span> Global Reach
+                </h2>
+                <h3 class="font-heading text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
+                    Delivering Engineering Excellence <br class="hidden md:block" />
+                    <span class="text-brand-accent">Across the Globe.</span>
+                </h3>
+                <p class="text-slate-400 text-lg leading-relaxed">
+                    Distance is not a barrier to quality. We operate seamlessly across time zones, providing world-class software development, UI/UX design, and AI solutions to clients worldwide.
+                </p>
+            </div>
+            <a href="/contact" class="inline-flex items-center pb-1 border-b border-white/20 text-white hover:text-brand-accent hover:border-brand-accent transition-all text-sm font-bold uppercase tracking-wider shrink-0">
+                Partner With Us
+                <svg class="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+            {regions.map((region) => (
+                <div class="group bg-[#0a0f1d] border border-white/5 rounded-3xl p-8 hover:border-brand-accent/30 hover:bg-[#0f172a] transition-all duration-500 shadow-2xl relative overflow-hidden">
+                    
+                    <div class="absolute inset-0 bg-gradient-to-br from-brand-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-brand-accent mb-6 group-hover:scale-110 transition-transform duration-500">
+                            <div set:html={region.icon} />
+                        </div>
+                        
+                        <h4 class="font-heading text-2xl font-bold text-white mb-2 group-hover:text-brand-glow transition-colors">
+                            {region.continent}
+                        </h4>
+                        
+                        <h5 class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-4">
+                            {region.tagline}
+                        </h5>
+
+                        <p class="text-slate-400 text-sm leading-relaxed mb-8 min-h-[60px]">
+                            {region.description}
+                        </p>
+
+                        <div class="pt-6 border-t border-white/5">
+                            <p class="text-xs text-slate-500 mb-3 font-semibold uppercase tracking-wider">Key Markets</p>
+                            <div class="flex flex-wrap gap-2">
+                                {region.markets.map((market) => (
+                                    <a href={market.url} class="inline-flex items-center px-3 py-1.5 rounded-lg bg-white/5 border border-white/5 text-xs text-slate-300 hover:bg-brand-accent hover:text-[#0a0f1d] hover:border-brand-accent transition-colors font-medium">
+                                        {market.name}
+                                    </a>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            ))}
+        </div>
+
+    </div>
+</section>
