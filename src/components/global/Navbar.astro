@@ -2,6 +2,14 @@
 // src/components/global/Navbar.astro
 ---
 
+<style is:global>
+    html, body {
+        overflow-x: hidden;
+        width: 100%;
+        position: relative;
+    }
+</style>
+
 <nav class="fixed w-full z-50 top-0 transition-all duration-300 bg-brand-dark/90 backdrop-blur-lg border-b border-white/5">
     <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between relative">
         
@@ -118,11 +126,115 @@
             </a>
         </div>
 
-        <button class="md:hidden text-white focus:outline-none">
-            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+        <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none p-2 relative z-[70]">
+            <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
         </button>
     </div>
 </nav>
+
+<div id="mobile-menu" class="fixed inset-0 bg-[#050814]/95 backdrop-blur-2xl z-[100] transform translate-x-full transition-transform duration-300 overflow-y-auto w-full h-full md:hidden">
+    <div class="flex items-center justify-between px-6 h-20 border-b border-white/10">
+        <a href="/" class="font-heading font-bold text-2xl tracking-tighter text-white">
+            ZETA<span class="text-brand-accent">LOGIX</span>
+        </a>
+        <button id="mobile-close-btn" class="text-white p-2 focus:outline-none">
+            <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+        </button>
+    </div>
+
+    <div class="flex flex-col px-6 py-8 space-y-6">
+        
+        <div class="border-b border-white/10 pb-4">
+            <button class="mobile-accordion-btn flex items-center justify-between w-full text-lg font-bold text-white mb-2" aria-controls="mobile-services">
+                Services
+                <svg class="accordion-icon w-5 h-5 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+            </button>
+            <div id="mobile-services" class="hidden flex-col pl-4 space-y-4 mt-4 border-l border-brand-accent/30">
+                <a href="/services/saas-development" class="mobile-link text-slate-400 hover:text-brand-accent text-sm">SaaS Application Development</a>
+                <a href="/services/custom-software" class="mobile-link text-slate-400 hover:text-brand-accent text-sm">Custom Software Development</a>
+                <a href="/services/mobile-development" class="mobile-link text-slate-400 hover:text-brand-accent text-sm">Mobile Application Development</a>
+                <a href="/services/web-development" class="mobile-link text-slate-400 hover:text-brand-accent text-sm">Web Development</a>
+                <a href="/services/ui-ux-design" class="mobile-link text-slate-400 hover:text-brand-accent text-sm">UI/UX Design Services</a>
+                <a href="/services/ai-solutions" class="mobile-link text-slate-400 hover:text-brand-accent text-sm">AI Solutions</a>
+            </div>
+        </div>
+
+        <div class="border-b border-white/10 pb-4">
+            <button class="mobile-accordion-btn flex items-center justify-between w-full text-lg font-bold text-white mb-2" aria-controls="mobile-engagement">
+                Engagement Models
+                <svg class="accordion-icon w-5 h-5 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+            </button>
+            <div id="mobile-engagement" class="hidden flex-col pl-4 space-y-4 mt-4 border-l border-brand-accent/30">
+                <a href="/engagement/fixed-price" class="mobile-link text-slate-400 hover:text-brand-accent text-sm">Fixed Price Projects</a>
+                <a href="/engagement/offshore" class="mobile-link text-slate-400 hover:text-brand-accent text-sm">Offshore Development Center</a>
+                <a href="/engagement/dedicated-team" class="mobile-link text-slate-400 hover:text-brand-accent text-sm">Dedicated Team-model</a>
+            </div>
+        </div>
+
+        <div class="border-b border-white/10 pb-4">
+            <a href="/portfolio" class="mobile-link block text-lg font-bold text-white w-full">Portfolio</a>
+        </div>
+        
+        <div class="pt-6">
+            <a href="/contact" class="mobile-link btn-blink flex justify-center w-full py-4 text-white font-bold text-sm rounded-full transition-all tracking-wide">
+                Get a Free Quote
+            </a>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const closeBtn = document.getElementById('mobile-close-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        const accordions = document.querySelectorAll('.mobile-accordion-btn');
+
+        // Open Menu
+        if(menuBtn && mobileMenu) {
+            menuBtn.addEventListener('click', () => {
+                mobileMenu.classList.remove('translate-x-full');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling when menu is open
+            });
+        }
+
+        // Close Menu
+        if(closeBtn && mobileMenu) {
+            closeBtn.addEventListener('click', () => {
+                mobileMenu.classList.add('translate-x-full');
+                document.body.style.overflow = ''; // Restore background scrolling
+            });
+        }
+
+        // Close Menu when a link is clicked
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('translate-x-full');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Mobile Accordion Logic
+        accordions.forEach(acc => {
+            acc.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = acc.getAttribute('aria-controls');
+                if(!targetId) return;
+                
+                const target = document.getElementById(targetId);
+                const icon = acc.querySelector('.accordion-icon');
+                
+                if(target && icon) {
+                    target.classList.toggle('hidden');
+                    target.classList.toggle('flex');
+                    icon.classList.toggle('rotate-180');
+                }
+            });
+        });
+    });
+</script>
 
 <style>
     .btn-blink {
