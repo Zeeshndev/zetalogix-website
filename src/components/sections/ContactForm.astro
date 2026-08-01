@@ -44,7 +44,7 @@ const sortedCountries = countries.sort((a, b) => a.n.localeCompare(b.n));
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             
             <div class="lg:col-span-7 bg-[#0a0f1d] border border-white/10 rounded-2xl p-8 md:p-10 shadow-2xl relative z-10">
-                <form id="contact-form" class="flex flex-col gap-6" novalidate>
+                <form class="zeta-contact-form flex flex-col gap-6" novalidate>
                     
                     <input type="text" name="name" placeholder="Full Name*" class="validation-target w-full bg-brand-dark border border-white/10 rounded-lg px-4 py-3.5 text-slate-300 placeholder-slate-500 focus:outline-none focus:border-brand-accent transition-colors" />
                     <input type="email" name="email" placeholder="Email*" class="validation-target w-full bg-brand-dark border border-white/10 rounded-lg px-4 py-3.5 text-slate-300 placeholder-slate-500 focus:outline-none focus:border-brand-accent transition-colors" />
@@ -64,7 +64,7 @@ const sortedCountries = countries.sort((a, b) => a.n.localeCompare(b.n));
                             <div class="p-3 border-b border-white/10 bg-[#0f172a] sticky top-0 z-20">
                                 <div class="relative">
                                     <svg class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
-                                    <input type="text" id="country-search" placeholder="Search country..." class="w-full bg-brand-dark border border-white/10 rounded-md pl-9 pr-3 py-2 text-sm text-slate-300 placeholder-slate-500 focus:outline-none focus:border-brand-accent transition-colors" />
+                                    <input type="text" class="country-search w-full bg-brand-dark border border-white/10 rounded-md pl-9 pr-3 py-2 text-sm text-slate-300 placeholder-slate-500 focus:outline-none focus:border-brand-accent transition-colors" placeholder="Search country..." />
                                 </div>
                             </div>
 
@@ -142,14 +142,13 @@ const sortedCountries = countries.sort((a, b) => a.n.localeCompare(b.n));
                             <input type="file" name="files" class="hidden" multiple accept="image/*,.pdf,.doc,.docx" />
                         </label>
                         
-                        <div class="flex flex-col items-end gap-2 w-full sm:w-auto">
-                            <button id="submit-btn" type="submit" class="w-full sm:w-auto px-10 py-3.5 bg-brand-accent text-brand-dark font-bold rounded-lg hover:bg-white transition-colors duration-300 shadow-lg flex items-center justify-center gap-2">
-                                <span class="btn-text">Submit</span>
-                                <svg class="loading-spinner hidden w-5 h-5 animate-spin text-brand-dark" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
-                            </button>
-                            <p id="form-error-msg" class="hidden text-red-400 text-sm font-medium text-center md:text-right w-full">Please fill out all required fields.</p>
-                        </div>
+                        <button type="submit" class="submit-btn w-full sm:w-auto px-10 py-3.5 bg-brand-accent text-brand-dark font-bold rounded-lg hover:bg-white transition-colors duration-300 shadow-lg flex items-center justify-center gap-2">
+                            <span class="btn-text">Submit</span>
+                            <svg class="loading-spinner hidden w-5 h-5 animate-spin text-brand-dark" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+                        </button>
                     </div>
+                    
+                    <p class="form-error-msg hidden text-red-400 text-sm font-medium text-center sm:text-right mt-1 w-full">Please fill out all required fields.</p>
                 </form>
             </div>
 
@@ -206,136 +205,11 @@ const sortedCountries = countries.sort((a, b) => a.n.localeCompare(b.n));
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        
-        // --- 1. Country Dropdown & Search Logic ---
-        const countryBtn = document.querySelector('.group-country .custom-select-btn');
-        const countryList = document.querySelector('.group-country .custom-select-list');
-        const countryArrow = document.querySelector('.group-country .icon-arrow');
-        const flagSpan = document.querySelector('.group-country .selected-flag');
-        const codeSpan = document.querySelector('.group-country .selected-code');
-        const hiddenCountryInput = document.querySelector('.group-country .hidden-input') as HTMLInputElement;
-        const countryOptions = document.querySelectorAll('.country-option');
-        const searchInput = document.getElementById('country-search') as HTMLInputElement;
+        // Find ALL instances of the form on the page (modal, footer, contact page, etc)
+        const contactForms = document.querySelectorAll('.zeta-contact-form');
 
-        if(countryBtn && countryList) {
-            // Toggle dropdown
-            countryBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                closeAllDropdowns(countryList);
-                countryList.classList.toggle('opacity-0');
-                countryList.classList.toggle('invisible');
-                countryArrow?.classList.toggle('rotate-180');
-                
-                // Focus the search bar automatically when opened
-                if (!countryList.classList.contains('invisible') && searchInput) {
-                    setTimeout(() => searchInput.focus(), 100);
-                }
-            });
-
-            // Stop click inside search bar from closing the dropdown
-            searchInput?.addEventListener('click', (e) => {
-                e.stopPropagation();
-            });
-
-            // Live Search Filtering
-            searchInput?.addEventListener('input', (e) => {
-                const term = (e.target as HTMLInputElement).value.toLowerCase();
-                
-                countryOptions.forEach(opt => {
-                    const countryName = opt.getAttribute('data-name') || '';
-                    const countryCode = opt.getAttribute('data-code') || '';
-                    
-                    if(countryName.includes(term) || countryCode.includes(term)) {
-                        (opt as HTMLElement).style.display = 'flex';
-                    } else {
-                        (opt as HTMLElement).style.display = 'none';
-                    }
-                });
-            });
-
-            // Handle selecting a country
-            countryOptions.forEach(option => {
-                option.addEventListener('click', () => {
-                    const code = option.getAttribute('data-code');
-                    const flag = option.getAttribute('data-flag');
-                    
-                    if(codeSpan && flagSpan && hiddenCountryInput) {
-                        codeSpan.textContent = code;
-                        flagSpan.textContent = flag;
-                        hiddenCountryInput.value = code || '';
-                    }
-
-                    // Reset search field and unhide all options
-                    if(searchInput) searchInput.value = '';
-                    countryOptions.forEach(opt => (opt as HTMLElement).style.display = 'flex');
-
-                    // Close list
-                    countryList.classList.add('opacity-0', 'invisible');
-                    countryArrow?.classList.remove('rotate-180');
-                });
-            });
-        }
-
-        // --- 2. Standard Dropdowns (Budget, Source, Engagement) ---
-        const standardDropdowns = document.querySelectorAll('.custom-dropdown');
-
-        standardDropdowns.forEach(dropdown => {
-            const btn = dropdown.querySelector('.custom-select-btn');
-            const list = dropdown.querySelector('.custom-select-list');
-            const arrow = dropdown.querySelector('.icon-arrow');
-            const textSpan = dropdown.querySelector('.selected-text');
-            const hiddenInput = dropdown.querySelector('.hidden-input') as HTMLInputElement;
-            const options = dropdown.querySelectorAll('.custom-option');
-
-            if(btn && list) {
-                btn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    closeAllDropdowns(list);
-                    list.classList.toggle('opacity-0');
-                    list.classList.toggle('invisible');
-                    arrow?.classList.toggle('rotate-180');
-                    btn.classList.toggle('border-brand-accent');
-                });
-
-                options.forEach(option => {
-                    option.addEventListener('click', () => {
-                        const val = option.getAttribute('data-value');
-                        const txt = option.textContent;
-                        
-                        if(textSpan && hiddenInput) {
-                            textSpan.textContent = txt;
-                            textSpan.classList.remove('text-slate-500');
-                            textSpan.classList.add('text-slate-300'); 
-                            hiddenInput.value = val || '';
-
-                            // LIVE VALIDATION CLEAR: Remove red outline immediately upon selection
-                            btn.classList.remove('border-red-500', 'bg-red-500/10');
-                            btn.classList.add('border-white/10', 'bg-brand-dark');
-                            document.getElementById('form-error-msg')?.classList.add('hidden');
-                        }
-
-                        // Close list
-                        list.classList.add('opacity-0', 'invisible');
-                        arrow?.classList.remove('rotate-180');
-                        btn.classList.remove('border-brand-accent');
-                    });
-                });
-            }
-        });
-
-        // LIVE VALIDATION CLEAR: Remove red outline on text inputs when typing
-        document.querySelectorAll('input.validation-target').forEach(input => {
-            input.addEventListener('input', () => {
-                if((input as HTMLInputElement).value.trim() !== '') {
-                    input.classList.remove('border-red-500', 'bg-red-500/10');
-                    input.classList.add('border-white/10', 'bg-brand-dark');
-                    document.getElementById('form-error-msg')?.classList.add('hidden');
-                }
-            });
-        });
-
-        // --- 3. Global Close Logic ---
-        function closeAllDropdowns(exceptList = null) {
+        // --- FIXED: Added type annotation 'Element | null' to resolve TypeScript errors ---
+        function closeAllDropdowns(exceptList: Element | null = null) {
             document.querySelectorAll('.custom-select-list').forEach(list => {
                 if(list !== exceptList) {
                     list.classList.add('opacity-0', 'invisible');
@@ -351,89 +225,194 @@ const sortedCountries = countries.sort((a, b) => a.n.localeCompare(b.n));
             });
         }
 
-        document.addEventListener('click', () => {
-            closeAllDropdowns();
-        });
+        document.addEventListener('click', () => closeAllDropdowns());
 
-        // --- 4. Form Submission API Integration & Validation ---
-        const form = document.getElementById('contact-form') as HTMLFormElement;
-        const submitBtn = document.getElementById('submit-btn');
+        // Loop through each form individually so JS logic doesn't overlap
+        contactForms.forEach(form => {
+            
+            // --- 1. Country Dropdown & Search Logic (Scoped to current form) ---
+            const countryBtn = form.querySelector('.group-country .custom-select-btn');
+            const countryList = form.querySelector('.group-country .custom-select-list');
+            const countryArrow = form.querySelector('.group-country .icon-arrow');
+            const flagSpan = form.querySelector('.group-country .selected-flag');
+            const codeSpan = form.querySelector('.group-country .selected-code');
+            const hiddenCountryInput = form.querySelector('.group-country .hidden-input') as HTMLInputElement;
+            const countryOptions = form.querySelectorAll('.country-option');
+            const searchInput = form.querySelector('.country-search') as HTMLInputElement;
 
-        if (form && submitBtn) {
-            form.addEventListener('submit', async (e) => {
-                e.preventDefault(); // Stop default browser reload
-                
-                let isValid = true;
-                const errorMsg = document.getElementById('form-error-msg');
-                
-                // Validate Text Inputs (Name, Email)
-                ['name', 'email'].forEach(fieldName => {
-                    const input = form.querySelector(`input[name="${fieldName}"]`) as HTMLInputElement;
-                    if (input && !input.value.trim()) {
-                        isValid = false;
-                        input.classList.remove('border-white/10', 'bg-brand-dark');
-                        input.classList.add('border-red-500', 'bg-red-500/10');
+            if(countryBtn && countryList) {
+                countryBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    closeAllDropdowns(countryList);
+                    countryList.classList.toggle('opacity-0');
+                    countryList.classList.toggle('invisible');
+                    countryArrow?.classList.toggle('rotate-180');
+                    
+                    if (!countryList.classList.contains('invisible') && searchInput) {
+                        setTimeout(() => searchInput.focus(), 100);
                     }
                 });
 
-                // Validate Custom Dropdowns (Source, Budget, Engagement)
-                ['source', 'budget', 'engagement'].forEach(fieldName => {
-                    const hidden = form.querySelector(`input[name="${fieldName}"]`) as HTMLInputElement;
-                    if (hidden && !hidden.value.trim()) {
-                        isValid = false;
-                        const btn = hidden.closest('.custom-dropdown')?.querySelector('.custom-select-btn');
-                        if (btn) {
-                            btn.classList.remove('border-white/10', 'bg-brand-dark', 'border-brand-accent');
-                            btn.classList.add('border-red-500', 'bg-red-500/10');
+                searchInput?.addEventListener('click', (e) => e.stopPropagation());
+
+                searchInput?.addEventListener('input', (e) => {
+                    const term = (e.target as HTMLInputElement).value.toLowerCase();
+                    countryOptions.forEach(opt => {
+                        const countryName = opt.getAttribute('data-name') || '';
+                        const countryCode = opt.getAttribute('data-code') || '';
+                        (opt as HTMLElement).style.display = (countryName.includes(term) || countryCode.includes(term)) ? 'flex' : 'none';
+                    });
+                });
+
+                countryOptions.forEach(option => {
+                    option.addEventListener('click', () => {
+                        const code = option.getAttribute('data-code');
+                        const flag = option.getAttribute('data-flag');
+                        
+                        if(codeSpan && flagSpan && hiddenCountryInput) {
+                            codeSpan.textContent = code;
+                            flagSpan.textContent = flag;
+                            hiddenCountryInput.value = code || '';
                         }
-                    }
+                        if(searchInput) searchInput.value = '';
+                        countryOptions.forEach(opt => (opt as HTMLElement).style.display = 'flex');
+                        countryList.classList.add('opacity-0', 'invisible');
+                        countryArrow?.classList.remove('rotate-180');
+                    });
                 });
+            }
 
-                // Stop submission if validation failed
-                if (!isValid) {
-                    errorMsg?.classList.remove('hidden');
-                    return; 
-                }
+            // --- 2. Standard Dropdowns (Budget, Source, Engagement) (Scoped) ---
+            const standardDropdowns = form.querySelectorAll('.custom-dropdown');
 
-                // If valid, Proceed with Submission
-                const btnText = submitBtn.querySelector('.btn-text') as HTMLElement;
-                const spinner = submitBtn.querySelector('.loading-spinner');
-                
-                const originalText = btnText.innerText;
-                btnText.innerText = 'Sending...';
-                spinner?.classList.remove('hidden');
-                submitBtn.classList.add('opacity-70', 'cursor-not-allowed');
-                (submitBtn as HTMLButtonElement).disabled = true;
-                
-                const formData = new FormData(form);
+            standardDropdowns.forEach(dropdown => {
+                const btn = dropdown.querySelector('.custom-select-btn');
+                const list = dropdown.querySelector('.custom-select-list');
+                const arrow = dropdown.querySelector('.icon-arrow');
+                const textSpan = dropdown.querySelector('.selected-text');
+                const hiddenInput = dropdown.querySelector('.hidden-input') as HTMLInputElement;
+                const options = dropdown.querySelectorAll('.custom-option');
 
-                try {
-                    // Send to your existing Astro API route
-                    const response = await fetch('/api/contact', {
-                        method: 'POST',
-                        body: formData, 
+                if(btn && list) {
+                    btn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        closeAllDropdowns(list);
+                        list.classList.toggle('opacity-0');
+                        list.classList.toggle('invisible');
+                        arrow?.classList.toggle('rotate-180');
+                        btn.classList.toggle('border-brand-accent');
                     });
 
-                    const result = await response.json();
+                    options.forEach(option => {
+                        option.addEventListener('click', () => {
+                            if(textSpan && hiddenInput) {
+                                textSpan.textContent = option.textContent;
+                                textSpan.classList.remove('text-slate-500');
+                                textSpan.classList.add('text-slate-300'); 
+                                hiddenInput.value = option.getAttribute('data-value') || '';
 
-                    if (response.ok) {
-                        // SUCCESS! Redirect to the brand new Thank You page
-                        window.location.href = '/thank-you';
-                    } else {
-                        alert(`Error: ${result.error}`);
-                        btnText.innerText = originalText;
-                        spinner?.classList.add('hidden');
-                    }
-                } catch (error) {
-                    console.error('Submission Error:', error);
-                    alert('There was a problem sending your message. Please try again.');
-                    btnText.innerText = originalText;
-                    spinner?.classList.add('hidden');
-                } finally {
-                    submitBtn.classList.remove('opacity-70', 'cursor-not-allowed');
-                    (submitBtn as HTMLButtonElement).disabled = false;
+                                // Remove validation error state on select
+                                btn.classList.remove('border-red-500', 'bg-red-500/10');
+                                btn.classList.add('border-white/10', 'bg-brand-dark');
+                                form.querySelector('.form-error-msg')?.classList.add('hidden');
+                            }
+                            list.classList.add('opacity-0', 'invisible');
+                            arrow?.classList.remove('rotate-180');
+                            btn.classList.remove('border-brand-accent');
+                        });
+                    });
                 }
             });
-        }
+
+            // LIVE VALIDATION CLEAR: Remove red outline on typing
+            form.querySelectorAll('input.validation-target').forEach(input => {
+                input.addEventListener('input', () => {
+                    if((input as HTMLInputElement).value.trim() !== '') {
+                        input.classList.remove('border-red-500', 'bg-red-500/10');
+                        input.classList.add('border-white/10', 'bg-brand-dark');
+                        form.querySelector('.form-error-msg')?.classList.add('hidden');
+                    }
+                });
+            });
+
+            // --- 3. Form Submission Validation (Scoped) ---
+            const submitBtn = form.querySelector('.submit-btn');
+
+            if (submitBtn) {
+                form.addEventListener('submit', async (e) => {
+                    e.preventDefault(); // Stop default browser reload
+                    
+                    let isValid = true;
+                    const errorMsg = form.querySelector('.form-error-msg');
+                    
+                    // Validate Text Inputs (Name, Email)
+                    ['name', 'email'].forEach(fieldName => {
+                        const input = form.querySelector(`input[name="${fieldName}"]`) as HTMLInputElement;
+                        if (input && !input.value.trim()) {
+                            isValid = false;
+                            input.classList.remove('border-white/10', 'bg-brand-dark');
+                            input.classList.add('border-red-500', 'bg-red-500/10');
+                        }
+                    });
+
+                    // Validate Custom Dropdowns
+                    ['source', 'budget', 'engagement'].forEach(fieldName => {
+                        const hidden = form.querySelector(`input[name="${fieldName}"]`) as HTMLInputElement;
+                        if (hidden && !hidden.value.trim()) {
+                            isValid = false;
+                            const btn = hidden.closest('.custom-dropdown')?.querySelector('.custom-select-btn');
+                            if (btn) {
+                                btn.classList.remove('border-white/10', 'bg-brand-dark', 'border-brand-accent');
+                                btn.classList.add('border-red-500', 'bg-red-500/10');
+                            }
+                        }
+                    });
+
+                    // Stop submission if validation failed
+                    if (!isValid) {
+                        errorMsg?.classList.remove('hidden');
+                        return; 
+                    }
+
+                    // If valid, Proceed with Submission
+                    const btnText = submitBtn.querySelector('.btn-text') as HTMLElement;
+                    const spinner = submitBtn.querySelector('.loading-spinner');
+                    
+                    const originalText = btnText.innerText;
+                    btnText.innerText = 'Sending...';
+                    spinner?.classList.remove('hidden');
+                    submitBtn.classList.add('opacity-70', 'cursor-not-allowed');
+                    (submitBtn as HTMLButtonElement).disabled = true;
+                    
+                    const formData = new FormData(form as HTMLFormElement);
+
+                    try {
+                        // Send to API
+                        const response = await fetch('/api/contact', {
+                            method: 'POST',
+                            body: formData, 
+                        });
+
+                        const result = await response.json();
+
+                        if (response.ok) {
+                            window.location.href = '/thank-you';
+                        } else {
+                            alert(`Error: ${result.error}`);
+                            btnText.innerText = originalText;
+                            spinner?.classList.add('hidden');
+                        }
+                    } catch (error) {
+                        console.error('Submission Error:', error);
+                        alert('There was a problem sending your message. Please try again.');
+                        btnText.innerText = originalText;
+                        spinner?.classList.add('hidden');
+                    } finally {
+                        submitBtn.classList.remove('opacity-70', 'cursor-not-allowed');
+                        (submitBtn as HTMLButtonElement).disabled = false;
+                    }
+                });
+            }
+        });
     });
 </script>

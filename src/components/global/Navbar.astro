@@ -198,7 +198,7 @@ import ContactForm from '../sections/ContactForm.astro';
     
     <div id="quote-modal-backdrop" class="absolute inset-0 bg-[#02040a]/90 backdrop-blur-sm cursor-pointer"></div>
     
-    <div id="quote-modal-card" class="relative w-full max-w-4xl transform scale-95 transition-transform duration-300 z-10 max-h-[90vh] overflow-y-auto custom-scrollbar rounded-3xl bg-brand-dark border border-white/10">
+    <div id="quote-modal-card" class="relative w-full max-w-5xl transform scale-95 transition-transform duration-300 z-10 max-h-[95vh] overflow-y-auto custom-scrollbar rounded-3xl bg-brand-dark border border-white/10">
         
         <button id="quote-modal-close" class="absolute top-6 right-6 text-slate-400 hover:text-white transition-colors z-[210] focus:outline-none bg-white/5 hover:bg-white/10 rounded-full p-2">
             <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
@@ -212,14 +212,14 @@ import ContactForm from '../sections/ContactForm.astro';
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // Elements for Mobile Menu (Added 'as HTMLElement' to fix TS errors)
+        // Elements for Mobile Menu
         const menuBtn = document.getElementById('mobile-menu-btn');
         const closeMenuBtn = document.getElementById('mobile-close-btn');
         const mobileMenu = document.getElementById('mobile-menu') as HTMLElement;
         const mobileLinks = document.querySelectorAll('.mobile-link');
         const accordions = document.querySelectorAll('.mobile-accordion-btn');
 
-        // Elements for Modal (Added 'as HTMLElement' to fix TS errors)
+        // Elements for Modal
         const modal = document.getElementById('quote-modal') as HTMLElement;
         const modalBackdrop = document.getElementById('quote-modal-backdrop');
         const modalCard = document.getElementById('quote-modal-card') as HTMLElement;
@@ -335,5 +335,16 @@ import ContactForm from '../sections/ContactForm.astro';
     }
     .custom-scrollbar::-webkit-scrollbar-thumb:hover {
         background: rgba(255, 255, 255, 0.2);
+    }
+
+    /* MODAL OVERRIDES:
+      Because we are importing a massive page component <ContactForm />, 
+      we need to override its padding and borders so it looks good inside a popup modal 
+    */
+    .modal-embedded-form > section {
+        padding-top: 3rem !important;
+        padding-bottom: 3rem !important;
+        border-top: none !important;
+        background-color: transparent !important;
     }
 </style>
