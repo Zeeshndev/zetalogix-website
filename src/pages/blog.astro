@@ -1,0 +1,79 @@
+---
+// src/pages/blog.astro
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/global/Navbar.astro';
+import Footer from '../components/global/Footer.astro';
+
+const allPosts = await getCollection('blog');
+
+const sortedPosts = allPosts.sort(
+  (a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
+);
+
+// NEW: Helper function for date formatting
+const formatDate = (date: Date) => {
+    return new Date(date).toLocaleDateString('en-US', {
+        month: 'short',
+        day: '2-digit',
+        year: 'numeric',
+    });
+};
+---
+
+<BaseLayout title="Engineering Insights & Articles | ZetaLogix">
+    <Navbar />
+    
+    <main class="pt-36 pb-32 bg-[#02040a] min-h-screen relative overflow-hidden">
+        <div class="absolute top-0 right-1/4 w-[500px] h-[500px] bg-brand-accent/5 rounded-full blur-[150px] pointer-events-none"></div>
+        <div class="absolute bottom-1/4 left-1/4 w-[600px] h-[600px] bg-purple-500/5 rounded-full blur-[180px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            
+            <div class="max-w-3xl mb-20">
+                <span class="text-xs font-bold font-mono text-brand-glow tracking-widest uppercase block mb-3">ZetaLogix Insights</span>
+                <h1 class="font-heading text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+                    Engineering <span class="text-brand-accent">Intelligence.</span>
+                </h1>
+                <p class="text-slate-400 text-lg leading-relaxed max-w-2xl">
+                    Deep dives into software architecture, production-scale AI systems, corporate data structuring, and modern web infrastructure engineering.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+                {sortedPosts.map((post) => (
+                    <a href={`/blog/${post.id}`} class="group cursor-pointer block bg-white/[0.01] border border-white/5 rounded-2xl overflow-hidden hover:border-brand-accent/20 transition-all duration-300 shadow-xl">
+                        <div class="w-full h-56 overflow-hidden relative">
+                            <div class="absolute inset-0 bg-brand-dark/20 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
+                            <img 
+                                src={post.data.image} 
+                                alt={post.data.title} 
+                                class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" 
+                                loading="lazy" 
+                            />
+                        </div>
+                        <div class="p-6 md:p-8">
+                            <div class="flex items-center gap-4 mb-4">
+                                <span class="text-xs font-bold text-brand-accent uppercase tracking-wider">
+                                    {post.data.category}
+                                </span>
+                                <span class="text-slate-500 text-sm">
+                                    {formatDate(post.data.pubDate)}
+                                </span>
+                            </div>
+                            <h2 class="font-heading text-xl font-bold text-white mb-3 group-hover:text-brand-glow transition-colors line-clamp-2 leading-snug">
+                                {post.data.title}
+                            </h2>
+                            <p class="text-slate-400 text-sm leading-relaxed line-clamp-2">
+                                {post.data.description}
+                            </p>
+                        </div>
+                    </a>
+                ))}
+            </div>
+        </div>
+    </main>
+
+    <Footer />
+</BaseLayout>
