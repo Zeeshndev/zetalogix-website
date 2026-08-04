@@ -1,5 +1,22 @@
 ---
 // src/components/sections/Insights.astro
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+const allPosts = await getCollection('blog');
+
+const latestPosts = allPosts
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+
+// NEW: Helper function stops VS Code from crashing in the map loop
+const formatDate = (date: Date) => {
+    return new Date(date).toLocaleDateString('en-US', {
+        month: 'short',
+        day: '2-digit',
+        year: 'numeric',
+    });
+};
 ---
 
 <section class="py-24 lg:py-32 bg-[#02040a] relative border-t border-white/5">
@@ -16,44 +33,35 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <article class="group cursor-pointer">
-                <div class="w-full h-60 rounded-2xl overflow-hidden mb-6 relative">
-                    <div class="absolute inset-0 bg-brand-dark/20 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
-                    <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?q=80&w=800&auto=format&fit=crop" alt="Code Editor" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" loading="lazy" />
-                </div>
-                <div class="flex items-center gap-4 mb-4">
-                    <span class="text-xs font-bold text-brand-accent uppercase tracking-wider">Architecture</span>
-                    <span class="text-slate-500 text-sm">Jul 12, 2026</span>
-                </div>
-                <h4 class="font-heading text-xl font-bold text-white mb-3 group-hover:text-brand-glow transition-colors">Why we build Enterprise Web Apps with Astro and React</h4>
-                <p class="text-slate-400 text-sm leading-relaxed line-clamp-2">Exploring the performance benefits of zero-JS architectures and partial hydration for B2B SaaS platforms.</p>
-            </article>
-
-            <article class="group cursor-pointer">
-                <div class="w-full h-60 rounded-2xl overflow-hidden mb-6 relative">
-                    <div class="absolute inset-0 bg-brand-dark/20 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
-                    <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=800&auto=format&fit=crop" alt="AI Circuit" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" loading="lazy" />
-                </div>
-                <div class="flex items-center gap-4 mb-4">
-                    <span class="text-xs font-bold text-brand-accent uppercase tracking-wider">Artificial Intelligence</span>
-                    <span class="text-slate-500 text-sm">Jul 05, 2026</span>
-                </div>
-                <h4 class="font-heading text-xl font-bold text-white mb-3 group-hover:text-brand-glow transition-colors">Implementing RAG Systems for Corporate Data Structuring</h4>
-                <p class="text-slate-400 text-sm leading-relaxed line-clamp-2">How Retrieval-Augmented Generation is transforming the way massive corporate datasets are processed.</p>
-            </article>
-
-            <article class="group cursor-pointer">
-                <div class="w-full h-60 rounded-2xl overflow-hidden mb-6 relative">
-                    <div class="absolute inset-0 bg-brand-dark/20 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
-                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop" alt="Cyber Security" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" loading="lazy" />
-                </div>
-                <div class="flex items-center gap-4 mb-4">
-                    <span class="text-xs font-bold text-brand-accent uppercase tracking-wider">Security</span>
-                    <span class="text-slate-500 text-sm">Jun 28, 2026</span>
-                </div>
-                <h4 class="font-heading text-xl font-bold text-white mb-3 group-hover:text-brand-glow transition-colors">Scaling Node.js Microservices Safely using AWS</h4>
-                <p class="text-slate-400 text-sm leading-relaxed line-clamp-2">A technical deep-dive into establishing secure pipelines and load balancing for high-traffic financial applications.</p>
-            </article>
+            {latestPosts.map((post) => (
+                <a href={`/blog/${post.id}`} class="group cursor-pointer block">
+                    <article>
+                        <div class="w-full h-60 rounded-2xl overflow-hidden mb-6 relative">
+                            <div class="absolute inset-0 bg-brand-dark/20 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
+                            <img 
+                                src={post.data.image} 
+                                alt={post.data.title} 
+                                class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" 
+                                loading="lazy" 
+                            />
+                        </div>
+                        <div class="flex items-center gap-4 mb-4">
+                            <span class="text-xs font-bold text-brand-accent uppercase tracking-wider">
+                                {post.data.category}
+                            </span>
+                            <span class="text-slate-500 text-sm">
+                                {formatDate(post.data.pubDate)}
+                            </span>
+                        </div>
+                        <h4 class="font-heading text-xl font-bold text-white mb-3 group-hover:text-brand-glow transition-colors">
+                            {post.data.title}
+                        </h4>
+                        <p class="text-slate-400 text-sm leading-relaxed line-clamp-2">
+                            {post.data.description}
+                        </p>
+                    </article>
+                </a>
+            ))}
         </div>
     </div>
 </section>
