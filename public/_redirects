@@ -1,2 +1,2 @@
-# Domain-level routing for HR Verification Portal
+# Route clean paths (e.g., /ZTX-EMP-2026-0347) to the central processing engine
 https://verify.zetalogix.com/* https://zetalogix.com/verify?id=:splat  200
