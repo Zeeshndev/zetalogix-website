@@ -10,7 +10,10 @@ export const prerender = false;
 
 // Extract raw parameters
 const url = new URL(Astro.request.url);
-let searchId = url.searchParams.get('id') || '';
+
+// Netlify sometimes stacks query params (e.g., ?id=&id=123). We grab all of them and find the first valid string.
+const allIds = url.searchParams.getAll('id');
+let searchId = allIds.find(id => id.trim().length > 0) || '';
 
 // Clean up the search string
 searchId = searchId.trim().toUpperCase().replace(/[^A-Z0-9\-]/g, '');
@@ -101,15 +104,14 @@ const standardSearchPerformed = searchId.length > 0;
             {/* CASE 3: Initial Terminal Input */}
             {!standardSearchPerformed ? (
                 <div class="bg-[#05070c] border border-white/5 rounded-xl p-8 shadow-xl">
-                    <form method="GET" action="/" class="space-y-4">
+                    <form id="verify-form" class="space-y-4">
                         <div>
-                            <label for="id" class="text-xs font-mono text-slate-400 uppercase block mb-2">Enter Verification ID</label>
+                            <label for="cert-id" class="text-xs font-mono text-slate-400 uppercase block mb-2">Enter Verification ID</label>
                             <input 
                                 type="text" 
-                                id="id" 
-                                name="id" 
+                                id="cert-id" 
                                 required 
-                                placeholder="e.g. ZL-2026-ZA01" 
+                                placeholder="e.g. ZL-2026-XXXX" 
                                 class="w-full bg-white/[0.02] border border-white/10 rounded px-4 py-3 text-white font-mono text-sm focus:outline-none focus:border-brand-accent transition-colors"
                             />
                         </div>
@@ -131,3 +133,19 @@ const standardSearchPerformed = searchId.length > 0;
 
     <Footer />
 </BaseLayout>
+
+<script>
+    // Intercept form submission to force a clean URL path (e.g., /ZL-2026-ZA01)
+    const form = document.getElementById('verify-form');
+    if (form) {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const input = document.getElementById('cert-id') as HTMLInputElement;
+            if (input && input.value) {
+                const cleanId = input.value.trim().toUpperCase();
+                // Redirect directly to the clean domain path
+                window.location.href = '/' + cleanId;
+            }
+        });
+    }
+</script>
