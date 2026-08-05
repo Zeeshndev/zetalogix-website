@@ -10,8 +10,6 @@ export const prerender = false;
 
 // Extract raw parameters
 const url = new URL(Astro.request.url);
-
-// Netlify sometimes stacks query params (e.g., ?id=&id=123). We grab all of them and find the first valid string.
 const allIds = url.searchParams.getAll('id');
 let searchId = allIds.find(id => id.trim().length > 0) || '';
 
@@ -27,7 +25,7 @@ const record = certificates.find(cert => {
 const standardSearchPerformed = searchId.length > 0;
 ---
 
-<BaseLayout title="Employment Verification Gateway | ZetaLogix">
+<BaseLayout title="Employment Verification | ZetaLogix">
     <Navbar />
     
     <main class="pt-36 pb-32 bg-[#02040a] min-h-screen text-slate-300 flex items-center justify-center">
@@ -77,13 +75,13 @@ const standardSearchPerformed = searchId.length > 0;
                             <span class="col-span-2 text-sm font-mono text-slate-300">{record.startDate} — {record.endDate}</span>
                         </div>
                         <div class="grid grid-cols-3 gap-4 py-2">
-                            <span class="text-xs font-mono text-slate-500 uppercase">Authority</span>
-                            <span class="col-span-2 text-xs text-slate-400 font-mono">{record.signatory} (Issued: {record.issueDate})</span>
+                            <span class="text-xs font-mono text-slate-500 uppercase">Last Updated</span>
+                            <span class="col-span-2 text-xs text-slate-400 font-mono">{record.lastUpdated}</span>
                         </div>
                     </div>
 
                     <div class="mt-8 pt-6 border-t border-white/5 flex justify-start">
-                        <a href="/" class="text-xs font-mono text-brand-accent hover:text-white transition-colors">← Run New Query</a>
+                        <a href="/" class="text-xs font-mono text-brand-accent hover:text-white transition-colors">← Check Another Record</a>
                     </div>
                 </div>
             ) : null}
@@ -95,9 +93,9 @@ const standardSearchPerformed = searchId.length > 0;
                         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
                         <h2 class="text-sm font-mono font-bold uppercase tracking-wider">No Record Found</h2>
                     </div>
-                    <p class="text-sm text-slate-400 mb-6 leading-relaxed">The identifier string <code class="text-white font-mono bg-white/5 px-1.5 py-0.5 rounded">{searchId}</code> could not be matched against any archived credentials in the active company ledger.</p>
+                    <p class="text-sm text-slate-400 mb-6 leading-relaxed">The identifier <code class="text-white font-mono bg-white/5 px-1.5 py-0.5 rounded">{searchId}</code> does not match any current or archived employment records.</p>
                     
-                    <a href="/" class="text-xs font-mono text-brand-accent hover:text-white transition-colors">← Clear & Try Again</a>
+                    <a href="/" class="text-xs font-mono text-brand-accent hover:text-white transition-colors">← Try Again</a>
                 </div>
             ) : null}
 
@@ -106,7 +104,7 @@ const standardSearchPerformed = searchId.length > 0;
                 <div class="bg-[#05070c] border border-white/5 rounded-xl p-8 shadow-xl">
                     <form id="verify-form" class="space-y-4">
                         <div>
-                            <label for="cert-id" class="text-xs font-mono text-slate-400 uppercase block mb-2">Enter Verification ID</label>
+                            <label for="cert-id" class="text-xs font-mono text-slate-400 uppercase block mb-2">Document ID</label>
                             <input 
                                 type="text" 
                                 id="cert-id" 
@@ -116,15 +114,15 @@ const standardSearchPerformed = searchId.length > 0;
                             />
                         </div>
                         <button type="submit" class="w-full bg-white text-black font-semibold text-sm py-3 rounded hover:bg-slate-200 transition-colors">
-                            Execute Verification Query
+                            Verify Record
                         </button>
                     </form>
                 </div>
             ) : null}
 
-            <div class="mt-8 text-center">
-                <p class="text-xs font-mono text-slate-600">
-                    For manual verification inquiries or system escalations, contact <a href="mailto:hr@zetalogix.com" class="text-slate-400 hover:text-white transition-colors underline">hr@zetalogix.com</a>
+            <div class="mt-10 text-center max-w-lg mx-auto">
+                <p class="text-[11px] font-mono text-slate-500 leading-relaxed">
+                    This portal is intended solely to confirm current or past employment status with ZetaLogix. For formal verification letters or detailed inquiries, contact <a href="mailto:hr@zetalogix.com" class="text-slate-400 hover:text-white underline">hr@zetalogix.com</a>.
                 </p>
             </div>
 
@@ -135,7 +133,7 @@ const standardSearchPerformed = searchId.length > 0;
 </BaseLayout>
 
 <script>
-    // Intercept form submission to force a clean URL path (e.g., /ZL-2026-ZA01)
+    // 1. Force the search form to use a clean URL path instead of query params
     const form = document.getElementById('verify-form');
     if (form) {
         form.addEventListener('submit', (e) => {
@@ -143,9 +141,23 @@ const standardSearchPerformed = searchId.length > 0;
             const input = document.getElementById('cert-id') as HTMLInputElement;
             if (input && input.value) {
                 const cleanId = input.value.trim().toUpperCase();
-                // Redirect directly to the clean domain path
                 window.location.href = '/' + cleanId;
             }
         });
     }
+
+    // 2. Navigation Fix: Route Navbar/Footer links back to the main domain
+    document.addEventListener('DOMContentLoaded', () => {
+        const mainDomain = 'https://zetalogix.com';
+        // Select all links in the Navbar and Footer
+        const globalLinks = document.querySelectorAll('header a, nav a, footer a');
+        
+        globalLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            // If the link is relative (e.g., /contact or /#services), prepend the main domain
+            if (href && (href.startsWith('/') || href.startsWith('#'))) {
+                link.href = mainDomain + (href.startsWith('/') ? href : '/' + href);
+            }
+        });
+    });
 </script>
