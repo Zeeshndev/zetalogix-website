@@ -1,19 +1,27 @@
 ---
+// src/pages/verify.astro
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Navbar from '../components/global/Navbar.astro';
 import Footer from '../components/global/Footer.astro';
 import certificates from '../data/certificates.json';
 
-// Enforce SSR to dynamically parse search parameters on request
+// Enforce dynamic Server-Side Rendering (SSR) to parse URL query parameters instantly
 export const prerender = false;
 
-// Read query parameter from the URL string
+// Extract raw parameters from the incoming request URL
 const url = new URL(Astro.request.url);
-const searchId = url.searchParams.get('id')?.trim().toUpperCase() || '';
+let searchId = url.searchParams.get('id') || '';
 
-// Search the secure data ledger
-const record = certificates.find(cert => cert.id.toUpperCase() === searchId);
-const standardSearchPerformed = url.searchParams.has('id');
+// Clean up the search string: strip whitespaces, convert to uppercase, and remove any hidden special characters
+searchId = searchId.trim().toUpperCase().replace(/[^A-Z0-9\-]/g, '');
+
+// Search the JSON data ledger with strict alphanumeric text matching
+const record = certificates.find(cert => {
+    const cleanCertId = cert.id.trim().toUpperCase().replace(/[^A-Z0-9\-]/g, '');
+    return cleanCertId === searchId;
+});
+
+const standardSearchPerformed = searchId.length > 0;
 ---
 
 <BaseLayout title="Employment Verification Gateway | ZetaLogix">
@@ -78,19 +86,19 @@ const standardSearchPerformed = url.searchParams.has('id');
                 </div>
             ) : null}
 
-            {/* CASE 2: Search Executed, But Record Is Missing */}
+            {/* CASE 2: Query Executed, but Alphanumeric Match Failed */}
             {standardSearchPerformed && !record ? (
                 <div class="bg-[#05070c] border border-red-500/20 rounded-xl p-8 shadow-xl">
                     <div class="flex items-center gap-3 text-red-400 mb-4">
                         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
                         <h2 class="text-sm font-mono font-bold uppercase tracking-wider">No Record Found</h2>
                     </div>
-                    <p class="text-sm text-slate-400 mb-6 leading-relaxed">The document identifier string <code class="text-white font-mono bg-white/5 px-1.5 py-0.5 rounded">{searchId}</code> does not match any archived credentials in the active company ledger.</p>
+                    <p class="text-sm text-slate-400 mb-6 leading-relaxed">The identifier string <code class="text-white font-mono bg-white/5 px-1.5 py-0.5 rounded">{url.searchParams.get('id')}</code> could not be matched against any archived credentials in the active company ledger.</p>
                     <a href="/verify" class="text-xs font-mono text-brand-accent hover:text-white transition-colors">← Clear & Try Again</a>
                 </div>
             ) : null}
 
-            {/* CASE 3: Default Empty Search Input Screen */}
+            {/* CASE 3: Initial Empty State Terminal Search Input */}
             {!standardSearchPerformed ? (
                 <div class="bg-[#05070c] border border-white/5 rounded-xl p-8 shadow-xl">
                     <form method="GET" action="/verify" class="space-y-4">
