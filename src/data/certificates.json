@@ -1,0 +1,24 @@
+[
+  {
+    "id": "ZL-2026-ZA01",
+    "name": "Zeeshan Ali",
+    "designation": "Software Engineer",
+    "department": "Engineering",
+    "startDate": "January 22, 2026",
+    "endDate": "Present",
+    "issueDate": "August 5, 2026",
+    "status": "Verified",
+    "signatory": "HR Department, ZetaLogix"
+  },
+  {
+    "id": "ZL-2026-AB02",
+    "name": "Ahmed Bilal",
+    "designation": "Frontend Developer",
+    "department": "Web Development",
+    "startDate": "March 10, 2025",
+    "endDate": "July 30, 2026",
+    "issueDate": "August 2, 2026",
+    "status": "Verified",
+    "signatory": "HR Department, ZetaLogix"
+  }
+]
