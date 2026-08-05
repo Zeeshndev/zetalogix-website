@@ -7,8 +7,8 @@
     "startDate": "January 22, 2026",
     "endDate": "Present",
     "issueDate": "August 5, 2026",
-    "status": "Verified",
-    "signatory": "HR Department, ZetaLogix"
+    "status": "Status: Active Employee",
+    "signatory": "ZetaLogix Operations Compliance"
   },
   {
     "id": "ZL-2026-AB02",
@@ -18,7 +18,7 @@
     "startDate": "March 10, 2025",
     "endDate": "July 30, 2026",
     "issueDate": "August 2, 2026",
-    "status": "Verified",
-    "signatory": "HR Department, ZetaLogix"
+    "status": "Status: Verified — Employment Ended July 30, 2026",
+    "signatory": "ZetaLogix Operations Compliance"
   }
 ]

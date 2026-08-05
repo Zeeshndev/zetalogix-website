@@ -1,0 +1,2 @@
+# Domain-level routing for HR Verification Portal
+https://verify.zetalogix.com/* https://zetalogix.com/verify?id=:splat  200
