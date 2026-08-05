@@ -149,8 +149,9 @@ const standardSearchPerformed = searchId.length > 0;
     // 2. Navigation Fix: Route Navbar/Footer links back to the main domain
     document.addEventListener('DOMContentLoaded', () => {
         const mainDomain = 'https://zetalogix.com';
-        // Select all links in the Navbar and Footer
-        const globalLinks = document.querySelectorAll('header a, nav a, footer a');
+        
+        // TYPE FIX: Explicitly cast the NodeList to HTMLAnchorElement 
+        const globalLinks = document.querySelectorAll<HTMLAnchorElement>('header a, nav a, footer a');
         
         globalLinks.forEach(link => {
             const href = link.getAttribute('href');
