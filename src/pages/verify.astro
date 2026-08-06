@@ -8,21 +8,34 @@ import certificates from '../data/certificates.json';
 // Enforce dynamic Server-Side Rendering (SSR)
 export const prerender = false;
 
-// Extract raw parameters
 const url = new URL(Astro.request.url);
-const allIds = url.searchParams.getAll('id');
-let searchId = allIds.find(id => id.trim().length > 0) || '';
 
-// Clean up the search string
-searchId = searchId.trim().toUpperCase().replace(/[^A-Z0-9\-]/g, '');
+// 1. Check for standard query parameters first (?id=...) [cite: 3]
+const allIds = url.searchParams.getAll('id'); // [cite: 3]
+let rawId = allIds.find(id => id.trim().length > 0) || ''; // [cite: 3]
 
-// Search the JSON data ledger
-const record = certificates.find(cert => {
-    const cleanCertId = cert.id.trim().toUpperCase().replace(/[^A-Z0-9\-]/g, '');
-    return cleanCertId === searchId;
-});
+// 2. If no query parameter exists, check the path (e.g., /ZTX-EMP-2026-0347)
+if (!rawId) {
+    // Split the path and grab the very last segment to avoid grabbing base folder names
+    const pathSegments = url.pathname.split('/').filter(Boolean);
+    rawId = pathSegments[pathSegments.length - 1] || '';
+}
 
-const standardSearchPerformed = searchId.length > 0;
+// 3. Clean up the string for strict data matching [cite: 4]
+let searchId = rawId.trim().toUpperCase().replace(/[^A-Z0-9\-]/g, ''); // [cite: 4]
+
+// 4. FAILSAFE: If the extracted ID is just the page route name "VERIFY", clear it so the terminal input shows
+if (searchId === 'VERIFY') {
+    searchId = '';
+}
+
+// Query the JSON data ledger [cite: 4]
+const record = certificates.find(cert => { // [cite: 4]
+    const cleanCertId = cert.id.trim().toUpperCase().replace(/[^A-Z0-9\-]/g, ''); // [cite: 4]
+    return cleanCertId === searchId; // [cite: 4]
+}); // [cite: 4]
+
+const standardSearchPerformed = searchId.length > 0; // [cite: 5]
 ---
 
 <BaseLayout title="Employment Verification | ZetaLogix">
@@ -33,98 +46,76 @@ const standardSearchPerformed = searchId.length > 0;
             
             <div class="mb-8">
                 <span class="text-[10px] font-mono tracking-widest text-slate-500 uppercase block mb-1">ZetaLogix Human Resources</span>
-                <h1 class="text-xl font-bold text-white tracking-tight">Employment Verification System</h1>
-                <div class="h-px w-full bg-white/10 mt-4"></div>
+                <h1 class="text-xl font-bold text-white tracking-tight">Employment Verification System</h1> <div class="h-px w-full bg-white/10 mt-4"></div>
             </div>
 
             {/* CASE 1: Active Record Found */}
-            {standardSearchPerformed && record ? (
-                <div class="bg-[#05070c] border border-white/10 rounded-xl p-8 shadow-xl">
-                    <div class="flex justify-between items-center mb-8 pb-6 border-b border-white/5">
-                        <div>
-                            <span class="text-[10px] font-mono tracking-wider text-slate-500 uppercase block mb-1">Document Identifier</span>
-                            <span class="font-mono text-sm text-white bg-white/5 px-3 py-1 rounded border border-white/10">{record.id}</span>
-                        </div>
+            {standardSearchPerformed && record ? ( // [cite: 7]
+                <div class="bg-[#05070c] border border-white/10 rounded-xl p-8 shadow-xl"> <div class="flex justify-between items-center mb-8 pb-6 border-b border-white/5"> <div>
+                            <span class="text-[10px] font-mono tracking-wider text-slate-500 uppercase block mb-1">Document Identifier</span> <span class="font-mono text-sm text-white bg-white/5 px-3 py-1 rounded border border-white/10">{record.id}</span> </div>
                         <div class="text-right">
-                            <span class="text-[10px] font-mono tracking-wider text-slate-500 uppercase block mb-1">Record Status</span>
-                            <span class={`text-xs font-mono font-bold uppercase px-3 py-1 rounded ${
-                                record.status.toLowerCase().includes('active') 
-                                ? 'bg-green-500/10 text-green-400 border border-green-500/20' 
-                                : 'bg-blue-500/10 text-blue-400 border border-blue-500/20'
-                            }`}>
-                                {record.status}
+                            <span class="text-[10px] font-mono tracking-wider text-slate-500 uppercase block mb-1">Record Status</span> <span class={`text-xs font-mono font-bold uppercase px-3 py-1 rounded ${ // [cite: 9] -->
+                                record.status.toLowerCase().includes('active')  // [cite: 9]
+                                ? 'bg-green-500/10 text-green-400 border border-green-500/20'  // [cite: 10]
+                                : 'bg-blue-500/10 text-blue-400 border border-blue-500/20' // [cite: 10]
+                            }`}> {/* [cite: 11] */}
+                                {record.status} {/* [cite: 11] */}
                             </span>
                         </div>
-                    </div>
+                    </div> {/* [cite: 12] */}
 
-                    <div class="space-y-6">
-                        <div class="grid grid-cols-3 gap-4 py-2 border-b border-white/[0.02]">
+                    <div class="space-y-6"> {/* [cite: 12] */}
+                        <div class="grid grid-cols-3 gap-4 py-2 border-b border-white/[0.02]"> {/* [cite: 12] */}
                             <span class="text-xs font-mono text-slate-500 uppercase">Full Name</span>
-                            <span class="col-span-2 text-sm font-semibold text-white">{record.name}</span>
-                        </div>
+                            <span class="col-span-2 text-sm font-semibold text-white">{record.name}</span> </div>
                         <div class="grid grid-cols-3 gap-4 py-2 border-b border-white/[0.02]">
-                            <span class="text-xs font-mono text-slate-500 uppercase">Designation</span>
-                            <span class="col-span-2 text-sm text-slate-300">{record.designation}</span>
-                        </div>
+                            <span class="text-xs font-mono text-slate-500 uppercase">Designation</span> <span class="col-span-2 text-sm text-slate-300">{record.designation}</span> </div>
                         <div class="grid grid-cols-3 gap-4 py-2 border-b border-white/[0.02]">
-                            <span class="text-xs font-mono text-slate-500 uppercase">Department</span>
-                            <span class="col-span-2 text-sm text-slate-300">{record.department}</span>
-                        </div>
-                        <div class="grid grid-cols-3 gap-4 py-2 border-b border-white/[0.02]">
-                            <span class="text-xs font-mono text-slate-500 uppercase">Tenure Window</span>
+                            <span class="text-xs font-mono text-slate-500 uppercase">Department</span> <span class="col-span-2 text-sm text-slate-300">{record.department}</span> </div>
+                        <div class="grid grid-cols-3 gap-4 py-2 border-b border-white/[0.02]"> <span class="text-xs font-mono text-slate-500 uppercase">Tenure Window</span>
                             <span class="col-span-2 text-sm font-mono text-slate-300">{record.startDate} — {record.endDate}</span>
-                        </div>
+                        </div> {/* [cite: 17] */}
                         <div class="grid grid-cols-3 gap-4 py-2">
                             <span class="text-xs font-mono text-slate-500 uppercase">Last Updated</span>
-                            <span class="col-span-2 text-xs text-slate-400 font-mono">{record.lastUpdated}</span>
-                        </div>
+                            <span class="col-span-2 text-xs text-slate-400 font-mono">{record.lastUpdated}</span> </div> {/* [cite: 18] */}
                     </div>
 
                     <div class="mt-8 pt-6 border-t border-white/5 flex justify-start">
-                        <a href="/" class="text-xs font-mono text-brand-accent hover:text-white transition-colors">← Check Another Record</a>
-                    </div>
+                        <a href="/" class="text-xs font-mono text-brand-accent hover:text-white transition-colors">← Check Another Record</a> </div> {/* [cite: 19] */}
                 </div>
-            ) : null}
+            ) : null} {/* [cite: 19] */}
 
             {/* CASE 2: Query Executed, but Match Failed */}
-            {standardSearchPerformed && !record ? (
-                <div class="bg-[#05070c] border border-red-500/20 rounded-xl p-8 shadow-xl">
-                    <div class="flex items-center gap-3 text-red-400 mb-4">
+            {standardSearchPerformed && !record ? ( // [cite: 19, 20]
+                <div class="bg-[#05070c] border border-red-500/20 rounded-xl p-8 shadow-xl"> shadow-xl"> <div class="flex items-center gap-3 text-red-400 mb-4">
                         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
-                        <h2 class="text-sm font-mono font-bold uppercase tracking-wider">No Record Found</h2>
-                    </div>
-                    <p class="text-sm text-slate-400 mb-6 leading-relaxed">The identifier <code class="text-white font-mono bg-white/5 px-1.5 py-0.5 rounded">{searchId}</code> does not match any current or archived employment records.</p>
-                    
-                    <a href="/" class="text-xs font-mono text-brand-accent hover:text-white transition-colors">← Try Again</a>
-                </div>
+                        <h2 class="text-sm font-mono font-bold uppercase tracking-wider">No Record Found</h2> </div>
+                    <p class="text-sm text-slate-400 mb-6 leading-relaxed">The identifier <code class="text-white font-mono bg-white/5 px-1.5 py-0.5 rounded">{searchId}</code> does not match any current or archived employment records.</p> <a href="/" class="text-xs font-mono text-brand-accent hover:text-white transition-colors">← Try Again</a> </div>
             ) : null}
 
             {/* CASE 3: Initial Terminal Input */}
-            {!standardSearchPerformed ? (
-                <div class="bg-[#05070c] border border-white/5 rounded-xl p-8 shadow-xl">
-                    <form id="verify-form" class="space-y-4">
-                        <div>
-                            <label for="cert-id" class="text-xs font-mono text-slate-400 uppercase block mb-2">Document ID</label>
-                            <input 
+            {!standardSearchPerformed ? ( // [cite: 22, 23]
+                <div class="bg-[#05070c] border border-white/5 rounded-xl p-8 shadow-xl"> <form id="verify-form" class="space-y-4"> <div>
+                            <label for="cert-id" class="text-xs font-mono text-slate-400 uppercase block mb-2">Document ID</label> <input 
                                 type="text" 
                                 id="cert-id" 
-                                required 
-                                placeholder="e.g. ZTX-EMP-XXXX-XXXX" 
-                                class="w-full bg-white/[0.02] border border-white/10 rounded px-4 py-3 text-white font-mono text-sm focus:outline-none focus:border-brand-accent transition-colors"
+                                required // [cite: 25]
+                                placeholder="e.g. ZTX-EMP-XXXX-XXXX" // [cite: 25]
+                                class="w-full bg-white/[0.02] border border-white/10 rounded px-4 py-3 text-white font-mono text-sm focus:outline-none focus:border-brand-accent transition-colors" // [cite: 25, 26]
                             />
                         </div>
                         <button type="submit" class="w-full bg-white text-black font-semibold text-sm py-3 rounded hover:bg-slate-200 transition-colors">
-                            Verify Record
-                        </button>
+                            Verify RecordDescriptor </button>
                     </form>
                 </div>
             ) : null}
 
-            <div class="mt-10 text-center max-w-lg mx-auto">
-                <p class="text-[11px] font-mono text-slate-500 leading-relaxed">
-                    This portal is intended solely to confirm current or past employment status with ZetaLogix.
-                    For formal verification letters or detailed inquiries, contact <a href="mailto:hr@zetalogix.com" class="text-slate-400 hover:text-white underline">hr@zetalogix.com</a>.
-                </p>
+            <div class="mt-16 text-center max-w-lg mx-auto space-y-3"> <p class="text-xs text-slate-400 leading-relaxed font-sans tracking-wide"> This portal is intended solely to confirm employment status. For detailed inquiries or manual verification, contact our HR department directly: </p>
+                <div class="pt-1">
+                    <a href="mailto:hr@zetalogix.com" class="text-sm font-mono font-bold text-white bg-white/5 border border-white/10 hover:border-brand-accent hover:text-brand-accent px-4 py-2 rounded transition-all duration-200 shadow-md">
+                        hr@zetalogix.com
+                    </a>
+                </div>
             </div>
 
         </div>
@@ -134,33 +125,32 @@ const standardSearchPerformed = searchId.length > 0;
 </BaseLayout>
 
 <script>
-    // 1. Force the search form to append a query parameter to prevent 404 routing errors
-    const form = document.getElementById('verify-form');
-    if (form) {
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const input = document.getElementById('cert-id') as HTMLInputElement;
-            if (input && input.value) {
-                const cleanId = input.value.trim().toUpperCase();
-                // FIX: Use query parameter (?id=) instead of a direct path (/)
-                window.location.href = '?id=' + cleanId;
-            }
-        });
-    }
+    // 1. Force the search form to use a clean URL path instead of query params [cite: 30]
+    const form = document.getElementById('verify-form'); // [cite: 30]
+    if (form) { // [cite: 31]
+        form.addEventListener('submit', (e) => { // [cite: 31]
+            e.preventDefault(); // [cite: 31]
+            const input = document.getElementById('cert-id') as HTMLInputElement; // [cite: 31]
+            if (input && input.value) { // [cite: 31]
+                const cleanId = input.value.trim().toUpperCase(); // [cite: 31]
+                window.location.href = '/' + cleanId; // [cite: 31]
+            } // [cite: 32]
+        }); // [cite: 32]
+    } // [cite: 33]
 
-    // 2. Navigation Fix: Route Navbar/Footer links back to the main domain
-    document.addEventListener('DOMContentLoaded', () => {
-        const mainDomain = 'https://zetalogix.com';
+    // 2. Navigation Fix: Route Navbar/Footer links back to the main domain [cite: 33]
+    document.addEventListener('DOMContentLoaded', () => { // [cite: 33]
+        const mainDomain = 'https://zetalogix.com'; // [cite: 33]
         
-        // TYPE FIX: Explicitly cast the NodeList to HTMLAnchorElement 
-        const globalLinks = document.querySelectorAll<HTMLAnchorElement>('header a, nav a, footer a');
+        // TYPE FIX: Explicitly cast the NodeList to HTMLAnchorElement [cite: 33]
+        const globalLinks = document.querySelectorAll<HTMLAnchorElement>('header a, nav a, footer a'); // [cite: 33]
         
-        globalLinks.forEach(link => {
-            const href = link.getAttribute('href');
-            // If the link is relative (e.g., /contact or /#services), prepend the main domain
-            if (href && (href.startsWith('/') || href.startsWith('#'))) {
-                link.href = mainDomain + (href.startsWith('/') ? href : '/' + href);
+        globalLinks.forEach(link => { // [cite: 33]
+            const href = link.getAttribute('href'); // [cite: 34]
+            // If the link is relative (e.g., /contact or /#services), prepend the main domain [cite: 34]
+            if (href && (href.startsWith('/') || href.startsWith('#'))) { // [cite: 34]
+                link.href = mainDomain + (href.startsWith('/') ? href : '/' + href); // [cite: 34]
             }
         });
-    });
+    }); // [cite: 35]
 </script>
