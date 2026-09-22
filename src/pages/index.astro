@@ -1,41 +1,144 @@
 ---
-// src/pages/index.astro
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Navbar from '../components/global/Navbar.astro';
+import Footer from '../components/global/Footer.astro';
+
+// Import all modular sections
 import Hero from '../components/sections/Hero.astro';
 import TrustBar from '../components/sections/TrustBar.astro';
-import Services from '../components/sections/Services.astro';
-import TechStack from '../components/sections/TechStack.astro';
 import Stats from '../components/sections/Stats.astro';
 import Projects from '../components/sections/Projects.astro';
-import Process from '../components/sections/Process.astro';
-import Engagement from '../components/sections/Engagement.astro';
 import IpSafeguards from '../components/sections/IpSafeguards.astro';
+import Process from '../components/sections/Process.astro';
+import GlobalReach from '../components/sections/GlobalReach.astro';
 import Insights from '../components/sections/Insights.astro';
-import GlobalReach from '../components/sections/GlobalReach.astro'; // NEW IMPORT
-import ContactForm from '../components/sections/ContactForm.astro';
-import BottomBanner from '../components/sections/BottomBanner.astro';
-import Footer from '../components/global/Footer.astro';
+import Cta from '../components/sections/Cta.astro';
 ---
 
-<BaseLayout title="ZetaLogix | Premium IT & AI Services">
+<BaseLayout 
+    title="ZetaLogix | Enterprise Software Engineering & AI Solutions"
+    description="ZetaLogix engineers high-performance web applications, mobile products, and AI solutions for global enterprises and startups."
+>
     <Navbar />
-    
-    <main>
+
+    <div class="relative z-10">
+        {/* 1. The Hero Section: Immediately states what we do and who we do it for */}
         <Hero />
-        <TrustBar />
-        <Services />
-        <TechStack />
-        <Stats />
-        <Projects />
-        <Process />
-        <Engagement />
-        <IpSafeguards />
-        <Insights />
         
-        <GlobalReach /> <ContactForm />
-        <BottomBanner />
-    </main>
-    
+        {/* 2. Infrastructure Trust Bar: Builds instant credibility via cloud partners */}
+        <TrustBar />
+
+        {/* 3. Credibility Strip: Hard performance metrics (Uptime, Latency, Code Ownership) */}
+        <Stats />
+
+        {/* 
+            4. Primary Services Focus Section
+            Instead of importing the generic Services.astro, we hardcode the 3 primary pillars here 
+            to enforce the new positioning (Web, Mobile, AI).
+        */}
+        <section id="core-expertise" class="py-24 lg:py-32 bg-[#02040a] relative border-t border-white/5">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="mb-16 max-w-3xl">
+                    <h2 class="font-heading text-sm font-bold tracking-widest text-brand-glow uppercase mb-3 flex items-center gap-2">
+                        <span class="w-8 h-px bg-brand-glow"></span> Core Expertise
+                    </h2>
+                    <h3 class="font-heading text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
+                        Engineering Solutions for <span class="text-brand-accent">Scale.</span>
+                    </h3>
+                    <p class="text-slate-400 text-lg leading-relaxed">
+                        We don't just write code; we engineer scalable products. Our primary focus is delivering high-performance platforms across web, mobile, and artificial intelligence.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {/* Primary Service 1: Web Applications */}
+                    <div class="group bg-brand-dark border border-white/5 rounded-3xl p-8 hover:border-brand-accent/30 transition-all duration-500 shadow-xl flex flex-col">
+                        <div class="w-14 h-14 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-blue-500/20 transition-all duration-300">
+                           <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>
+                        </div>
+                        <h4 class="font-heading text-2xl font-bold text-white mb-4">Web Applications</h4>
+                        <p class="text-slate-400 leading-relaxed mb-8 flex-grow">
+                            We build secure, high-conversion SaaS platforms, enterprise portals, and complex marketplaces engineered to handle millions of transactions.
+                        </p>
+                        <ul class="flex flex-col gap-3 text-sm text-slate-300 font-medium mb-8">
+                            <li class="flex items-center"><span class="text-brand-accent mr-3">✓</span> SaaS Platforms</li>
+                            <li class="flex items-center"><span class="text-brand-accent mr-3">✓</span> Business Portals</li>
+                            <li class="flex items-center"><span class="text-brand-accent mr-3">✓</span> API Integrations</li>
+                        </ul>
+                        <a href="/services/web-development" class="mt-auto inline-flex items-center text-sm font-bold text-brand-accent hover:text-white transition-colors group/btn">
+                            Explore Web Services
+                            <svg class="w-4 h-4 ml-1.5 transform group-hover/btn:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                        </a>
+                    </div>
+
+                    {/* Primary Service 2: Mobile Applications */}
+                    <div class="group bg-brand-dark border border-white/5 rounded-3xl p-8 hover:border-brand-accent/30 transition-all duration-500 shadow-xl flex flex-col">
+                        <div class="w-14 h-14 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-emerald-500/20 transition-all duration-300">
+                           <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
+                        </div>
+                        <h4 class="font-heading text-2xl font-bold text-white mb-4">Mobile Applications</h4>
+                        <p class="text-slate-400 leading-relaxed mb-8 flex-grow">
+                            Native and cross-platform mobile experiences designed for maximum engagement, fluid performance, and seamless app store deployment.
+                        </p>
+                        <ul class="flex flex-col gap-3 text-sm text-slate-300 font-medium mb-8">
+                            <li class="flex items-center"><span class="text-brand-accent mr-3">✓</span> iOS & Android Apps</li>
+                            <li class="flex items-center"><span class="text-brand-accent mr-3">✓</span> React Native / Flutter</li>
+                            <li class="flex items-center"><span class="text-brand-accent mr-3">✓</span> Mobile Commerce</li>
+                        </ul>
+                        <a href="/services/mobile-development" class="mt-auto inline-flex items-center text-sm font-bold text-brand-accent hover:text-white transition-colors group/btn">
+                            Explore Mobile Services
+                            <svg class="w-4 h-4 ml-1.5 transform group-hover/btn:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                        </a>
+                    </div>
+
+                    {/* Primary Service 3: AI Solutions */}
+                    <div class="group bg-brand-dark border border-white/5 rounded-3xl p-8 hover:border-brand-accent/30 transition-all duration-500 shadow-xl flex flex-col">
+                        <div class="w-14 h-14 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-purple-500/20 transition-all duration-300">
+                            <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>
+                        </div>
+                        <h4 class="font-heading text-2xl font-bold text-white mb-4">AI Solutions</h4>
+                        <p class="text-slate-400 leading-relaxed mb-8 flex-grow">
+                            We integrate intelligent automation, predictive machine learning models, and custom LLM interfaces directly into your existing business workflows.
+                        </p>
+                        <ul class="flex flex-col gap-3 text-sm text-slate-300 font-medium mb-8">
+                            <li class="flex items-center"><span class="text-brand-accent mr-3">✓</span> Custom AI Assistants</li>
+                            <li class="flex items-center"><span class="text-brand-accent mr-3">✓</span> Workflow Automation</li>
+                            <li class="flex items-center"><span class="text-brand-accent mr-3">✓</span> Predictive Analytics</li>
+                        </ul>
+                        <a href="/services/ai-solutions" class="mt-auto inline-flex items-center text-sm font-bold text-brand-accent hover:text-white transition-colors group/btn">
+                            Explore AI Services
+                            <svg class="w-4 h-4 ml-1.5 transform group-hover/btn:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="mt-12 text-center border-t border-white/5 pt-8">
+                    <p class="text-slate-400 text-sm">
+                        Need something specific? We also provide <a href="/services/ui-ux-design" class="text-brand-accent hover:text-white transition-colors">UI/UX Design</a>, <a href="/services/custom-software" class="text-brand-accent hover:text-white transition-colors">Custom Software</a>, and <a href="/engagement/dedicated-team" class="text-brand-accent hover:text-white transition-colors">Dedicated Team Expansion</a>.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        {/* 5. Selected Projects: Shows real work (Rentischeap, Litetrade) */}
+        <Projects />
+
+        {/* 6. Why ZetaLogix: Focuses on IP protection, ethics, and clear contracts */}
+        <IpSafeguards />
+
+        {/* 7. Development Process & CEO Quote: Shows structured delivery and personal leadership */}
+        <Process />
+
+        {/* 8. Global Reach: Highlights our international footprint */}
+        <GlobalReach />
+
+        {/* 9. Insights / Blog: Pulls latest engineering articles */}
+        <Insights />
+
+        {/* 10. Final Call to Action */}
+        <Cta />
+
+    </div>
+
     <Footer />
 </BaseLayout>
