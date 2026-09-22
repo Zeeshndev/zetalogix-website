@@ -16,16 +16,21 @@ import ContactForm from '../sections/ContactForm.astro';
     <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between relative">
         
      <a href="/" class="flex items-center z-10 group focus:outline-none">
+            {/* PHASE 10 FIX: Added width, height, fetchpriority, and decoding attributes */}
             <img 
                 src="/assets/Logo.png" 
                 alt="ZetaLogix Logo" 
+                width="180"
+                height="45"
+                fetchpriority="high"
+                loading="eager"
+                decoding="sync"
                 class="h-8 md:h-18 lg:h-20 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
             />
         </a>
 
         <div class="hidden md:flex items-center gap-8 h-full">
             
-            {/* 1. Services Dropdown (Reordered to prioritize Web, Mobile, AI) */}
             <div class="group h-full flex items-center cursor-pointer">
                 <a href="/#services" class="text-sm font-semibold text-slate-300 group-hover:text-brand-accent transition-colors flex items-center gap-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent rounded-md px-2 py-1">
                     Services
@@ -80,28 +85,23 @@ import ContactForm from '../sections/ContactForm.astro';
                 </div>
             </div>
 
-            {/* 2. Our Work */}
             <div class="h-full flex items-center">
                 <a href="/portfolio" class="text-sm font-semibold text-slate-300 hover:text-brand-accent transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent rounded-md px-2 py-1">Our Work</a>
             </div>
 
-            {/* 3. About Us */}
             <div class="h-full flex items-center">
                 <a href="/about" class="text-sm font-semibold text-slate-300 hover:text-brand-accent transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent rounded-md px-2 py-1">About Us</a>
             </div>
 
-            {/* 4. Insights */}
             <div class="h-full flex items-center">
                 <a href="/blog" class="text-sm font-semibold text-slate-300 hover:text-brand-accent transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent rounded-md px-2 py-1">Insights</a>
             </div>
 
-            {/* 5. Contact */}
             <div class="h-full flex items-center">
                 <a href="/contact" class="text-sm font-semibold text-slate-300 hover:text-brand-accent transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent rounded-md px-2 py-1">Contact</a>
             </div>
         </div>
 
-        {/* 6. Discuss Your Project CTA */}
         <div class="hidden md:block">
             <button id="quote-btn-desktop" class="btn-blink px-7 py-3 text-white font-bold text-sm rounded-full transition-all tracking-wide cursor-pointer focus:outline-none focus-visible:ring-4 focus-visible:ring-brand-accent">
                 Discuss Your Project
@@ -118,9 +118,14 @@ import ContactForm from '../sections/ContactForm.astro';
 <div id="mobile-menu" class="fixed inset-0 bg-[#050814]/95 backdrop-blur-2xl z-[100] transform translate-x-full transition-transform duration-300 overflow-y-auto w-full h-full md:hidden">
     <div class="flex items-center justify-between px-6 h-20 border-b border-white/10">
        <a href="/" class="flex items-center group focus:outline-none">
+            {/* PHASE 10 FIX: Added explicit dimensions to mobile logo */}
             <img 
                 src="/assets/Logo.png" 
                 alt="ZetaLogix Logo" 
+                width="120"
+                height="30"
+                loading="eager"
+                decoding="sync"
                 class="h-8 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
             />
         </a>
