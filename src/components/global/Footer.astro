@@ -1,7 +1,8 @@
 ---
 // src/components/global/Footer.astro
-const currentYear = 2023;
+const currentYear = new Date().getFullYear();
 ---
+
 <footer class="bg-[#02040a] border-t border-white/10 pt-20 pb-10">
     
     <div class="max-w-9xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
@@ -14,36 +15,28 @@ const currentYear = 2023;
                 />
             </a>
             <p class="text-slate-400 text-sm leading-relaxed mb-6">
-                Premium IT Services, Software Engineering, and AI Integration for modern enterprises.
+                ZetaLogix engineers high-performance web applications, mobile products, and AI solutions for global enterprises and startups.
             </p>
         </div>
         
         <div>
             <h4 class="text-white font-bold mb-6 text-sm uppercase tracking-wider">Services</h4>
             <ul class="flex flex-col gap-3 text-slate-400 text-sm">
-                <li><a href="/services/web-development" class="hover:text-brand-accent transition-colors">Web Development</a></li>
-                <li><a href="/services/mobile-development" class="hover:text-brand-accent transition-colors">App Development</a></li>
+                <li><a href="/services/web-development" class="hover:text-brand-accent transition-colors">Web Applications</a></li>
+                <li><a href="/services/mobile-development" class="hover:text-brand-accent transition-colors">Mobile Applications</a></li>
                 <li><a href="/services/ai-solutions" class="hover:text-brand-accent transition-colors">AI Solutions</a></li>
+                <li><a href="/services/saas-development" class="hover:text-brand-accent transition-colors">SaaS Development</a></li>
+                <li><a href="/services/custom-software" class="hover:text-brand-accent transition-colors">Custom Software</a></li>
                 <li><a href="/services/ui-ux-design" class="hover:text-brand-accent transition-colors">UI/UX Design</a></li>
-                <li><a href="/services/saas-development" class="hover:text-brand-accent transition-colors">SaaS Application Development</a></li>
-                <li><a href="/services/custom-software" class="hover:text-brand-accent transition-colors">Custom Software Development</a></li>
-            </ul>
-        </div>
-
-        <div>
-            <h4 class="text-white font-bold mb-6 text-sm uppercase tracking-wider">Engagement Models</h4>
-            <ul class="flex flex-col gap-3 text-slate-400 text-sm">
-                <li><a href="/engagement/fixed-price" class="hover:text-brand-accent transition-colors">Fixed Price Projects</a></li>
-                <li><a href="/engagement/dedicated-team" class="hover:text-brand-accent transition-colors">Dedicated Team Model</a></li>
-                <li><a href="/engagement/offshore" class="hover:text-brand-accent transition-colors">Offshore Development Center</a></li>
             </ul>
         </div>
 
         <div>
             <h4 class="text-white font-bold mb-6 text-sm uppercase tracking-wider">Company</h4>
             <ul class="flex flex-col gap-3 text-slate-400 text-sm">
+                <li><a href="/portfolio" class="hover:text-brand-accent transition-colors">Our Work</a></li>
                 <li><a href="/about" class="hover:text-brand-accent transition-colors">About Us</a></li>
-                <li><a href="/portfolio" class="hover:text-brand-accent transition-colors">Portfolio</a></li>
+                <li><a href="/blog" class="hover:text-brand-accent transition-colors">Insights</a></li>
                 <li class="flex items-center gap-2">
                     <a href="/careers" class="hover:text-brand-accent transition-colors">Careers</a>
                     <span class="flex h-2 w-2 relative">
@@ -53,6 +46,15 @@ const currentYear = 2023;
                     <span class="text-[10px] font-mono uppercase tracking-wide px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-bold">Hiring</span>
                 </li>
                 <li><a href="/contact" class="hover:text-brand-accent transition-colors">Contact</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h4 class="text-white font-bold mb-6 text-sm uppercase tracking-wider">Engagement Models</h4>
+            <ul class="flex flex-col gap-3 text-slate-400 text-sm">
+                <li><a href="/engagement/fixed-price" class="hover:text-brand-accent transition-colors">Fixed Price Projects</a></li>
+                <li><a href="/engagement/dedicated-team" class="hover:text-brand-accent transition-colors">Dedicated Team</a></li>
+                <li><a href="/engagement/offshore" class="hover:text-brand-accent transition-colors">Offshore Development Center</a></li>
             </ul>
         </div>
     </div>
