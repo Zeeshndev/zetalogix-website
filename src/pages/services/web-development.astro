@@ -2,353 +2,351 @@
 // src/pages/services/web-development.astro
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Navbar from '../../components/global/Navbar.astro';
-import TrustBar from '../../components/sections/TrustBar.astro';
-import ContactForm from '../../components/sections/ContactForm.astro';
-import BottomBanner from '../../components/sections/BottomBanner.astro';
 import Footer from '../../components/global/Footer.astro';
+import Cta from '../../components/sections/Cta.astro';
 
-// Exact Domain / Tech Stack Configuration for Web
-const domainsLeft = [
-  { name: "Fintech", link: "#" }, { name: "Blockchain", link: "#" }, { name: "Real Estate", link: "#" },
-  { name: "Media", link: "#" }, { name: "Business Services", link: "#" }, { name: "Technology", link: "#" }
-];
-const domainsRight = [
-  { name: "Marketplace", link: "#" }, { name: "Healthcare", link: "#" }, { name: "Recruiting", link: "#" },
-  { name: "Education", link: "#" }, { name: "Retail and Ecommerce", link: "#" }
-];
-const stackIcons = [
-  "devicon-javascript-plain colored", "devicon-postgresql-plain colored", "devicon-laravel-original colored",
-  "devicon-react-original colored", "devicon-amazonwebservices-plain-wordmark colored", "devicon-redux-original colored",
-  "devicon-angularjs-plain colored", "devicon-nodejs-plain colored", "devicon-ruby-plain colored",
-  "devicon-digitalocean-original colored", "devicon-vuejs-plain colored", "devicon-backbonejs-plain colored",
-  "devicon-rails-plain colored", "devicon-mysql-plain colored", "devicon-django-plain colored"
-];
-
-// Web Development FAQs
-const faqs = [
-  {
-    q: "How long does it take to design and develop a custom website?",
-    a: "The timeline depends on the complexity of the project. A standard corporate website typically takes 4 to 8 weeks from initial discovery to final deployment, while complex web applications or custom SaaS platforms can take 3 to 6 months. We map this timeline strictly during our Agile Sprint planning."
+const features = [
+  { 
+    title: "SaaS Platforms", 
+    desc: "We engineer multi-tenant architectures featuring secure subscription billing, granular role-based access control (RBAC), and isolated data environments for B2B scalability.",
+    icon: "M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
   },
-  {
-    q: "Will my website be mobile-friendly and optimized for SEO?",
-    a: "Absolutely. Every web platform we engineer follows a strict 'mobile-first' architecture ensuring flawless performance across all device sizes. We also implement technical SEO best practices, including semantic HTML, schema markups, and fast server-side rendering."
+  { 
+    title: "Enterprise Portals", 
+    desc: "Custom internal portals designed to streamline corporate operations, centralize HR management, and provide secure, authenticated access to proprietary company data.",
+    icon: "M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
   },
-  {
-    q: "Do you provide ongoing support and maintenance after launch?",
-    a: "Yes. When your product goes live, our custom software services do not end. We offer dedicated post-launch SLAs that cover automated backups, server monitoring, security patching, and continuous feature integration."
+  { 
+    title: "Marketplace Platforms", 
+    desc: "High-traffic, two-sided marketplaces engineered for massive concurrent user loads, featuring escrow payment integrations, real-time messaging, and advanced search algorithms.",
+    icon: "M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
   },
-  {
-    q: "Who owns the website and source code once it's completed?",
-    a: "You retain 100% ownership. Upon final payment and project completion, all intellectual property, design assets, and source code repositories are transferred directly to your organization."
+  { 
+    title: "Admin Dashboards", 
+    desc: "Data-rich, intuitive control panels that aggregate real-time analytics. We build dashboards that turn complex datasets into actionable business intelligence.",
+    icon: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+  },
+  { 
+    title: "API Integrations", 
+    desc: "Seamless, documented REST and GraphQL API development to connect your web application with third-party software, payment gateways, and legacy enterprise ERPs.",
+    icon: "M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+  },
+  { 
+    title: "Cloud-Native Architecture", 
+    desc: "Future-proof foundations utilizing microservices and containerization (Docker/Kubernetes) on AWS, ensuring your application auto-scales effortlessly under heavy load.",
+    icon: "M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
   }
 ];
 
-// Agency Metrics
-const metrics = [
-    { value: "5+", label: "Years of Operation" },
-    { value: "35+", label: "Projects Delivered" },
-    { value: "20+", label: "Specialists" },
-    { value: "30+", label: "Clients Satisfied" }
+const pipeline = [
+  {
+    step: 1,
+    title: "Discovery & Architecture",
+    desc: "We meticulously document your business requirements, design the scalable database schema, and finalize the optimal cloud technology stack.",
+    active: true
+  },
+  {
+    step: 2,
+    title: "UI/UX Prototyping",
+    desc: "Interactive wireframes and high-fidelity prototypes are designed and refined for your exact approval before a single line of code is written.",
+    active: false
+  },
+  {
+    step: 3,
+    title: "Sprint Development",
+    desc: "We utilize two-week agile development cycles where secure back-end APIs and responsive front-end interfaces are built, integrated, and reviewed.",
+    active: false
+  },
+  {
+    step: 4,
+    title: "QA & Cloud Deployment",
+    desc: "Rigorous automated testing, security vulnerability scanning, and performance profiling followed by seamless deployment to your production cloud.",
+    active: false
+  }
+];
+
+const faqs = [
+  { 
+    q: "How long does it take to build a custom enterprise web application?", 
+    a: "A standard MVP (Minimum Viable Product) typically takes 8 to 12 weeks. Complex enterprise applications requiring extensive third-party API integrations, custom administrative dashboards, and stringent security compliance can take 4 to 6 months depending on the exact scope." 
+  },
+  { 
+    q: "How do you ensure the security and privacy of our application data?", 
+    a: "Security is embedded into our engineering culture. We implement industry-standard encryption (AES-256 for data at rest, TLS 1.3 for data in transit), regular vulnerability scanning, and strict role-based access controls to ensure your application meets global compliance standards like GDPR." 
+  },
+  { 
+    q: "Will my company own the intellectual property and source code?", 
+    a: "Yes. ZetaLogix operates with absolute legal transparency. Upon final delivery and settlement of the project, your company receives 100% intellectual property ownership of the production source code and database architecture." 
+  },
+  { 
+    q: "Do you provide post-launch support, hosting, and maintenance?", 
+    a: "Absolutely. Launching is just the beginning. We offer dedicated Service Level Agreements (SLAs) for ongoing maintenance, AWS cloud hosting management, uptime monitoring, and continuous feature development as your user base scales." 
+  }
 ];
 ---
 
-<BaseLayout title="Website Design and Development Company | ZetaLogix">
+<BaseLayout 
+    title="Web Application Development Services | ZetaLogix"
+    description="ZetaLogix engineers highly scalable, secure, and custom web applications, SaaS platforms, and enterprise portals for global businesses."
+>
     <Navbar />
-    
-    <main class="bg-brand-dark pt-20">
+
+    <main class="relative z-10 bg-[#02040a]">
         
-        <section class="relative pt-32 pb-24 lg:pt-40 lg:pb-32 overflow-hidden">
-            <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-accent/5 blur-[120px] rounded-full pointer-events-none"></div>
-            
-            <div class="max-w-7xl mx-auto px-6 relative z-10 text-center max-w-4xl">
-                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-accent/10 border border-brand-accent/20 text-brand-accent text-sm font-bold tracking-wide uppercase mb-8">
-                    Web Systems & Engineering
+        {/* 1. Hero Section */}
+        <section class="relative pt-40 pb-24 lg:pt-48 lg:pb-32 overflow-hidden border-b border-white/5">
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-brand-accent/10 rounded-full blur-[150px] -z-10 pointer-events-none"></div>
+            <div class="absolute inset-0 opacity-[0.02] bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:32px_32px] pointer-events-none z-0"></div>
+
+            <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8 backdrop-blur-sm">
+                    <span class="w-2 h-2 rounded-full bg-brand-accent animate-pulse"></span>
+                    <span class="text-xs font-bold text-slate-300 uppercase tracking-widest">Enterprise Engineering</span>
                 </div>
-                <h1 class="font-heading text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-8">
-                    Website Design And <br/><span class="text-brand-accent">Development Company</span>
+                
+                <h1 class="font-heading text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight mb-8 leading-tight max-w-5xl mx-auto">
+                    Scalable <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-blue-500">Web Applications</span><br class="hidden md:block" /> Built for Business Growth.
                 </h1>
-                <p class="text-slate-400 text-lg md:text-xl leading-relaxed mb-12">
-                    With our years of combined professional experience, we can provide you with the best website design and development solutions. As a website design and development company, ZetaLogix provides web design and development services that have been proven to be successful marketing tools with a high return on investment.
+                
+                <p class="text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed mb-12">
+                    We architect and engineer high-performance SaaS products, custom business portals, and secure enterprise platforms designed to streamline operations and scale globally.
                 </p>
-                <div class="flex flex-col sm:flex-row justify-center gap-4">
-                    <a href="#contact" class="px-8 py-4 bg-brand-accent text-brand-dark font-bold rounded-lg hover:bg-white transition-colors duration-300 shadow-lg">
-                        Get a Free Quote
+
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="/contact" class="w-full sm:w-auto px-8 py-4 bg-brand-accent text-brand-dark font-bold rounded-full hover:bg-white transition-all duration-300 shadow-lg hover:shadow-brand-accent/20">
+                        Discuss Your Web Project
+                    </a>
+                    <a href="#architecture" class="w-full sm:w-auto px-8 py-4 bg-transparent text-white font-semibold rounded-full border border-white/20 hover:bg-white/10 transition-all duration-300">
+                        Explore Our Architecture
                     </a>
                 </div>
             </div>
         </section>
 
-        <section class="py-24 border-t border-white/5">
-            <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <div class="relative">
-                    <div class="absolute inset-0 bg-brand-accent/10 rounded-2xl transform translate-x-4 translate-y-4"></div>
-                    <img 
-                        src="/assets/web development/Website Design And Development.png" 
-                        alt="Website Design And Development Overview" 
-                        class="rounded-2xl relative z-10 w-full object-cover shadow-2xl border border-white/10"
-                    />
-                </div>
-                <div class="flex flex-col justify-center">
-                    <h2 class="font-heading text-3xl md:text-4xl font-bold text-white mb-6">
-                        Website Design And Development Services For Your Business
-                    </h2>
-                    <p class="text-slate-400 text-base leading-relaxed mb-6">
-                        Our web development services integrate innovative web design technology with cutting-edge business strategies to create a visually appealing and simple-to-use website. Our website design services are tailored to the customer's business goals and objectives for reaching out to current and new consumers.
+        {/* 2. Business Problem & Solution */}
+        <section id="architecture" class="py-24 lg:py-32 max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1">
+                    <h2 class="font-heading text-sm font-bold tracking-widest text-slate-500 uppercase mb-4">The Challenge</h2>
+                    <h3 class="font-heading text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">
+                        Generic software restricts <br class="hidden md:block" /> operational scaling.
+                    </h3>
+                    <p class="text-slate-400 leading-relaxed mb-8 text-lg">
+                        Off-the-shelf software forces businesses to adapt their unique workflows to rigid tools. As companies scale, these generic platforms lead to operational bottlenecks, data silos, security vulnerabilities, and fragmented user experiences that severely impact revenue.
                     </p>
-                    <p class="text-slate-400 text-base leading-relaxed border-l-2 border-brand-accent pl-4 font-medium text-white/90">
-                        Our goal is to offer a practical website design that captures your users' interest and converts visitors into customers.
+                    <div class="h-px w-full bg-white/10 my-8"></div>
+                    <h2 class="font-heading text-sm font-bold tracking-widest text-brand-accent uppercase mb-4">The ZetaLogix Solution</h2>
+                    <p class="text-slate-300 leading-relaxed text-lg">
+                        We build bespoke web architecture tailored exactly to your operational demands. By leveraging modern JavaScript frameworks and cloud-native databases, we deliver lightning-fast, highly secure platforms that adapt to your business—giving you complete ownership and a distinct competitive advantage.
                     </p>
                 </div>
-            </div>
-        </section>
+                <div class="order-1 lg:order-2 relative">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-brand-accent/20 to-blue-600/20 rounded-3xl blur-2xl -z-10 translate-x-4 translate-y-4"></div>
+                    <div class="bg-[#0a0f1d] border border-white/10 rounded-3xl p-8 shadow-2xl relative z-10">
+                        <div class="flex items-center gap-3 mb-6 pb-6 border-b border-white/5">
+                            <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        </div>
+                        <pre class="font-mono text-sm text-slate-300 overflow-x-auto"><code><span class="text-brand-accent">import</span> &#123; EnterpriseScale &#125; <span class="text-brand-accent">from</span> '@zetalogix/core';
 
-        <section class="py-24 bg-[#050814] border-t border-white/5">
-            <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-                <div class="lg:col-span-7">
-                    <h2 class="font-heading text-3xl md:text-4xl font-bold text-white mb-6">
-                        What Is Web Development All About?
-                    </h2>
-                    <div class="space-y-6 text-slate-400 text-base leading-relaxed">
-                        <p>
-                            SaaS is a software distribution model through which a cloud provider hosts applications on the internet and makes them available to end-users. An independent software vendor (ISV) may contract with a third-party cloud provider to host the application in this model. In the case of larger corporations, such as Microsoft, the cloud provider may also be the software vendor.
-                        </p>
-                        <p>
-                            SaaS is one of three major cloud computing categories which also include platform as a service (PaaS) and infrastructure as a service (IaaS). SaaS applications are used by a wide range of IT professionals, business users, and personal users. SaaS products range from personal entertainment apps to advanced IT tools like Netflix.
-                        </p>
-                        <p>
-                            SaaS products, unlike IaaS and PaaS, are frequently marketed to both B2B and B2C users. According to a recent McKinsey & Company report, tech analysts anticipate the market for SaaS products to reach $200 billion by 2024.
-                        </p>
-                    </div>
-                </div>
-                <div class="lg:col-span-5 flex justify-center lg:justify-end">
-                    <div class="relative max-w-sm">
-                        <div class="absolute inset-0 bg-brand-accent/5 rounded-2xl transform -translate-x-4 -translate-y-4"></div>
-                        <img 
-                            src="/assets/web development/Web Development All About.png" 
-                            alt="Web Development All About Concept" 
-                            class="rounded-2xl relative z-10 w-full object-cover shadow-2xl border border-white/10"
-                        />
+<span class="text-blue-400">const</span> WebApplication = () => &#123;
+  <span class="text-brand-accent">return</span> (
+    &lt;<span class="text-green-400">SystemArchitecture</span>
+      security=&#123;<span class="text-orange-300">"SOC2_Compliant"</span>&#125;
+      uptime=&#123;<span class="text-purple-400">99.99</span>&#125;
+      performance=&#123;<span class="text-orange-300">"Ultra-Low_Latency"</span>&#125;
+    &gt;
+      &lt;<span class="text-green-400">CustomWorkflows</span> /&gt;
+      &lt;<span class="text-green-400">SeamlessAPIIntegrations</span> /&gt;
+    &lt;/<span class="text-green-400">SystemArchitecture</span>&gt;
+  );
+&#125;;</code></pre>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="py-24 border-t border-white/5 bg-brand-dark">
+        {/* 3. Core Capabilities / Features */}
+        <section class="py-24 bg-brand-dark border-y border-white/5">
             <div class="max-w-7xl mx-auto px-6">
-                <div class="mb-16">
-                    <h2 class="font-heading text-3xl md:text-4xl font-bold text-white">Our Web Design & Architectural Capabilities</h2>
+                <div class="text-center mb-20 max-w-3xl mx-auto">
+                    <h2 class="font-heading text-3xl md:text-4xl font-bold text-white mb-6">What We Deliver</h2>
+                    <p class="text-slate-400 text-lg">Comprehensive web development services encompassing everything from complex back-end data orchestration to pixel-perfect front-end interfaces.</p>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
-                    <div class="flex flex-col">
-                        <h3 class="text-xl font-bold text-brand-accent mb-2 flex items-center gap-3">Custom Web Design</h3>
-                        <p class="text-slate-400 text-sm md:text-base leading-relaxed">
-                            We offer professional bespoke web design services. We don't just build your website, we begin a movement for your brand. Our award-winning team understands the important aspects of website design which include usability, functionality, and visualization.
-                        </p>
-                    </div>
-                    <div class="flex flex-col">
-                        <h3 class="text-xl font-bold text-brand-accent mb-2 flex items-center gap-3">Content Management System (CMS) Integration</h3>
-                        <p class="text-slate-400 text-sm md:text-base leading-relaxed">
-                            Keeping your website content up to date is critical to the success of any digital marketing campaign. We integrate powerful, standards-compliant, easy-to-manage CMS frameworks configured around your workflows.
-                        </p>
-                    </div>
-                    <div class="flex flex-col">
-                        <h3 class="text-xl font-bold text-brand-accent mb-2 flex items-center gap-3">UX/UI Design</h3>
-                        <p class="text-slate-400 text-sm md:text-base leading-relaxed">
-                            The design of User Experience (UX) and User Interface (UI) is critical to the success of any application. Our interface designs increase landing page conversion, the success of social media campaigns, and the user experience of applications and intranets.
-                        </p>
-                    </div>
-                    <div class="flex flex-col">
-                        <h3 class="text-xl font-bold text-brand-accent mb-2 flex items-center gap-3">Database Design and Development</h3>
-                        <p class="text-slate-400 text-sm md:text-base leading-relaxed">
-                            We use industry standard backend development tools and an updated skillset to build structured relational schemas, secure connection layers, and scalable database integrations.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="py-24 bg-[#050814] border-t border-white/5">
-            <div class="max-w-7xl mx-auto px-6 space-y-24">
-                
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-                    <div class="lg:col-span-6 relative">
-                        <img 
-                            src="/assets/web development/Front End Web Developer.png" 
-                            alt="Front End Web Developer Coding" 
-                            class="rounded-2xl w-full object-cover shadow-2xl border border-white/10"
-                        />
-                    </div>
-                    <div class="lg:col-span-6">
-                        <span class="text-xs font-mono font-bold text-brand-accent tracking-widest uppercase block mb-2">The Interface Layer</span>
-                        <h2 class="font-heading text-3xl font-bold text-white mb-6">Frontend Website Development</h2>
-                        <p class="text-slate-400 text-base leading-relaxed mb-6">
-                            The job of a frontend developer is to code the component of a website or app that the user sees and interacts with. They take backend data and transform it into something visually appealing, easily understood, and fully functional for the average user. They use HTML, JavaScript, and CSS to bring designs to life.
-                        </p>
-                        <p class="text-slate-400 text-base leading-relaxed">
-                            The frontend developer is responsible for implementing interactive navigational features such as buttons, scrollbars, text, graphics, and internal links. They ensure proper adaptable display across different screen sizes, browser types, and mobile/desktop platforms.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-                    <div class="lg:col-span-6 order-2 lg:order-1">
-                        <span class="text-xs font-mono font-bold text-brand-accent tracking-widest uppercase block mb-2">The Engine Room</span>
-                        <h2 class="font-heading text-3xl font-bold text-white mb-6">Backend Website Development</h2>
-                        <p class="text-slate-400 text-base leading-relaxed mb-6">
-                            The brains behind the face are referred to as the backend. A backend developer is in charge of creating and maintaining the technology required to power the frontend, consisting of three core elements: a server, an application, and a database.
-                        </p>
-                        <p class="text-slate-400 text-base leading-relaxed">
-                            They build applications using server-side environments such as Ruby, PHP, Python, and Java, pairing them with tools like MySQL, Oracle, and SQL Server to find, save, or edit data securely before returning it to the interface layer via robust API integrations.
-                        </p>
-                    </div>
-                    <div class="lg:col-span-6 order-1 lg:order-2">
-                        <img 
-                            src="/assets/web development/Backend Developer.png" 
-                            alt="Backend Developer Server Management" 
-                            class="rounded-2xl w-full object-cover shadow-2xl border border-white/10"
-                        />
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <TrustBar />
-        
-        <section class="py-24 lg:py-32 bg-brand-dark relative border-b border-white/5">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="mb-20 max-w-4xl">
-                    <h2 class="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-                        Deep technical and <span class="text-brand-accent">domain expertise</span> to help your business grow
-                    </h2>
-                </div>
-
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
-                    <div class="lg:col-span-5 flex flex-col">
-                        <h3 class="font-heading text-2xl md:text-3xl font-bold text-white mb-6 tracking-tight">Domains</h3>
-                        <p class="text-slate-400 text-base leading-relaxed mb-10 max-w-lg">
-                            Our expertise in developing industry-specific solutions has facilitated our growth in in-house knowledge, which we readily share with our clients. We offer guidance throughout the project development process and create products that adhere to the highest industry standards.
-                        </p>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-5">
-                            <div class="flex flex-col gap-5">
-                                {domainsLeft.map((domain) => (
-                                    <a href={domain.link} class="group inline-flex items-center text-slate-300 font-semibold hover:text-brand-accent transition-colors text-base">
-                                        {domain.name}
-                                        <svg class="w-4 h-4 ml-1.5 transform group-hover:translate-x-1 transition-transform text-brand-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
-                                    </a>
-                                ))}
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {features.map(feature => (
+                        <div class="bg-[#0a0f1d] border border-white/5 p-10 rounded-3xl hover:border-brand-accent/40 hover:bg-[#0d1425] transition-all duration-500 group">
+                            <div class="w-14 h-14 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-brand-accent mb-8 group-hover:scale-110 group-hover:bg-brand-accent group-hover:text-brand-dark transition-all duration-300">
+                                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={feature.icon} /></svg>
                             </div>
-                            <div class="flex flex-col gap-5">
-                                {domainsRight.map((domain) => (
-                                    <a href={domain.link} class="group inline-flex items-center text-slate-300 font-semibold hover:text-brand-accent transition-colors text-base">
-                                        {domain.name}
-                                        <svg class="w-4 h-4 ml-1.5 transform group-hover:translate-x-1 transition-transform text-brand-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
-                                    </a>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="lg:col-span-7 flex flex-col">
-                        <h3 class="font-heading text-2xl md:text-3xl font-bold text-white mb-6 tracking-tight">Tech Stack</h3>
-                        <p class="text-slate-400 text-base leading-relaxed mb-12">
-                            Throughout the years, we have carefully selected a set of tools that aid us in constructing top-notch custom products that tackle all business obstacles. Coupled with our streamlined development procedure, these tools allow us to maintain the cost of custom software development within our clients' budget expectations.
-                        </p>
-                        <div class="grid grid-cols-4 sm:grid-cols-5 lg:grid-cols-6 gap-x-8 gap-y-12 items-center justify-items-start">
-                            {stackIcons.map((iconClass) => (
-                                <div class="text-5xl hover:scale-110 transition-transform duration-300 cursor-pointer flex items-center justify-center min-w-[3.5rem] min-h-[3.5rem]">
-                                    <i class={iconClass}></i>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="py-24 bg-[#050814] border-b border-white/5 relative">
-            <div class="absolute inset-0 bg-gradient-to-br from-brand-accent/5 to-transparent pointer-events-none"></div>
-            <div class="max-w-7xl mx-auto px-6 relative z-10">
-                <div class="text-center mb-16">
-                    <h2 class="font-heading text-sm font-bold tracking-widest text-brand-glow uppercase mb-3">Our Track Record</h2>
-                    <h3 class="font-heading text-3xl md:text-4xl font-bold text-white">We're Your Team of Developers</h3>
-                </div>
-
-                <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
-                    {metrics.map(metric => (
-                        <div class="bg-brand-dark border border-white/10 rounded-2xl p-8 flex flex-col items-center justify-center text-center shadow-2xl hover:-translate-y-2 transition-transform duration-300">
-                            <span class="font-heading text-5xl md:text-6xl font-bold text-brand-accent mb-3 drop-shadow-[0_0_15px_rgba(34,211,238,0.4)]">{metric.value}</span>
-                            <span class="text-slate-300 font-semibold text-sm uppercase tracking-wider">{metric.label}</span>
+                            <h4 class="font-heading text-xl font-bold text-white mb-4 group-hover:text-brand-accent transition-colors">{feature.title}</h4>
+                            <p class="text-slate-400 text-sm leading-relaxed">{feature.desc}</p>
                         </div>
                     ))}
                 </div>
             </div>
         </section>
 
-        <section class="py-24 bg-brand-dark border-b border-white/5">
-            <div class="max-w-4xl mx-auto px-6 text-center">
-                <h2 class="font-heading text-3xl md:text-4xl font-bold text-white mb-8">Why Choose ZetaLogix?</h2>
-                <div class="space-y-6 text-slate-400 text-lg leading-relaxed">
-                    <p>
-                        Our team genuinely cares about every project we work on. Our top priority is to ensure that the custom products and apps we develop provide the best results for our clients. To accomplish this, we begin by carefully analyzing business requirements before writing a single line of code.
-                    </p>
-                    <p>
-                        Our development process is efficient and transparent, allowing us to deliver your software on time and within budget. We are proud of our results-driven team, which values communication and flexibility while focusing on long-term, high-value relationships.
-                    </p>
-                    <p>
-                        We stay up to date on industry trends and tailor our development and quality assurance processes to meet the highest standards. When your product goes live, our services do not end. Our dependable support team will see to it that your platform runs flawlessly.
-                    </p>
+        {/* 4. Structured Tech Stack */}
+        <section class="py-24 max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+                <div class="max-w-2xl">
+                    <h2 class="font-heading text-3xl md:text-4xl font-bold text-white mb-4">Enterprise Technology Stack</h2>
+                    <p class="text-slate-400 text-lg">We utilize industry-standard, production-tested technologies to ensure your platform is robust, secure, and maintainable.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="p-8 rounded-2xl bg-[#0a0f1d] border border-white/5">
+                    <h3 class="text-white font-bold text-lg mb-6 border-b border-white/10 pb-4">Frontend</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3 text-slate-300"><i class="devicon-react-original colored text-2xl"></i> React.js</li>
+                        <li class="flex items-center gap-3 text-slate-300"><i class="devicon-nextjs-plain text-white text-2xl"></i> Next.js</li>
+                        <li class="flex items-center gap-3 text-slate-300"><i class="devicon-vuejs-plain colored text-2xl"></i> Vue.js</li>
+                        <li class="flex items-center gap-3 text-slate-300"><i class="devicon-tailwindcss-original colored text-2xl"></i> Tailwind CSS</li>
+                    </ul>
+                </div>
+                <div class="p-8 rounded-2xl bg-[#0a0f1d] border border-white/5">
+                    <h3 class="text-white font-bold text-lg mb-6 border-b border-white/10 pb-4">Backend</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3 text-slate-300"><i class="devicon-nodejs-plain colored text-2xl"></i> Node.js</li>
+                        <li class="flex items-center gap-3 text-slate-300"><i class="devicon-python-plain colored text-2xl"></i> Python</li>
+                        <li class="flex items-center gap-3 text-slate-300"><i class="devicon-express-original text-white text-2xl"></i> Express</li>
+                        <li class="flex items-center gap-3 text-slate-300"><i class="devicon-graphql-plain colored text-2xl"></i> GraphQL</li>
+                    </ul>
+                </div>
+                <div class="p-8 rounded-2xl bg-[#0a0f1d] border border-white/5">
+                    <h3 class="text-white font-bold text-lg mb-6 border-b border-white/10 pb-4">Database</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3 text-slate-300"><i class="devicon-postgresql-plain colored text-2xl"></i> PostgreSQL</li>
+                        <li class="flex items-center gap-3 text-slate-300"><i class="devicon-mongodb-plain colored text-2xl"></i> MongoDB</li>
+                        <li class="flex items-center gap-3 text-slate-300"><i class="devicon-mysql-plain colored text-2xl"></i> MySQL</li>
+                        <li class="flex items-center gap-3 text-slate-300"><i class="devicon-redis-plain colored text-2xl"></i> Redis</li>
+                    </ul>
+                </div>
+                <div class="p-8 rounded-2xl bg-[#0a0f1d] border border-white/5">
+                    <h3 class="text-white font-bold text-lg mb-6 border-b border-white/10 pb-4">Infrastructure</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3 text-slate-300"><i class="devicon-amazonwebservices-plain-wordmark colored text-3xl"></i> AWS</li>
+                        <li class="flex items-center gap-3 text-slate-300"><i class="devicon-docker-plain colored text-2xl"></i> Docker</li>
+                        <li class="flex items-center gap-3 text-slate-300"><i class="devicon-googlecloud-plain colored text-2xl"></i> Google Cloud</li>
+                        <li class="flex items-center gap-3 text-slate-300"><i class="devicon-github-original text-white text-2xl"></i> CI/CD Pipelines</li>
+                    </ul>
                 </div>
             </div>
         </section>
 
-        <section class="py-24 bg-[#050814] border-b border-white/5">
-            <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-                <div class="lg:col-span-6">
-                    <span class="text-xs font-mono font-bold text-brand-accent tracking-widest uppercase block mb-2">Budgeting & Economics</span>
-                    <h2 class="font-heading text-3xl md:text-4xl font-bold text-white mb-6">
-                        How Much Does Web Development Cost?
-                    </h2>
-                    <p class="text-slate-400 text-base leading-relaxed mb-6">
-                        In today's digital world, whether your business operates offline or online, it is critical to build and maintain a website. But here's how much web development costs on average: including the website's launch and design, is between $12,000 and $50,000, while routine website maintenance costs between $35 and $5,000 per month — or $400 to $60,000 per year.
-                    </p>
-                    <p class="text-slate-400 text-base leading-relaxed">
-                        At ZetaLogix, we thoroughly analyze your custom requirements before developing professional web design and web development solutions that maximize your benefits. We create simple, fast-loading, user-friendly websites to help you gain maximum traction on search engines and increase traffic and conversions.
-                    </p>
+        {/* 5. Relevant Project Example */}
+        <section class="py-24 bg-brand-dark border-y border-white/5">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="font-heading text-sm font-bold tracking-widest text-brand-glow uppercase mb-3">Case Study</h2>
+                    <h3 class="font-heading text-3xl md:text-4xl font-bold text-white mb-4">Proven Web <span class="text-brand-accent">Success.</span></h3>
                 </div>
-                <div class="lg:col-span-6 flex justify-center">
-                    <div class="relative">
-                        <div class="absolute inset-0 bg-brand-accent/10 rounded-2xl transform translate-x-4 -translate-y-4"></div>
-                        <img 
-                            src="/assets/web development/Web Development Cost.png" 
-                            alt="Web Development Costing Audit" 
-                            class="rounded-2xl relative z-10 w-full object-cover shadow-2xl border border-white/10"
-                        />
+                
+                <div class="bg-[#0a0f1d] border border-white/5 rounded-[2.5rem] p-8 md:p-12 shadow-2xl grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="order-2 lg:order-1">
+                        <div class="flex items-center gap-3 text-xs font-bold uppercase tracking-wider mb-6">
+                            <span class="text-brand-accent">Rental Marketplace</span>
+                            <span class="text-slate-600">•</span>
+                            <span class="text-slate-400">Web Application</span>
+                        </div>
+                        <h4 class="font-heading text-3xl lg:text-4xl font-bold text-white mb-6">Rentischeap</h4>
+                        <p class="text-slate-400 text-lg leading-relaxed mb-8">
+                            We architected and deployed a global accommodation booking platform capable of handling complex short and long-term homestay reservations securely and efficiently across multiple time zones.
+                        </p>
+                        <div class="flex flex-wrap gap-3 mb-10">
+                            <span class="px-3 py-1 rounded bg-white/5 border border-white/10 text-xs text-slate-300 font-mono">React.js</span>
+                            <span class="px-3 py-1 rounded bg-white/5 border border-white/10 text-xs text-slate-300 font-mono">Node.js</span>
+                            <span class="px-3 py-1 rounded bg-white/5 border border-white/10 text-xs text-slate-300 font-mono">PostgreSQL</span>
+                        </div>
+                        <a href="/portfolio/rentischeap" class="inline-flex px-8 py-4 bg-brand-accent text-brand-dark font-bold rounded-full hover:bg-white transition-all shadow-lg hover:shadow-brand-accent/20">
+                            Read Full Case Study
+                        </a>
+                    </div>
+                    <div class="order-1 lg:order-2 rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-[#1e293b]">
+                        <div class="h-8 w-full bg-[#0f172a] border-b border-white/5 flex items-center px-4 gap-2">
+                            <div class="w-2 h-2 rounded-full bg-red-500/80"></div>
+                            <div class="w-2 h-2 rounded-full bg-yellow-500/80"></div>
+                            <div class="w-2 h-2 rounded-full bg-green-500/80"></div>
+                        </div>
+                        <img src="/assets/Rentischeap.png" alt="Rentischeap Web App" class="w-full h-auto object-cover" loading="lazy" />
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="py-24 bg-brand-dark relative border-t border-white/5">
+        {/* 6. Development Process - Bulletproof Responsive Timeline */}
+        <section class="py-24 max-w-5xl mx-auto px-6">
+            <h2 class="font-heading text-3xl md:text-4xl font-bold text-white mb-16 text-center">Our Engineering Pipeline</h2>
+            
+            <div class="relative max-w-4xl mx-auto">
+                {/* Center Line */}
+                <div class="absolute left-[28px] md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-brand-accent via-brand-accent/30 to-transparent md:-translate-x-1/2"></div>
+                
+                <div class="space-y-12">
+                    {pipeline.map((item, index) => (
+                        <div class="relative flex flex-col md:flex-row items-start md:items-center justify-between w-full group">
+                            
+                            {/* Number Icon */}
+                            <div class={`absolute left-0 md:left-1/2 top-0 md:top-1/2 w-14 h-14 rounded-full border-4 border-[#02040a] font-bold flex items-center justify-center z-10 md:-translate-x-1/2 md:-translate-y-1/2 transition-colors duration-300 ${item.active ? 'bg-brand-accent text-brand-dark shadow-[0_0_20px_rgba(34,211,238,0.4)]' : 'bg-[#1e293b] text-white group-hover:bg-brand-accent/50'}`}>
+                                {item.step}
+                            </div>
+                            
+                            {/* Layout: Alternate Left/Right based on Index */}
+                            {index % 2 === 0 ? (
+                                <>
+                                    <div class="w-full pl-20 md:pl-0 md:w-[calc(50%-3rem)] md:text-right md:pr-8">
+                                        <div class={`p-8 rounded-3xl bg-[#0a0f1d] border shadow-xl transition-colors duration-300 text-left md:text-right ${item.active ? 'border-brand-accent/30' : 'border-white/5 group-hover:border-white/20'}`}>
+                                            <h4 class="font-heading text-xl font-bold text-white mb-3">{item.title}</h4>
+                                            <p class="text-base text-slate-400 leading-relaxed">{item.desc}</p>
+                                        </div>
+                                    </div>
+                                    <div class="hidden md:block md:w-[calc(50%-3rem)]"></div>
+                                </>
+                            ) : (
+                                <>
+                                    <div class="hidden md:block md:w-[calc(50%-3rem)]"></div>
+                                    <div class="w-full pl-20 md:pl-0 md:w-[calc(50%-3rem)] md:pl-8 mt-2 md:mt-0">
+                                        <div class={`p-8 rounded-3xl bg-[#0a0f1d] border shadow-xl transition-colors duration-300 text-left ${item.active ? 'border-brand-accent/30' : 'border-white/5 group-hover:border-white/20'}`}>
+                                            <h4 class="font-heading text-xl font-bold text-white mb-3">{item.title}</h4>
+                                            <p class="text-base text-slate-400 leading-relaxed">{item.desc}</p>
+                                        </div>
+                                    </div>
+                                </>
+                            )}
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        {/* 7. Comprehensive FAQs - Smooth Accordion */}
+        <section class="py-24 bg-brand-dark border-t border-white/5">
             <div class="max-w-4xl mx-auto px-6">
                 <div class="text-center mb-16">
-                    <h2 class="font-heading text-sm font-bold tracking-widest text-brand-glow uppercase mb-3">FAQ</h2>
-                    <h3 class="font-heading text-3xl md:text-4xl font-bold text-white">Common Inquiries</h3>
+                    <h2 class="font-heading text-3xl md:text-4xl font-bold text-white mb-4">Frequently Asked Questions</h2>
+                    <p class="text-slate-400 text-lg">Clear answers regarding our web engineering capabilities.</p>
                 </div>
-
-                <div class="flex flex-col gap-4">
-                    {faqs.map((faq) => (
-                        <div class="bg-[#0a0f1d] border border-white/5 rounded-xl overflow-hidden transition-colors duration-300 faq-item">
-                            <button type="button" class="w-full px-6 py-5 text-left flex items-center justify-between font-heading text-lg font-bold text-white focus:outline-none faq-btn">
-                                <span>{faq.q}</span>
-                                <svg class="w-4 h-4 text-slate-400 transition-transform duration-300 faq-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                
+                <div class="space-y-4">
+                    {faqs.map((faq, index) => (
+                        <div class="faq-item bg-[#0a0f1d] border border-white/5 rounded-2xl overflow-hidden transition-colors hover:border-white/10">
+                            <button class="faq-button w-full px-8 py-6 flex items-center justify-between text-left focus:outline-none focus-visible:bg-white/5" aria-expanded="false">
+                                <h4 class="font-bold text-white text-lg pr-8 leading-snug">{faq.q}</h4>
+                                <div class="shrink-0 relative w-6 h-6 text-brand-accent">
+                                    <svg class="absolute inset-0 w-6 h-6 transform transition-transform duration-300 icon-vertical" fill="currentColor" viewBox="0 0 24 24"><rect x="11" y="4" width="2" height="16" rx="1"/></svg>
+                                    <svg class="absolute inset-0 w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="2" rx="1"/></svg>
+                                </div>
                             </button>
-                            <div class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out faq-content">
-                                <p class="px-6 pb-6 text-slate-400 text-sm md:text-base leading-relaxed border-t border-white/5 pt-4 bg-white/[0.01]">
-                                    {faq.a}
-                                </p>
+                            <div class="faq-content grid transition-all duration-300">
+                                <div class="overflow-hidden">
+                                    <p class="text-slate-400 leading-relaxed px-8 pb-6">
+                                        {faq.a}
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     ))}
@@ -356,36 +354,48 @@ const metrics = [
             </div>
         </section>
 
-        <ContactForm />
+        {/* 8. Call to Action */}
+        <Cta />
 
     </main>
 
-    <BottomBanner />
     <Footer />
 </BaseLayout>
+
+<style>
+    /* CSS Grid Accordion Trick for perfectly smooth height transitions without heavy JS calculations */
+    .faq-content {
+        grid-template-rows: 0fr;
+    }
+    .faq-item.is-open .faq-content {
+        grid-template-rows: 1fr;
+    }
+    .faq-item.is-open .icon-vertical {
+        transform: rotate(90deg) scaleY(0);
+        opacity: 0;
+    }
+</style>
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         const faqItems = document.querySelectorAll('.faq-item');
-
+        
         faqItems.forEach(item => {
-            const btn = item.querySelector('.faq-btn');
-            const content = item.querySelector('.faq-content');
-            const icon = item.querySelector('.faq-icon');
+            const button = item.querySelector('.faq-button');
+            if (button) {
+                button.addEventListener('click', () => {
+                    const isOpen = item.classList.contains('is-open');
+                    
+                    // Close all other accordions for a clean experience
+                    faqItems.forEach(i => {
+                        i.classList.remove('is-open');
+                        i.querySelector('.faq-button')?.setAttribute('aria-expanded', 'false');
+                    });
 
-            if (btn && content && icon) {
-                btn.addEventListener('click', () => {
-                    const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
-
-                    // Close all other open accordion rows
-                    document.querySelectorAll('.faq-content').forEach(c => (c as HTMLElement).style.maxHeight = '0px');
-                    document.querySelectorAll('.faq-icon').forEach(i => i.classList.remove('rotate-180'));
-                    document.querySelectorAll('.faq-item').forEach(wrapper => wrapper.classList.remove('border-brand-accent/30'));
-
+                    // If it wasn't open, open it
                     if (!isOpen) {
-                        (content as HTMLElement).style.maxHeight = content.scrollHeight + 'px';
-                        icon.classList.add('rotate-180');
-                        item.classList.add('border-brand-accent/30');
+                        item.classList.add('is-open');
+                        button.setAttribute('aria-expanded', 'true');
                     }
                 });
             }
