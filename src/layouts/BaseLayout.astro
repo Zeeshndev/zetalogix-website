@@ -80,5 +80,36 @@ const structuredData = {
 		<main class="min-h-screen flex flex-col">
 			<slot /> 
 		</main>
+        <style is:global>
+            /* GLOBAL ACCESSIBILITY STYLES */
+            
+            /* 1. Global Focus Indicator for Keyboard Users */
+            *:focus-visible {
+                outline: 3px solid #22d3ee !important; /* brand-accent */
+                outline-offset: 2px !important;
+                border-radius: 4px;
+            }
+
+            /* Removes the default click outline so mouse users don't see it, 
+               but keyboard users still get the focus-visible outline above */
+            *:focus:not(:focus-visible) {
+                outline: none !important;
+            }
+
+            /* 2. Reduced Motion Support */
+            @media (prefers-reduced-motion: reduce) {
+                *,
+                ::before,
+                ::after {
+                    animation-delay: -1ms !important;
+                    animation-duration: 1ms !important;
+                    animation-iteration-count: 1 !important;
+                    background-attachment: initial !important;
+                    scroll-behavior: auto !important;
+                    transition-duration: 0s !important;
+                    transition-delay: 0s !important;
+                }
+            }
+        </style>
 	</body>
 </html>
