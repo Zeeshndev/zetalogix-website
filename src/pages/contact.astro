@@ -6,11 +6,24 @@ import ContactForm from '../components/sections/ContactForm.astro';
 import Footer from '../components/global/Footer.astro';
 ---
 
-<BaseLayout title="Contact Us | ZetaLogix">
+<BaseLayout 
+    title="Contact Us | ZetaLogix"
+    description="Discuss your next web, mobile, or AI project with the engineering team at ZetaLogix."
+>
     <Navbar />
     
-    <main class="pt-20 min-h-screen flex flex-col justify-between">
+    <main class="relative z-10 bg-[#02040a] pt-32 pb-20">
+        <section class="max-w-4xl mx-auto px-6 text-center mb-8">
+            <h1 class="font-heading text-5xl md:text-6xl font-bold text-white tracking-tight mb-6">
+                Let's Build <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-brand-glow">Together.</span>
+            </h1>
+            <p class="text-lg text-slate-400">
+                Complete the form below or email us directly at <a href="mailto:hello@zetalogix.com" class="text-brand-accent hover:text-white transition-colors">hello@zetalogix.com</a>.
+            </p>
+        </section>
+
         <ContactForm />
-        <Footer />
     </main>
+
+    <Footer />
 </BaseLayout>

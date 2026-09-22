@@ -46,8 +46,11 @@ const sortedCountries = countries.sort((a, b) => a.n.localeCompare(b.n));
             <div class="lg:col-span-7 bg-[#0a0f1d] border border-white/10 rounded-2xl p-8 md:p-10 shadow-2xl relative z-10">
                 <form class="zeta-contact-form flex flex-col gap-6" novalidate>
                     
-                    <input type="text" name="name" placeholder="Full Name*" class="validation-target w-full bg-brand-dark border border-white/10 rounded-lg px-4 py-3.5 text-slate-300 placeholder-slate-500 focus:outline-none focus:border-brand-accent transition-colors" />
-                    <input type="email" name="email" placeholder="Email*" class="validation-target w-full bg-brand-dark border border-white/10 rounded-lg px-4 py-3.5 text-slate-300 placeholder-slate-500 focus:outline-none focus:border-brand-accent transition-colors" />
+                    {/* Honeypot Spam Protection */}
+                    <input type="text" name="_honeypot" class="hidden" style="display:none" tabindex="-1" autocomplete="off" />
+                    
+                    <input type="text" name="name" placeholder="Full Name*" required class="validation-target w-full bg-brand-dark border border-white/10 rounded-lg px-4 py-3.5 text-slate-300 placeholder-slate-500 focus:outline-none focus:border-brand-accent transition-colors" />
+                    <input type="email" name="email" placeholder="Work Email*" required class="validation-target w-full bg-brand-dark border border-white/10 rounded-lg px-4 py-3.5 text-slate-300 placeholder-slate-500 focus:outline-none focus:border-brand-accent transition-colors" />
                     
                     <div class="flex items-center w-full bg-brand-dark border border-white/10 rounded-lg focus-within:border-brand-accent transition-colors relative z-50 group-country">
                         
@@ -85,27 +88,27 @@ const sortedCountries = countries.sort((a, b) => a.n.localeCompare(b.n));
                         </div>
 
                         <input type="hidden" name="country_code" class="hidden-input" value="+1" />
-                        <input type="tel" name="phone" placeholder="Phone Number" class="w-full bg-transparent px-4 py-3.5 text-slate-300 placeholder-slate-500 focus:outline-none h-full" />
+                        <input type="tel" name="phone" placeholder="Phone Number (Optional)" class="w-full bg-transparent px-4 py-3.5 text-slate-300 placeholder-slate-500 focus:outline-none h-full" />
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-40">
                         <div class="relative custom-dropdown">
-                            <button type="button" class="validation-target custom-select-btn w-full bg-brand-dark border border-white/10 rounded-lg px-4 py-3.5 flex items-center justify-between text-slate-500 focus:outline-none focus:border-brand-accent transition-colors hover:border-white/20">
-                                <span class="selected-text truncate">How did you hear about us?*</span>
+                            <button type="button" class="custom-select-btn w-full bg-brand-dark border border-white/10 rounded-lg px-4 py-3.5 flex items-center justify-between text-slate-500 focus:outline-none focus:border-brand-accent transition-colors hover:border-white/20">
+                                <span class="selected-text truncate">Service Type (Optional)</span>
                                 <svg class="w-4 h-4 shrink-0 transition-transform duration-200 icon-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
                             </button>
                             <div class="custom-select-list absolute left-0 top-[105%] w-full bg-[#0f172a] border border-white/10 rounded-lg shadow-2xl opacity-0 invisible transition-all duration-200 z-40 overflow-hidden">
-                                <div class="custom-option px-4 py-3 text-slate-300 hover:bg-brand-accent hover:text-[#0a0f1d] cursor-pointer transition-colors text-sm border-b border-white/5" data-value="search">Search Engine</div>
-                                <div class="custom-option px-4 py-3 text-slate-300 hover:bg-brand-accent hover:text-[#0a0f1d] cursor-pointer transition-colors text-sm border-b border-white/5" data-value="social">Social Media</div>
-                                <div class="custom-option px-4 py-3 text-slate-300 hover:bg-brand-accent hover:text-[#0a0f1d] cursor-pointer transition-colors text-sm border-b border-white/5" data-value="referral">Referral</div>
+                                <div class="custom-option px-4 py-3 text-slate-300 hover:bg-brand-accent hover:text-[#0a0f1d] cursor-pointer transition-colors text-sm border-b border-white/5" data-value="web">Web Application</div>
+                                <div class="custom-option px-4 py-3 text-slate-300 hover:bg-brand-accent hover:text-[#0a0f1d] cursor-pointer transition-colors text-sm border-b border-white/5" data-value="mobile">Mobile Application</div>
+                                <div class="custom-option px-4 py-3 text-slate-300 hover:bg-brand-accent hover:text-[#0a0f1d] cursor-pointer transition-colors text-sm border-b border-white/5" data-value="ai">AI Solution</div>
                                 <div class="custom-option px-4 py-3 text-slate-300 hover:bg-brand-accent hover:text-[#0a0f1d] cursor-pointer transition-colors text-sm" data-value="other">Other</div>
                             </div>
                             <input type="hidden" name="source" class="hidden-input" />
                         </div>
 
                         <div class="relative custom-dropdown">
-                            <button type="button" class="validation-target custom-select-btn w-full bg-brand-dark border border-white/10 rounded-lg px-4 py-3.5 flex items-center justify-between text-slate-500 focus:outline-none focus:border-brand-accent transition-colors hover:border-white/20">
-                                <span class="selected-text truncate">What is your budget?*</span>
+                            <button type="button" class="custom-select-btn w-full bg-brand-dark border border-white/10 rounded-lg px-4 py-3.5 flex items-center justify-between text-slate-500 focus:outline-none focus:border-brand-accent transition-colors hover:border-white/20">
+                                <span class="selected-text truncate">Budget (Optional)</span>
                                 <svg class="w-4 h-4 shrink-0 transition-transform duration-200 icon-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
                             </button>
                             <div class="custom-select-list absolute left-0 top-[105%] w-full bg-[#0f172a] border border-white/10 rounded-lg shadow-2xl opacity-0 invisible transition-all duration-200 z-40 overflow-hidden">
@@ -120,8 +123,8 @@ const sortedCountries = countries.sort((a, b) => a.n.localeCompare(b.n));
                     </div>
 
                     <div class="relative z-30 custom-dropdown">
-                        <button type="button" class="validation-target custom-select-btn w-full bg-brand-dark border border-white/10 rounded-lg px-4 py-3.5 flex items-center justify-between text-slate-500 focus:outline-none focus:border-brand-accent transition-colors hover:border-white/20">
-                            <span class="selected-text truncate">Select your preferred engagement model*</span>
+                        <button type="button" class="custom-select-btn w-full bg-brand-dark border border-white/10 rounded-lg px-4 py-3.5 flex items-center justify-between text-slate-500 focus:outline-none focus:border-brand-accent transition-colors hover:border-white/20">
+                            <span class="selected-text truncate">Engagement Model (Optional)</span>
                             <svg class="w-4 h-4 shrink-0 transition-transform duration-200 icon-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
                         </button>
                         
@@ -133,22 +136,22 @@ const sortedCountries = countries.sort((a, b) => a.n.localeCompare(b.n));
                         <input type="hidden" name="engagement" class="hidden-input" />
                     </div>
 
-                    <textarea name="message" rows="4" placeholder="Message" class="w-full bg-brand-dark border border-white/10 rounded-lg px-4 py-3.5 text-slate-300 placeholder-slate-500 focus:outline-none focus:border-brand-accent transition-colors resize-none"></textarea>
+                    <textarea name="message" rows="4" placeholder="Project Description*" required class="validation-target w-full bg-brand-dark border border-white/10 rounded-lg px-4 py-3.5 text-slate-300 placeholder-slate-500 focus:outline-none focus:border-brand-accent transition-colors resize-none"></textarea>
 
-                    <div class="flex flex-col sm:flex-row items-center justify-between gap-6 pt-4">
+                    <div class="flex flex-col sm:flex-row items-center justify-between gap-6 pt-4 border-t border-white/5">
                         <label class="flex items-center gap-2 text-sm text-slate-400 cursor-pointer hover:text-brand-accent transition-colors w-full sm:w-auto">
                             <svg class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" /></svg>
-                            <span class="truncate">Attach files (2 Files max - 5MB each)</span>
+                            <span class="truncate file-name-display">Attach files (Max 2 - 5MB)</span>
                             <input type="file" name="files" class="hidden" multiple accept="image/*,.pdf,.doc,.docx" />
                         </label>
                         
-                        <button type="submit" class="submit-btn w-full sm:w-auto px-10 py-3.5 bg-brand-accent text-brand-dark font-bold rounded-lg hover:bg-white transition-colors duration-300 shadow-lg flex items-center justify-center gap-2">
-                            <span class="btn-text">Submit</span>
+                        <button type="submit" class="submit-btn w-full sm:w-auto px-10 py-3.5 bg-brand-accent text-brand-dark font-bold rounded-lg hover:bg-white transition-colors duration-300 shadow-lg flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed">
+                            <span class="btn-text">Submit Enquiry</span>
                             <svg class="loading-spinner hidden w-5 h-5 animate-spin text-brand-dark" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
                         </button>
                     </div>
                     
-                    <p class="form-error-msg hidden text-red-400 text-sm font-medium text-center sm:text-right mt-1 w-full">Please fill out all required fields.</p>
+                    <p class="form-error-msg hidden text-red-400 text-sm font-medium text-center sm:text-right mt-1 w-full">Please complete all required fields.</p>
                 </form>
             </div>
 
@@ -161,12 +164,12 @@ const sortedCountries = countries.sort((a, b) => a.n.localeCompare(b.n));
                     />
                 </div>
 
-                <h3 class="font-heading text-2xl font-bold text-white mb-6">What next?</h3>
+                <h3 class="font-heading text-2xl font-bold text-white mb-6">What happens next?</h3>
                 
                 <ol class="flex flex-col gap-5 text-slate-400 text-sm md:text-base leading-relaxed">
                     <li class="flex gap-3">
                         <span class="font-bold text-brand-accent">1.</span>
-                        <span>We will reach out to you within one business day to discuss the next steps.</span>
+                        <span>We will review your requirements and respond within 1 business day.</span>
                     </li>
                     <li class="flex gap-3">
                         <span class="font-bold text-brand-accent">2.</span>
@@ -205,10 +208,8 @@ const sortedCountries = countries.sort((a, b) => a.n.localeCompare(b.n));
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // Find ALL instances of the form on the page (modal, footer, contact page, etc)
         const contactForms = document.querySelectorAll('.zeta-contact-form');
 
-        // --- FIXED: Added type annotation 'Element | null' to resolve TypeScript errors ---
         function closeAllDropdowns(exceptList: Element | null = null) {
             document.querySelectorAll('.custom-select-list').forEach(list => {
                 if(list !== exceptList) {
@@ -218,73 +219,36 @@ const sortedCountries = countries.sort((a, b) => a.n.localeCompare(b.n));
             document.querySelectorAll('.icon-arrow').forEach(arrow => {
                 arrow.classList.remove('rotate-180');
             });
-            document.querySelectorAll('.custom-select-btn').forEach(btn => {
-                if (!btn.classList.contains('border-red-500')) {
-                    btn.classList.remove('border-brand-accent');
-                }
-            });
         }
 
         document.addEventListener('click', () => closeAllDropdowns());
 
-        // Loop through each form individually so JS logic doesn't overlap
         contactForms.forEach(form => {
-            
-            // --- 1. Country Dropdown & Search Logic (Scoped to current form) ---
-            const countryBtn = form.querySelector('.group-country .custom-select-btn');
-            const countryList = form.querySelector('.group-country .custom-select-list');
-            const countryArrow = form.querySelector('.group-country .icon-arrow');
-            const flagSpan = form.querySelector('.group-country .selected-flag');
-            const codeSpan = form.querySelector('.group-country .selected-code');
-            const hiddenCountryInput = form.querySelector('.group-country .hidden-input') as HTMLInputElement;
-            const countryOptions = form.querySelectorAll('.country-option');
-            const searchInput = form.querySelector('.country-search') as HTMLInputElement;
-
-            if(countryBtn && countryList) {
-                countryBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    closeAllDropdowns(countryList);
-                    countryList.classList.toggle('opacity-0');
-                    countryList.classList.toggle('invisible');
-                    countryArrow?.classList.toggle('rotate-180');
-                    
-                    if (!countryList.classList.contains('invisible') && searchInput) {
-                        setTimeout(() => searchInput.focus(), 100);
-                    }
-                });
-
-                searchInput?.addEventListener('click', (e) => e.stopPropagation());
-
-                searchInput?.addEventListener('input', (e) => {
-                    const term = (e.target as HTMLInputElement).value.toLowerCase();
-                    countryOptions.forEach(opt => {
-                        const countryName = opt.getAttribute('data-name') || '';
-                        const countryCode = opt.getAttribute('data-code') || '';
-                        (opt as HTMLElement).style.display = (countryName.includes(term) || countryCode.includes(term)) ? 'flex' : 'none';
-                    });
-                });
-
-                countryOptions.forEach(option => {
-                    option.addEventListener('click', () => {
-                        const code = option.getAttribute('data-code');
-                        const flag = option.getAttribute('data-flag');
-                        
-                        if(codeSpan && flagSpan && hiddenCountryInput) {
-                            codeSpan.textContent = code;
-                            flagSpan.textContent = flag;
-                            hiddenCountryInput.value = code || '';
+            // File Upload Logic
+            const fileInput = form.querySelector('input[type="file"]') as HTMLInputElement;
+            const fileDisplay = form.querySelector('.file-name-display');
+            if(fileInput && fileDisplay) {
+                fileInput.addEventListener('change', () => {
+                    if (fileInput.files && fileInput.files.length > 0) {
+                        const fileCount = fileInput.files.length;
+                        if(fileCount > 2) {
+                            fileDisplay.textContent = "Maximum 2 files allowed";
+                            fileDisplay.classList.add('text-red-400');
+                            fileInput.value = ""; // clear
+                        } else {
+                            fileDisplay.textContent = `${fileCount} file(s) selected`;
+                            fileDisplay.classList.remove('text-red-400');
+                            fileDisplay.classList.add('text-white');
                         }
-                        if(searchInput) searchInput.value = '';
-                        countryOptions.forEach(opt => (opt as HTMLElement).style.display = 'flex');
-                        countryList.classList.add('opacity-0', 'invisible');
-                        countryArrow?.classList.remove('rotate-180');
-                    });
+                    } else {
+                        fileDisplay.textContent = "Attach files (Max 2 - 5MB)";
+                        fileDisplay.classList.remove('text-white', 'text-red-400');
+                    }
                 });
             }
 
-            // --- 2. Standard Dropdowns (Budget, Source, Engagement) (Scoped) ---
+            // Standard Dropdowns Logic
             const standardDropdowns = form.querySelectorAll('.custom-dropdown');
-
             standardDropdowns.forEach(dropdown => {
                 const btn = dropdown.querySelector('.custom-select-btn');
                 const list = dropdown.querySelector('.custom-select-list');
@@ -300,7 +264,6 @@ const sortedCountries = countries.sort((a, b) => a.n.localeCompare(b.n));
                         list.classList.toggle('opacity-0');
                         list.classList.toggle('invisible');
                         arrow?.classList.toggle('rotate-180');
-                        btn.classList.toggle('border-brand-accent');
                     });
 
                     options.forEach(option => {
@@ -310,22 +273,16 @@ const sortedCountries = countries.sort((a, b) => a.n.localeCompare(b.n));
                                 textSpan.classList.remove('text-slate-500');
                                 textSpan.classList.add('text-slate-300'); 
                                 hiddenInput.value = option.getAttribute('data-value') || '';
-
-                                // Remove validation error state on select
-                                btn.classList.remove('border-red-500', 'bg-red-500/10');
-                                btn.classList.add('border-white/10', 'bg-brand-dark');
-                                form.querySelector('.form-error-msg')?.classList.add('hidden');
                             }
                             list.classList.add('opacity-0', 'invisible');
                             arrow?.classList.remove('rotate-180');
-                            btn.classList.remove('border-brand-accent');
                         });
                     });
                 }
             });
 
-            // LIVE VALIDATION CLEAR: Remove red outline on typing
-            form.querySelectorAll('input.validation-target').forEach(input => {
+            // Live Validation Clear
+            form.querySelectorAll('input.validation-target, textarea.validation-target').forEach(input => {
                 input.addEventListener('input', () => {
                     if((input as HTMLInputElement).value.trim() !== '') {
                         input.classList.remove('border-red-500', 'bg-red-500/10');
@@ -335,19 +292,18 @@ const sortedCountries = countries.sort((a, b) => a.n.localeCompare(b.n));
                 });
             });
 
-            // --- 3. Form Submission Validation (Scoped) ---
             const submitBtn = form.querySelector('.submit-btn');
 
             if (submitBtn) {
                 form.addEventListener('submit', async (e) => {
-                    e.preventDefault(); // Stop default browser reload
+                    e.preventDefault(); 
                     
                     let isValid = true;
                     const errorMsg = form.querySelector('.form-error-msg');
                     
-                    // Validate Text Inputs (Name, Email)
-                    ['name', 'email'].forEach(fieldName => {
-                        const input = form.querySelector(`input[name="${fieldName}"]`) as HTMLInputElement;
+                    // Validate ONLY Name, Email, and Message (No dropdowns forced anymore)
+                    ['name', 'email', 'message'].forEach(fieldName => {
+                        const input = form.querySelector(`[name="${fieldName}"]`) as HTMLInputElement | HTMLTextAreaElement;
                         if (input && !input.value.trim()) {
                             isValid = false;
                             input.classList.remove('border-white/10', 'bg-brand-dark');
@@ -355,39 +311,22 @@ const sortedCountries = countries.sort((a, b) => a.n.localeCompare(b.n));
                         }
                     });
 
-                    // Validate Custom Dropdowns
-                    ['source', 'budget', 'engagement'].forEach(fieldName => {
-                        const hidden = form.querySelector(`input[name="${fieldName}"]`) as HTMLInputElement;
-                        if (hidden && !hidden.value.trim()) {
-                            isValid = false;
-                            const btn = hidden.closest('.custom-dropdown')?.querySelector('.custom-select-btn');
-                            if (btn) {
-                                btn.classList.remove('border-white/10', 'bg-brand-dark', 'border-brand-accent');
-                                btn.classList.add('border-red-500', 'bg-red-500/10');
-                            }
-                        }
-                    });
-
-                    // Stop submission if validation failed
                     if (!isValid) {
                         errorMsg?.classList.remove('hidden');
                         return; 
                     }
 
-                    // If valid, Proceed with Submission
                     const btnText = submitBtn.querySelector('.btn-text') as HTMLElement;
                     const spinner = submitBtn.querySelector('.loading-spinner');
                     
                     const originalText = btnText.innerText;
                     btnText.innerText = 'Sending...';
                     spinner?.classList.remove('hidden');
-                    submitBtn.classList.add('opacity-70', 'cursor-not-allowed');
                     (submitBtn as HTMLButtonElement).disabled = true;
                     
                     const formData = new FormData(form as HTMLFormElement);
 
                     try {
-                        // Send to API
                         const response = await fetch('/api/contact', {
                             method: 'POST',
                             body: formData, 
@@ -398,17 +337,17 @@ const sortedCountries = countries.sort((a, b) => a.n.localeCompare(b.n));
                         if (response.ok) {
                             window.location.href = '/thank-you';
                         } else {
-                            alert(`Error: ${result.error}`);
+                            alert(`Error: ${result.error || 'Failed to submit.'}`);
                             btnText.innerText = originalText;
                             spinner?.classList.add('hidden');
+                            (submitBtn as HTMLButtonElement).disabled = false;
                         }
                     } catch (error) {
                         console.error('Submission Error:', error);
-                        alert('There was a problem sending your message. Please try again.');
+                        // Fallback message providing your direct email per Phase 8 requirements
+                        alert('Network error sending message. Please email hello@zetalogix.com directly.');
                         btnText.innerText = originalText;
                         spinner?.classList.add('hidden');
-                    } finally {
-                        submitBtn.classList.remove('opacity-70', 'cursor-not-allowed');
                         (submitBtn as HTMLButtonElement).disabled = false;
                     }
                 });
