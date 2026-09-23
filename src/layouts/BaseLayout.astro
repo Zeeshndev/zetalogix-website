@@ -1,5 +1,6 @@
 ---
 // src/layouts/BaseLayout.astro
+import '../styles/global.css';
 import '@fontsource-variable/inter';
 import '@fontsource-variable/space-grotesk';
 
@@ -67,43 +68,12 @@ const structuredData = {
 
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
 
-        <!-- Correctly isolated Script block -->
-        <script type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>
+        <!-- CRITICAL FIX: added is:inline so Vite skips bundling this data block -->
+        <script type="application/ld+json" set:html={JSON.stringify(structuredData)} is:inline></script>
 	</head>
 	<body class="bg-brand-dark text-slate-300 font-sans antialiased selection:bg-brand-accent selection:text-brand-dark">
 		<main class="min-h-screen flex flex-col">
 			<slot /> 
 		</main>
-
-        <!-- Correctly isolated Style block -->
-        <style is:global>
-            @import "tailwindcss";
-            
-            /* 1. Global Focus Indicator for Keyboard Users */
-            *:focus-visible {
-                outline: 3px solid #22d3ee !important; 
-                outline-offset: 2px !important;
-                border-radius: 4px;
-            }
-
-            *:focus:not(:focus-visible) {
-                outline: none !important;
-            }
-
-            /* 2. Reduced Motion Support */
-            @media (prefers-reduced-motion: reduce) {
-                *,
-                ::before,
-                ::after {
-                    animation-delay: -1ms !important;
-                    animation-duration: 1ms !important;
-                    animation-iteration-count: 1 !important;
-                    background-attachment: initial !important;
-                    scroll-behavior: auto !important;
-                    transition-duration: 0s !important;
-                    transition-delay: 0s !important;
-                }
-            }
-        </style>
 	</body>
 </html>
