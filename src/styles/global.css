@@ -1,5 +1,6 @@
 /* src/styles/global.css */
 @import "tailwindcss";
+@config "../../tailwind.config.mjs"; /* IMPORTANT: If your file is .cjs or .js, change the extension here! */
 
 /* 1. Global Focus Indicator for Keyboard Users */
 *:focus-visible {
