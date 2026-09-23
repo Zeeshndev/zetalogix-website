@@ -4,11 +4,11 @@ import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  site: 'https://zetalogix.com', 
-  output: 'server', 
-  adapter: netlify(), 
+  site: 'https://zetalogix.com',
+  output: 'server',
+  adapter: netlify(),
   integrations: [
-    sitemap() 
+    sitemap()
   ],
   vite: {
     plugins: [tailwindcss()],
