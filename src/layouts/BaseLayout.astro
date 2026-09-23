@@ -10,20 +10,18 @@ interface Props {
     type?: string;
 }
 
-// We set a fallback domain here for Canonical URLs and Social Images
 const siteUrl = 'https://zetalogix.com';
 
 const { 
     title, 
     description = "ZetaLogix engineers high-performance web applications, mobile products, and AI solutions for global enterprises and startups.",
-    image = "/assets/og-image.jpg", // Make sure to upload a 1200x630px social preview image here later
+    image = "/assets/og-image.webp", 
     type = "website"
 } = Astro.props;
 
-// Auto-generate the exact canonical URL to prevent duplicate content penalties from Google
 const canonicalURL = new URL(Astro.url.pathname, siteUrl);
 
-// Organization Structured Data (JSON-LD) for rich Google Search Results
+// Organization Structured Data (JSON-LD)
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -50,49 +48,44 @@ const structuredData = {
 	    <link rel="icon" type="image/png" href="/favicon.png?v=2" />
 		<meta name="generator" content={Astro.generator} />
 		
-        <!-- Primary Meta Tags -->
 		<title>{title}</title>
         <meta name="title" content={title} />
 		<meta name="description" content={description} />
         <link rel="canonical" href={canonicalURL} />
 
-        <!-- Open Graph / Facebook / LinkedIn -->
         <meta property="og:type" content={type} />
         <meta property="og:url" content={canonicalURL} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={new URL(image, siteUrl)} />
 
-        <!-- Twitter -->
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content={canonicalURL} />
         <meta property="twitter:title" content={title} />
         <meta property="twitter:description" content={description} />
         <meta property="twitter:image" content={new URL(image, siteUrl)} />
 
-        <!-- External Devicon CSS -->
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
 
-        <!-- JSON-LD Structured Data -->
-        <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+        <!-- Correctly isolated Script block -->
+        <script type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>
 	</head>
 	<body class="bg-brand-dark text-slate-300 font-sans antialiased selection:bg-brand-accent selection:text-brand-dark">
 		<main class="min-h-screen flex flex-col">
 			<slot /> 
 		</main>
+
+        <!-- Correctly isolated Style block -->
         <style is:global>
             @import "tailwindcss";
-            /* GLOBAL ACCESSIBILITY STYLES */
             
             /* 1. Global Focus Indicator for Keyboard Users */
             *:focus-visible {
-                outline: 3px solid #22d3ee !important; /* brand-accent */
+                outline: 3px solid #22d3ee !important; 
                 outline-offset: 2px !important;
                 border-radius: 4px;
             }
 
-            /* Removes the default click outline so mouse users don't see it, 
-               but keyboard users still get the focus-visible outline above */
             *:focus:not(:focus-visible) {
                 outline: none !important;
             }
