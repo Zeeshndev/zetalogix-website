@@ -1,0 +1,10 @@
+# public/robots.txt
+User-agent: *
+Allow: /
+
+# Prevent crawling of the internal Netlify deploy previews
+User-agent: *
+Disallow: /*.netlify.app/
+
+# Point directly to the sitemap
+Sitemap: https://zetalogix.com/sitemap-index.xml
