@@ -1,30 +1,208 @@
 ---
-// Import the local variable fonts freshly installed via npm
+// src/layouts/BaseLayout.astro
 import '@fontsource-variable/inter';
 import '@fontsource-variable/space-grotesk';
+
+interface BreadcrumbItem {
+	name: string;
+	url: string;
+}
+
+interface ArticleMeta {
+	headline: string;
+	datePublished: string;
+	dateModified?: string;
+	authorName: string;
+}
 
 interface Props {
 	title: string;
 	description?: string;
+	image?: string;
+	type?: 'website' | 'article';
+	noindex?: boolean;
+	breadcrumbs?: BreadcrumbItem[];
+	article?: ArticleMeta;
 }
 
-const { title, description = "ZetaLogix - Global IT & AI Services" } = Astro.props;
+const siteUrl = 'https://zetalogix.com';
+
+const {
+	title,
+	description = 'Build useful digital products with Zetalogix. Explore web development, mobile apps, custom software and AI solutions for your business.',
+	image = '/assets/Logo.webp',
+	type = 'website',
+	noindex = false,
+	breadcrumbs = [],
+	article,
+} = Astro.props;
+
+// Normalize canonical path (remove trailing slash except root)
+const rawPath = Astro.url.pathname;
+const normalizedPath = rawPath.length > 1 && rawPath.endsWith('/') ? rawPath.slice(0, -1) : rawPath;
+const canonicalURL = new URL(normalizedPath, siteUrl).toString();
+const socialImageURL = new URL(image, siteUrl).toString();
+
+const organizationSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'Organization',
+	name: 'Zetalogix',
+	url: siteUrl,
+	logo: `${siteUrl}/assets/Logo.webp`,
+	email: 'info@zetalogix.com',
+	address: {
+		'@type': 'PostalAddress',
+		streetAddress: 'Plot #10 G, Mini Commercial, Phase 7, Bahria Town',
+		addressLocality: 'Rawalpindi',
+		addressCountry: 'PK',
+	},
+	contactPoint: {
+		'@type': 'ContactPoint',
+		contactType: 'customer support',
+		email: 'info@zetalogix.com',
+		availableLanguage: ['English'],
+	},
+};
+
+const breadcrumbSchema =
+	breadcrumbs.length > 0
+		? {
+				'@context': 'https://schema.org',
+				'@type': 'BreadcrumbList',
+				itemListElement: breadcrumbs.map((item, index) => ({
+					'@type': 'ListItem',
+					position: index + 1,
+					name: item.name,
+					item: new URL(item.url, siteUrl).toString(),
+				})),
+			}
+		: null;
+
+const articleSchema = article
+	? {
+			'@context': 'https://schema.org',
+			'@type': 'Article',
+			headline: article.headline,
+			datePublished: article.datePublished,
+			dateModified: article.dateModified || article.datePublished,
+			author: {
+				'@type': 'Person',
+				name: article.authorName,
+			},
+			publisher: {
+				'@type': 'Organization',
+				name: 'Zetalogix',
+				logo: {
+					'@type': 'ImageObject',
+					url: `${siteUrl}/assets/Logo.webp`,
+				},
+			},
+			mainEntityOfPage: canonicalURL,
+			image: socialImageURL,
+		}
+	: null;
 ---
 
 <!doctype html>
 <html lang="en" class="scroll-smooth">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content={description} />
-		<meta name="viewport" content="width=device-width" />
-	<link rel="icon" type="image/png" href="/favicon.png?v=2" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/png" href="/favicon.png?v=2" />
 		<meta name="generator" content={Astro.generator} />
+
 		<title>{title}</title>
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+		<meta name="description" content={description} />
+		<link rel="canonical" href={canonicalURL} />
+
+		{noindex && <meta name="robots" content="noindex, follow" />}
+
+		<meta property="og:type" content={type} />
+		<meta property="og:site_name" content="Zetalogix" />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={socialImageURL} />
+
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={socialImageURL} />
+
+		<script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} is:inline></script>
+		{breadcrumbSchema && (
+			<script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} is:inline></script>
+		)}
+		{articleSchema && (
+			<script type="application/ld+json" set:html={JSON.stringify(articleSchema)} is:inline></script>
+		)}
 	</head>
 	<body class="bg-brand-dark text-slate-300 font-sans antialiased selection:bg-brand-accent selection:text-brand-dark">
-		<main class="min-h-screen flex flex-col">
-			<slot /> 
-			</main>
+		<a
+			href="#main-content"
+			class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[300] focus:px-4 focus:py-2.5 focus:rounded-lg focus:bg-brand-accent focus:text-slate-950 focus:font-semibold focus:shadow-lg"
+		>
+			Skip to main content
+		</a>
+
+		<main id="main-content" tabindex="-1" class="min-h-screen flex flex-col focus:outline-none">
+			<slot />
+		</main>
+
+		<style is:global>
+			:focus-visible {
+				outline: 2px solid #22d3ee !important;
+				outline-offset: 4px !important;
+				border-radius: 4px;
+			}
+
+			:focus:not(:focus-visible) {
+				outline: none;
+			}
+
+			.interactive-card {
+				transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease;
+			}
+
+			@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+				.interactive-card:hover {
+					transform: translateY(-4px);
+				}
+				.cta-primary:hover {
+					transform: translateY(-1px);
+				}
+			}
+
+			.cta-primary {
+				transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease;
+			}
+
+			.prose-measure {
+				max-width: 65ch;
+			}
+
+			@media (prefers-reduced-motion: reduce) {
+				html {
+					scroll-behavior: auto !important;
+				}
+				*,
+				*::before,
+				*::after {
+					animation-duration: 0.01ms !important;
+					animation-iteration-count: 1 !important;
+					transition-duration: 0.01ms !important;
+					scroll-behavior: auto !important;
+				}
+				.interactive-card,
+				.reveal,
+				.logo-track,
+				.glow-button,
+				.cta-primary {
+					animation: none !important;
+					transition: none !important;
+					transform: none !important;
+				}
+			}
+		</style>
 	</body>
 </html>

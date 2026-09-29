@@ -1,155 +1,126 @@
 ﻿---
 // src/components/global/Footer.astro
-const currentYear = 2023;
+const currentYear = new Date().getFullYear();
 ---
-<footer class="bg-[#02040a] border-t border-white/10 pt-20 pb-10">
-    
-    <div class="max-w-9xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-        <div class="md:col-span-1">
-            <a href="/" class="inline-block mb-6 group focus:outline-none">
-                <img 
-                    src="/assets/Logo.webp" 
-                    alt="ZetaLogix Logo" 
-                    class="h-13 w-auto object-contain opacity-85 transition-opacity duration-300 group-hover:opacity-100"
-                />
-            </a>
-            <p class="text-slate-400 text-sm leading-relaxed mb-6">
-                Premium IT Services, Software Engineering, and AI Integration for modern enterprises.
-            </p>
-        </div>
-        
-        <div>
-            <h4 class="text-white font-bold mb-6 text-sm uppercase tracking-wider">Services</h4>
-            <ul class="flex flex-col gap-3 text-slate-400 text-sm">
-                <li><a href="/services/web-development" class="hover:text-brand-accent transition-colors">Web Development</a></li>
-                <li><a href="/services/mobile-development" class="hover:text-brand-accent transition-colors">App Development</a></li>
-                <li><a href="/services/ai-solutions" class="hover:text-brand-accent transition-colors">AI Solutions</a></li>
-                <li><a href="/services/ui-ux-design" class="hover:text-brand-accent transition-colors">UI/UX Design</a></li>
-                <li><a href="/services/saas-development" class="hover:text-brand-accent transition-colors">SaaS Application Development</a></li>
-                <li><a href="/services/custom-software" class="hover:text-brand-accent transition-colors">Custom Software Development</a></li>
-            </ul>
-        </div>
 
-        <div>
-            <h4 class="text-white font-bold mb-6 text-sm uppercase tracking-wider">Engagement Models</h4>
-            <ul class="flex flex-col gap-3 text-slate-400 text-sm">
-                <li><a href="/engagement/fixed-price" class="hover:text-brand-accent transition-colors">Fixed Price Projects</a></li>
-                <li><a href="/engagement/dedicated-team" class="hover:text-brand-accent transition-colors">Dedicated Team Model</a></li>
-                <li><a href="/engagement/offshore" class="hover:text-brand-accent transition-colors">Offshore Development Center</a></li>
-            </ul>
-        </div>
+<footer class="bg-[#02040a] border-t border-white/10 pt-16 pb-10">
+	<div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-14">
+		<div class="lg:col-span-2">
+			<a href="/" class="inline-block mb-5 rounded-md">
+				<img
+					src="/assets/Logo.webp"
+					alt="Zetalogix home"
+					width="150"
+					height="44"
+					loading="lazy"
+					decoding="async"
+					class="h-10 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-150"
+				/>
+			</a>
+			<p class="text-slate-400 text-sm leading-relaxed mb-6 max-w-md">
+				Zetalogix designs and develops web applications, mobile products and practical AI solutions. We help businesses turn complex requirements into software that is clear to use and easier to maintain.
+			</p>
+			<div class="space-y-1.5 text-sm text-slate-300">
+				<p class="font-medium text-white">Pakistan-based. Working with businesses worldwide.</p>
+				<address class="not-italic text-slate-400 text-xs leading-relaxed">
+					Plot #10 G, Mini Commercial, Phase 7, Bahria Town, Rawalpindi, Pakistan
+				</address>
+				<p class="pt-1">
+					<a
+						href="mailto:info@zetalogix.com"
+						class="text-cyan-400 hover:text-cyan-300 font-semibold transition-colors duration-150"
+					>
+						info@zetalogix.com
+					</a>
+				</p>
+			</div>
+		</div>
 
-        <div>
-            <h4 class="text-white font-bold mb-6 text-sm uppercase tracking-wider">Company</h4>
-            <ul class="flex flex-col gap-3 text-slate-400 text-sm">
-                <li><a href="/about" class="hover:text-brand-accent transition-colors">About Us</a></li>
-                <li><a href="/portfolio" class="hover:text-brand-accent transition-colors">Portfolio</a></li>
-                <li class="flex items-center gap-2">
-                    <a href="/careers" class="hover:text-brand-accent transition-colors">Careers</a>
-                    <span class="flex h-2 w-2 relative">
-                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                        <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                    </span>
-                    <span class="text-[10px] font-mono uppercase tracking-wide px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-bold">Hiring</span>
-                </li>
-                <li><a href="/contact" class="hover:text-brand-accent transition-colors">Contact</a></li>
-            </ul>
-        </div>
-    </div>
+		<div>
+			<h2 class="text-white font-bold mb-5 text-xs uppercase tracking-wider">Services</h2>
+			<ul class="flex flex-col gap-3 text-slate-400 text-sm">
+				<li>
+					<a href="/services/web-development" class="hover:text-brand-accent transition-colors duration-150">
+						Web Development
+					</a>
+				</li>
+				<li>
+					<a href="/services/mobile-development" class="hover:text-brand-accent transition-colors duration-150">
+						Mobile App Development
+					</a>
+				</li>
+				<li>
+					<a href="/services/ai-solutions" class="hover:text-brand-accent transition-colors duration-150">
+						AI &amp; Machine Learning
+					</a>
+				</li>
+				<li>
+					<a href="/services/saas-development" class="hover:text-brand-accent transition-colors duration-150">
+						SaaS Development
+					</a>
+				</li>
+				<li>
+					<a href="/services/custom-software" class="hover:text-brand-accent transition-colors duration-150">
+						Custom Software
+					</a>
+				</li>
+				<li>
+					<a href="/services/ui-ux-design" class="hover:text-brand-accent transition-colors duration-150">
+						UI/UX Design
+					</a>
+				</li>
+			</ul>
+		</div>
 
-    <div class="max-w-9xl mx-auto px-6 border-t border-white/10 pt-12 mb-12">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-            
-            <div>
-                <h4 class="text-white font-bold text-base mb-3 flex items-center gap-2.5">
-                    <svg class="w-5 h-3.5 rounded-sm object-cover shadow-sm shrink-0" viewBox="0 0 3 2" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="3" height="2" fill="#006600"/>
-                        <rect width="0.75" height="2" fill="white"/>
-                        <circle cx="1.65" cy="1" r="0.45" fill="white"/>
-                        <circle cx="1.78" cy="0.9" r="0.45" fill="#006600"/>
-                        <path d="M1.75 0.65L1.82 0.82L1.99 0.83L1.86 0.94L1.9 1.11L1.75 1.01L1.6 1.11L1.64 0.94L1.51 0.83L1.68 0.82L1.75 0.65Z" fill="white"/>
-                    </svg>
-                    Pakistan 
-                    <span class="font-normal text-slate-500 text-xs tracking-wide">(Global Delivery Center)</span> 
-                </h4>
-                <address class="not-italic text-slate-400 text-sm leading-relaxed">
-                    Pearl One, 93-C/I, <br />
-                     MM Alam Road Gulberg III,<br />
-                    Lahore, Pakistan
-                </address>
-            </div>
-            
-            <div>
-                <h4 class="text-white font-bold text-base mb-3 flex items-center gap-2.5">
-                    <svg class="w-5 h-3.5 rounded-sm object-cover shadow-sm shrink-0" viewBox="0 0 7410 3900" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="7410" height="3900" fill="#B22234"/>
-                        <path d="M0 300H7410M0 900H7410M0 1500H7410M0 2100H7410M0 2700H7410M0 3300H7410" stroke="white" stroke-width="300"/>
-                        <rect width="2964" height="2100" fill="#3C3B6E"/>
-                        <circle cx="500" cy="500" r="40" fill="white"/><circle cx="900" cy="500" r="40" fill="white"/><circle cx="1300" cy="500" r="40" fill="white"/><circle cx="1700" cy="500" r="40" fill="white"/><circle cx="2100" cy="500" r="40" fill="white"/><circle cx="2500" cy="500" r="40" fill="white"/>
-                        <circle cx="700" cy="800" r="40" fill="white"/><circle cx="1100" cy="800" r="40" fill="white"/><circle cx="1500" cy="800" r="40" fill="white"/><circle cx="1900" cy="800" r="40" fill="white"/><circle cx="2300" cy="800" r="40" fill="white"/>
-                        <circle cx="500" cy="1100" r="40" fill="white"/><circle cx="900" cy="1100" r="40" fill="white"/><circle cx="1300" cy="1100" r="40" fill="white"/><circle cx="1700" cy="1100" r="40" fill="white"/><circle cx="2100" cy="1100" r="40" fill="white"/><circle cx="2500" cy="1100" r="40" fill="white"/>
-                        <circle cx="700" cy="1400" r="40" fill="white"/><circle cx="1100" cy="1400" r="40" fill="white"/><circle cx="1500" cy="1400" r="40" fill="white"/><circle cx="1900" cy="1400" r="40" fill="white"/><circle cx="2300" cy="1400" r="40" fill="white"/>
-                        <circle cx="500" cy="1700" r="40" fill="white"/><circle cx="900" cy="1700" r="40" fill="white"/><circle cx="1300" cy="1700" r="40" fill="white"/><circle cx="1700" cy="1700" r="40" fill="white"/><circle cx="2100" cy="1700" r="40" fill="white"/><circle cx="2500" cy="1700" r="40" fill="white"/>
-                    </svg>
-                    USA 
-                    <span class="font-normal text-slate-500 text-xs tracking-wide">(Regional Office)</span> 
-                </h4>
-                <address class="not-italic text-slate-400 text-sm leading-relaxed">
-                    18 S 2nd Street #120<br />
-                    San Jose, CA, 95113, United<br />
-                    States
-                </address>
-            </div>
+		<div>
+			<h2 class="text-white font-bold mb-5 text-xs uppercase tracking-wider">Company</h2>
+			<ul class="flex flex-col gap-3 text-slate-400 text-sm">
+				<li>
+					<a href="/about" class="hover:text-brand-accent transition-colors duration-150">About</a>
+				</li>
+				<li>
+					<a href="/portfolio" class="hover:text-brand-accent transition-colors duration-150">Our Work</a>
+				</li>
+				<li>
+					<a href="/blog" class="hover:text-brand-accent transition-colors duration-150">Insights</a>
+				</li>
+				<li>
+					<a href="/careers" class="hover:text-brand-accent transition-colors duration-150">Careers</a>
+				</li>
+				<li>
+					<a href="/contact" class="hover:text-brand-accent transition-colors duration-150">Contact</a>
+				</li>
+			</ul>
+		</div>
 
-            <div>
-                <h4 class="text-white font-bold text-base mb-3 flex items-center gap-2.5">
-                    <svg class="w-5 h-3.5 rounded-sm object-cover shadow-sm shrink-0" viewBox="0 0 60 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <clipPath id="s"><path d="M0 0v30h60V0z"/></clipPath>
-                        <path d="M0 0v30h60V0z" fill="#012169"/>
-                        <path d="M0 0l60 30M60 0L0 30" stroke="#fff" stroke-width="6"/>
-                        <path d="M0 0l60 30M60 0L0 30" stroke="#C8102E" stroke-width="4" clip-path="url(#s)"/>
-                        <path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/>
-                        <path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/>
-                    </svg>
-                    UK 
-                    <span class="font-normal text-slate-500 text-xs tracking-wide">(Regional Office)</span> 
-                </h4>
-                <address class="not-italic text-slate-400 text-sm leading-relaxed">
-                    128 City Road London<br />
-                    EC1V 2NX, United Kingdom
-                </address>
-            </div>
+		<div>
+			<h2 class="text-white font-bold mb-5 text-xs uppercase tracking-wider">Work With Us</h2>
+			<ul class="flex flex-col gap-3 text-slate-400 text-sm">
+				<li>
+					<a href="/engagement/fixed-price" class="hover:text-brand-accent transition-colors duration-150">
+						Fixed-Scope Projects
+					</a>
+				</li>
+				<li>
+					<a href="/engagement/dedicated-team" class="hover:text-brand-accent transition-colors duration-150">
+						Dedicated Teams
+					</a>
+				</li>
+				<li>
+					<a href="/engagement/offshore" class="hover:text-brand-accent transition-colors duration-150">
+						Offshore Delivery
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
 
-            <div>
-                <h4 class="text-white font-bold text-base mb-3 flex items-center gap-2.5">
-                    <svg class="w-5 h-3.5 rounded-sm object-cover shadow-sm shrink-0" viewBox="0 0 600 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="600" height="300" fill="#fff"/>
-                        <rect width="600" height="100" fill="#00732F"/>
-                        <rect y="200" width="600" height="100" fill="#000"/>
-                        <rect width="150" height="300" fill="#FF0000"/>
-                    </svg>
-                    UAE 
-                    <span class="font-normal text-slate-500 text-xs tracking-wide">(Regional Office)</span> 
-                </h4>
-                <address class="not-italic text-slate-400 text-sm leading-relaxed">
-                    Office No. 1401, Kamala Tower Building<br />
-                    P.O. Box: 70352 â€” Abu Dhabi, UAE
-                </address>
-            </div>
-
-        </div>
-
-        <div class="mt-10">
-            <a href="mailto:info@zetalogix.com" class="text-white font-bold text-lg hover:text-brand-accent transition-colors">info@zetalogix.com</a>
-        </div>
-    </div>
-    
-    <div class="max-w-7xl mx-auto px-6 border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-slate-500">
-        <p>&copy; {currentYear} ZetaLogix. All rights reserved.</p>
-        <div class="flex gap-4 mt-4 md:mt-0">
-            <a href="/privacy-policy" class="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="/terms-of-service" class="hover:text-white transition-colors">Terms of Service</a>
-            <a href="/cookie-policy" class="hover:text-white transition-colors">Cookie Policy</a>
-        </div>
-    </div>
+	<div class="max-w-7xl mx-auto px-6 border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+		<p>&copy; {currentYear} Zetalogix. All rights reserved.</p>
+		<div class="flex flex-wrap gap-6">
+			<a href="/privacy-policy" class="hover:text-white transition-colors duration-150">Privacy Policy</a>
+			<a href="/terms-of-service" class="hover:text-white transition-colors duration-150">Terms of Service</a>
+			<a href="/cookie-policy" class="hover:text-white transition-colors duration-150">Cookie Policy</a>
+		</div>
+	</div>
 </footer>
