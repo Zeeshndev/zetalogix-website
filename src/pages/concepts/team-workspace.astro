@@ -1,0 +1,544 @@
+---
+// src/pages/concepts/team-workspace.astro
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/global/Navbar.astro';
+import Footer from '../../components/global/Footer.astro';
+
+const architectureLayers = [
+	{
+		id: 'layer-workspace',
+		label: '01 // Primary Workspace View',
+		title: 'Focused on everyday project execution',
+		summary:
+			'Groups active project cards, status indicators, and assigned tasks in the primary viewport so contributors can get to work immediately without wading through billing or org settings.',
+		elements: [
+			'High-contrast project cards with clear ownership & milestone status',
+			'Scoped activity feed showing relevant updates for assigned projects only',
+			'Predictable empty states guiding new team members on their first action',
+		],
+		engineeringNote:
+			'Queries are scoped by tenant_id and user membership at the API layer so unpermitted projects never reach the client payload.',
+	},
+	{
+		id: 'layer-admin',
+		label: '02 // Account & Role Control Panel',
+		title: 'Separated governance and member permissions',
+		summary:
+			'Places member invitations, role assignments, and workspace-level toggles in a dedicated administrative panel, reducing accidental permission changes during daily tasks.',
+		elements: [
+			'Explicit role assignment toggles (Owner, Administrator, Contributor, Viewer)',
+			'Clear visual indicators for external guests vs. internal organization members',
+			'Confirmation prompts before revoking access or modifying billing-linked seats',
+		],
+		engineeringNote:
+			'Administrative mutations require server-side role verification and write to an immutable audit log recording who changed a permission and when.',
+	},
+	{
+		id: 'layer-ops',
+		label: '03 // Tenant & Operational Boundaries',
+		title: 'Foundations behind the dashboard mockup',
+		summary:
+			'A production SaaS application requires operational tooling for customer support, subscription state handling, and tenant data isolation.',
+		elements: [
+			'Graceful read-only or banner states when a subscription renewal is pending',
+			'Role-scoped data export and account offboarding controls',
+			'Structured error reporting and correlation IDs for support troubleshooting',
+		],
+		engineeringNote:
+			'Tenant isolation, billing webhooks, and operational reliability are backend concerns that must be architected alongside the UI.',
+	},
+];
+
+const roleMatrix = [
+	{
+		role: 'Workspace Owner',
+		workspaceAccess: 'Full project & archive access',
+		adminAccess: 'Billing, seat limits, role changes & workspace deletion',
+	},
+	{
+		role: 'Team Administrator',
+		workspaceAccess: 'Create, assign & manage team projects',
+		adminAccess: 'Invite/remove members & configure project permissions',
+	},
+	{
+		role: 'Contributor',
+		workspaceAccess: 'Update assigned cards, upload files & comment',
+		adminAccess: 'View team directory (no administrative toggles)',
+	},
+	{
+		role: 'External Viewer / Guest',
+		workspaceAccess: 'Read-only access to explicitly shared project cards',
+		adminAccess: 'No access to organization settings or member lists',
+	},
+];
+
+const validationChecklist = [
+	{
+		title: 'Navigation & information density testing',
+		detail: 'Verify that users with 3 projects and users with 50 projects can both locate active work quickly.',
+	},
+	{
+		title: 'Role names & permission boundaries',
+		detail: 'Confirm that role labels match how customer organizations actually delegate authority.',
+	},
+	{
+		title: 'Empty states & onboarding flows',
+		detail: 'Design what a brand-new workspace looks like before any projects or teammates are added.',
+	},
+	{
+		title: 'Notification behavior & digest controls',
+		detail: 'Prevent alert fatigue by letting users control which status changes trigger emails or in-app badges.',
+	},
+	{
+		title: 'Tenant isolation & database boundaries',
+		detail: 'Enforce strict row-level or schema-level tenant isolation across every API endpoint and background job.',
+	},
+	{
+		title: 'Billing states & operational reliability',
+		detail: 'Model trial expiration, failed payment retries, seat upgrades, and administrative audit logs.',
+	},
+];
+---
+
+<BaseLayout
+	title="Team Workspace Dashboard Concept | Zetalogix"
+	description="Explore an original SaaS dashboard concept for project visibility and account roles. This is an illustrative design study, not a client case study."
+	image="/assets/zetalogix-v1/saas-development-1200.webp"
+	breadcrumbs={[
+		{ name: 'Home', url: '/' },
+		{ name: 'Our Work', url: '/portfolio' },
+		{ name: 'Team Workspace Concept', url: '/concepts/team-workspace' },
+	]}
+>
+	<Navbar />
+
+	<!-- Concept Hero -->
+	<section class="relative pt-32 pb-20 lg:pt-40 lg:pb-24 bg-brand-dark bg-grid-pattern border-b border-white/10 overflow-hidden">
+		<div
+			class="absolute -top-20 left-1/3 w-[550px] h-[550px] bg-violet-500/12 rounded-full blur-[130px] -z-10 pointer-events-none"
+			aria-hidden="true"
+		></div>
+
+		<div class="max-w-7xl mx-auto px-6 relative z-10">
+			<div class="mb-6">
+				<a
+					href="/portfolio"
+					class="inline-flex items-center text-xs font-mono uppercase tracking-wider text-slate-400 hover:text-cyan-400 transition-colors"
+				>
+					&larr; Back to Our Work &amp; Concepts
+				</a>
+			</div>
+
+			<!-- Explicit Concept Disclosure Banner -->
+			<div class="inline-flex flex-wrap items-center gap-3 p-3 pr-5 rounded-2xl bg-amber-500/10 border border-amber-400/30 mb-8">
+				<span class="px-2.5 py-1 rounded-md bg-amber-400 text-slate-950 font-mono text-xs font-bold uppercase">
+					Design concept — not client work
+				</span>
+				<span class="text-xs sm:text-sm text-amber-200">
+					No client delivery, deployment or commercial result is claimed.
+				</span>
+			</div>
+
+			<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16">
+				<div class="lg:col-span-6">
+					<span class="font-mono text-xs font-bold uppercase tracking-widest text-violet-400 block mb-3">
+						Concept Study 02 // SaaS Architecture
+					</span>
+					<h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight mb-6 leading-[1.08]">
+						A shared workspace with a clearer view of the work.
+					</h1>
+					<p class="text-slate-300 text-base sm:text-lg leading-relaxed mb-8 prose-measure">
+						An original SaaS interface exploration focused on separating everyday project collaboration from administrative role management.
+					</p>
+					<div class="flex flex-wrap items-center gap-4">
+						<a
+							href="/contact"
+							data-astro-prefetch="hover"
+							class="cta-primary inline-flex items-center justify-center px-8 py-4 rounded-full bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold text-sm"
+						>
+							Discuss Your SaaS Workflow
+						</a>
+						<a
+							href="/services/saas-development"
+							class="inline-flex items-center justify-center px-7 py-4 rounded-full bg-white/[0.04] border border-white/15 hover:border-white/30 text-white font-semibold text-sm transition-colors"
+						>
+							Explore SaaS Development
+						</a>
+					</div>
+				</div>
+
+				<!-- Framed Concept Artwork -->
+				<figure class="lg:col-span-6">
+					<div class="device-frame-hover rounded-3xl overflow-hidden border border-white/15 bg-[#0a0f1d] shadow-[0_25px_70px_rgba(0,0,0,0.75)]">
+						<div class="h-8 bg-[#0f172a] border-b border-white/10 flex items-center justify-between px-4">
+							<div class="flex items-center gap-1.5">
+								<span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
+								<span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
+								<span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
+							</div>
+							<span class="text-[11px] font-mono text-slate-400">saas-development // concept-study</span>
+						</div>
+						<img
+							src="/assets/zetalogix-v1/saas-development-800.webp"
+							srcset="/assets/zetalogix-v1/saas-development-480.webp 480w, /assets/zetalogix-v1/saas-development-800.webp 800w, /assets/zetalogix-v1/saas-development-1200.webp 1200w"
+							sizes="(min-width: 1024px) 50vw, 100vw"
+							width="1200"
+							height="800"
+							fetchpriority="high"
+							decoding="async"
+							alt="Original dashboard concept with project cards and account controls."
+							class="w-full aspect-[3/2] object-cover"
+						/>
+						<figcaption class="px-6 py-4 bg-[#070b16] border-t border-white/10 text-xs text-slate-400 leading-relaxed">
+							Original SaaS interface illustration; not a screenshot of a live customer system.
+						</figcaption>
+					</div>
+				</figure>
+			</div>
+
+			<!-- Specification Metadata Strip -->
+			<div class="grid grid-cols-2 lg:grid-cols-4 gap-4 p-6 rounded-3xl bg-[#0a0f1d]/90 border border-white/10">
+				<div>
+					<span class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-1">Study Focus</span>
+					<span class="text-sm sm:text-base font-bold text-white">Workspace vs. Admin Hierarchy</span>
+				</div>
+				<div>
+					<span class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-1">Target Architecture</span>
+					<span class="text-sm sm:text-base font-bold text-white">Multi-Tenant Web Application</span>
+				</div>
+				<div>
+					<span class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-1">Candidate Stack</span>
+					<span class="text-sm sm:text-base font-bold text-cyan-400">React + TypeScript + PostgreSQL</span>
+				</div>
+				<div>
+					<span class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-1">Provenance Status</span>
+					<span class="text-sm sm:text-base font-bold text-amber-300">Illustrative Design Study</span>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Section 1: The Product Question & Proposed Direction -->
+	<section class="py-24 bg-brand-dark border-b border-white/10">
+		<div class="max-w-7xl mx-auto px-6">
+			<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
+				<article class="reveal lg:col-span-5 p-8 sm:p-10 rounded-3xl bg-[#0a0f1d] border border-white/10 flex flex-col justify-between">
+					<div>
+						<span class="inline-block font-mono text-xs font-bold text-cyan-400 uppercase tracking-widest mb-3">
+							01 // Core Challenge
+						</span>
+						<h2 class="font-heading text-2xl sm:text-3xl font-bold text-white mb-4">
+							The product question
+						</h2>
+						<p class="text-slate-200 text-lg leading-relaxed mb-6">
+							How could a team see important work and manage access without filling the interface with competing controls?
+						</p>
+						<p class="text-slate-400 text-sm leading-relaxed">
+							B2B dashboards frequently mix daily contributor tasks with organization-wide configuration settings—leading to cluttered navigation bars and confusion over who can see or modify sensitive project records.
+						</p>
+					</div>
+					<div class="pt-6 mt-6 border-t border-white/10 text-xs font-mono text-rose-300">
+						Common failure mode: Every user role sees the same crowded control surface.
+					</div>
+				</article>
+
+				<article class="reveal reveal-delay-1 lg:col-span-7 p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-[#0a0f1d] via-[#10142d] to-[#0a0f1d] border border-violet-400/30 flex flex-col justify-between">
+					<div>
+						<span class="inline-block font-mono text-xs font-bold text-violet-400 uppercase tracking-widest mb-3">
+							02 // Design Hypothesis
+						</span>
+						<h2 class="font-heading text-2xl sm:text-3xl font-bold text-white mb-4">
+							The proposed direction
+						</h2>
+						<p class="text-slate-200 text-lg leading-relaxed mb-6">
+							The study groups project cards in a primary workspace and places account controls in a separate panel. The visual hierarchy aims to distinguish everyday work from administration.
+						</p>
+						<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+							<div class="p-5 rounded-2xl bg-[#050814]/80 border border-white/10">
+								<span class="block text-xs font-mono font-bold text-cyan-400 mb-1">Primary Canvas</span>
+								<span class="text-sm font-semibold text-white block mb-1">Active Project Cards &amp; Tasks</span>
+								<span class="text-xs text-slate-400">Optimized for daily scanning, status updates, and team collaboration.</span>
+							</div>
+							<div class="p-5 rounded-2xl bg-[#050814]/80 border border-white/10">
+								<span class="block text-xs font-mono font-bold text-violet-400 mb-1">Isolated Admin Drawer</span>
+								<span class="text-sm font-semibold text-white block mb-1">Role &amp; Access Controls</span>
+								<span class="text-xs text-slate-400">Dedicated panel for member permissions, seat governance, and audit visibility.</span>
+							</div>
+						</div>
+					</div>
+				</article>
+			</div>
+		</div>
+	</section>
+
+	<!-- Section 2: Interactive Layer Explorer + Secondary Visual -->
+	<section class="py-24 lg:py-28 bg-[#070b16] border-b border-white/10">
+		<div class="max-w-7xl mx-auto px-6">
+			<div class="reveal max-w-2xl mb-14">
+				<span class="font-mono text-xs font-bold tracking-widest text-cyan-400 uppercase mb-3 flex items-center gap-2">
+					<span class="w-8 h-px bg-cyan-400"></span> Interface &amp; Role Separation
+				</span>
+				<h2 class="font-heading text-3xl sm:text-4xl font-bold text-white tracking-tight mb-4">
+					Separating everyday workflows from governance
+				</h2>
+				<p class="text-slate-300 text-base leading-relaxed prose-measure">
+					Explore how the workspace canvas, role control panel, and tenant boundaries are structured across the concept.
+				</p>
+			</div>
+
+			<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start mb-16">
+				<div class="lg:col-span-7 space-y-6">
+					<div class="flex flex-wrap gap-2" role="tablist" aria-label="Workspace architecture layers">
+						{architectureLayers.map((layer, idx) => (
+							<button
+								type="button"
+								role="tab"
+								aria-selected={idx === 0 ? 'true' : 'false'}
+								data-ws-tab={layer.id}
+								class={`ws-tab-btn px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold border transition-colors ${
+									idx === 0
+										? 'bg-cyan-400 text-slate-950 border-cyan-400'
+										: 'bg-[#0a0f1d] text-slate-300 border-white/10 hover:border-white/25'
+								}`}
+							>
+								{layer.label}
+							</button>
+						))}
+					</div>
+
+					{architectureLayers.map((layer, idx) => (
+						<div
+							data-ws-panel={layer.id}
+							class={`p-8 rounded-3xl bg-[#0a0f1d] border border-white/10 ${idx === 0 ? '' : 'hidden'}`}
+						>
+							<span class="text-xs font-mono font-bold text-cyan-400 uppercase tracking-wider block mb-2">
+								{layer.label}
+							</span>
+							<h3 class="font-heading text-2xl font-bold text-white mb-3">
+								{layer.title}
+							</h3>
+							<p class="text-slate-300 text-base leading-relaxed mb-6">
+								{layer.summary}
+							</p>
+
+							<ul class="space-y-2.5 mb-6">
+								{layer.elements.map((el) => (
+									<li class="flex items-start gap-3 text-sm text-slate-200">
+										<span class="w-2 h-2 rounded-full bg-cyan-400 mt-1.5 shrink-0"></span>
+										<span>{el}</span>
+									</li>
+								))}
+							</ul>
+
+							<div class="p-4 rounded-2xl bg-[#050814] border border-violet-400/20">
+								<span class="block text-[11px] font-mono uppercase tracking-wider text-violet-400 mb-1">
+									Backend Architecture Note
+								</span>
+								<p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+									{layer.engineeringNote}
+								</p>
+							</div>
+						</div>
+					))}
+				</div>
+
+				<!-- Secondary Visual Slot (concept-workspace-roles.webp with automatic fallback) -->
+				<figure class="lg:col-span-5">
+					<div class="rounded-3xl overflow-hidden border border-white/15 bg-[#0a0f1d] shadow-2xl">
+						<div class="h-7 bg-[#0f172a] border-b border-white/10 flex items-center justify-between px-4">
+							<span class="text-[11px] font-mono text-slate-400">rbac-panel // access-controls</span>
+							<span class="text-[11px] font-mono text-violet-400">Role Separation</span>
+						</div>
+						<img
+							src="/assets/zetalogix-v1/concept-workspace-roles.webp"
+							onerror="this.onerror=null;this.src='/assets/zetalogix-v1/saas-development-800.webp';"
+							width="800"
+							height="533"
+							loading="lazy"
+							decoding="async"
+							alt="Workspace cards and role permission toggle panel illustration."
+							class="w-full aspect-[3/2] object-cover"
+						/>
+						<figcaption class="px-5 py-3.5 bg-[#050814] border-t border-white/10 text-xs text-slate-400 leading-relaxed">
+							Conceptual view separating primary project cards from the administrative role-permission panel.
+						</figcaption>
+					</div>
+				</figure>
+			</div>
+
+			<!-- Role & Permission Boundary Table -->
+			<div class="reveal rounded-3xl border border-white/10 bg-[#0a0f1d] overflow-hidden">
+				<div class="px-8 py-6 bg-[#0f172a] border-b border-white/10">
+					<h3 class="font-heading text-xl font-bold text-white">
+						Example Role &amp; Permission Boundary Model
+					</h3>
+					<p class="text-xs sm:text-sm text-slate-400 mt-1">
+						In a real SaaS build, permissions follow operational relationships rather than giving every user the same screen.
+					</p>
+				</div>
+				<div class="overflow-x-auto">
+					<table class="w-full text-left border-collapse">
+						<thead>
+							<tr class="border-b border-white/10 text-xs font-mono uppercase text-slate-400 bg-[#050814]/50">
+								<th class="py-4 px-6">Account Role</th>
+								<th class="py-4 px-6">Primary Workspace Access</th>
+								<th class="py-4 px-6">Administration Panel Access</th>
+							</tr>
+						</thead>
+						<tbody class="divide-y divide-white/10 text-sm">
+							{roleMatrix.map((row) => (
+								<tr class="hover:bg-white/[0.02]">
+									<td class="py-4 px-6 font-semibold text-white">{row.role}</td>
+									<td class="py-4 px-6 text-slate-300">{row.workspaceAccess}</td>
+									<td class="py-4 px-6 text-slate-400">{row.adminAccess}</td>
+								</tr>
+							))}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Section 3: What Would Need Validation -->
+	<section class="py-24 bg-brand-dark border-b border-white/10">
+		<div class="max-w-7xl mx-auto px-6">
+			<div class="reveal max-w-3xl mb-14">
+				<span class="font-mono text-xs font-bold tracking-widest text-emerald-400 uppercase mb-3 flex items-center gap-2">
+					<span class="w-8 h-px bg-emerald-400"></span> Production Readiness Scope
+				</span>
+				<h2 class="font-heading text-3xl sm:text-4xl font-bold text-white tracking-tight mb-4">
+					What would need validation
+				</h2>
+				<p class="text-slate-200 text-base sm:text-lg leading-relaxed">
+					The team would need to test navigation, role names, permissions, empty states and notification behavior. Tenant isolation, billing and operational reliability are implementation concerns that cannot be demonstrated by a mockup.
+				</p>
+			</div>
+
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+				{validationChecklist.map((item, idx) => (
+					<div class={`reveal reveal-delay-${(idx % 3) + 1} p-6 rounded-2xl bg-[#0a0f1d] border border-white/10`}>
+						<span class="block text-xs font-mono font-bold text-cyan-400 mb-2">
+							0{idx + 1} // Validation Requirement
+						</span>
+						<h3 class="font-heading text-lg font-bold text-white mb-2">
+							{item.title}
+						</h3>
+						<p class="text-slate-300 text-sm leading-relaxed">
+							{item.detail}
+						</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- Section 4: Related Service, Guide & Concept Cross-Navigation -->
+	<section class="py-20 bg-[#070b16]">
+		<div class="max-w-7xl mx-auto px-6">
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+				<a
+					href="/services/saas-development"
+					class="interactive-card p-7 rounded-3xl bg-[#0a0f1d] border border-white/10 hover:border-cyan-400/40 flex flex-col justify-between"
+				>
+					<div>
+						<span class="text-xs font-mono uppercase tracking-wider text-cyan-400 block mb-2">
+							Related Service
+						</span>
+						<h3 class="font-heading text-xl font-bold text-white mb-2">
+							SaaS Application Development
+						</h3>
+						<p class="text-slate-400 text-sm leading-relaxed">
+							Plan and build subscription products from account roles and onboarding to administration and release.
+						</p>
+					</div>
+					<span class="text-xs font-bold text-cyan-400 mt-6 inline-block">View Service &rarr;</span>
+				</a>
+
+				<a
+					href="/blog/how-saas-can-transform-the-real-estate-business"
+					class="interactive-card p-7 rounded-3xl bg-[#0a0f1d] border border-white/10 hover:border-cyan-400/40 flex flex-col justify-between"
+				>
+					<div>
+						<span class="text-xs font-mono uppercase tracking-wider text-violet-400 block mb-2">
+							Related Product Guide
+						</span>
+						<h3 class="font-heading text-xl font-bold text-white mb-2">
+							Planning Real Estate SaaS Around Daily Work
+						</h3>
+						<p class="text-slate-400 text-sm leading-relaxed">
+							Learn how to scope a SaaS product around one repeated workflow and clear data ownership.
+						</p>
+					</div>
+					<span class="text-xs font-bold text-cyan-400 mt-6 inline-block">Read Article &rarr;</span>
+				</a>
+
+				<a
+					href="/concepts/document-search"
+					class="interactive-card p-7 rounded-3xl bg-[#0a0f1d] border border-white/10 hover:border-cyan-400/40 flex flex-col justify-between"
+				>
+					<div>
+						<span class="text-xs font-mono uppercase tracking-wider text-emerald-400 block mb-2">
+							Next Product Concept
+						</span>
+						<h3 class="font-heading text-xl font-bold text-white mb-2">
+							Document Search Concept
+						</h3>
+						<p class="text-slate-400 text-sm leading-relaxed">
+							Explore our applied AI study for permission-aware document retrieval and source verification.
+						</p>
+					</div>
+					<span class="text-xs font-bold text-cyan-400 mt-6 inline-block">Explore Concept &rarr;</span>
+				</a>
+			</div>
+
+			<div class="rounded-3xl border border-cyan-400/30 bg-gradient-to-br from-[#0d172a] via-[#0a0f1d] to-[#111029] p-8 sm:p-12 flex flex-col md:flex-row items-center justify-between gap-8">
+				<div>
+					<h2 class="font-heading text-2xl sm:text-3xl font-bold text-white mb-2">
+						Building a multi-role dashboard or SaaS platform?
+					</h2>
+					<p class="text-slate-300 text-sm sm:text-base">
+						Share your core workflow and user roles. We will help you scope a focused first release.
+					</p>
+				</div>
+				<a
+					href="/contact"
+					data-astro-prefetch="hover"
+					class="cta-primary shrink-0 inline-flex items-center px-8 py-4 rounded-full bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold text-sm"
+				>
+					Discuss Your SaaS Workflow
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<Footer />
+</BaseLayout>
+
+<script>
+	const setupWorkspaceTabs = () => {
+		const tabs = document.querySelectorAll<HTMLButtonElement>('[data-ws-tab]');
+		const panels = document.querySelectorAll<HTMLElement>('[data-ws-panel]');
+
+		tabs.forEach((tab) => {
+			tab.addEventListener('click', () => {
+				const target = tab.getAttribute('data-ws-tab');
+				tabs.forEach((t) => {
+					const active = t === tab;
+					t.setAttribute('aria-selected', active ? 'true' : 'false');
+					t.classList.toggle('bg-cyan-400', active);
+					t.classList.toggle('text-slate-950', active);
+					t.classList.toggle('border-cyan-400', active);
+					t.classList.toggle('bg-[#0a0f1d]', !active);
+					t.classList.toggle('text-slate-300', !active);
+					t.classList.toggle('border-white/10', !active);
+				});
+				panels.forEach((panel) => {
+					panel.classList.toggle('hidden', panel.getAttribute('data-ws-panel') !== target);
+				});
+			});
+		});
+	};
+
+	setupWorkspaceTabs();
+</script>

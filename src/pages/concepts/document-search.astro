@@ -1,0 +1,549 @@
+---
+// src/pages/concepts/document-search.astro
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/global/Navbar.astro';
+import Footer from '../../components/global/Footer.astro';
+
+const ragStages = [
+	{
+		id: 'rag-1',
+		step: 'Stage 01',
+		title: 'Authorized collection & permission filtering',
+		summary:
+			'Before any search or generation occurs, the system checks which document collections the signed-in user is permitted to access.',
+		elements: [
+			'Document metadata tags for owner, department, effective date, and access role',
+			'Deduplication of obsolete policy versions so retired drafts are excluded',
+			'Pre-retrieval access filter ensuring unauthorized passages are never fetched',
+		],
+		engineeringNote:
+			'Access control must be enforced at the index and retrieval query level—not merely hidden in the frontend interface.',
+	},
+	{
+		id: 'rag-2',
+		step: 'Stage 02',
+		title: 'Passage retrieval & source ranking',
+		summary:
+			'Retrieves the specific document sections relevant to the user’s question before attempting to summarize or format a response.',
+		elements: [
+			'Hybrid keyword + semantic passage retrieval for technical terms and exact codes',
+			'Visibility into retrieved passages even before reading the generated summary',
+			'Explicit threshold for declining to answer when no relevant passage is found',
+		],
+		engineeringNote:
+			'If the relevant passage is never retrieved, a polished prompt template cannot fix the answer. Retrieval quality is measured separately from generation.',
+	},
+	{
+		id: 'rag-3',
+		step: 'Stage 03',
+		title: 'Side-by-side source inspection & verification',
+		summary:
+			'Displays inline citations linked directly to the exact page and paragraph of the source document so the user can verify claims before acting.',
+		elements: [
+			'Clickable citation badges opening the highlighted original passage side-by-side',
+			'Document freshness label showing when the underlying file was last updated',
+			'One-click feedback control to flag incomplete or ambiguous results for review',
+		],
+		engineeringNote:
+			'Designed for human-in-the-loop verification so staff never rely blindly on unverified model output for operational decisions.',
+	},
+];
+
+const evaluationCriteria = [
+	{
+		category: 'Unanswerable Queries',
+		test: 'Questions outside the approved document collection',
+		expected: 'System states clearly that the collection does not contain the answer rather than guessing.',
+	},
+	{
+		category: 'Access Boundaries',
+		test: 'Queries touching restricted department files',
+		expected: 'Zero restricted passages retrieved or referenced for unauthorized roles.',
+	},
+	{
+		category: 'Citation Accuracy',
+		test: 'Claims in the summary vs. linked source paragraph',
+		expected: 'Every cited badge points to the exact supporting passage and document version.',
+	},
+	{
+		category: 'Obsolete Material',
+		test: 'Superseded policy or older contract revision',
+		expected: 'Only the current approved version is indexed; archived versions are excluded by default.',
+	},
+];
+
+const validationChecklist = [
+	{
+		title: 'Document permissions & data governance',
+		detail: 'Establish who owns each document set, who may query it, and which external providers (if any) process it.',
+	},
+	{
+		title: 'Extraction quality across complex formats',
+		detail: 'Test how tables, multi-column PDFs, and section headers are parsed before indexing.',
+	},
+	{
+		title: 'Retrieval relevance benchmark',
+		detail: 'Test retrieval recall against representative real user questions before tuning response style.',
+	},
+	{
+		title: 'Source freshness & update lifecycle',
+		detail: 'Define how edited or revoked documents are re-indexed or purged from the search store.',
+	},
+	{
+		title: 'Answer evaluation & failure tracking',
+		detail: 'Score relevance, groundedness, latency, and usage cost across a repeatable evaluation set.',
+	},
+	{
+		title: 'Appropriate human review workflow',
+		detail: 'Ensure high-consequence decisions require human verification of the cited source passage.',
+	},
+];
+---
+
+<BaseLayout
+	title="Business Document Search Concept | Zetalogix"
+	description="An original concept for organizing information into a useful document-search experience, with source review and permissions planned from the start."
+	image="/assets/zetalogix-v1/ai-solutions-1200.webp"
+	breadcrumbs={[
+		{ name: 'Home', url: '/' },
+		{ name: 'Our Work', url: '/portfolio' },
+		{ name: 'Document Search Concept', url: '/concepts/document-search' },
+	]}
+>
+	<Navbar />
+
+	<!-- Concept Hero -->
+	<section class="relative pt-32 pb-20 lg:pt-40 lg:pb-24 bg-brand-dark bg-grid-pattern border-b border-white/10 overflow-hidden">
+		<div
+			class="absolute -top-20 left-1/4 w-[550px] h-[550px] bg-emerald-500/12 rounded-full blur-[130px] -z-10 pointer-events-none"
+			aria-hidden="true"
+		></div>
+
+		<div class="max-w-7xl mx-auto px-6 relative z-10">
+			<div class="mb-6">
+				<a
+					href="/portfolio"
+					class="inline-flex items-center text-xs font-mono uppercase tracking-wider text-slate-400 hover:text-cyan-400 transition-colors"
+				>
+					&larr; Back to Our Work &amp; Concepts
+				</a>
+			</div>
+
+			<!-- Explicit Concept Disclosure Banner -->
+			<div class="inline-flex flex-wrap items-center gap-3 p-3 pr-5 rounded-2xl bg-amber-500/10 border border-amber-400/30 mb-8">
+				<span class="px-2.5 py-1 rounded-md bg-amber-400 text-slate-950 font-mono text-xs font-bold uppercase">
+					Design concept — not client work
+				</span>
+				<span class="text-xs sm:text-sm text-amber-200">
+					Product concept. The artwork is conceptual and does not show a deployed AI system or measured performance.
+				</span>
+			</div>
+
+			<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16">
+				<div class="lg:col-span-6">
+					<span class="font-mono text-xs font-bold uppercase tracking-widest text-emerald-400 block mb-3">
+						Concept Study 03 // Applied AI &amp; Retrieval
+					</span>
+					<h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight mb-6 leading-[1.08]">
+						Help people find useful information in business documents.
+					</h1>
+					<p class="text-slate-300 text-base sm:text-lg leading-relaxed mb-8 prose-measure">
+						A conceptual exploration of permission-aware knowledge retrieval where source passages remain visible and verifiable before a user acts on an answer.
+					</p>
+					<div class="flex flex-wrap items-center gap-4">
+						<a
+							href="/contact"
+							data-astro-prefetch="hover"
+							class="cta-primary inline-flex items-center justify-center px-8 py-4 rounded-full bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold text-sm"
+						>
+							Discuss Your Document Workflow
+						</a>
+						<a
+							href="/services/ai-solutions"
+							class="inline-flex items-center justify-center px-7 py-4 rounded-full bg-white/[0.04] border border-white/15 hover:border-white/30 text-white font-semibold text-sm transition-colors"
+						>
+							Explore AI Solutions
+						</a>
+					</div>
+				</div>
+
+				<!-- Framed Concept Artwork -->
+				<figure class="lg:col-span-6">
+					<div class="device-frame-hover rounded-3xl overflow-hidden border border-white/15 bg-[#0a0f1d] shadow-[0_25px_70px_rgba(0,0,0,0.75)]">
+						<div class="h-8 bg-[#0f172a] border-b border-white/10 flex items-center justify-between px-4">
+							<div class="flex items-center gap-1.5">
+								<span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
+								<span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
+								<span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
+							</div>
+							<span class="text-[11px] font-mono text-slate-400">ai-solutions // concept-study</span>
+						</div>
+						<img
+							src="/assets/zetalogix-v1/ai-solutions-800.webp"
+							srcset="/assets/zetalogix-v1/ai-solutions-480.webp 480w, /assets/zetalogix-v1/ai-solutions-800.webp 800w, /assets/zetalogix-v1/ai-solutions-1200.webp 1200w"
+							sizes="(min-width: 1024px) 50vw, 100vw"
+							width="1200"
+							height="800"
+							fetchpriority="high"
+							decoding="async"
+							alt="Conceptual illustration of unstructured information becoming organized."
+							class="w-full aspect-[3/2] object-cover"
+						/>
+						<figcaption class="px-6 py-4 bg-[#070b16] border-t border-white/10 text-xs text-slate-400 leading-relaxed">
+							Original conceptual illustration of information organization.
+						</figcaption>
+					</div>
+				</figure>
+			</div>
+
+			<!-- Specification Metadata Strip -->
+			<div class="grid grid-cols-2 lg:grid-cols-4 gap-4 p-6 rounded-3xl bg-[#0a0f1d]/90 border border-white/10">
+				<div>
+					<span class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-1">Study Focus</span>
+					<span class="text-sm sm:text-base font-bold text-white">Source-Verified Retrieval (RAG)</span>
+				</div>
+				<div>
+					<span class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-1">Primary Controls</span>
+					<span class="text-sm sm:text-base font-bold text-white">Permissions &amp; Passage Citations</span>
+				</div>
+				<div>
+					<span class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-1">Candidate Stack</span>
+					<span class="text-sm sm:text-base font-bold text-cyan-400">Python + Vector/Hybrid Search</span>
+				</div>
+				<div>
+					<span class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-1">Provenance Status</span>
+					<span class="text-sm sm:text-base font-bold text-amber-300">Conceptual Product Study</span>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Section 1: The Product Question & Proposed Direction -->
+	<section class="py-24 bg-brand-dark border-b border-white/10">
+		<div class="max-w-7xl mx-auto px-6">
+			<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
+				<article class="reveal lg:col-span-5 p-8 sm:p-10 rounded-3xl bg-[#0a0f1d] border border-white/10 flex flex-col justify-between">
+					<div>
+						<span class="inline-block font-mono text-xs font-bold text-cyan-400 uppercase tracking-widest mb-3">
+							01 // Core Challenge
+						</span>
+						<h2 class="font-heading text-2xl sm:text-3xl font-bold text-white mb-4">
+							The product question
+						</h2>
+						<p class="text-slate-200 text-lg leading-relaxed mb-6">
+							How could a user find relevant material while keeping access boundaries and source checking clear?
+						</p>
+						<p class="text-slate-400 text-sm leading-relaxed">
+							A chat box that generates fluent answers without showing where the information came from—or without respecting document permissions—creates operational risk when employees need to verify policies, contracts, or technical procedures.
+						</p>
+					</div>
+					<div class="pt-6 mt-6 border-t border-white/10 text-xs font-mono text-rose-300">
+						Common failure mode: Unverifiable AI summaries over uncurated file dumps.
+					</div>
+				</article>
+
+				<article class="reveal reveal-delay-1 lg:col-span-7 p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-[#0a0f1d] via-[#0b1a24] to-[#0a0f1d] border border-emerald-400/30 flex flex-col justify-between">
+					<div>
+						<span class="inline-block font-mono text-xs font-bold text-emerald-400 uppercase tracking-widest mb-3">
+							02 // Design Hypothesis
+						</span>
+						<h2 class="font-heading text-2xl sm:text-3xl font-bold text-white mb-4">
+							The proposed direction
+						</h2>
+						<p class="text-slate-200 text-lg leading-relaxed mb-6">
+							A real product could retrieve approved documents, show relevant passages and let the user inspect the source before acting. The visual illustration represents information becoming more organized; it is not an exact architecture diagram.
+						</p>
+						<div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
+							<div class="p-4 rounded-2xl bg-[#050814]/80 border border-white/10">
+								<span class="block text-xs font-mono font-bold text-emerald-400 mb-1">01 // Filter</span>
+								<span class="text-sm font-semibold text-white block mb-1">Approved Sources</span>
+								<span class="text-xs text-slate-400">Scoped by user role &amp; document status</span>
+							</div>
+							<div class="p-4 rounded-2xl bg-[#050814]/80 border border-white/10">
+								<span class="block text-xs font-mono font-bold text-cyan-400 mb-1">02 // Retrieve</span>
+								<span class="text-sm font-semibold text-white block mb-1">Matched Passages</span>
+								<span class="text-xs text-slate-400">Ranked sections shown before action</span>
+							</div>
+							<div class="p-4 rounded-2xl bg-[#050814]/80 border border-white/10">
+								<span class="block text-xs font-mono font-bold text-violet-400 mb-1">03 // Inspect</span>
+								<span class="text-sm font-semibold text-white block mb-1">Source Verification</span>
+								<span class="text-xs text-slate-400">Direct link to original page &amp; date</span>
+							</div>
+						</div>
+					</div>
+				</article>
+			</div>
+		</div>
+	</section>
+
+	<!-- Section 2: Interactive Retrieval Workflow + Secondary Visual -->
+	<section class="py-24 lg:py-28 bg-[#070b16] border-b border-white/10">
+		<div class="max-w-7xl mx-auto px-6">
+			<div class="reveal max-w-2xl mb-14">
+				<span class="font-mono text-xs font-bold tracking-widest text-cyan-400 uppercase mb-3 flex items-center gap-2">
+					<span class="w-8 h-px bg-cyan-400"></span> Verification Workflow
+				</span>
+				<h2 class="font-heading text-3xl sm:text-4xl font-bold text-white tracking-tight mb-4">
+					Designing for source inspection first
+				</h2>
+				<p class="text-slate-300 text-base leading-relaxed prose-measure">
+					Explore the three stages required to keep a business document search workflow grounded and auditable.
+				</p>
+			</div>
+
+			<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start mb-16">
+				<div class="lg:col-span-7 space-y-6">
+					<div class="flex flex-wrap gap-2" role="tablist" aria-label="Document search stages">
+						{ragStages.map((stage, idx) => (
+							<button
+								type="button"
+								role="tab"
+								aria-selected={idx === 0 ? 'true' : 'false'}
+								data-rag-tab={stage.id}
+								class={`rag-tab-btn px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold border transition-colors ${
+									idx === 0
+										? 'bg-cyan-400 text-slate-950 border-cyan-400'
+										: 'bg-[#0a0f1d] text-slate-300 border-white/10 hover:border-white/25'
+								}`}
+							>
+								{stage.step}
+							</button>
+						))}
+					</div>
+
+					{ragStages.map((stage, idx) => (
+						<div
+							data-rag-panel={stage.id}
+							class={`p-8 rounded-3xl bg-[#0a0f1d] border border-white/10 ${idx === 0 ? '' : 'hidden'}`}
+						>
+							<span class="text-xs font-mono font-bold text-emerald-400 uppercase tracking-wider block mb-2">
+								{stage.step}
+							</span>
+							<h3 class="font-heading text-2xl font-bold text-white mb-3">
+								{stage.title}
+							</h3>
+							<p class="text-slate-300 text-base leading-relaxed mb-6">
+								{stage.summary}
+							</p>
+
+							<ul class="space-y-2.5 mb-6">
+								{stage.elements.map((el) => (
+									<li class="flex items-start gap-3 text-sm text-slate-200">
+										<span class="w-2 h-2 rounded-full bg-emerald-400 mt-1.5 shrink-0"></span>
+										<span>{el}</span>
+									</li>
+								))}
+							</ul>
+
+							<div class="p-4 rounded-2xl bg-[#050814] border border-emerald-400/20">
+								<span class="block text-[11px] font-mono uppercase tracking-wider text-emerald-400 mb-1">
+									Engineering Implementation Note
+								</span>
+								<p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+									{stage.engineeringNote}
+								</p>
+							</div>
+						</div>
+					))}
+				</div>
+
+				<!-- Secondary Visual Slot (concept-rag-citations.webp with automatic fallback) -->
+				<figure class="lg:col-span-5">
+					<div class="rounded-3xl overflow-hidden border border-white/15 bg-[#0a0f1d] shadow-2xl">
+						<div class="h-7 bg-[#0f172a] border-b border-white/10 flex items-center justify-between px-4">
+							<span class="text-[11px] font-mono text-slate-400">citation-view // source-grounding</span>
+							<span class="text-[11px] font-mono text-emerald-400">Conceptual Flow</span>
+						</div>
+						<img
+							src="/assets/zetalogix-v1/concept-rag-citations.webp"
+							onerror="this.onerror=null;this.src='/assets/zetalogix-v1/ai-solutions-800.webp';"
+							width="800"
+							height="533"
+							loading="lazy"
+							decoding="async"
+							alt="Conceptual illustration of search results linked to source document passages."
+							class="w-full aspect-[3/2] object-cover"
+						/>
+						<figcaption class="px-5 py-3.5 bg-[#050814] border-t border-white/10 text-xs text-slate-400 leading-relaxed">
+							Conceptual illustration of connecting a search query to verifiable source passages; not a live accuracy demonstration.
+						</figcaption>
+					</div>
+				</figure>
+			</div>
+
+			<!-- Pilot Evaluation Matrix -->
+			<div class="reveal rounded-3xl border border-white/10 bg-[#0a0f1d] overflow-hidden">
+				<div class="px-8 py-6 bg-[#0f172a] border-b border-white/10">
+					<h3 class="font-heading text-xl font-bold text-white">
+						Representative Pilot Evaluation Framework
+					</h3>
+					<p class="text-xs sm:text-sm text-slate-400 mt-1">
+						Suggested evaluation categories for testing a document-search pilot before any broader rollout.
+					</p>
+				</div>
+				<div class="overflow-x-auto">
+					<table class="w-full text-left border-collapse">
+						<thead>
+							<tr class="border-b border-white/10 text-xs font-mono uppercase text-slate-400 bg-[#050814]/50">
+								<th class="py-4 px-6">Evaluation Category</th>
+								<th class="py-4 px-6">Test Condition</th>
+								<th class="py-4 px-6">Target System Behavior</th>
+							</tr>
+						</thead>
+						<tbody class="divide-y divide-white/10 text-sm">
+							{evaluationCriteria.map((row) => (
+								<tr class="hover:bg-white/[0.02]">
+									<td class="py-4 px-6 font-semibold text-white">{row.category}</td>
+									<td class="py-4 px-6 text-slate-300">{row.test}</td>
+									<td class="py-4 px-6 text-slate-400">{row.expected}</td>
+								</tr>
+							))}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Section 3: What Would Need Validation -->
+	<section class="py-24 bg-brand-dark border-b border-white/10">
+		<div class="max-w-7xl mx-auto px-6">
+			<div class="reveal max-w-3xl mb-14">
+				<span class="font-mono text-xs font-bold tracking-widest text-emerald-400 uppercase mb-3 flex items-center gap-2">
+					<span class="w-8 h-px bg-emerald-400"></span> Production Readiness Scope
+				</span>
+				<h2 class="font-heading text-3xl sm:text-4xl font-bold text-white tracking-tight mb-4">
+					What would need validation
+				</h2>
+				<p class="text-slate-200 text-base sm:text-lg leading-relaxed">
+					Document permissions, extraction quality, retrieval relevance, source freshness, answer evaluation and appropriate human review. A useful pilot would test these issues on authorized examples before any wider release.
+				</p>
+			</div>
+
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+				{validationChecklist.map((item, idx) => (
+					<div class={`reveal reveal-delay-${(idx % 3) + 1} p-6 rounded-2xl bg-[#0a0f1d] border border-white/10`}>
+						<span class="block text-xs font-mono font-bold text-cyan-400 mb-2">
+							0{idx + 1} // Validation Requirement
+						</span>
+						<h3 class="font-heading text-lg font-bold text-white mb-2">
+							{item.title}
+						</h3>
+						<p class="text-slate-300 text-sm leading-relaxed">
+							{item.detail}
+						</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- Section 4: Related Service, Guide & Concept Cross-Navigation -->
+	<section class="py-20 bg-[#070b16]">
+		<div class="max-w-7xl mx-auto px-6">
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+				<a
+					href="/services/ai-solutions"
+					class="interactive-card p-7 rounded-3xl bg-[#0a0f1d] border border-white/10 hover:border-cyan-400/40 flex flex-col justify-between"
+				>
+					<div>
+						<span class="text-xs font-mono uppercase tracking-wider text-cyan-400 block mb-2">
+							Related Service
+						</span>
+						<h3 class="font-heading text-xl font-bold text-white mb-2">
+							AI &amp; Machine Learning Development
+						</h3>
+						<p class="text-slate-400 text-sm leading-relaxed">
+							Explore practical AI development for knowledge search, document processing, and workflow assistance.
+						</p>
+					</div>
+					<span class="text-xs font-bold text-cyan-400 mt-6 inline-block">View Service &rarr;</span>
+				</a>
+
+				<a
+					href="/blog/implementing-rag-systems"
+					class="interactive-card p-7 rounded-3xl bg-[#0a0f1d] border border-white/10 hover:border-cyan-400/40 flex flex-col justify-between"
+				>
+					<div>
+						<span class="text-xs font-mono uppercase tracking-wider text-violet-400 block mb-2">
+							Related Engineering Guide
+						</span>
+						<h3 class="font-heading text-xl font-bold text-white mb-2">
+							Planning a Useful RAG Pilot for Business Documents
+						</h3>
+						<p class="text-slate-400 text-sm leading-relaxed">
+							Read our step-by-step guide to choosing an authorized collection, writing test questions, and evaluating retrieval.
+						</p>
+					</div>
+					<span class="text-xs font-bold text-cyan-400 mt-6 inline-block">Read Article &rarr;</span>
+				</a>
+
+				<a
+					href="/concepts/appointment-booking"
+					class="interactive-card p-7 rounded-3xl bg-[#0a0f1d] border border-white/10 hover:border-cyan-400/40 flex flex-col justify-between"
+				>
+					<div>
+						<span class="text-xs font-mono uppercase tracking-wider text-emerald-400 block mb-2">
+							Previous Product Concept
+						</span>
+						<h3 class="font-heading text-xl font-bold text-white mb-2">
+							Appointment Booking Concept
+						</h3>
+						<p class="text-slate-400 text-sm leading-relaxed">
+							Explore our mobile product study for service selection, availability calendars, and booking confirmation.
+						</p>
+					</div>
+					<span class="text-xs font-bold text-cyan-400 mt-6 inline-block">Explore Concept &rarr;</span>
+				</a>
+			</div>
+
+			<div class="rounded-3xl border border-cyan-400/30 bg-gradient-to-br from-[#0d172a] via-[#0a0f1d] to-[#111029] p-8 sm:p-12 flex flex-col md:flex-row items-center justify-between gap-8">
+				<div>
+					<h2 class="font-heading text-2xl sm:text-3xl font-bold text-white mb-2">
+						Exploring a document search or knowledge retrieval pilot?
+					</h2>
+					<p class="text-slate-300 text-sm sm:text-base">
+						Bring a clear task and representative examples. We will help you define an evaluation baseline and pilot scope.
+					</p>
+				</div>
+				<a
+					href="/contact"
+					data-astro-prefetch="hover"
+					class="cta-primary shrink-0 inline-flex items-center px-8 py-4 rounded-full bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold text-sm"
+				>
+					Discuss Your Document Workflow
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<Footer />
+</BaseLayout>
+
+<script>
+	const setupRagTabs = () => {
+		const tabs = document.querySelectorAll<HTMLButtonElement>('[data-rag-tab]');
+		const panels = document.querySelectorAll<HTMLElement>('[data-rag-panel]');
+
+		tabs.forEach((tab) => {
+			tab.addEventListener('click', () => {
+				const target = tab.getAttribute('data-rag-tab');
+				tabs.forEach((t) => {
+					const active = t === tab;
+					t.setAttribute('aria-selected', active ? 'true' : 'false');
+					t.classList.toggle('bg-cyan-400', active);
+					t.classList.toggle('text-slate-950', active);
+					t.classList.toggle('border-cyan-400', active);
+					t.classList.toggle('bg-[#0a0f1d]', !active);
+					t.classList.toggle('text-slate-300', !active);
+					t.classList.toggle('border-white/10', !active);
+				});
+				panels.forEach((panel) => {
+					panel.classList.toggle('hidden', panel.getAttribute('data-rag-panel') !== target);
+				});
+			});
+		});
+	};
+
+	setupRagTabs();
+</script>
