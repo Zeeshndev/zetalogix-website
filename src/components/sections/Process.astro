@@ -1,109 +1,104 @@
 ﻿---
 // src/components/sections/Process.astro
+const steps = [
+	{
+		step: '01',
+		title: 'Understand the problem',
+		description:
+			'We identify the users, essential workflows and constraints. The output is a shared definition of what the first release needs to achieve.',
+	},
+	{
+		step: '02',
+		title: 'Make the product tangible',
+		description:
+			'We map user journeys and test key screens before development. Early feedback helps resolve uncertainty while changes are still inexpensive.',
+	},
+	{
+		step: '03',
+		title: 'Build in reviewable stages',
+		description:
+			'We break the work into milestones and demonstrate progress. You can review what is working and discuss changes with context.',
+	},
+	{
+		step: '04',
+		title: 'Prepare for real use',
+		description:
+			'We check the agreed journeys, error states and deployment requirements. Performance, accessibility and security checks are scoped to the product.',
+	},
+	{
+		step: '05',
+		title: 'Support the next iteration',
+		description:
+			'We document the handover and agree what happens after launch, including maintenance responsibilities and future improvements.',
+	},
+];
 
-const phases = [
-  { 
-    step: "01", 
-    title: "Research & Discovery", 
-    icon: "ðŸ”",
-    desc: "The initial stage of cooperation is critical. Stakeholder interviews, workshops, brainstorming, insights into user needs, use cases, and prototyping are all part of this process." 
-  },
-  { 
-    step: "02", 
-    title: "Product Design (UX & UI)", 
-    icon: "ðŸŽ¨",
-    desc: "We create clickable wireframes and mockups so you can see how your product will look and function. We care about our customers and deliver products that they will enjoy, using a human-centered approach." 
-  },
-  { 
-    step: "03", 
-    title: "Product Implementation", 
-    icon: "âš™ï¸",
-    desc: "This is the most fundamental aspect of the overall development process. We begin engineering after planning all of the projects for short sprints. We always use the appropriate technology stack for your project's requirements." 
-  },
-  { 
-    step: "04", 
-    title: "Optimisation", 
-    icon: "ðŸ”—",
-    desc: "Following the development process, we must ensure that resources were used effectively. As a result, we conduct code reviews, refactoring, and optimization. At this point, we ensure that there are no bottlenecks in the code and that the app runs smoothly." 
-  },
-  { 
-    step: "05", 
-    title: "Quality Assurance", 
-    icon: "ðŸŽ–ï¸",
-    desc: "Before we deliver the project, we must be certain that each feature works as it should. Our QA engineers run manual and automated tests while researching all of the user stories." 
-  },
-  { 
-    step: "06", 
-    title: "Deploy & Monitoring", 
-    icon: "ðŸŽ¯",
-    desc: "The last stage of development. Everything we've previously built is deployed here. Our project is now open to the public. Typically, we continue to work with you after the product has been delivered and assist you at every stage of your business's development." 
-  }
+const reasons = [
+	{
+		title: 'Practical scope',
+		description:
+			'We help separate launch essentials from later improvements, so the project starts with a useful, achievable goal.',
+	},
+	{
+		title: 'Visible progress',
+		description:
+			'Clear deliverables and regular reviews make it easier to understand where the work stands.',
+	},
+	{
+		title: 'Maintainable foundations',
+		description:
+			'Technology choices should fit your product, your budget and the people who will maintain it.',
+	},
 ];
 ---
 
-<section class="py-24 lg:py-32 bg-brand-dark relative border-t border-white/5 overflow-hidden">
-    
-    <div class="max-w-6xl mx-auto px-6 mb-32">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            
-            <div class="relative w-full aspect-square md:aspect-[4/3] lg:aspect-square max-w-md mx-auto lg:max-w-none">
-                <div class="absolute inset-0 bg-brand-accent/10 rounded-[2rem] translate-x-4 translate-y-4 -z-10 blur-lg"></div>
-                <img 
-                    src="/assets/Salaar.webp" ,
+<section class="py-20 lg:py-28 bg-brand-dark border-b border-white/5">
+	<div class="max-w-7xl mx-auto px-6">
+		<!-- Delivery Process -->
+		<div class="mb-20">
+			<div class="max-w-2xl mb-12">
+				<h2 class="font-heading text-3xl md:text-4xl font-bold text-white tracking-tight mb-4">
+					A clear route from idea to release
+				</h2>
+			</div>
 
-                    alt="Salar Sikandar - CEO & Founder" 
-                    class="w-full h-full object-cover rounded-[2rem] shadow-2xl border border-white/10"
-                    loading="lazy"
-                />
-            </div>
+			<ol class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+				{steps.map((item) => (
+					<li class="bg-[#0a0f1d] border border-white/10 rounded-2xl p-7 flex flex-col">
+						<span class="text-xs font-mono font-bold text-cyan-400 uppercase tracking-wider mb-2">
+							Stage {item.step}
+						</span>
+						<h3 class="font-heading text-lg font-bold text-white mb-2.5">
+							{item.title}
+						</h3>
+						<p class="text-slate-300 text-sm leading-relaxed prose-measure">
+							{item.description}
+						</p>
+					</li>
+				))}
+			</ol>
+		</div>
 
-            <div class="flex flex-col justify-center">
-                <h3 class="font-heading text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight mb-6">
-                    "Guiding Product Success with Expertise and Precision Software Engineering."
-                </h3>
-                
-                <p class="text-slate-400 text-sm md:text-base leading-relaxed mb-8">
-                    At ZetaLogix, we harness our technical and industry knowledge to provide insightful strategies for making your product both successful and profitable. I'm proud of our team's strong product-focused approach. With skilled developers on board, we prioritize not only exceptional code quality but also the tangible value we bring to every project from the very beginning of our partnership.
-                </p>
+		<!-- Working Practices -->
+		<div class="pt-16 border-t border-white/10">
+			<div class="max-w-2xl mb-12">
+				<h2 class="font-heading text-3xl md:text-4xl font-bold text-white tracking-tight mb-4">
+					Decisions you can understand
+				</h2>
+			</div>
 
-                <div class="text-sm tracking-wide">
-                    <span class="font-bold text-white">Salar Sikandar</span>
-                    <span class="text-slate-500"> - CEO & Founder</span>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <div class="max-w-5xl mx-auto px-6 border-t border-white/5 pt-20">
-        
-        <div class="text-center mb-20">
-            <h2 class="font-heading text-xs font-bold tracking-widest text-brand-accent uppercase mb-3">Our Process</h2>
-            <h3 class="font-heading text-4xl md:text-5xl font-bold text-white">Work Phases</h3>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-16">
-            {phases.map((phase) => (
-                <div class="flex flex-col">
-                    <div class="text-3xl mb-4 grayscale-[0.2]">
-                        {phase.icon}
-                    </div>
-                    
-                    <div class="flex items-center gap-3 mb-3">
-                        <span class="font-heading text-4xl md:text-5xl font-bold text-white/10 tracking-tighter select-none">
-                            {phase.step}
-                        </span>
-                        <h4 class="font-heading text-xl md:text-2xl font-bold text-white">
-                            {phase.title}
-                        </h4>
-                    </div>
-                    
-                    <p class="text-slate-400 leading-relaxed text-sm md:text-base">
-                        {phase.desc}
-                    </p>
-                </div>
-            ))}
-        </div>
-        
-    </div>
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+				{reasons.map((reason) => (
+					<div class="bg-slate-900/50 border border-white/10 rounded-2xl p-7">
+						<h3 class="font-heading text-lg font-bold text-white mb-2.5">
+							{reason.title}
+						</h3>
+						<p class="text-slate-300 text-sm leading-relaxed prose-measure">
+							{reason.description}
+						</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</div>
 </section>

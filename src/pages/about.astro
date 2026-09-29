@@ -4,73 +4,110 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Navbar from '../components/global/Navbar.astro';
 import Footer from '../components/global/Footer.astro';
 
-const recognitions = [
-  { era: "2023", agency: "Clutch Top 100 Companies", focus: "Global Architecture Focus" },
-  { era: "2024", agency: "Top Custom Software Developers", focus: "Scalable Enterprise Engineering" },
-  { era: "2025", agency: "Top Web Developers & Tech Agencies", focus: "Astro Ecosystem Specialization" }
+const principles = [
+	{
+		title: 'Clarity before complexity',
+		description: 'Define the useful outcome before adding features.',
+	},
+	{
+		title: 'Honest trade-offs',
+		description: 'Explain the implications of scope, budget, speed and maintenance.',
+	},
+	{
+		title: 'Reviewable progress',
+		description: 'Make work visible through agreed milestones and demonstrations.',
+	},
+	{
+		title: 'Responsible handover',
+		description: 'Agree access, documentation, ownership and support in writing.',
+	},
 ];
 ---
 
-<BaseLayout title="About Us | ZetaLogix">
-    <Navbar />
-    
-    <main class="pt-32 bg-brand-dark text-slate-300 min-h-screen relative overflow-hidden">
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-brand-accent/5 rounded-full blur-[120px] pointer-events-none"></div>
+<BaseLayout
+	title="About Zetalogix | Web, Mobile & AI Development"
+	description="Meet the approach behind Zetalogix: practical planning, thoughtful design and software engineering for web, mobile and AI products."
+	breadcrumbs={[
+		{ name: 'Home', url: '/' },
+		{ name: 'About', url: '/about' },
+	]}
+>
+	<Navbar />
 
-        <div class="max-w-5xl mx-auto px-6 py-12 relative z-10">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-24">
-                <div>
-                    <h1 class="text-sm font-bold tracking-widest text-brand-accent font-mono uppercase mb-4">Our Narrative</h1>
-                    <h2 class="text-3xl md:text-4xl font-bold text-white font-heading mb-6 leading-tight">Revolutionizing the Software Engineering Ecosystem</h2>
-                    <p class="text-slate-400 text-base leading-relaxed mb-4">
-                        ZetaLogix operates as a premium custom software development agency specializing in modern web ecosystems, cloud applications, cross-platform mobile systems, and intelligent machine learning pipelines.
-                    </p>
-                    <p class="text-slate-400 text-base leading-relaxed">
-                        We balance technology and strategy, converting complex corporate functional objectives into resilient, high-speed codebases built for production workloads.
-                    </p>
-                </div>
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="p-6 rounded-2xl bg-[#0a0f1d] border border-white/5 text-center">
-                        <div class="text-3xl font-bold text-brand-accent font-heading mb-2">50+</div>
-                        <div class="text-xs text-slate-400 uppercase tracking-wider font-medium">Projects Delivered</div>
-                    </div>
-                    <div class="p-6 rounded-2xl bg-[#0a0f1d] border border-white/5 text-center">
-                        <div class="text-3xl font-bold text-purple-400 font-heading mb-2">20+</div>
-                        <div class="text-xs text-slate-400 uppercase tracking-wider font-medium">Tech Architects</div>
-                    </div>
-                </div>
-            </div>
+	<div class="pt-32 pb-20 bg-brand-dark text-slate-300">
+		<div class="max-w-4xl mx-auto px-6">
+			<!-- Hero Intro -->
+			<header class="mb-16">
+				<h1 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight mb-6 leading-tight">
+					A software team focused on making your next step clearer.
+				</h1>
+				<p class="text-slate-300 text-base sm:text-lg leading-relaxed prose-measure">
+					Zetalogix brings product design and software development into one conversation. We work with businesses that need to launch a new product, improve an existing platform or make an internal process less complicated.
+				</p>
+			</header>
 
-            <div class="bg-[#0a0f1d] border border-white/10 rounded-3xl p-8 md:p-12 mb-24">
-                <div class="max-w-3xl">
-                    <h2 class="text-sm font-bold tracking-widest text-brand-accent font-mono uppercase mb-4">Value Proposition</h2>
-                    <h3 class="text-2xl md:text-3xl font-bold text-white font-heading mb-6">Our Commitment to Enterprise Excellence</h3>
-                    <p class="text-slate-400 leading-relaxed mb-6">
-                        The global digital market is often flooded with fragile setups that break under heavy user scale or offer rigid interfaces. ZetaLogix was built to solve this problem. 
-                    </p>
-                    <p class="text-slate-400 leading-relaxed">
-                        We ensure complete transparent alignment across our entire pipeline. From the first structural layout mockups to our production server deployments, we focus entirely on asset isolation, data security, and long-term codebase scalability.
-                    </p>
-                </div>
-            </div>
+			<!-- Section 1 -->
+			<section class="mb-16 bg-[#0a0f1d] border border-white/10 rounded-3xl p-8 md:p-10">
+				<h2 class="font-heading text-2xl md:text-3xl font-bold text-white mb-4">
+					Start with the work people need to do
+				</h2>
+				<div class="space-y-4 text-slate-300 text-base leading-relaxed prose-measure">
+					<p>
+						Good software begins with an understanding of its users. We ask how your business operates, where time is lost and what success would look like. Those answers guide the scope, user experience and technical choices.
+					</p>
+					<p>
+						Our core services cover <a href="/services/web-development" class="text-cyan-400 hover:text-cyan-300 underline underline-offset-4">web development</a>, <a href="/services/mobile-development" class="text-cyan-400 hover:text-cyan-300 underline underline-offset-4">mobile applications</a> and <a href="/services/ai-solutions" class="text-cyan-400 hover:text-cyan-300 underline underline-offset-4">applied AI</a>. We also support <a href="/services/saas-development" class="text-cyan-400 hover:text-cyan-300 underline underline-offset-4">SaaS products</a>, <a href="/services/custom-software" class="text-cyan-400 hover:text-cyan-300 underline underline-offset-4">custom business systems</a> and <a href="/services/ui-ux-design" class="text-cyan-400 hover:text-cyan-300 underline underline-offset-4">UI/UX design</a> where those capabilities serve the project.
+					</p>
+				</div>
+			</section>
 
-            <div class="mb-24">
-                <h2 class="text-2xl font-bold text-white font-heading mb-8 text-center md:text-left">Awards & Recognitions</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    {recognitions.map((item) => (
-                        <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-brand-accent/20 transition-all duration-300 flex items-start gap-4">
-                            <span class="text-2xl mt-1">🏆</span>
-                            <div>
-                                <span class="text-xs text-brand-accent font-mono font-bold block mb-1">{item.era}</span>
-                                <h4 class="text-white font-bold text-base leading-snug mb-1">{item.agency}</h4>
-                                <p class="text-xs text-slate-500 font-medium">{item.focus}</p>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </div>
-    </main>
+			<!-- Section 2 -->
+			<section class="mb-16">
+				<h2 class="font-heading text-2xl md:text-3xl font-bold text-white mb-6">
+					How we approach a project
+				</h2>
+				<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+					{principles.map((item) => (
+						<div class="p-6 rounded-2xl bg-[#0a0f1d] border border-white/10">
+							<h3 class="font-heading text-lg font-bold text-white mb-2">
+								{item.title}
+							</h3>
+							<p class="text-slate-300 text-sm leading-relaxed">
+								{item.description}
+							</p>
+						</div>
+					))}
+				</div>
+			</section>
 
-    <Footer />
+			<!-- Section 3 -->
+			<section class="mb-16 bg-slate-900/50 border border-white/10 rounded-3xl p-8 md:p-10">
+				<h2 class="font-heading text-2xl md:text-3xl font-bold text-white mb-4">
+					Based in Pakistan. Open to working worldwide.
+				</h2>
+				<p class="text-slate-300 text-base leading-relaxed prose-measure">
+					Remote collaboration works best when expectations are explicit. We agree who makes decisions, how feedback is shared and when teams overlap, so location does not become a source of confusion.
+				</p>
+			</section>
+
+			<!-- Closing CTA -->
+			<section class="rounded-3xl border border-cyan-400/20 bg-[#0a0f1d] p-8 md:p-10 text-center">
+				<h2 class="font-heading text-2xl md:text-3xl font-bold text-white mb-4">
+					Get to know the team behind your project
+				</h2>
+				<p class="text-slate-300 text-base leading-relaxed max-w-2xl mx-auto mb-8">
+					Tell us what you need to build. We can discuss the relevant skills, proposed team and way of working before you commit to a development scope.
+				</p>
+				<a
+					href="/contact"
+					data-astro-prefetch="hover"
+					class="cta-primary inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-semibold text-sm"
+				>
+					Talk to Zetalogix
+				</a>
+			</section>
+		</div>
+	</div>
+
+	<Footer />
 </BaseLayout>
