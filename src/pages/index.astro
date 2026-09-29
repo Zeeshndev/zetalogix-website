@@ -8,36 +8,86 @@ import Projects from '../components/sections/Projects.astro';
 import Process from '../components/sections/Process.astro';
 import Footer from '../components/global/Footer.astro';
 
+const techCategories = [
+	{
+		id: 'web',
+		label: 'Web & Frontend',
+		items: [
+			{ name: 'Astro', role: 'Content-first web architecture & islands' },
+			{ name: 'React & Next.js', role: 'Interactive dashboards & web applications' },
+			{ name: 'TypeScript', role: 'Type-safe application logic & interfaces' },
+			{ name: 'Tailwind CSS', role: 'Consistent responsive design systems' },
+		],
+	},
+	{
+		id: 'mobile',
+		label: 'Mobile Apps',
+		items: [
+			{ name: 'Flutter', role: 'Shared-code iOS & Android applications' },
+			{ name: 'React Native', role: 'Cross-platform mobile product delivery' },
+			{ name: 'REST & GraphQL APIs', role: 'Documented mobile backend integration' },
+			{ name: 'Offline State Sync', role: 'Resilient workflows for imperfect connections' },
+		],
+	},
+	{
+		id: 'ai',
+		label: 'Applied AI & Data',
+		items: [
+			{ name: 'Python', role: 'Document processing, retrieval & evaluation' },
+			{ name: 'RAG Pipelines', role: 'Permission-aware knowledge search & citations' },
+			{ name: 'PyTorch & TensorFlow', role: 'Classification, forecasting & vision models' },
+			{ name: 'Evaluation Harnesses', role: 'Baseline testing & human-in-the-loop review' },
+		],
+	},
+	{
+		id: 'backend',
+		label: 'Backend & Infrastructure',
+		items: [
+			{ name: 'Node.js', role: 'APIs, webhooks & business service orchestration' },
+			{ name: 'PostgreSQL', role: 'Relational data modeling & transactional integrity' },
+			{ name: 'Docker & Cloud CI/CD', role: 'Repeatable builds & staged deployments' },
+			{ name: 'AWS & Netlify', role: 'Managed hosting, serverless functions & scaling' },
+		],
+	},
+];
+
 const engagementModels = [
 	{
+		badge: 'Defined Scope',
 		title: 'Fixed-scope project',
+		bestFor: 'Bounded websites, MVPs or specific feature releases',
 		href: '/engagement/fixed-price',
 		description:
 			'A defined outcome, agreed deliverables and milestones. Useful when the requirements are sufficiently clear.',
 	},
 	{
+		badge: 'Evolving Roadmap',
 		title: 'Dedicated team',
+		bestFor: 'Continuous product development & shifting priorities',
 		href: '/engagement/dedicated-team',
 		description: 'Ongoing engineering capacity for a product roadmap that will evolve.',
 	},
 	{
+		badge: 'Remote Operations',
 		title: 'Offshore delivery',
+		bestFor: 'Long-term distributed engineering with agreed overlap hours',
 		href: '/engagement/offshore',
 		description:
 			'A coordinated remote delivery arrangement with agreed roles, communication and access controls.',
 	},
 ];
 
-const featuredArticles = [
-	{
-		title: 'Where Astro and React Fit in a Web Product',
-		category: 'Web Development',
-		href: '/blog/why-we-build-enterprise-web-apps',
-		description:
-			'Understand when static pages, interactive islands and a dedicated application experience make sense for a business website or web product.',
-		stem: 'web-development',
-		alt: 'Developer reviewing a responsive website in an illustrative workspace.',
-	},
+const featuredArticle = {
+	title: 'Where Astro and React Fit in a Web Product',
+	category: 'Web Development',
+	href: '/blog/why-we-build-enterprise-web-apps',
+	description:
+		'Understand when static pages, interactive islands and a dedicated application experience make sense for a business website or web product.',
+	stem: 'web-development',
+	alt: 'Developer reviewing a responsive website in an illustrative workspace.',
+};
+
+const secondaryArticles = [
 	{
 		title: 'Is Flutter Right for Your iOS App?',
 		category: 'Mobile Development',
@@ -70,67 +120,139 @@ const featuredArticles = [
 	<Projects />
 	<Process />
 
-	<!-- Engagement Options -->
-	<section id="engagement" class="py-20 lg:py-28 bg-brand-dark border-b border-white/5">
+	<!-- Interactive Technology Stack Section (Accurate to Z02 & Z18) -->
+	<section class="py-24 bg-[#070b16] border-b border-white/10">
 		<div class="max-w-7xl mx-auto px-6">
-			<div class="max-w-2xl mb-12">
-				<h2 class="font-heading text-3xl md:text-4xl font-bold text-white tracking-tight mb-4">
-					Choose a way to work together
-				</h2>
-			</div>
+			<div class="reveal flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6">
+				<div class="max-w-2xl">
+					<span class="font-mono text-xs font-bold tracking-widest text-cyan-400 uppercase mb-3 flex items-center gap-2">
+						<span class="w-8 h-px bg-cyan-400"></span> Technologies We Use
+					</span>
+					<h2 class="font-heading text-3xl sm:text-4xl font-bold text-white tracking-tight">
+						Practical tools chosen for maintainability
+					</h2>
+				</div>
 
-			<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
-				{engagementModels.map((model) => (
-					<article class="interactive-card bg-[#0a0f1d] border border-white/10 hover:border-cyan-400/40 rounded-2xl p-7 flex flex-col justify-between">
-						<div>
-							<h3 class="font-heading text-xl font-bold text-white mb-3">
-								<a href={model.href} class="hover:text-cyan-400 transition-colors duration-150">
-									{model.title}
-								</a>
-							</h3>
-							<p class="text-slate-300 text-sm leading-relaxed mb-6 prose-measure">
-								{model.description}
-							</p>
-						</div>
-						<a
-							href={model.href}
-							class="inline-flex items-center text-sm font-semibold text-cyan-400 hover:text-cyan-300 transition-colors duration-150"
+				<!-- Accessible Category Switcher -->
+				<div class="flex flex-wrap gap-2" role="tablist" aria-label="Technology categories">
+					{techCategories.map((cat, idx) => (
+						<button
+							type="button"
+							role="tab"
+							aria-selected={idx === 0 ? 'true' : 'false'}
+							aria-controls={`tech-panel-${cat.id}`}
+							id={`tech-tab-${cat.id}`}
+							data-tech-tab={cat.id}
+							class={`tech-tab-btn px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-colors duration-150 border ${
+								idx === 0
+									? 'bg-cyan-400 text-slate-950 border-cyan-400'
+									: 'bg-[#0a0f1d] text-slate-300 border-white/10 hover:border-white/25'
+							}`}
 						>
-							Learn more
-							<svg class="w-4 h-4 ml-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-							</svg>
-						</a>
-					</article>
-				))}
+							{cat.label}
+						</button>
+					))}
+				</div>
 			</div>
 
-			<div>
+			{techCategories.map((cat, idx) => (
+				<div
+					id={`tech-panel-${cat.id}`}
+					role="tabpanel"
+					aria-labelledby={`tech-tab-${cat.id}`}
+					data-tech-panel={cat.id}
+					class={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 ${idx === 0 ? '' : 'hidden'}`}
+				>
+					{cat.items.map((tech) => (
+						<div class="interactive-card p-6 rounded-2xl bg-[#0a0f1d] border border-white/10 hover:border-cyan-400/30">
+							<div class="flex items-center gap-2.5 mb-3">
+								<span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+								<h3 class="font-heading text-lg font-bold text-white">{tech.name}</h3>
+							</div>
+							<p class="text-slate-400 text-sm leading-relaxed">{tech.role}</p>
+						</div>
+					))}
+				</div>
+			))}
+		</div>
+	</section>
+
+	<!-- Engagement Options Comparison Matrix -->
+	<section id="engagement" class="py-24 lg:py-32 bg-brand-dark border-b border-white/10">
+		<div class="max-w-7xl mx-auto px-6">
+			<div class="reveal flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+				<div class="max-w-2xl">
+					<span class="font-mono text-xs font-bold tracking-widest text-cyan-400 uppercase mb-3 flex items-center gap-2">
+						<span class="w-8 h-px bg-cyan-400"></span> Collaboration Models
+					</span>
+					<h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
+						Choose a way to work together
+					</h2>
+				</div>
 				<a
 					href="/engagement/fixed-price"
-					class="inline-flex items-center px-6 py-3 rounded-full border border-white/15 hover:border-white/30 text-sm font-semibold text-white transition-colors duration-150"
+					class="inline-flex items-center px-6 py-3 rounded-full bg-white/[0.04] border border-white/15 hover:border-cyan-400/40 text-sm font-semibold text-white transition-colors duration-150 shrink-0"
 				>
 					Compare Engagement Options
 				</a>
 			</div>
+
+			<div class="reveal rounded-3xl border border-white/10 bg-[#0a0f1d] overflow-hidden divide-y divide-white/10">
+				{engagementModels.map((model, idx) => (
+					<div class="group p-8 lg:p-10 hover:bg-white/[0.02] transition-colors duration-150 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+						<div class="lg:col-span-4">
+							<span class="inline-block font-mono text-xs uppercase tracking-wider text-cyan-400 mb-2">
+								0{idx + 1} // {model.badge}
+							</span>
+							<h3 class="font-heading text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors">
+								<a href={model.href}>{model.title}</a>
+							</h3>
+						</div>
+
+						<div class="lg:col-span-5">
+							<p class="text-slate-300 text-base leading-relaxed mb-2">
+								{model.description}
+							</p>
+							<p class="text-xs text-slate-400 font-mono">
+								Best fit: {model.bestFor}
+							</p>
+						</div>
+
+						<div class="lg:col-span-3 flex lg:justify-end">
+							<a
+								href={model.href}
+								class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/15 group-hover:border-cyan-400 group-hover:bg-cyan-400 group-hover:text-slate-950 text-sm font-semibold text-white transition-colors duration-150"
+							>
+								Explore Model
+								<svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+								</svg>
+							</a>
+						</div>
+					</div>
+				))}
+			</div>
 		</div>
 	</section>
 
-	<!-- Featured Articles / Insights -->
-	<section class="py-20 lg:py-28 bg-brand-dark border-b border-white/5">
+	<!-- Editorial Magazine Layout for Insights -->
+	<section class="py-24 lg:py-32 bg-brand-dark border-b border-white/10">
 		<div class="max-w-7xl mx-auto px-6">
-			<div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+			<div class="reveal flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
 				<div class="max-w-2xl">
-					<h2 class="font-heading text-3xl md:text-4xl font-bold text-white tracking-tight mb-4">
+					<span class="font-mono text-xs font-bold tracking-widest text-cyan-400 uppercase mb-3 flex items-center gap-2">
+						<span class="w-8 h-px bg-cyan-400"></span> Engineering &amp; Product Guides
+					</span>
+					<h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight mb-4">
 						Practical notes for better product decisions
 					</h2>
-					<p class="text-slate-300 text-base leading-relaxed prose-measure">
+					<p class="text-slate-300 text-base sm:text-lg leading-relaxed prose-measure">
 						Read our guides to choosing a development approach, planning software and evaluating AI features. Each article focuses on decisions that affect delivery and day-to-day use.
 					</p>
 				</div>
 				<a
 					href="/blog"
-					class="inline-flex items-center text-sm font-semibold text-cyan-400 hover:text-cyan-300 transition-colors duration-150 shrink-0"
+					class="inline-flex items-center text-sm font-semibold text-cyan-400 hover:text-white transition-colors duration-150 shrink-0"
 				>
 					View All Insights
 					<svg class="w-4 h-4 ml-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -139,76 +261,148 @@ const featuredArticles = [
 				</a>
 			</div>
 
-			<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-				{featuredArticles.map((article) => (
-					<article class="interactive-card bg-[#0a0f1d] border border-white/10 hover:border-cyan-400/40 rounded-2xl overflow-hidden flex flex-col">
-						<div class="aspect-[3/2] w-full bg-slate-900 overflow-hidden border-b border-white/5">
-							<img
-								src={`/assets/zetalogix-v1/${article.stem}-800.webp`}
-								srcset={`/assets/zetalogix-v1/${article.stem}-480.webp 480w, /assets/zetalogix-v1/${article.stem}-800.webp 800w, /assets/zetalogix-v1/${article.stem}-1200.webp 1200w`}
-								sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-								width="800"
-								height="533"
-								loading="lazy"
-								decoding="async"
-								alt={article.alt}
-								class="w-full h-full object-cover"
-							/>
-						</div>
-						<div class="p-6 flex flex-col flex-grow">
-							<span class="text-xs font-semibold text-cyan-400 uppercase tracking-wider mb-2">
-								{article.category}
+			<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+				<!-- Left: Large Featured Guide -->
+				<article class="reveal lg:col-span-7 interactive-card group bg-[#0a0f1d] border border-white/10 hover:border-cyan-400/40 rounded-3xl overflow-hidden flex flex-col justify-between">
+					<div class="aspect-[16/10] w-full bg-slate-950 overflow-hidden border-b border-white/10">
+						<img
+							src={`/assets/zetalogix-v1/${featuredArticle.stem}-800.webp`}
+							srcset={`/assets/zetalogix-v1/${featuredArticle.stem}-480.webp 480w, /assets/zetalogix-v1/${featuredArticle.stem}-800.webp 800w, /assets/zetalogix-v1/${featuredArticle.stem}-1200.webp 1200w`}
+							sizes="(min-width: 1024px) 55vw, 100vw"
+							width="800"
+							height="533"
+							loading="lazy"
+							decoding="async"
+							alt={featuredArticle.alt}
+							class="w-full h-full object-cover"
+						/>
+					</div>
+					<div class="p-8 sm:p-10 flex flex-col flex-grow justify-between">
+						<div>
+							<span class="inline-block text-xs font-mono font-bold text-cyan-400 uppercase tracking-wider mb-3">
+								{featuredArticle.category}
 							</span>
-							<h3 class="font-heading text-lg font-bold text-white mb-2.5">
-								<a href={article.href} class="hover:text-cyan-400 transition-colors duration-150">
-									{article.title}
-								</a>
+							<h3 class="font-heading text-2xl sm:text-3xl font-bold text-white mb-4 group-hover:text-cyan-400 transition-colors">
+								<a href={featuredArticle.href}>{featuredArticle.title}</a>
 							</h3>
-							<p class="text-slate-300 text-sm leading-relaxed mb-6 flex-grow">
-								{article.description}
+							<p class="text-slate-300 text-base leading-relaxed mb-6 prose-measure">
+								{featuredArticle.description}
 							</p>
-							<a
-								href={article.href}
-								class="inline-flex items-center text-sm font-semibold text-cyan-400 hover:text-cyan-300 transition-colors duration-150 mt-auto"
-							>
-								Read article
-								<svg class="w-4 h-4 ml-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-								</svg>
-							</a>
 						</div>
-					</article>
-				))}
+						<a
+							href={featuredArticle.href}
+							class="inline-flex items-center text-sm font-bold text-cyan-400 group-hover:text-white transition-colors"
+						>
+							Read Full Guide
+							<svg class="w-4 h-4 ml-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+							</svg>
+						</a>
+					</div>
+				</article>
+
+				<!-- Right: Two Stacked Horizontal/Compact Guides -->
+				<div class="lg:col-span-5 flex flex-col gap-8">
+					{secondaryArticles.map((article, idx) => (
+						<article
+							class={`reveal reveal-delay-${idx + 1} interactive-card group bg-[#0a0f1d] border border-white/10 hover:border-cyan-400/40 rounded-3xl overflow-hidden flex flex-col flex-1`}
+						>
+							<div class="grid grid-cols-1 sm:grid-cols-12 h-full">
+								<div class="sm:col-span-5 bg-slate-950 border-b sm:border-b-0 sm:border-r border-white/10">
+									<img
+										src={`/assets/zetalogix-v1/${article.stem}-480.webp`}
+										srcset={`/assets/zetalogix-v1/${article.stem}-480.webp 480w, /assets/zetalogix-v1/${article.stem}-800.webp 800w`}
+										sizes="(min-width: 640px) 20vw, 100vw"
+										width="480"
+										height="320"
+										loading="lazy"
+										decoding="async"
+										alt={article.alt}
+										class="w-full h-48 sm:h-full object-cover"
+									/>
+								</div>
+								<div class="sm:col-span-7 p-6 flex flex-col justify-between">
+									<div>
+										<span class="block text-[11px] font-mono font-bold text-cyan-400 uppercase tracking-wider mb-2">
+											{article.category}
+										</span>
+										<h3 class="font-heading text-lg font-bold text-white mb-2.5 group-hover:text-cyan-400 transition-colors leading-snug">
+											<a href={article.href}>{article.title}</a>
+										</h3>
+										<p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4">
+											{article.description}
+										</p>
+									</div>
+									<a
+										href={article.href}
+										class="inline-flex items-center text-xs font-bold text-cyan-400 group-hover:text-white transition-colors"
+									>
+										Read Guide
+										<svg class="w-3.5 h-3.5 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+										</svg>
+									</a>
+								</div>
+							</div>
+						</article>
+					))}
+				</div>
 			</div>
 		</div>
 	</section>
 
-	<!-- Working Across Locations & Closing CTA -->
-	<section class="py-20 lg:py-28 bg-[#070b16]">
-		<div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-10 items-stretch">
-			<div class="rounded-3xl border border-white/10 bg-[#0a0f1d] p-8 md:p-10 flex flex-col justify-center">
-				<h2 class="font-heading text-2xl md:text-3xl font-bold text-white mb-4">
-					Working across locations
-				</h2>
-				<p class="text-slate-300 text-base leading-relaxed prose-measure">
-					We are based in Pakistan and work with businesses internationally. We agree communication hours, review routines and delivery responsibilities around the needs of each project.
-				</p>
+	<!-- Working Across Locations & High-Impact Conversion Banner -->
+	<section class="py-24 lg:py-32 bg-[#050814] bg-grid-pattern relative overflow-hidden">
+		<div
+			class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-cyan-500/10 rounded-full blur-[130px] pointer-events-none"
+			aria-hidden="true"
+		></div>
+
+		<div class="max-w-7xl mx-auto px-6 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+			<div class="reveal lg:col-span-5 rounded-3xl border border-white/10 bg-[#0a0f1d]/90 backdrop-blur-md p-8 sm:p-10 flex flex-col justify-between">
+				<div>
+					<span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-cyan-400 mb-6">
+						Global Delivery
+					</span>
+					<h2 class="font-heading text-2xl sm:text-3xl font-bold text-white mb-4">
+						Working across locations
+					</h2>
+					<p class="text-slate-300 text-base leading-relaxed prose-measure">
+						We are based in Pakistan and work with businesses internationally. We agree communication hours, review routines and delivery responsibilities around the needs of each project.
+					</p>
+				</div>
+				<div class="pt-8 mt-8 border-t border-white/10 flex items-center justify-between text-xs font-mono text-slate-400">
+					<span>RAWALPINDI, PK (UTC+5)</span>
+					<span class="text-cyan-400">OVERLAP SCHEDULING</span>
+				</div>
 			</div>
 
-			<div class="rounded-3xl border border-cyan-400/20 bg-slate-900/70 p-8 md:p-10 flex flex-col justify-center">
-				<h2 class="font-heading text-2xl md:text-3xl font-bold text-white mb-4">
+			<div class="reveal reveal-delay-1 lg:col-span-7 rounded-3xl border border-cyan-400/30 bg-gradient-to-br from-[#0d172a] via-[#0a0f1d] to-[#111029] p-8 sm:p-12 flex flex-col justify-center shadow-[0_20px_60px_rgba(0,0,0,0.6)]">
+				<span class="font-mono text-xs font-bold tracking-widest text-cyan-400 uppercase mb-3">
+					Next Step
+				</span>
+				<h2 class="font-heading text-3xl sm:text-4xl font-bold text-white mb-4 leading-tight">
 					Start with the problem you want to solve
 				</h2>
-				<p class="text-slate-300 text-base leading-relaxed mb-8 prose-measure">
+				<p class="text-slate-300 text-base sm:text-lg leading-relaxed mb-8 prose-measure">
 					You do not need a finished specification to begin a conversation. Share your idea, current product or operational challenge, and tell us where you would like help.
 				</p>
-				<div>
+				<div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
 					<a
 						href="/contact"
 						data-astro-prefetch="hover"
-						class="cta-primary inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-semibold text-sm"
+						class="cta-primary inline-flex items-center justify-center px-8 py-4 rounded-full bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold text-sm"
 					>
 						Discuss Your Project
+						<svg class="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+						</svg>
+					</a>
+					<a
+						href="mailto:info@zetalogix.com"
+						class="inline-flex items-center justify-center px-7 py-4 rounded-full border border-white/15 hover:border-white/30 text-slate-200 hover:text-white font-semibold text-sm transition-colors duration-150"
+					>
+						info@zetalogix.com
 					</a>
 				</div>
 			</div>
@@ -217,3 +411,32 @@ const featuredArticles = [
 
 	<Footer />
 </BaseLayout>
+
+<script>
+	const setupTechTabs = () => {
+		const tabs = document.querySelectorAll<HTMLButtonElement>('[data-tech-tab]');
+		const panels = document.querySelectorAll<HTMLElement>('[data-tech-panel]');
+
+		tabs.forEach((tab) => {
+			tab.addEventListener('click', () => {
+				const target = tab.getAttribute('data-tech-tab');
+				tabs.forEach((t) => {
+					const isActive = t === tab;
+					t.setAttribute('aria-selected', isActive ? 'true' : 'false');
+					t.classList.toggle('bg-cyan-400', isActive);
+					t.classList.toggle('text-slate-950', isActive);
+					t.classList.toggle('border-cyan-400', isActive);
+					t.classList.toggle('bg-[#0a0f1d]', !isActive);
+					t.classList.toggle('text-slate-300', !isActive);
+					t.classList.toggle('border-white/10', !isActive);
+				});
+
+				panels.forEach((panel) => {
+					panel.classList.toggle('hidden', panel.getAttribute('data-tech-panel') !== target);
+				});
+			});
+		});
+	};
+
+	setupTechTabs();
+</script>

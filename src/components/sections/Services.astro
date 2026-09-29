@@ -2,37 +2,55 @@
 // src/components/sections/Services.astro
 const coreServices = [
 	{
+		index: '01',
+		tag: 'Web Platforms & Portals',
 		title: 'Web development',
 		href: '/services/web-development',
 		description:
 			'Give your customers a faster, clearer way to discover your business and use your services. We build responsive websites, web applications and connected business portals.',
+		stem: 'web-development',
+		alt: 'Developer reviewing a responsive website in an illustrative workspace.',
+		accent: 'from-cyan-500/20 to-blue-600/5 border-cyan-400/30 text-cyan-400',
 	},
 	{
+		index: '02',
+		tag: 'iOS & Android Products',
 		title: 'Mobile app development',
 		href: '/services/mobile-development',
 		description:
 			"Put your service in your customers' hands. We plan mobile journeys, build the supporting systems and help prepare your product for release.",
+		stem: 'mobile-development',
+		alt: 'Original mobile booking interface concept on two phones.',
+		accent: 'from-violet-500/20 to-purple-600/5 border-violet-400/30 text-violet-400',
 	},
 	{
+		index: '03',
+		tag: 'Search, RAG & Workflows',
 		title: 'AI and machine learning',
 		href: '/services/ai-solutions',
 		description:
 			'Make business information more useful. We develop tools for document processing, knowledge search, prediction and workflow assistance, with evaluation built into the process.',
+		stem: 'ai-solutions',
+		alt: 'Conceptual illustration of unstructured information becoming organized.',
+		accent: 'from-emerald-500/20 to-teal-600/5 border-emerald-400/30 text-emerald-400',
 	},
 ];
 
 const supportingServices = [
 	{
+		number: '04',
 		title: 'SaaS development',
 		href: '/services/saas-development',
 		description: 'Subscription products with clear roles, onboarding and room to grow.',
 	},
 	{
+		number: '05',
 		title: 'Custom software engineering',
 		href: '/services/custom-software',
 		description: 'Internal tools, workflows and integrations shaped around your operations.',
 	},
 	{
+		number: '06',
 		title: 'UI/UX design',
 		href: '/services/ui-ux-design',
 		description: 'User journeys, wireframes, testable prototypes and development-ready interfaces.',
@@ -40,56 +58,127 @@ const supportingServices = [
 ];
 ---
 
-<section id="services" class="py-20 lg:py-28 bg-brand-dark border-b border-white/5">
-	<div class="max-w-7xl mx-auto px-6">
-		<div class="max-w-2xl mb-14">
-			<h2 class="font-heading text-3xl md:text-4xl font-bold text-white tracking-tight mb-4">
-				What do you need to build?
-			</h2>
+<section id="services" class="py-24 lg:py-32 bg-brand-dark relative border-b border-white/10 overflow-hidden">
+	<div class="max-w-7xl mx-auto px-6 relative z-10">
+		<!-- Section Header -->
+		<div class="reveal flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+			<div class="max-w-2xl">
+				<span class="font-mono text-xs font-bold tracking-widest text-cyan-400 uppercase mb-3 flex items-center gap-2">
+					<span class="w-8 h-px bg-cyan-400"></span> Core Capabilities
+				</span>
+				<h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
+					What do you need to build?
+				</h2>
+			</div>
+			<a
+				href="/contact"
+				data-astro-prefetch="hover"
+				class="inline-flex items-center text-sm font-semibold text-cyan-400 hover:text-white transition-colors duration-150 shrink-0"
+			>
+				Discuss your requirements
+				<svg class="w-4 h-4 ml-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+				</svg>
+			</a>
 		</div>
 
-		<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-			{coreServices.map((service) => (
-				<article class="interactive-card bg-[#0a0f1d] border border-white/10 hover:border-cyan-400/40 rounded-2xl p-8 flex flex-col justify-between">
-					<div>
-						<h3 class="font-heading text-xl font-bold text-white mb-3">
-							<a href={service.href} class="hover:text-cyan-400 transition-colors duration-150">
-								{service.title}
-							</a>
-						</h3>
-						<p class="text-slate-300 text-sm leading-relaxed mb-6 prose-measure">
-							{service.description}
-						</p>
+		<!-- Primary 3-Pillar Visual Bento Grid -->
+		<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+			{coreServices.map((service, idx) => (
+				<article
+					class={`reveal reveal-delay-${idx + 1} interactive-card group relative rounded-3xl bg-[#0a0f1d] border border-white/10 hover:border-cyan-400/40 overflow-hidden flex flex-col`}
+				>
+					<!-- Visual Header with Subtle Gradient Overlay -->
+					<div class="relative aspect-[16/10] w-full overflow-hidden bg-slate-950 border-b border-white/10">
+						<img
+							src={`/assets/zetalogix-v1/${service.stem}-800.webp`}
+							srcset={`/assets/zetalogix-v1/${service.stem}-480.webp 480w, /assets/zetalogix-v1/${service.stem}-800.webp 800w, /assets/zetalogix-v1/${service.stem}-1200.webp 1200w`}
+							sizes="(min-width: 1024px) 33vw, 100vw"
+							width="800"
+							height="533"
+							loading="lazy"
+							decoding="async"
+							alt={service.alt}
+							class="w-full h-full object-cover object-center"
+						/>
+						<div class="absolute inset-0 bg-gradient-to-t from-[#0a0f1d] via-[#0a0f1d]/20 to-transparent"></div>
+						<div class="absolute top-4 left-4 flex items-center gap-2">
+							<span class={`px-3 py-1 rounded-full text-xs font-mono font-bold bg-[#050814]/90 backdrop-blur-md border ${service.accent}`}>
+								{service.index} // {service.tag}
+							</span>
+						</div>
 					</div>
-					<a
-						href={service.href}
-						class="inline-flex items-center text-sm font-semibold text-cyan-400 hover:text-cyan-300 transition-colors duration-150"
-					>
-						Explore {service.title.toLowerCase()}
-						<svg class="w-4 h-4 ml-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-						</svg>
-					</a>
+
+					<!-- Content Body -->
+					<div class="p-8 flex flex-col flex-grow justify-between">
+						<div>
+							<h3 class="font-heading text-2xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors duration-150">
+								<a href={service.href} class="focus:outline-none">
+									<span class="absolute inset-0" aria-hidden="true"></span>
+									{service.title}
+								</a>
+							</h3>
+							<p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-8 prose-measure">
+								{service.description}
+							</p>
+						</div>
+
+						<div class="pt-5 border-t border-white/10 flex items-center justify-between">
+							<span class="text-sm font-semibold text-cyan-400 group-hover:text-white transition-colors duration-150">
+								Explore {service.title.toLowerCase()}
+							</span>
+							<span class="w-9 h-9 rounded-full bg-white/5 group-hover:bg-cyan-400 group-hover:text-slate-950 text-cyan-400 flex items-center justify-center transition-colors duration-150">
+								<svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+								</svg>
+							</span>
+						</div>
+					</div>
 				</article>
 			))}
 		</div>
 
-		<div class="rounded-2xl bg-slate-900/50 border border-white/10 p-6 md:p-8">
-			<p class="text-slate-200 font-medium text-sm md:text-base mb-6">
-				Need help with a specific stage? Explore SaaS development, custom software engineering and UI/UX design.
-			</p>
+		<!-- Supporting Services Architectural Strip -->
+		<div class="reveal rounded-3xl bg-gradient-to-r from-[#0a0f1d] via-[#0d1428] to-[#0a0f1d] border border-white/10 p-8 lg:p-10">
+			<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-8 pb-6 border-b border-white/10">
+				<div>
+					<span class="text-xs font-mono uppercase tracking-widest text-violet-400 block mb-1">
+						Specialized Engineering &amp; Design
+					</span>
+					<p class="text-white font-heading text-lg sm:text-xl font-bold">
+						Need help with a specific stage? Explore SaaS development, custom software engineering and UI/UX design.
+					</p>
+				</div>
+			</div>
+
 			<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 				{supportingServices.map((item) => (
 					<a
 						href={item.href}
-						class="interactive-card group block p-5 rounded-xl bg-[#0a0f1d]/80 border border-white/5 hover:border-cyan-400/30"
+						class="interactive-card group relative flex flex-col justify-between p-6 rounded-2xl bg-[#050814]/80 border border-white/10 hover:border-cyan-400/40"
 					>
-						<h3 class="text-white font-semibold text-base group-hover:text-cyan-400 transition-colors duration-150 mb-1.5">
-							{item.title}
-						</h3>
-						<p class="text-slate-400 text-xs leading-relaxed">
-							{item.description}
-						</p>
+						<div>
+							<div class="flex items-center justify-between mb-4">
+								<span class="text-xs font-mono font-bold text-slate-400 group-hover:text-cyan-400 transition-colors">
+									{item.number}
+								</span>
+								<svg
+									class="w-4 h-4 text-slate-400 group-hover:text-cyan-400 transition-colors"
+									fill="none"
+									viewBox="0 0 24 24"
+									stroke="currentColor"
+									aria-hidden="true"
+								>
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+								</svg>
+							</div>
+							<h3 class="font-heading text-lg font-bold text-white group-hover:text-cyan-400 transition-colors duration-150 mb-2">
+								{item.title}
+							</h3>
+							<p class="text-slate-400 text-sm leading-relaxed">
+								{item.description}
+							</p>
+						</div>
 					</a>
 				))}
 			</div>
